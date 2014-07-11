@@ -12,7 +12,7 @@ module ValidatorWorld
     include W3CValidators
 
     def initialize
-      @validator = MarkupValidator.new
+      @validator = MarkupValidator.new(options)
     end
 
     def validate(url)
@@ -21,6 +21,17 @@ module ValidatorWorld
 
     def errors
       @results.errors
+    end
+
+    private
+
+    def options
+      return {} unless proxy
+      { proxy_server: proxy, proxy_port: 80 }
+    end
+
+    def proxy
+      @proxy ||= ['http_proxy', 'https_proxy', 'HTTP_PROXY', 'HTTPS_PROXY'].map { |key| ENV[key] }.compact.first
     end
   end
 end

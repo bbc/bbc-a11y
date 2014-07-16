@@ -1,20 +1,18 @@
-# HTML
-
-## Minimum text size
+# Minimum text size
 
 At default browser level all text **must** have a minimum calculated size of 11px and all core content **must** have a minimum calculated size of 13px.
 
-### Definitions
-
-#### Core content
-
-The content that is required to fulfil the core purpose of the document or feature.
-
-### Rationale
+## Rationale
 
 Having a minimum text size will reduce the number of users who need to make use of browser based text resize or page zoom. This is a particular issue with an ageing audience, many of whom will not consider themselves as having low vision and there will not have access to assistive technology or be familiar with browser tools to resize content.
 
-### Techniques
+## Definitions
+
+### Core content
+
+The content that is required to fulfil the core purpose of the document or feature.
+
+## Techniques
 
 Pass:
 
@@ -48,14 +46,16 @@ Fail:
 		}
 	</style>
 
-### Test
+## Test
 
 | Procedure | Expected Result | Type | 
 | --------- | --------------- | ---- |
 | For every piece of text of different sizes check the computed text size | All content must have a minimum size of 11px | Manual, automatable |
 | For every piece of core content text of different sizes check the computed text size | All core content must have a minimum size of 13px | Manual |
 
-# Notes
+--
+
+## Notes
 
 The core content problem again so we can only realistically automate testing against the 11px minimum.
 

@@ -1,14 +1,12 @@
-# HTML
-
-## Specify and validate against a Doctype
+# Specify and validate against a Doctype
 
 All documents **must** have a [W3C recommended Doctype](http://www.w3.org/QA/2002/04/valid-dtd-list.html) and all Markup **must** validate against that Doctype.
 
-### Rationale
+## Rationale
 
 While assistive technologies such as screen readers generally do a good job of interpreting invalid HTML there will be less risk of problems arising if the document follows a recognised standard Doctype.
 
-### Techniques
+## Techniques
 
 Pass:
 
@@ -19,11 +17,13 @@ Fail:
 
 	<html lang="en-GB">
 
-### Tests
+## Tests
 
 | Procedure | Expected Result | Type | 
 | --------- | --------------- | ---- |
 | Validate the page against the [W3C Markup Validation Service](http://validator.w3.org/) | There must be no errors | Tool |
+
+--
 
 ## Notes
 

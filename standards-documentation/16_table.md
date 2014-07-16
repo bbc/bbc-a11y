@@ -1,18 +1,16 @@
-# HTML
-
-## Correctly markup data tables
+# Correctly markup data tables
 
 Data tables **must** be marked up in a way that enable browsers and assistive technologies to identify them as such.
 
-### Rationale
+## Rationale
 
 Assistive technologies such as screen readers identify HTML tables as being either for data or for layout based on the markup used.
 
 If a `<table>` is identified as a layout table then potentially useful structures may be ignored.
 
-### Definitions
+## Definitions
 
-#### Algorithm
+### Algorithm
 
 The following algorithm is used to determine if a `<table>` has been  marked up in a way that allows browsers and assistive technologies to identify it as a data table:
 
@@ -41,7 +39,7 @@ The following algorithm is used to determine if a `<table>` has been  marked up 
 
 Go through each check in turn, stopping when you reach a data table or layout table result.
 
-### Techniques
+## Techniques
 
 Pass:
 
@@ -98,12 +96,14 @@ Fail:
 		</tr>
 	</table>
 
-### Test
+## Test
 
 | Procedure | Expected Result | Type | 
 | --------- | --------------- | ---- |
 | For each `<table>` element in the markup follow the defined algorithm | All data tables must be identifiable as a data table | Manual |
 
-# Notes
+--
+
+## Notes
 
 Hopefully this is clear enough.

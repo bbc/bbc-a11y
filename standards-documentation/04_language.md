@@ -1,16 +1,14 @@
-# HTML
-
-## Specify content language
+# Specify content language
 
 The main language of the page **must** be specified.
 
 Changes to language within the page **must** be indicated.
 
-### Rationale
+## Rationale
 
 Assistive technologies such as screen readers have support for different languages, allowing for appropriate pronunciation.
 
-### Techniques
+## Techniques
 
 Pass:
 
@@ -38,7 +36,7 @@ Fail:
 	</body>
 	</html>
 
-### Tests
+## Tests
 
 | Procedure | Expected Result | Type | 
 | --------- | --------------- | ---- |
@@ -46,6 +44,8 @@ Fail:
 | Validate the page against the [W3C Internationalization Checker](http://validator.w3.org/i18n-checker/) | There must not be a 'The html tag has no language attribute' warning, and the Language HTML tag value should match the language code for the main page content language | Tool |
 | Search source for each instance of a language change | Each instance should have a containing element with a `lang` attribute with a value equal to the language code for the language | Manual |
 
-# Notes
+--
+
+## Notes
 
 We can't reasonably test that changes in language are marked up correctly, but we can make sure that the document has a lang attribute with a valid language code.

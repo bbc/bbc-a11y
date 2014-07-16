@@ -14,19 +14,13 @@ Feature: HTML Validation
 
   Pass:
 
-      <!DOCTYPE html>¬
+      <!DOCTYPE html>
       <html lang="en-GB">
   
   Fail:
 
       <html lang="en-GB">
-  
-  Notes
-  ====
 
-  Primarily we'll be testing against HTML5, but it's worded in this way to avoid the situation that we have 
-  with the current standards which unintentionally make XHTML the only passing doctype. In theory HTML should 
-  be unversioned going forward but who knows what will happen in 5 years time.
 
   Scenario: Submit to W3C validation Service
 

@@ -15,6 +15,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'cucumber', '~> 1.3'
   s.add_dependency 'rspec',  '~> 3.0'
+  s.add_dependency 'capybara'
   s.add_dependency 'w3c_validators'
   s.add_dependency 'cld'
   s.add_development_dependency 'aruba'

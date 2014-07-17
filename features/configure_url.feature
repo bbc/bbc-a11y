@@ -12,7 +12,7 @@ Feature: Configure URLs to be tested
   Scenario: Single bad URL
     Given a file named "a11yrc.rb" with:
       """
-      config = BBC::A11y::Configuration.new ['godaddy.com']
+      config = BBC::A11y::Configuration.new ['http://godaddy.com']
       BBC::A11y::Test.new(config).run
       """
     When I run `a11y`

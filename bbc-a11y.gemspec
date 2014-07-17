@@ -16,8 +16,10 @@ Gem::Specification.new do |s|
   s.add_dependency 'cucumber', '~> 1.3'
   s.add_dependency 'rspec',  '~> 3.0'
   s.add_dependency 'w3c_validators'
-  s.add_development_dependency 'rake'
+  s.add_dependency 'cld'
   s.add_development_dependency 'aruba'
+  s.add_development_dependency 'pry'
+  s.add_development_dependency 'rake'
 
   s.rubygems_version = ">= 1.6.1"
   s.files            = `git ls-files`.split("\n").reject {|path| path =~ /\.gitignore$/ }

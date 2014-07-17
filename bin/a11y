@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 $: << File.dirname(__FILE__) + '/../lib'
 require 'bbc/a11y'
-require_relative "#{Dir.pwd}/a11y.rb"
+require_relative "#{Dir.pwd}/a11yrc.rb"

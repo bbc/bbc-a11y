@@ -2,11 +2,11 @@
 $LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
-  s.name        = 'a11y'
-  s.version     = File.read(File.expand_path("../lib/a11y/version", __FILE__))
+  s.name        = 'bbc-a11y'
+  s.version     = File.read(File.expand_path("../lib/bbc/a11y/version", __FILE__))
   s.authors     = ["Matt Wynne", "Ian Pouncey"]
   s.description = "A tool for testing the compliance of web URLs against the BBC's accessibilty guidelines"
-  s.summary     = "a11y-#{s.version}"
+  s.summary     = "bbc-a11y-#{s.version}"
   s.email       = "github@ipouncey.co.uk"
   s.homepage    = "https://cucumber.pro"
   s.platform    = Gem::Platform::RUBY

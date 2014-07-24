@@ -30,4 +30,9 @@ Alternatively, you can add this line to your project's Gemfile:
 
 ## How to use
 
-Enter the URL for the site you wish to test. Try `http://bbc.co.uk` and `http://godaddy.com` for examples.
+Run the `a11y` command, passing a URL:
+
+e.g.
+    ~~~
+    a11y http://bbc.co.uk
+    ~~~

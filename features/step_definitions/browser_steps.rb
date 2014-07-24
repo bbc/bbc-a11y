@@ -2,7 +2,7 @@ require 'capybara/cucumber'
 Capybara.default_driver = :selenium
 
 When(/^I visit the page$/) do
-  visit(ENV['URL'])
+  visit url 
 end
 
 Then(/^the <html> element must have a `lang` attribute$/) do

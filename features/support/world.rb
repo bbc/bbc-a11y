@@ -1,39 +1,30 @@
-module ValidatorWorld
-  def w3c
-    @w3c ||= W3C.new
-  end
+require 'bbc/a11y/w3c'
+require 'bbc/a11y/page'
+require 'bbc/a11y/language_detector'
+require 'bbc/a11y/settings'
 
-  def url
-    ENV['URL'] || raise("Please set the URL environment variable to specify the URL to test")
-  end
+module BBC
+  module A11y
+    module CucumberWorld
+      def w3c
+        @w3c ||= W3C.new
+      end
 
-  require 'w3c_validators'
-  class W3C
-    include W3CValidators
+      def page
+        @page ||= Page.new(browser)
+      end
 
-    def initialize
-      @validator = MarkupValidator.new(options)
-    end
+      def language
+        @language ||= LanguageDetector.new
+      end
 
-    def validate(url)
-      @results = @validator.validate_uri(url)
-    end
+      def settings
+        @settings ||= Settings.new
+      end
 
-    def errors
-      @results.errors
-    end
-
-    private
-
-    def options
-      return {} unless proxy
-      { proxy_server: proxy, proxy_port: 80 }
-    end
-
-    def proxy
-      @proxy ||= ['http_proxy', 'https_proxy', 'HTTP_PROXY', 'HTTPS_PROXY'].map { |key| ENV[key] }.compact.first
     end
   end
+
 end
 
-World(ValidatorWorld)
+World(BBC::A11y::CucumberWorld)

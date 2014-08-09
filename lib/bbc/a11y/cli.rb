@@ -1,5 +1,9 @@
 module BBC
   module A11y
+
+    # A very thin wrapper around Cucumber which takes settings on the command-line,
+    # stores them somewhere our automation code will be able to find it, and then
+    # runs Cucumber
     class CLI
       MissingArgument = Class.new(StandardError)
 
@@ -11,7 +15,7 @@ module BBC
         ENV['URL'] = url
         exec("cucumber")
       rescue MissingArgument => error
-        stderr.puts "Missing argument: #{error.message}"
+        stderr.puts "You missed an argument: #{error.message}"
         stderr.puts HELP
         raise SystemExit
       end
@@ -19,14 +23,14 @@ module BBC
       private
 
       def url
-        args[0] || raise(MissingArgument.new("url"))
+        args[0] || raise(MissingArgument.new("url-to-test"))
       end
 
       attr_reader :stdin, :stderr, :stdout, :args
       private :stdin, :stderr, :stdout, :args
 
       HELP = %{
-Usage: a11y url
+Usage: a11y url-to-test
 }
 
     end

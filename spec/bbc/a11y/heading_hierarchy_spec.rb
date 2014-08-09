@@ -44,7 +44,7 @@ module BBC::A11y
         end
       end
 
-      context 'an hierarch that skips back up from h4 to h2' do
+      context 'an hierarchy that skips back up from h4 to h2' do
         let(:html) { <<-HTML }
         <html>
           <body>
@@ -63,6 +63,50 @@ module BBC::A11y
         end
       end
 
+
+    end
+
+    describe "#to_s" do
+      context 'an hierarchy that skips back up from h4 to h2' do
+        let(:html) { <<-HTML }
+        <html>
+          <body>
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
+            <h3>Heading 3</h3>
+            <h4>Heading 4</h4>
+            <h2>Heading 2b</h2>
+            <h3>Heading 3b</h3>
+          </body>
+        </html>
+        HTML
+
+        it 'renders a nested hierarchy' do
+          expected = <<-TEXT
+h1
+  h2
+    h3
+      h4
+  h2
+    h3
+TEXT
+          expect( hierarchy.to_s ).to eq expected.strip
+        end
+      end
+    end
+
+    context "hidden headings" do
+      let(:html) { <<-HTML }
+        <html>
+          <body>
+            <h1 style="display:none">Heading 1</h1>
+          </body>
+        </html>
+      HTML
+
+      it "sees them" do
+        expect( hierarchy.to_s ).to eq "h1"
+      end
 
     end
 

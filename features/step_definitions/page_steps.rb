@@ -21,5 +21,7 @@ Then(/^there must be exactly one h1 element$/) do
 end
 
 Then(/^each heading must be followed by content or a heading of one level deeper \(h2\-h6\)$/) do
+  puts "Heading hierarchy:"
+  puts page.heading_hierarchy.to_s
   page.must_have_correct_heading_hierarchy
 end

@@ -8,6 +8,7 @@ module BBC
       end
 
       def validate
+        return self unless headings.count > 1
         adjacent_pairs = headings.zip(headings[1..-1])[0..-2]
         errors = adjacent_pairs.reduce([]) { |errors, pair|
           previous, current = *pair
@@ -20,6 +21,14 @@ module BBC
           errors
         }
         expect(errors).to be_empty, error_message(errors)
+        self
+      end
+
+      def to_s
+        headings.map { |h|
+          indent = "  " * (h.number - 1)
+          indent + h.to_s
+        }.join("\n")
       end
 
       private
@@ -35,7 +44,8 @@ module BBC
       end
 
       def heading_elements
-        page.all(:xpath, "//*[substring(name(), 1, 1) = 'h' and substring(name(), 2, 1) >= 1 and substring(name(), 2, 1) <= 6]").to_a
+        selector = "//*[substring(name(), 1, 1) = 'h' and substring(name(), 2, 1) >= 1 and substring(name(), 2, 1) <= 6]"
+        page.all(:xpath, selector, visible: false)
       end
 
       attr_reader :page

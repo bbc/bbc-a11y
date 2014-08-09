@@ -43,11 +43,15 @@ module BBC
       end
 
       def must_have_correct_heading_hierarchy
-        HeadingHierarchy.new(browser).validate
+        heading_hierarchy.validate
       end
 
       def to_s
         browser.text
+      end
+
+      def heading_hierarchy
+        HeadingHierarchy.new(browser)
       end
 
       private

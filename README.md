@@ -14,9 +14,7 @@ Install Ruby and `gem install bundler`.
 
 Open your project's `Gemfile` and this line:
 
-    ~~~
     gem 'bbc-a11y`, git: 'git@github.com:mattwynne/bbc-a11y.git'
-    ~~~
 
 Now run `bundle install` to install it.
 
@@ -29,22 +27,17 @@ This will install the `a11y` tool globally on your machine.
 1. Clone this repository
 2. Install dependencies
 
-    ~~~
     cd bbc-a11y
     bundle install
-    ~~~
 
 3. Install the gem
 
-    ~~~
     bundle exec rake install
-    ~~~
 
 ## How to use
 
 Run the `a11y` command, passing a URL:
 
 e.g.
-    ~~~
+
     bundle exec a11y http://bbc.co.uk
-    ~~~

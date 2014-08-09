@@ -42,3 +42,7 @@ end
 Then(/^any form fields with associated labels do not have a title attribute$/) do
   page.must_have_no_form_fields_with_label_and_title
 end
+
+Then(/^there should be no elements with a tabindex attribte of 0 or greater$/) do
+  page.must_not_have_any_positive_tabindex_values
+end

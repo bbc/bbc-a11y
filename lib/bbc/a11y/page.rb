@@ -56,6 +56,11 @@ module BBC
         expect(bad_nodes).to be_empty
       end
 
+      def must_not_have_any_positive_tabindex_values
+        bad_nodes = browser.all('[tabindex]').select { |node| node['tabindex'].to_i >= 0 }
+        expect(bad_nodes).to be_empty
+      end
+
       def to_s
         browser.text
       end

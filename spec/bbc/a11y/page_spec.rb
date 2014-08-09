@@ -101,6 +101,23 @@ module BBC::A11y
       end
     end
 
+    describe "#must_not_have_any_positive_tabindex_values" do
+      context "a positive tabindex value" do
+        let(:html) { <<-HTML }
+        <html>
+          <body>
+            <a tabindex="1">Important</a>
+          </body>
+        </html>
+        HTML
+
+        it "fails" do
+          expect { page.must_not_have_any_positive_tabindex_values }.
+            to raise_error(RSpec::Expectations::ExpectationNotMetError)
+        end
+      end
+    end
+
     describe '#to_s' do
       let(:html) { "<html><body><h1>Header</h1><p>More stuff</p></body></html>" }
 

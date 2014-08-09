@@ -1,0 +1,70 @@
+require_relative '../../../lib/bbc/a11y/heading_hierarchy'
+require 'capybara'
+
+module BBC::A11y
+  describe HeadingHierarchy do
+    let(:hierarchy) do
+      HeadingHierarchy.new(Capybara.string(html))
+    end
+
+    describe '#validate' do
+
+      context 'a simple, valid h1-h6 hierachy' do
+        let(:html) { <<-HTML }
+        <html>
+          <body>
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
+            <h3>Heading 3</h3>
+            <h4>Heading 4</h4>
+            <h5>Heading 5</h5>
+            <h6>Heading 6</h6>
+          </body>
+        </html>
+        HTML
+
+        it 'passes' do
+          expect { hierarchy.validate }.not_to raise_error
+        end
+      end
+
+      context 'an invalid h1-h3 hierarchy' do
+        let(:html) { <<-HTML }
+        <html>
+          <body>
+            <h1>Heading 1</h1>
+            <h3>Heading 3</h3>
+            <h2>Heading 2</h2>
+          </body>
+        </html>
+        HTML
+
+        it 'fails' do
+          expect { hierarchy.validate }.to raise_error("Headings were not in order: h1, **h3**, h2")
+        end
+      end
+
+      context 'an hierarch that skips back up from h4 to h2' do
+        let(:html) { <<-HTML }
+        <html>
+          <body>
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
+            <h3>Heading 3</h3>
+            <h4>Heading 4</h4>
+            <h2>Heading 2b</h2>
+            <h3>Heading 3b</h3>
+          </body>
+        </html>
+        HTML
+
+        it 'passes' do
+          expect { hierarchy.validate }.not_to raise_error
+        end
+      end
+
+
+    end
+
+  end
+end

@@ -30,6 +30,13 @@ module BBC
         @settings ||= Settings.new
       end
 
+      # Ask for a manual check
+      def confirm(question)
+        formatted_question = "\n  #{question} [Y/n]"
+        answer = ask(formatted_question).strip
+        fail unless ["Y", "y", ""].include?(answer)
+      end
+
     end
   end
 

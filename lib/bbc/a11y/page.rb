@@ -46,6 +46,16 @@ module BBC
         heading_hierarchy.validate
       end
 
+      def must_have_no_elements_with_title_attribute_content_repeated_within
+        bad_nodes = browser.all('[title]').select { |node| node.text.include? node['title'] }
+        expect(bad_nodes).to be_empty
+      end
+
+      def must_have_no_form_fields_with_label_and_title
+        bad_nodes = browser.all('form *[id][title]').select { |node| browser.has_css?("label[for='#{node['id']}']") }
+        expect(bad_nodes).to be_empty
+      end
+
       def to_s
         browser.text
       end

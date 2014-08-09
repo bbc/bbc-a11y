@@ -1,3 +1,12 @@
+When(/^I visit the page$/) do
+  browser.visit settings.url
+end
+
+When(/^I view the page with JavaScript and CSS disabled$/) do
+  disable_javascript_and_css
+  browser.visit settings.url
+end
+
 Then(/^the document should have a title$/) do
   page.must_have_title
 end
@@ -24,4 +33,12 @@ Then(/^each heading must be followed by content or a heading of one level deeper
   puts "Heading hierarchy:"
   puts page.heading_hierarchy.to_s
   page.must_have_correct_heading_hierarchy
+end
+
+Then(/^there must be no elements with a title attribute whose content is repeated within the element$/) do
+  page.must_have_no_elements_with_title_attribute_content_repeated_within
+end
+
+Then(/^any form fields with associated labels do not have a title attribute$/) do
+  page.must_have_no_form_fields_with_label_and_title
 end

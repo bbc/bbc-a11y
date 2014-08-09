@@ -33,6 +33,10 @@ module BBC
         expect(browser.title).to include(browser.find('h1').text)
       end
 
+      def must_have_one_main_element
+        expect(browser.all('[role="main"]').length).to eq 1
+      end
+
       def to_s
         browser.text
       end

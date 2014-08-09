@@ -4,28 +4,40 @@ This tool runs a set of tests against a given URL to verify whether it meets the
 
 ## How to install
 
-A11y is packaged as a Ruby gem, but is not yet available on the public Rubygems server. To install it, 
-you'll need to pull down the source and build the gem yourself.
+A11y is packaged as a Ruby gem, but is not yet available on the public Rubygems server. To install it, you'll need to either build it by hand, or add a reference to the github source in your Gemfile.
 
-1. Install Ruby and `gem install bundler`
-2. Clone this repository
-3. Install dependencies
+### Prerequisites
+
+Install Ruby and `gem install bundler`. We recommend (`chruby`)[https://github.com/postmodern/chruby] for OS X / Linux.
+
+### Adding a11y to your project's Gemfile
+
+Open your project's `Gemfile` and this line:
+
+    ~~~
+    gem 'bbc-a11y`, git: 'git@github.com:mattwynne/bbc-a11y.git'
+    ~~~
+
+Now run `bundle install` to install it.
+
+*Note:* You'll need to make sure every user who wants to run `bundle install` (including your continuous integration environment) has at least read access to this Github project.
+
+### Build and install the gem manually
+
+This will install the `a11y` tool globally on your machine.
+
+1. Clone this repository
+2. Install dependencies
 
     ~~~
     cd bbc-a11y
     bundle install
     ~~~
 
-4. Install the gem
+3. Install the gem
 
     ~~~
     bundle exec rake install
-    ~~~
-
-Alternatively, you can add this line to your project's Gemfile:
-
-    ~~~
-    gem 'bbc-a11y`, git: 'git@github.com:mattwynne/bbc-a11y.git'
     ~~~
 
 ## How to use
@@ -34,5 +46,5 @@ Run the `a11y` command, passing a URL:
 
 e.g.
     ~~~
-    a11y http://bbc.co.uk
+    bundle exec a11y http://bbc.co.uk
     ~~~

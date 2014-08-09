@@ -24,19 +24,13 @@ Feature: Correctly use headings
 
     <div role="main">
       <h1>Main page content</h1>
-      
       <p>Lorem ipsum…</p>
-      
       <h2>Secondary content</h2>
-      
       <h3>Tertiary content one</h2>
-      
       <ul>
         <li>Lorem</li>
       </ul>
-      
       <h3>Tertiary content two</h3>
-      
       <ul>
         <li>Ipsum</li>
       </ul>
@@ -46,11 +40,8 @@ Feature: Correctly use headings
 
     <div role="main">
       <h3>Main content</h3>
-      
       <h2>Secondary content</h2>
-      
       <h2>Tertiary content</h2>
-      
       <p>Lorem ipsum…</p>
     </div>
 

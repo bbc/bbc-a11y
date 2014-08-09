@@ -13,12 +13,24 @@ module BBC
         @browser = browser
       end
 
+      def title
+        browser.title
+      end
+
       def must_have_lang_attribute
         expect(browser).to have_css('html[lang]')
       end
 
       def must_have_lang_attribute_of(expected_code)
         expect(browser.find('html')['lang'].split('-')[0]).to eq expected_code
+      end
+
+      def must_have_title
+        expect(browser.title).not_to be_empty
+      end
+
+      def must_have_title_that_contains_h1_text
+        expect(browser.title).to include(browser.find('h1').text)
       end
 
       def to_s

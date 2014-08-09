@@ -3,8 +3,17 @@ require 'capybara'
 
 module BBC::A11y
   describe HeadingHierarchy do
+
     let(:hierarchy) do
-      HeadingHierarchy.new(Capybara.string(html))
+      HeadingHierarchy.new(page)
+    end
+
+    let(:page) do
+      # patch Capybara::String to look just enough like a real Capybara::Session to work
+      page = Capybara.string(html)
+      source = html
+      page.define_singleton_method(:source) { source }
+      page
     end
 
     describe '#validate' do

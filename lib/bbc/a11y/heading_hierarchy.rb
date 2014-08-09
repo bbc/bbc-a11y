@@ -44,8 +44,12 @@ module BBC
       end
 
       def heading_elements
-        selector = "//*[substring(name(), 1, 1) = 'h' and substring(name(), 2, 1) >= 1 and substring(name(), 2, 1) <= 6]"
-        page.all(:xpath, selector, visible: false)
+        # can't work out how to get Capybara to do this reliably, so we'll reach down to the XML parser
+        xml = Nokogiri::XML.parse(page.source).remove_namespaces!
+        header_xml_nodes = xml.xpath('//*[substring(name(),1,1) = "h" and number(substring(name(),2,1))]')
+        header_xml_nodes.map(&:path).map { |xpath|
+          page.find(:xpath, xpath, visible: false)
+        }
       end
 
       attr_reader :page
@@ -65,7 +69,11 @@ module BBC
         end
 
         def == (other)
-          other.element.path == @element.path
+          begin
+            other.element.path == @element.path
+          rescue NotSupportedByDriverError
+            other.element == @element
+          end
         end
 
         def to_s

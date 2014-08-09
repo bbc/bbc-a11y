@@ -1,4 +1,4 @@
-# BBC Accessiblity Standards Checker
+# BBC Accessiblity Standards
 
 This tool runs a set of tests against a given URL to verify whether it meets the BBC accessiblity standards.
 
@@ -8,7 +8,7 @@ A11y is packaged as a Ruby gem, but is not yet available on the public Rubygems 
 
 ### Prerequisites
 
-Install Ruby and `gem install bundler`. We recommend (`chruby`)[https://github.com/postmodern/chruby] for OS X / Linux.
+Install Ruby and `gem install bundler`.
 
 ### Adding a11y to your project's Gemfile
 

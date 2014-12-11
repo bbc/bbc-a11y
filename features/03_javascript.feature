@@ -9,13 +9,23 @@ Feature: JavaScript
   Rationale
   =========
 
-  The 'Robustness' principle of WCAG 2.0 is intended to ensure the widest possible range of devices / browsers / platforms are possible choices for people with disabilities. Factors beyond the users control may account for their choice of a browser with limited capabilities or restrictions.
+  The 'Robustness' principle of WCAG 2.0 is intended to ensure the widest possible range of 
+  devices / browsers / platforms are possible choices for people with disabilities. Factors
+  beyond the users control may account for their choice of a browser with limited capabilities 
+  or restrictions.
 
-  Equally a robust site or application in the more traditional sense minimises its dependencies. The minimum dependency for a web site should be an internet connection and the ability to parse HTML.
+  Equally a robust site or application in the more traditional sense minimises its dependencies.
+  The minimum dependency for a web site should be an internet connection and the ability to
+  parse HTML.
 
-  For this reason all BBC documents must enable their core purpose without relying on CSS or JavaScript.
+  For this reason all BBC documents must enable their core purpose without relying on CSS 
+  or JavaScript.
 
-  CSS and JavaScript can, and should, be used to enhance the user experience beyond this basic level. For example, a 'live' page has a core purpose to provide the latest content about an event to the user. The core experience is the latest content at the time of the request. The experience enhanced with JavaScript automatically updates this content without the user having to take action.
+  CSS and JavaScript can, and should, be used to enhance the user experience beyond this 
+  basic level. For example, a 'live' page has a core purpose to provide the latest content 
+  about an event to the user. The core experience is the latest content at the time of the
+  request. The experience enhanced with JavaScript automatically updates this content 
+  without the user having to take action.
 
   Definitions
   ===========

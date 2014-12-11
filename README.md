@@ -1,6 +1,6 @@
 # BBC Accessiblity Standards
 
-This tool runs a set of tests against a given URL to verify whether it meets the BBC accessiblity standards.
+This tool runs a set of tests against a given URL to verify whether it meets the BBC accessibility standards.
 
 ## How to use
 
@@ -50,4 +50,3 @@ This will install the `a11y` tool globally on your machine.
     ~~~
     bundle exec rake install
     ~~~
-

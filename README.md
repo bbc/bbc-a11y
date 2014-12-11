@@ -29,7 +29,9 @@ Open your project's `Gemfile` and this line:
 
     gem 'bbc-a11y`, git: 'git@github.com:mattwynne/bbc-a11y.git'
 
-Now run `bundle install` to install it.
+Now install the gem:
+
+    bundle install --binstubs
 
 *Note:* You'll need to make sure every user who wants to run `bundle install` (including your continuous integration environment) has at least read access to this Github project.
 

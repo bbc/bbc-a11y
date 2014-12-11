@@ -6,8 +6,9 @@ Feature: HTML Validation
   Rationale
   =========
   
-  While assistive technologies such as screen readers generally do a good job of interpreting invalid HTML 
-  there will be less risk of problems arising if the document follows a recognised standard Doctype.
+  While assistive technologies such as screen readers generally do a good job of interpreting 
+  invalid HTML there will be less risk of problems arising if the document follows a recognised
+  standard Doctype.
   
   Techniques
   ==========

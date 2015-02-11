@@ -15,7 +15,8 @@ Feature: Correctly use headings
 
   Heading levels should not be skipped as a predictable document outline is an important factor for understandability.
 
-  Headings should not be used for non-heading purposes, i.e. to identify blocks of content. A heading should always be followed either by non-heading content or by a heading of one level deeper.
+  Headings should not be used for non-heading purposes, i.e. to identify blocks of content. A heading should always 
+  be followed either by non-heading content or by a heading of one level deeper.
 
   Techniques
   ==========

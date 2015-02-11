@@ -12,7 +12,6 @@ module BBC
       end
 
       def call
-        ENV['URL'] = url
         exec("cucumber #{cucumber_args}")
       rescue MissingArgument => error
         stderr.puts "You missed an argument: #{error.message}"

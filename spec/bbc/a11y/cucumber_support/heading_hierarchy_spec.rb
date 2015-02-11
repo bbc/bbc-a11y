@@ -1,7 +1,7 @@
-require_relative '../../../lib/bbc/a11y/heading_hierarchy'
+require 'bbc/a11y/cucumber_support/heading_hierarchy'
 require 'capybara'
 
-module BBC::A11y
+module BBC::A11y::CucumberSupport
   describe HeadingHierarchy do
 
     let(:hierarchy) do

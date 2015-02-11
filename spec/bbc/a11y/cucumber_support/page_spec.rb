@@ -1,7 +1,7 @@
-require_relative '../../../lib/bbc/a11y/page'
+require 'bbc/a11y/cucumber_support/page'
 require 'capybara'
 
-module BBC::A11y
+module BBC::A11y::CucumberSupport
   describe Page do
     let(:page) do
       Page.new(Capybara.string(html))

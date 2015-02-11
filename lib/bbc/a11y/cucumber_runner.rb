@@ -1,8 +1,29 @@
-require 'cucumber/runtime'
+require 'cucumber'
 require 'bbc/a11y/cucumber_support'
+require 'cucumber/core/filter'
+require 'colorize'
 
 module BBC
   module A11y
+    class CucumberFormatter
+      def initialize(*args)
+      end
+
+      def before_test_case(test_case)
+        print "#{test_case.name} "
+      end
+
+      def after_test_case(test_case, result)
+        print result
+        if result.failed?
+          puts
+          puts result.exception.to_s.red
+          puts result.exception.backtrace.join("\n").red
+        end
+        puts
+      end
+    end
+
     class CucumberRunner
       def initialize(settings, cucumber_args)
         @settings = settings
@@ -28,10 +49,13 @@ module BBC
       private
 
       def configuration
+        return @configuration if @configuration
         features_path = File.expand_path(File.dirname(__FILE__) + "/../../../features")
-        configuration = Cucumber::Cli::Configuration.new
-        configuration.parse!([features_path])
-        configuration
+        @configuration = Cucumber::Cli::Configuration.new
+        @configuration.parse!([
+                              features_path,
+                              "--format", "BBC::A11y::CucumberFormatter"])
+        @configuration
       end
 
       def run_before_all_hooks

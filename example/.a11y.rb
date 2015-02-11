@@ -7,7 +7,7 @@ class Server
   end
 
   def start
-    @pid = fork { `rackup -p #{port}` }
+    @pid = fork { `rackup -p #{port} -q` }
     @pid = @pid + 1 # because rackup starts a child process
     sleep(0.1) until responsive?
   end
@@ -46,5 +46,7 @@ BBC::A11y.configure do
     server.stop
   end
 
-  page "http://localhost:#{server.port}/perfect.html"
+  page "http://localhost:#{server.port}/perfect.html" do
+    skip_scenario "Check for a single main element"
+  end
 end

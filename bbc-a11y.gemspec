@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'selenium-webdriver'
   s.add_dependency 'w3c_validators'
   s.add_dependency 'cld'
+  s.add_dependency 'colorize'
   s.add_development_dependency 'aruba'
   s.add_development_dependency 'pry'
   s.add_development_dependency 'rake'

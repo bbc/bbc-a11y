@@ -22,6 +22,7 @@ module BBC
         end
         puts
       end
+
     end
 
     class CucumberRunner
@@ -52,6 +53,8 @@ module BBC
         return @configuration if @configuration
         features_path = File.expand_path(File.dirname(__FILE__) + "/../../../features")
         @configuration = Cucumber::Cli::Configuration.new
+        # This is ugly, but until Cucumber offers a better API, we have to pass in our settings as though
+        # they were CLI arguments
         @configuration.parse!([
                               features_path,
                               "--format", "BBC::A11y::CucumberFormatter"])

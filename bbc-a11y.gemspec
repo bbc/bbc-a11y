@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.license     = "MIT"
   s.required_ruby_version = ">= 1.9.3"
 
-  s.add_dependency 'cucumber', '~> 1.3'
+  s.add_dependency 'cucumber', '~> 2.0.0.rc'
   s.add_dependency 'rspec',  '~> 3.0'
   s.add_dependency 'capybara'
   s.add_dependency 'selenium-webdriver'

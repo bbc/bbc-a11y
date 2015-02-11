@@ -1,3 +1,6 @@
+require 'bbc/a11y/cucumber_runner'
+require 'bbc/a11y/configuration'
+
 module BBC
   module A11y
 
@@ -12,7 +15,7 @@ module BBC
       end
 
       def call
-        exec("cucumber #{cucumber_args}")
+        CucumberRunner.new(settings, cucumber_args).call
       rescue MissingArgument => error
         stderr.puts "You missed an argument: #{error.message}"
         stderr.puts HELP
@@ -21,8 +24,8 @@ module BBC
 
       private
 
-      def url
-        args[0] || raise(MissingArgument.new("url-to-test"))
+      def settings
+        Configuration.parse(File.expand_path(".a11y.rb"))
       end
 
       def cucumber_args

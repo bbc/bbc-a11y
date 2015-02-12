@@ -29,7 +29,7 @@ module BBC
       end
 
       def cucumber_args
-        return unless args.include?('--')
+        return [] unless args.include?('--')
         args[args.find_index('--')+1..-1]
       end
 

@@ -14,8 +14,7 @@ module BBC
       def before_test_case(test_case)
         on_new_feature(test_case) do |feature|
           puts
-          puts "#{feature.name}"
-          puts "#{"-" * feature.name.length}"
+          puts underline(feature.name)
           puts
         end
         print "  - #{test_case.name}... "
@@ -33,7 +32,16 @@ module BBC
         puts
       end
 
+      def done
+        puts
+        puts underline("Summary", "=")
+      end
+
       private
+
+      def underline(text, character="-")
+        [text, character * text.length].join("\n")
+      end
 
       def colour(result)
         ResultColour.new(result).apply_to(result.to_s)

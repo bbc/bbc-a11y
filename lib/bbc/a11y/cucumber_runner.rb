@@ -18,7 +18,7 @@ module BBC
           puts "#{"-" * feature.name.length}"
           puts
         end
-        print "  - #{test_case.name} "
+        print "  - #{test_case.name}... "
       end
 
       def after_test_case(test_case, result)
@@ -27,8 +27,8 @@ module BBC
         if result.failed? || result.pending? || result.skipped?
           puts
           puts
-          puts colour.apply_to(result.exception.message.to_s)
-          puts colour.apply_to(result.exception.backtrace.join("\n"))
+          puts indent(4, colour.apply_to(result.exception.message.to_s))
+          puts indent(4, colour.apply_to(result.exception.backtrace.join("\n")))
         end
         puts
       end
@@ -37,6 +37,10 @@ module BBC
 
       def colour(result)
         ResultColour.new(result).apply_to(result.to_s)
+      end
+
+      def indent(spaces, text)
+        text.split("\n").map { |line| (" " * spaces) + line }.join("\n")
       end
 
       def on_new_feature(test_case)

@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'cucumber', '~> 2.0.0.rc'
   s.add_dependency 'rspec',  '~> 3.0'
   s.add_dependency 'capybara'
-  s.add_dependency 'selenium-webdriver'
+  s.add_dependency 'poltergeist'
   s.add_dependency 'w3c_validators'
   s.add_dependency 'cld'
   s.add_dependency 'colorize'

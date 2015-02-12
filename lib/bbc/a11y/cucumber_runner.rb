@@ -67,6 +67,10 @@ module BBC
           @color = :red
         end
 
+        def undefined
+          @color = :yellow
+        end
+
         def duration(*)
         end
 

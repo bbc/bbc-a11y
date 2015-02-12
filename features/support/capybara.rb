@@ -1,15 +1,15 @@
 require 'capybara'
 require 'capybara/dsl'
-require 'selenium/webdriver'
+require 'capybara/poltergeist'
 
-Capybara.register_driver(:without_javascript_or_css) do |app|
-  profile = Selenium::WebDriver::Firefox::Profile.new
-  profile['permissions.default.stylesheet'] = 2
-  profile['javascript.enabled'] = false
-  Capybara::Selenium::Driver.new(app, profile: profile)
-end
+#Capybara.register_driver(:without_javascript_or_css) do |app|
+#  profile = Selenium::WebDriver::Firefox::Profile.new
+#  profile['permissions.default.stylesheet'] = 2
+#  profile['javascript.enabled'] = false
+#  Capybara::Selenium::Driver.new(app, profile: profile)
+#end
 
-Capybara.default_driver = :selenium
+Capybara.default_driver = :poltergeist
 
 Before do
   Capybara.use_default_driver
@@ -28,7 +28,7 @@ module BBC
       end
 
       def disable_javascript_and_css
-        Capybara.current_driver = :without_javascript_or_css
+        skip_this_scenario
       end
     end
 

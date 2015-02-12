@@ -1,10 +1,10 @@
 # BBC Accessiblity Standards
 
-This tool runs a set of tests against a given URL to verify whether it meets the BBC accessibility standards.
+This tool runs a set of tests against a given URL to verify whether it meets the [BBC accessibility standards](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/).
 
 ## How to install
 
-A11y is packaged as a Ruby gem. You'll most likely want to create a stand-along repo to run your accessibilty tests,
+bbc-a11y is packaged as a Ruby gem. You'll most likely want to create a stand-alone repo to run your accessibilty tests,
 but you can also add it as part of an existing repo.
 
 ### Prerequisites
@@ -23,7 +23,7 @@ Now install the gem:
 
 ## Configuration
 
-You'll need to configure a11y so it knows which pages you want to hit. Create a file `.a11y.rb` in the root of your project:
+You'll need to configure a11y with a set of URLs to run the checks against. Create a file `.a11y.rb` in the root of your project that looks something like this:
 
 ```
 BBC::A11y.configure do
@@ -34,7 +34,7 @@ end
 
 ### Skipping scenarios
 
-In some cases, you'll want to disable certain scenarios for certain pages. Use the `skip_scenario` method in the configuration to achieve this:
+Nobody's perfect. Use `skip_scenario` in the configuration to opt-out of certain checks.
 
 ```
 BBC::A11y.configure do
@@ -50,11 +50,11 @@ A11y will skip any scenarios from the specifications whose name contains that st
 
 ## Running it
 
-Once you're configured, you can run the tests simply using the `a11y` command:
+Once you're configured, you can run the tests using the `a11y` command:
 
 ```
-$ a11y
+$ bundle exec a11y
 ```
 
-This will pick up your configuration file and run the a11y features on each page specified in your configuration. 
+This will pick up your `.a11y.rb` configuration file and run the a11y features on each page specified in your configuration. 
 Output is printed to the console.

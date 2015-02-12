@@ -9,7 +9,9 @@ but you can also add it as part of an existing repo.
 
 ### Prerequisites
 
-[Install Ruby](https://www.ruby-lang.org/en/documentation/installation/) and `gem install bundler`.
+[Install Ruby](https://www.ruby-lang.org/en/documentation/installation/) and then:
+
+    gem install bundler
 
 ### Adding a11y to your project's Gemfile
 
@@ -52,9 +54,7 @@ A11y will skip any scenarios from the specifications whose name contains that st
 
 Once you're configured, you can run the tests using the `a11y` command:
 
-```
-$ bundle exec a11y
-```
+    bundle exec a11y
 
 This will pick up your `.a11y.rb` configuration file and run the a11y features on each page specified in your configuration. 
 Output is printed to the console.

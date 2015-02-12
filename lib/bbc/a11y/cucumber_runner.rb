@@ -22,11 +22,13 @@ module BBC
       end
 
       def after_test_case(test_case, result)
-        print colour(result)
-        if result.failed? || result.pending?
+        colour = ResultColour.new(result)
+        print colour.apply_to(result.to_s)
+        if result.failed? || result.pending? || result.skipped?
           puts
-          puts result.exception.message.to_s.red
-          puts result.exception.backtrace.join("\n").red
+          puts
+          puts colour.apply_to(result.exception.message.to_s)
+          puts colour.apply_to(result.exception.backtrace.join("\n"))
         end
         puts
       end

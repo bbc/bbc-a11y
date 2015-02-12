@@ -1,3 +1,4 @@
+require 'forwardable'
 require 'cucumber'
 require 'bbc/a11y/cucumber_support'
 require 'cucumber/core/filter'

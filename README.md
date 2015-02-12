@@ -9,7 +9,7 @@ but you can also add it as part of an existing repo.
 
 ### Prerequisites
 
-Install Ruby and `gem install bundler`.
+[Install Ruby](https://www.ruby-lang.org/en/documentation/installation/) and `gem install bundler`.
 
 ### Adding a11y to your project's Gemfile
 

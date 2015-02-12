@@ -1,6 +1,6 @@
 # BBC Accessiblity Standards
 
-This tool runs a set of tests against a given URL to verify whether it meets the [BBC accessibility standards](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/).
+This tool runs a set of tests against a set of URLs to verify whether each one meets the [BBC accessibility standards](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/).
 
 ## How to install
 

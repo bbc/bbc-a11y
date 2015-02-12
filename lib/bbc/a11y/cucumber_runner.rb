@@ -89,6 +89,7 @@ module BBC
     class CucumberRunner
       def initialize(settings, cucumber_args)
         @settings = settings
+        @cucumber_args = cucumber_args
       end
 
       def call
@@ -112,7 +113,7 @@ module BBC
         @configuration = Cucumber::Cli::Configuration.new
         # This is ugly, but until Cucumber offers a better API, we have to pass in our settings as though
         # they were CLI arguments
-        @configuration.parse!([
+        @configuration.parse!(@cucumber_args + [
                               features_path,
                               "--format", "BBC::A11y::CucumberFormatter"])
         @configuration

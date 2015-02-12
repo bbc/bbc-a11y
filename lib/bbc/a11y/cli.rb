@@ -30,16 +30,15 @@ module BBC
 
       def cucumber_args
         return unless args.include?('--')
-        args[args.find_index('--')+1..-1].join(' ')
+        args[args.find_index('--')+1..-1]
       end
 
       attr_reader :stdin, :stderr, :stdout, :args
       private :stdin, :stderr, :stdout, :args
 
       HELP = %{
-Usage: a11y url-to-test [-- cucumber-args]
+Usage: a11y [-- cucumber-args]
 
-url-to-test     - URL of the page to run the full set of accessiblity tests against
 cucumber-args   - Arguments to pass to Cucumber when running the tests. See cucumber --help
                   for details.
 }

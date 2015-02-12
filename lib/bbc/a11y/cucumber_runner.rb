@@ -6,7 +6,19 @@ require 'colorize'
 
 module BBC
   module A11y
+    module ConsoleWriter
+      def underline(text, character="-")
+        [text, character * text.length].join("\n")
+      end
+
+      def indent(spaces, text)
+        text.split("\n").map { |line| (" " * spaces) + line }.join("\n")
+      end
+    end
+
     class CucumberFormatter
+      include ConsoleWriter
+
       def initialize(*args)
         @current_feature = nil
       end
@@ -18,37 +30,39 @@ module BBC
           puts
         end
         print "  - #{test_case.name}... "
+        @step_results = []
+      end
+
+      def after_test_step(test_step, result)
+        @step_results << [test_step, result]
       end
 
       def after_test_case(test_case, result)
         colour = ResultColour.new(result)
         print colour.apply_to(result.to_s)
-        if result.failed? || result.pending? || result.skipped?
+        if !result.passed?
           puts
+          puts
+          print_scenario
           puts
           puts indent(4, colour.apply_to(result.exception.message.to_s))
-          puts indent(4, colour.apply_to(result.exception.backtrace.join("\n")))
+          if result.failed?
+            puts indent(4, colour.apply_to(result.exception.backtrace.join("\n")))
+          end
         end
         puts
       end
 
-      def done
-        puts
-        puts underline("Summary", "=")
-      end
-
       private
 
-      def underline(text, character="-")
-        [text, character * text.length].join("\n")
+      def print_scenario
+        @step_results.each do |step, result|
+          step.describe_source_to(StepsPrinter.new, result)
+        end
       end
 
       def colour(result)
         ResultColour.new(result).apply_to(result.to_s)
-      end
-
-      def indent(spaces, text)
-        text.split("\n").map { |line| (" " * spaces) + line }.join("\n")
       end
 
       def on_new_feature(test_case)
@@ -56,6 +70,27 @@ module BBC
         if feature != @current_feature
           @current_feature = feature
           yield feature
+        end
+      end
+
+      class StepsPrinter
+        include ConsoleWriter
+
+        def before_hook(*)
+        end
+
+        def scenario(*)
+        end
+
+        def feature(*)
+        end
+
+        def after_hook(*)
+        end
+
+        def step(step, result)
+          colour = ResultColour.new(result)
+          puts indent(6, colour.apply_to("#{step.keyword}#{step.name}"))
         end
       end
 
@@ -99,6 +134,8 @@ module BBC
     end
 
     class CucumberRunner
+      include ConsoleWriter
+
       def initialize(settings, cucumber_args)
         @settings = settings
         @cucumber_args = cucumber_args
@@ -142,8 +179,7 @@ module BBC
       def print_page_header(page_settings)
         puts
         puts
-        puts "BBC Accesibility: #{page_settings.url}"
-        puts "=" * "BBC Accesibility: #{page_settings.url}".length
+        underline("BBC Accesibility: #{page_settings.url}")
       end
 
     end

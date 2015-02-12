@@ -22,9 +22,9 @@ module BBC
 
       def after_test_case(test_case, result)
         print colour(result)
-        if result.failed?
+        if result.failed? || result.pending?
           puts
-          puts result.exception.to_s.red
+          puts result.exception.message.to_s.red
           puts result.exception.backtrace.join("\n").red
         end
         puts
@@ -33,24 +33,47 @@ module BBC
       private
 
       def colour(result)
-        color = case result
-        when Cucumber::Core::Test::Result::Failed
-          :red
-        when Cucumber::Core::Test::Result::Passed
-          :green
-        when Cucumber::Core::Test::Result::Skipped
-          :blue
-        when Cucumber::Core::Test::Result::Pending
-          :yellow
-        end
-        result.to_s.send(color)
+        ResultColour.new(result).apply_to(result.to_s)
       end
 
       def on_new_feature(test_case)
-        feature = test_case.source.last
+        feature = test_case.source.first
         if feature != @current_feature
           @current_feature = feature
           yield feature
+        end
+      end
+
+      class ResultColour
+        def initialize(result)
+          @color = :white
+          result.describe_to(self)
+        end
+
+        def passed
+          @color = :green
+        end
+
+        def skipped
+          @color = :blue
+        end
+
+        def pending(*)
+          @color = :yellow
+        end
+
+        def failed
+          @color = :red
+        end
+
+        def duration(*)
+        end
+
+        def exception(*)
+        end
+
+        def apply_to(string)
+          string.send(@color)
         end
       end
 
@@ -65,13 +88,9 @@ module BBC
         runtime = Cucumber::Runtime.new(configuration)
         run_before_all_hooks
         @settings.pages.each do |page_settings|
+          # stash the settings where the support code will find them
           BBC::A11y::CucumberSupport.current_page_settings = page_settings
-
-          puts
-          puts "BBC Accesibility: #{page_settings.url}"
-          puts "=" * "BBC Accesibility: #{page_settings.url}".length
-          puts
-
+          print_page_header page_settings
           runtime.run!
         end
       ensure
@@ -100,6 +119,14 @@ module BBC
         @settings.after_all_hooks.each &:call
       end
 
+      def print_page_header(page_settings)
+        puts
+        puts
+        puts "BBC Accesibility: #{page_settings.url}"
+        puts "=" * "BBC Accesibility: #{page_settings.url}".length
+      end
+
     end
+
   end
 end

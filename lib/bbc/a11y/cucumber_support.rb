@@ -1,6 +1,7 @@
 require 'bbc/a11y/cucumber_support/language_detector'
 require 'bbc/a11y/cucumber_support/page'
 require 'bbc/a11y/cucumber_support/w3c'
+require 'bbc/a11y/cucumber_support/per_page_checks'
 
 module BBC
   module A11y
@@ -8,6 +9,7 @@ module BBC
     # These are the methods available to step definitions 
     # that test the specifications.
     module CucumberSupport
+      include PerPageChecks
 
       class << self
         attr_accessor :current_page_settings

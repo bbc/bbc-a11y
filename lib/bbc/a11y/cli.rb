@@ -15,6 +15,7 @@ module BBC
       end
 
       def call
+        trap_interrupt
         CucumberRunner.new(settings, cucumber_args).call
       rescue MissingArgument => error
         stderr.puts "You missed an argument: #{error.message}"
@@ -31,6 +32,14 @@ module BBC
       def cucumber_args
         return [] unless args.include?('--')
         args[args.find_index('--')+1..-1]
+      end
+
+      def trap_interrupt
+        trap('INT') do
+          exit!(1) if Cucumber.wants_to_quit
+          Cucumber.wants_to_quit = true
+          STDERR.puts "\nExiting... Interrupt again to exit immediately."
+        end
       end
 
       attr_reader :stdin, :stderr, :stdout, :args

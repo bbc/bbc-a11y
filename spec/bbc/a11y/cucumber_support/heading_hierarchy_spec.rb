@@ -119,5 +119,44 @@ TEXT
 
     end
 
+    context "headings within a script tag" do
+      # e.g. template elements too
+      let(:html) { <<-HTML }
+        <html>
+          <body>
+            <h1>Heading 1</h1>
+            <script>
+              var stuff = "<h2>Heading 2</h2>";
+            </script>
+          </body>
+        </html>
+      HTML
+
+      it "ignores them" do
+        expect( hierarchy.to_s ).to eq "h1"
+      end
+    end
+
+    context "with headings before the first h1" do
+      # rules only apply to headings after the main h1
+      let(:html) { <<-HTML }
+        <html>
+          <body>
+            <h3>Ignore me</h3>
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
+          </body>
+        </html>
+      HTML
+
+      it "ignores them" do
+          expected = <<-TEXT
+h1
+  h2
+TEXT
+        expect( hierarchy.to_s ).to eq expected.strip
+      end
+    end
+
   end
 end

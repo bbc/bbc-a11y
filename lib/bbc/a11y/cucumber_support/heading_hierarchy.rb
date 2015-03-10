@@ -46,12 +46,14 @@ module BBC
         end
 
         def heading_elements
-          # can't work out how to get Capybara to do this reliably, so we'll reach down to the XML parser
-          xml = Nokogiri::XML.parse(page.source).remove_namespaces!
-          header_xml_nodes = xml.xpath('//*[substring(name(),1,1) = "h" and number(substring(name(),2,1))]')
-          header_xml_nodes.map(&:path).map { |xpath|
-            page.find(:xpath, xpath, visible: false)
-          }
+          all_heading_elements = page.all('h1,h2,h3,h4', visible: false)
+          heading_elements_after_first_h1 = []
+          all_heading_elements.each do |node|
+            if node.tag_name == "h1" || heading_elements_after_first_h1.any?
+              heading_elements_after_first_h1 << node
+            end
+          end
+          heading_elements_after_first_h1
         end
 
         attr_reader :page

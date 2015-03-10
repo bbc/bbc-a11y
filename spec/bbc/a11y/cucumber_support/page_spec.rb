@@ -116,6 +116,49 @@ module BBC::A11y::CucumberSupport
             to raise_error(RSpec::Expectations::ExpectationNotMetError)
         end
       end
+
+      context "a zero tabindex value on a focusable element (<a>, <button>, <input>, <select>, <textarea>)" do
+        let(:html) { <<-HTML }
+        <html>
+          <body>
+            <a tabindex="0">Important</a>
+          </body>
+        </html>
+        HTML
+
+        it "passes" do
+          expect { page.must_not_have_any_positive_tabindex_values }.not_to raise_error
+        end
+      end
+
+      context "a zero tabindex value on a non-focusable element" do
+        let(:html) { <<-HTML }
+        <html>
+          <body>
+            <p tabindex="0">Important</a>
+          </body>
+        </html>
+        HTML
+
+        it "fails" do
+          expect { page.must_not_have_any_positive_tabindex_values }.
+            to raise_error(RSpec::Expectations::ExpectationNotMetError)
+        end
+      end
+
+      context "a negative tabindex value" do
+        let(:html) { <<-HTML }
+        <html>
+          <body>
+            <p tabindex="-1">Important</a>
+          </body>
+        </html>
+        HTML
+
+        it "passes" do
+          expect { page.must_not_have_any_positive_tabindex_values }.not_to raise_error
+        end
+      end
     end
 
     describe '#to_s' do

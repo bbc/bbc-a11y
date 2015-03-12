@@ -41,7 +41,7 @@ Nobody's perfect. Use `skip_scenario` in the configuration to opt-out of certain
 ```
 BBC::A11y.configure do
   page "http://bbc.co.uk" do
-    skip_scenario "W3C"
+    skip_scenario /W3C/
   end
 
   page "http://bbc.co.uk/news"

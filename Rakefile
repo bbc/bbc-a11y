@@ -8,6 +8,5 @@ task :unit do
 end
 
 task :acceptance do
-  sh "cd examples/local-web-app && rake"
-  sh "cd examples/bbc-pages && rake"
+  sh "cucumber"
 end

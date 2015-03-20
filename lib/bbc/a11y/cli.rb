@@ -1,4 +1,3 @@
-require 'bbc/a11y/cucumber_runner'
 require 'bbc/a11y/configuration'
 
 module BBC
@@ -14,9 +13,9 @@ module BBC
         @stdin, @stdout, @stderr, @args = stdin, stdout, stderr, args
       end
 
-      def call
+      def call(runner)
         trap_interrupt
-        CucumberRunner.new(settings, cucumber_args).call
+        runner.new(settings, cucumber_args).call
       rescue MissingArgument => error
         stderr.puts "You missed an argument: #{error.message}"
         stderr.puts HELP
@@ -26,12 +25,24 @@ module BBC
       private
 
       def settings
-        Configuration.parse(File.expand_path(".a11y.rb"))
+        if a11y_args.any?
+          Configuration.for_urls(a11y_args)
+        else
+          Configuration.parse(File.expand_path(".a11y.rb"))
+        end
+      end
+
+      def a11y_args
+        if args.find_index('--')
+          args[0..(args.find_index('--') - 1)]
+        else
+          args
+        end
       end
 
       def cucumber_args
         return [] unless args.include?('--')
-        args[args.find_index('--')+1..-1]
+        args[(args.find_index('--') + 1)..-1]
       end
 
       def trap_interrupt

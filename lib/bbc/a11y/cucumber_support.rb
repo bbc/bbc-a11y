@@ -3,6 +3,7 @@ require 'bbc/a11y/cucumber_support/page'
 require 'bbc/a11y/cucumber_support/disabled_w3c'
 require 'bbc/a11y/cucumber_support/w3c'
 require 'bbc/a11y/cucumber_support/per_page_checks'
+require 'bbc/a11y/configuration'
 
 module BBC
   module A11y
@@ -44,7 +45,11 @@ module BBC
       end
 
     end
+
+    CucumberSupport.current_page_settings ||= 
+      Configuration::PageSettings.new(ENV['A11Y_URL'])
   end
 
 end
+
 

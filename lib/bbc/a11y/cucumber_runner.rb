@@ -135,6 +135,7 @@ module BBC
 
     class CucumberRunner
       include ConsoleWriter
+      FEATURES_PATH = File.expand_path(File.dirname(__FILE__) + "/../../../standards")
 
       def initialize(settings, cucumber_args)
         @settings = settings
@@ -158,12 +159,11 @@ module BBC
 
       def configuration
         return @configuration if @configuration
-        features_path = File.expand_path(File.dirname(__FILE__) + "/../../../features")
         @configuration = Cucumber::Cli::Configuration.new
         # This is ugly, but until Cucumber offers a better API, we have to pass in our settings as though
         # they were CLI arguments
         @configuration.parse!(@cucumber_args + [
-                              features_path,
+                              FEATURES_PATH,
                               "--format", "BBC::A11y::CucumberFormatter"])
         @configuration
       end

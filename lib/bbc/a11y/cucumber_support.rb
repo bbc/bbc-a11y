@@ -1,5 +1,6 @@
 require 'bbc/a11y/cucumber_support/language_detector'
 require 'bbc/a11y/cucumber_support/page'
+require 'bbc/a11y/cucumber_support/disabled_w3c'
 require 'bbc/a11y/cucumber_support/w3c'
 require 'bbc/a11y/cucumber_support/per_page_checks'
 
@@ -17,7 +18,7 @@ module BBC
 
       # Returns an object that can validate URLs
       def w3c
-        @w3c ||= W3C.new
+        @w3c ||= DisabledW3C.new
       end
 
       # An object that represents the current page being viewed in the browser

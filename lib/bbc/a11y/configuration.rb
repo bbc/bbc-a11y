@@ -16,6 +16,11 @@ module BBC
         BBC::A11y.configuration
       end
 
+      def self.for_urls(urls)
+        page_settings = urls.map { |url| PageSettings.new(url) }
+        Settings.new.with_pages(page_settings)
+      end
+
       class Settings
         attr_reader :before_all_hooks,
           :after_all_hooks,

@@ -160,11 +160,13 @@ module BBC
       def configuration
         return @configuration if @configuration
         @configuration = Cucumber::Cli::Configuration.new
+        if !@cucumber_args.any?
+          @cucumber_args = [FEATURES_PATH]
+        end
         # This is ugly, but until Cucumber offers a better API, we have to pass in our settings as though
         # they were CLI arguments
-        @configuration.parse!(@cucumber_args + [
-                              FEATURES_PATH,
-                              "--format", "BBC::A11y::CucumberFormatter"])
+        @configuration.parse!(@cucumber_args + 
+                              ["--format", "BBC::A11y::CucumberFormatter"])
         @configuration
       end
 
@@ -179,7 +181,7 @@ module BBC
       def print_page_header(page_settings)
         puts
         puts
-        underline("BBC Accesibility: #{page_settings.url}")
+        puts underline("BBC Accesibility: #{page_settings.url}")
       end
 
     end

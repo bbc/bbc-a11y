@@ -1,4 +1,5 @@
 require 'bbc/a11y/configuration'
+require 'bbc/a11y'
 
 module BBC
   module A11y
@@ -16,6 +17,8 @@ module BBC
       def call(runner)
         trap_interrupt
         runner.new(settings, cucumber_args).call
+      rescue TestsFailed
+        exit 1
       rescue MissingArgument => error
         stderr.puts "You missed an argument: #{error.message}"
         stderr.puts HELP

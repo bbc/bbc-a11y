@@ -51,6 +51,9 @@ module BBC
           end
         end
         puts
+        if result.failed?
+          CucumberRunner.failed_count += 1
+        end
       end
 
       private
@@ -137,6 +140,15 @@ module BBC
       include ConsoleWriter
       FEATURES_PATH = File.expand_path(File.dirname(__FILE__) + "/../../../standards")
 
+      class << self
+        # need to use a global stash-point for the formatter to talk back to use
+        # until Cucumber gives us a way to add formatter instances that we can
+        # share.
+        def failed_count
+          @failed_count ||= 0
+        end
+      end
+
       def initialize(settings, cucumber_args)
         @settings = settings
         @cucumber_args = cucumber_args
@@ -153,6 +165,7 @@ module BBC
         end
       ensure
         run_after_all_hooks
+        raise BBC::A11y::TestsFailed if self.class.failed_count > 0
       end
 
       private

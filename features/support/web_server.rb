@@ -12,12 +12,19 @@ class WebServer
     end
 
     def options(port)
-      {
+      default = {
         :Port => port.to_i, 
         :DocumentRoot => DOCUMENT_ROOT, 
+      }
+      disable_logging = {
         :AccessLog => [], 
         :Logger => WEBrick::Log::new("/dev/null", 7)
       }
+      unless ENV['DEBUG']
+        default.merge disable_logging
+      else
+        default
+      end
     end
   end
 end

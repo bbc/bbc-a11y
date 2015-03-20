@@ -1,4 +1,4 @@
-Feature: Run a single scenario
+Feature: Specify URL via the CLI
 
   Scenario: No config, just pass page URL on command-line
     Given a standards-compliant website running at http://localhost:54321

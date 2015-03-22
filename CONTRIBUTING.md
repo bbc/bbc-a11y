@@ -6,7 +6,7 @@ You can run a manual test of your development copy of a11y at any time just by r
 
     bundle exec ./bin/a11y <url>
 
-You can also run a standard using Cucumber:
+You can also use cucumber to run one specific test:
 
     A11Y_URL=<url> bundle exec cucumber features/04_language.feature
 

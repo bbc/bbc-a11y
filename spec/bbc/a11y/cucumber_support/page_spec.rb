@@ -7,6 +7,22 @@ module BBC::A11y::CucumberSupport
       Page.new(Capybara.string(html))
     end
 
+    describe '#all_elements_matching' do
+      context 'with multiple matches' do
+        let(:html) { <<-HTML }
+        <html>
+          <ul>
+            <li><p></li>
+            <li></li>
+          </ul>
+        </html>
+        HTML
+        it 'returns each element that matches' do
+          expect(page.all_elements_matching('li', 'p').length).to eq 3
+        end
+      end
+    end
+
     describe '#must_have_lang_attribute' do
       context 'with no lang attribute' do
         let(:html) { <<-HTML }

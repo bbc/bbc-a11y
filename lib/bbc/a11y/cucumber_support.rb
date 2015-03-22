@@ -1,8 +1,9 @@
-require 'bbc/a11y/cucumber_support/language_detector'
-require 'bbc/a11y/cucumber_support/page'
 require 'bbc/a11y/cucumber_support/disabled_w3c'
-require 'bbc/a11y/cucumber_support/w3c'
+require 'bbc/a11y/cucumber_support/language_detector'
+require 'bbc/a11y/cucumber_support/matchers'
+require 'bbc/a11y/cucumber_support/page'
 require 'bbc/a11y/cucumber_support/per_page_checks'
+require 'bbc/a11y/cucumber_support/w3c'
 require 'bbc/a11y/configuration'
 
 module BBC

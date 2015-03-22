@@ -52,7 +52,7 @@ module BBC
         end
         puts
         if result.failed?
-          CucumberRunner.failed_count += 1
+          CucumberRunner.test_case_failed
         end
       end
 
@@ -146,6 +146,11 @@ module BBC
         # share.
         def failed_count
           @failed_count ||= 0
+        end
+
+        def test_case_failed
+          @failed_count ||= 0
+          @failed_count += 1
         end
       end
 

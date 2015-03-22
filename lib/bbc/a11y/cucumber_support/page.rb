@@ -19,6 +19,13 @@ module BBC
           browser.title
         end
 
+        def all_elements_matching(*selectors)
+          results = selectors.map { |selector| browser.all(selector) }
+          # A Capybara::Result looks like an array, but it's not. Turn them into plain
+          # old nodes
+          results.map { |result| result.map { |element| element } }.flatten
+        end
+
         def must_have_lang_attribute
           expect(browser).to have_css('html[lang]')
         end

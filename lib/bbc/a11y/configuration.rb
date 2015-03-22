@@ -49,7 +49,7 @@ module BBC
         end
 
         def skip_test_case?(test_case)
-          @scenarios_to_skip.any? { |pattern| pattern.match test_case.name }
+          @scenarios_to_skip.any? { |pattern| test_case.name.match pattern }
         end
 
         def merge(other)

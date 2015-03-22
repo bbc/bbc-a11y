@@ -19,15 +19,27 @@ module BBC::A11y
       expect(BBC::A11y.configuration.pages[1].url).to eq "two.html"
     end
 
-    it "allows you to specify scenarios to be skipped for a given page" do
+    it "allows you to specify scenarios to be skipped for a given page (using regexp)" do
       BBC::A11y.configure do
         page "three.html" do
-          skip_scenario /^foo/
+          skip_scenario /javascript/
         end
       end
 
       page_settings = BBC::A11y.configuration.pages[0]
-      test_case = double(name: "foo_page.html")
+      test_case = double(name: "View the page with javascript disabled")
+      expect(page_settings.skip_test_case?(test_case)).to be_truthy
+    end
+
+    it "allows you to specify scenarios to be skipped for a given page (using string)" do
+      BBC::A11y.configure do
+        page "three.html" do
+          skip_scenario "javascript"
+        end
+      end
+
+      page_settings = BBC::A11y.configuration.pages[0]
+      test_case = double(name: "View the page with javascript disabled")
       expect(page_settings.skip_test_case?(test_case)).to be_truthy
     end
 

@@ -64,12 +64,15 @@ module BBC
           expect(bad_nodes).to be_empty
         end
 
-        def must_not_have_any_positive_tabindex_values
-          nodes_with_positive_tabindex = browser.all('[tabindex]').select { |node| node['tabindex'].to_i > 0 }
-          expect(nodes_with_positive_tabindex).to be_empty
-          nodes_with_zero_tabindex     = browser.all('[tabindex]').select { |node| node['tabindex'].to_i == 0 }
-          bad_nodes_with_zero_tabindex = nodes_with_zero_tabindex.reject { |node| node.tag_name =~ /^a|button|input|select|textarea$/ }
-          expect(bad_nodes_with_zero_tabindex).to be_empty
+        def must_not_have_any_elements_with_tabindex_greater_than(max)
+          bad_nodes = browser.all('[tabindex]').select { |node| node['tabindex'].to_i > max }
+          expect(bad_nodes).to be_empty
+        end
+
+        def must_not_have_elements_with_tabindex(tabindex, except: [])
+          nodes_with_tabindex = browser.all('[tabindex]').select { |node| node['tabindex'].to_i == tabindex }
+          bad_nodes = nodes_with_tabindex.reject { |node| except.include? node.tag_name }
+          expect(bad_nodes).to be_empty
         end
 
         def to_s

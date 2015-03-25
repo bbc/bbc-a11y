@@ -117,8 +117,8 @@ module BBC::A11y::CucumberSupport
       end
     end
 
-    describe "#must_not_have_any_positive_tabindex_values" do
-      context "a positive tabindex value" do
+    describe "#must_not_have_any_elements_with_tabindex_greater_than" do
+      context "an element with a tabindex value of 1" do
         let(:html) { <<-HTML }
         <html>
           <body>
@@ -127,13 +127,21 @@ module BBC::A11y::CucumberSupport
         </html>
         HTML
 
-        it "fails" do
-          expect { page.must_not_have_any_positive_tabindex_values }.
+        it "fails for zero" do
+          expect { page.must_not_have_any_elements_with_tabindex_greater_than 0 }.
+            to raise_error(RSpec::Expectations::ExpectationNotMetError)
+        end
+
+        it "passes for 1" do
+          expect { page.must_not_have_any_elements_with_tabindex_greater_than 0 }.
             to raise_error(RSpec::Expectations::ExpectationNotMetError)
         end
       end
+    end
 
-      context "a zero tabindex value on a focusable element (<a>, <button>, <input>, <select>, <textarea>)" do
+    describe "#must_not_have_elements_with_tabindex" do
+
+      context "an element that's in the list of exceptions" do
         let(:html) { <<-HTML }
         <html>
           <body>
@@ -143,11 +151,11 @@ module BBC::A11y::CucumberSupport
         HTML
 
         it "passes" do
-          expect { page.must_not_have_any_positive_tabindex_values }.not_to raise_error
+          expect { page.must_not_have_elements_with_tabindex(0, except: 'a') }.not_to raise_error
         end
       end
 
-      context "a zero tabindex value on a non-focusable element" do
+      context "an element not in the list of exceptions" do
         let(:html) { <<-HTML }
         <html>
           <body>
@@ -157,12 +165,12 @@ module BBC::A11y::CucumberSupport
         HTML
 
         it "fails" do
-          expect { page.must_not_have_any_positive_tabindex_values }.
+          expect { page.must_not_have_elements_with_tabindex(0, except: 'a') }.
             to raise_error(RSpec::Expectations::ExpectationNotMetError)
         end
       end
 
-      context "a negative tabindex value" do
+      context "a different tabindex value" do
         let(:html) { <<-HTML }
         <html>
           <body>
@@ -172,7 +180,7 @@ module BBC::A11y::CucumberSupport
         HTML
 
         it "passes" do
-          expect { page.must_not_have_any_positive_tabindex_values }.not_to raise_error
+          expect { page.must_not_have_elements_with_tabindex(0, except: 'a') }.not_to raise_error
         end
       end
     end

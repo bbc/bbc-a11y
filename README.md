@@ -52,7 +52,7 @@ A11y will skip any scenarios from the specifications whose name contains that st
 
 ## Running it
 
-Once you're configured, you can run the tests using the `a11y` command:
+Once you're configured, you can run the tests using the `a11y` command, from the directory where your `.a11y.rb` configuration file is stored:
 
     bundle exec a11y
 

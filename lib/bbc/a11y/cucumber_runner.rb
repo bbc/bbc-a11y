@@ -179,11 +179,11 @@ module BBC
         return @configuration if @configuration
         @configuration = Cucumber::Cli::Configuration.new
         if !@cucumber_args.any?
-          @cucumber_args = [FEATURES_PATH]
+          @cucumber_args = [FEATURES_PATH, "--require", FEATURES_PATH]
         end
         # This is ugly, but until Cucumber offers a better API, we have to pass in our settings as though
         # they were CLI arguments
-        @configuration.parse!(@cucumber_args + 
+        @configuration.parse!(@cucumber_args +
                               ["--format", "BBC::A11y::CucumberFormatter"])
         @configuration
       end

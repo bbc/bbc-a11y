@@ -6,7 +6,7 @@ module BBC
 
         def validate(url)
           raise Cucumber::Core::Test::Result::Skipped.new <<-MESSAGE
-W3C validation is disabled by default as it makes off-netowrk calls
+W3C validation is disabled by default as it makes off-network calls
 to the W3C web service and can be slow and unreliable.
 
 To enable these checks, include the following code in your .a11y.rb

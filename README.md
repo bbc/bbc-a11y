@@ -1,6 +1,6 @@
 # WARNING - PROTOTYPE SOFTWARE
 
-This project is still at an experimental / proof-of-concept stage. Please set your expectations appropriately, but *do* give us as much feedback as you can.
+This project is still at an experimental / proof-of-concept stage. Please set your expectations appropriately, but *do* [give us as much feedback](https://github.com/cucumber-ltd/bbc-a11y/issues) as you can.
 
 #BBC Accessiblity Standards
 

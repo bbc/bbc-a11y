@@ -2,4 +2,4 @@ tmp
 Gemfile.lock
 pkg
 tags
-.a11y.rb
+a11y.rb

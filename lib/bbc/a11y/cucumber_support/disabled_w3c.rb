@@ -9,7 +9,7 @@ module BBC
 W3C validation is disabled by default as it makes off-network calls
 to the W3C web service and can be slow and unreliable.
 
-To enable these checks, include the following code in your .a11y.rb
+To enable these checks, include the following code in your a11y.rb
 config file:
 
     BBC::A11y.configure do

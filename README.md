@@ -29,7 +29,7 @@ Now install the gem:
 
 ## Configuration
 
-You'll need to configure a11y with a set of URLs to run the checks against. Create a file `.a11y.rb` in the root of your project that looks something like this:
+You'll need to configure a11y with a set of URLs to run the checks against. Create a file `a11y.rb` in the root of your project that looks something like this:
 
 ```
 BBC::A11y.configure do
@@ -56,9 +56,9 @@ A11y will skip any scenarios from the specifications whose name contains that st
 
 ## Running it
 
-Once you're configured, you can run the tests using the `a11y` command, from the directory where your `.a11y.rb` configuration file is stored:
+Once you're configured, you can run the tests using the `a11y` command, from the directory where your `a11y.rb` configuration file is stored:
 
     bundle exec a11y
 
-This will pick up your `.a11y.rb` configuration file and run the a11y features on each page specified in your configuration.
+This will pick up your `a11y.rb` configuration file and run the a11y checks on each page specified in your configuration.
 Output is printed to the console.

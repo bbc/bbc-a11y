@@ -20,19 +20,17 @@ module BBC
       rescue TestsFailed
         exit 1
       rescue MissingArgument => error
-        stderr.puts "You missed an argument: #{error.message}"
-        stderr.puts HELP
-        raise SystemExit
+        exit_with_message "You missed an argument: #{error.message}", HELP
       end
 
       private
 
       def settings
-        if a11y_args.any?
-          Configuration.for_urls(a11y_args)
-        else
-          Configuration.parse(File.expand_path(".a11y.rb"))
+        return Configuration.for_urls(a11y_args) if a11y_args.any?
+        A11y.until_version('0.1.0') do
+          exit_with_message "Please rename your .a11y.rb configuration file to a11y.rb" if File.exist?(".a11y.rb")
         end
+        Configuration.parse(File.expand_path("a11y.rb"))
       end
 
       def a11y_args
@@ -54,6 +52,11 @@ module BBC
           Cucumber.wants_to_quit = true
           STDERR.puts "\nExiting... Interrupt again to exit immediately."
         end
+      end
+
+      def exit_with_message(*messages)
+        messages.each { |message| puts message }
+        raise SystemExit
       end
 
       attr_reader :stdin, :stderr, :stdout, :args

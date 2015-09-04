@@ -1,3 +1,7 @@
+# WARNING - PROTOTYPE SOFTWARE
+
+This project is still at an experimental / proof-of-concept stage. Please set your expectations appropriately, but *do* give us as much feedback as you can.
+
 #BBC Accessiblity Standards
 
 This tool runs a set of tests against a set of URLs to verify whether each one meets the [BBC accessibility standards](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/).
@@ -56,5 +60,5 @@ Once you're configured, you can run the tests using the `a11y` command, from the
 
     bundle exec a11y
 
-This will pick up your `.a11y.rb` configuration file and run the a11y features on each page specified in your configuration. 
+This will pick up your `.a11y.rb` configuration file and run the a11y features on each page specified in your configuration.
 Output is printed to the console.

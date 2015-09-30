@@ -8,8 +8,6 @@ module BBC
     # stores them somewhere our automation code will be able to find it, and then
     # runs Cucumber
     class CLI
-      MissingArgument = Class.new(StandardError)
-
       def initialize(stdin, stdout, stderr, args)
         @stdin, @stdout, @stderr, @args = stdin, stdout, stderr, args
       end
@@ -19,8 +17,8 @@ module BBC
         runner.new(settings, cucumber_args).call
       rescue TestsFailed
         exit 1
-      rescue MissingArgument => error
-        exit_with_message "You missed an argument: #{error.message}", HELP
+      rescue Configuration::ParseError => error
+        exit_with_message error.message
       end
 
       private
@@ -30,7 +28,8 @@ module BBC
         A11y.until_version('0.1.0') do
           exit_with_message "Please rename your .a11y.rb configuration file to a11y.rb" if File.exist?(".a11y.rb")
         end
-        Configuration.parse(File.expand_path("a11y.rb"))
+        configuration_file = File.expand_path("a11y.rb")
+        Configuration.parse(configuration_file)
       end
 
       def a11y_args
@@ -55,8 +54,8 @@ module BBC
       end
 
       def exit_with_message(*messages)
-        messages.each { |message| puts message }
-        raise SystemExit
+        messages.each { |message| stderr.puts message }
+        exit 1
       end
 
       attr_reader :stdin, :stderr, :stdout, :args

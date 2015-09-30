@@ -1,8 +1,8 @@
 module BBC
   module A11y
 
-    def self.configure(&block)
-      @settings = Configuration::DSL.new(block).settings
+    def self.configure(filename)
+      @settings = Configuration::DSL.new(File.read(filename), filename).settings
     end
 
     def self.configuration
@@ -10,15 +10,36 @@ module BBC
     end
 
     module Configuration
-      def self.parse(file)
-        require file
-        # the file should call BBC::A11y.configure
+      def self.parse(filename)
+        BBC::A11y.configure(filename)
         BBC::A11y.configuration
       end
 
       def self.for_urls(urls)
         page_settings = urls.map { |url| PageSettings.new(url) }
         Settings.new.with_pages(page_settings)
+      end
+
+      ParseError = Class.new(StandardError) do
+        def message
+           file, line = backtrace.first.split(":")[0..1]
+           file = Pathname.new(file).relative_path_from(Pathname.new(Dir.pwd))
+           line = line.to_i
+           source_snippet = File.read(file).lines.each_with_index.map { |content, index|
+             indent = (index == line - 1) ? "=> " : "   "
+             indent + content
+           }[line - 2..line]
+
+           [
+             "There was an error reading your configuration file at line #{line} of '#{file}'",
+             "",
+             source_snippet,
+             "",
+             super,
+             "",
+             "For help learning the configuration DSL, please visit https://github.com/cucumber-ltd/bbc-a11y"
+           ]
+        end
       end
 
       class Settings
@@ -59,10 +80,18 @@ module BBC
 
       class DSL
         attr_reader :settings
-        def initialize(block)
+
+        def initialize(config, config_filename)
           @settings = Settings.new
           @general_page_settings = []
-          instance_eval &block
+          begin
+            instance_eval config, config_filename
+          rescue NoMethodError => error
+            method_name = error.message.scan(/\`(.*)'/)[0][0]
+            raise Configuration::ParseError, "`#{method_name}` is not part of the configuration language", error.backtrace
+          rescue => error
+            raise Configuration::ParseError, error.message, error.backtrace
+          end
           @settings = settings.with_pages(apply_general_settings(settings.pages))
         end
 

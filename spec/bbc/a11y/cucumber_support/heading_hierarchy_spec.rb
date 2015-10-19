@@ -49,7 +49,7 @@ module BBC::A11y::CucumberSupport
         HTML
 
         it 'fails' do
-          expect { hierarchy.validate }.to raise_error("Headings were not in order: h1, **h3**, h2")
+          expect { hierarchy.errors }.to raise_error("Headings were not in order: h1, **h3**, h2")
         end
       end
 

@@ -23,7 +23,7 @@ but you can also add it as part of an existing repo.
 
 Create or amend your your project's `Gemfile` to include this line:
 
-    gem 'bbc-a11y`
+    gem 'bbc-a11y'
 
 Now install the gem:
 

@@ -7,7 +7,7 @@ module BBC
 Because the title did not contain the header text, you need to write a custom
 method to define how to make this check.
 
-In your .a11y.rb file, add the following code:
+In your a11y.rb file, add the following code:
 
     BBC::A11y.configure do
       page "my_page.html" do

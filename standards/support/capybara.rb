@@ -33,7 +33,7 @@ You need to define a non-javascript driver for Capybara in order to run this sce
       Capybara::Selenium::Driver.new(app, profile: profile)
     end
 
-You can put this code into your .a11y.rb file
+You can put this code into your a11y.rb file
 
 You'll also need to add the `selenium-webdriver` gem to your Gemfile.
           ERROR

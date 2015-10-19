@@ -1,3 +1,5 @@
+[![Circle CI](https://circleci.com/gh/cucumber-ltd/bbc-a11y.svg?style=svg&circle-token=00d656fd091643ad692c78ca60e30ad95df9563a)](https://circleci.com/gh/cucumber-ltd/bbc-a11y)
+
 # WARNING - PROTOTYPE SOFTWARE
 
 This project is still at an experimental / proof-of-concept stage. Please set your expectations appropriately, but *do* [give us as much feedback](https://github.com/cucumber-ltd/bbc-a11y/issues) as you can.

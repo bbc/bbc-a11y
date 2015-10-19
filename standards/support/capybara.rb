@@ -1,7 +1,6 @@
 require 'capybara'
 require 'capybara/dsl'
-require 'capybara/poltergeist'
-
+require 'phantomjs/poltergeist'
 
 Capybara.default_driver = :poltergeist
 

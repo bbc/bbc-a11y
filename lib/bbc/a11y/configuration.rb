@@ -1,7 +1,14 @@
+require 'pathname'
+
 module BBC
   module A11y
 
-    def self.configure(filename)
+    def self.configure(&block)
+      @settings = Configuration::DSL.new(block).settings
+    end
+
+    # TODO: add tests for this?
+    def self.configure_from_file(filename)
       @settings = Configuration::DSL.new(File.read(filename), filename).settings
     end
 
@@ -11,7 +18,7 @@ module BBC
 
     module Configuration
       def self.parse(filename)
-        BBC::A11y.configure(filename)
+        BBC::A11y.configure_from_file(filename)
         BBC::A11y.configuration
       end
 
@@ -81,11 +88,15 @@ module BBC
       class DSL
         attr_reader :settings
 
-        def initialize(config, config_filename)
+        def initialize(config, config_filename = nil)
           @settings = Settings.new
           @general_page_settings = []
           begin
-            instance_eval config, config_filename
+            if config_filename
+              instance_eval config, config_filename
+            else
+              instance_eval &config
+            end
           rescue NoMethodError => error
             method_name = error.message.scan(/\`(.*)'/)[0][0]
             raise Configuration::ParseError, "`#{method_name}` is not part of the configuration language", error.backtrace

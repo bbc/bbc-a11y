@@ -6,7 +6,7 @@ module BBC
       let(:runner) { double }
       let(:stdout) { double(puts: nil) }
       let(:stdin)  { double(puts: nil) }
-      let(:stderr) { double(puts: nil) }
+      let(:stderr) { StringIO.new }
 
       def run(args = [])
         CLI.new(stdin, stdout, stderr, args).call(runner)
@@ -40,12 +40,11 @@ module BBC
         end
 
         it "prints the error to the console" do
-          expect(stderr).to receive(:puts).with("Unable to read configuration file:")
-          expect(stderr).to receive(:puts).with("foo.rb:56")
           begin
             run
           rescue SystemExit
           end
+          expect(stderr.string).to match(/There was an error reading your configuration file/)
         end
       end
     end

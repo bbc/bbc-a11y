@@ -4,9 +4,9 @@ Bundler::GemHelper.install_tasks
 task default: [:unit, :acceptance]
 
 task :unit do
-  sh "rspec"
+  sh "bundle exec rspec"
 end
 
 task :acceptance do
-  sh "cucumber"
+  sh "bundle exec cucumber"
 end

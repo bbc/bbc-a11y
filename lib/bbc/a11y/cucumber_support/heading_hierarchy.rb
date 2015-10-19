@@ -9,6 +9,24 @@ module BBC
           @page = page
         end
 
+        def call(errors)
+          # TODO: can we express these checks using CSS selectors instead?
+          adjacent_pairs = headings.zip(headings[1..-1])[0..-2]
+          heading_errors = adjacent_pairs.reduce([]) { |errors, pair|
+            previous, current = *pair
+            if current > previous
+              delta = current.number - previous.number
+              if delta != 1
+                errors << current
+              end
+            end
+            errors
+          }
+          if heading_errors.any?
+            errors << error_message(heading_errors)
+          end
+        end
+
         def validate
           return self unless headings.count > 1
           adjacent_pairs = headings.zip(headings[1..-1])[0..-2]
@@ -36,7 +54,7 @@ module BBC
         private
 
         def error_message(errors)
-          "Headings were not in order: " + 
+          "Headings were not in order: " +
             headings.map { |h| errors.include?(h) ? "**#{h}**" : h }.
           join(", ")
         end

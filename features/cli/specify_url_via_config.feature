@@ -9,6 +9,5 @@ Feature: Specify URL via config
     When I run `a11y`
     Then it should pass with:
       """
-      BBC Accesibility: http://localhost:54321/perfect.html
-      -----------------------------------------------------
+      ✓ http://localhost:54321/perfect.html
       """

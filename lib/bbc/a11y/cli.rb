@@ -2,13 +2,11 @@ require 'bbc/a11y/configuration'
 require 'bbc/a11y/linter'
 require 'open-uri'
 require 'capybara'
+require 'colorize'
 
 module BBC
   module A11y
 
-    # A very thin wrapper around Cucumber which takes settings on the command-line,
-    # stores them somewhere our automation code will be able to find it, and then
-    # runs Cucumber
     class CLI
       def initialize(stdin, stdout, stderr, args)
         @stdin, @stdout, @stderr, @args = stdin, stdout, stderr, args
@@ -19,9 +17,9 @@ module BBC
         settings.pages.each do |page_settings|
           errors = check_standards_for(page_settings)
           if errors.empty?
-            stdout.puts "✓ #{page_settings.url}"
+            stdout.puts "✓ #{page_settings.url}".colorize(:green)
           else
-            stdout.puts "✗ #{page_settings.url}"
+            stdout.puts "✗ #{page_settings.url}".colorize(:red)
             stdout.puts errors.map { |error|
               "  - #{error}"
             }.join("\n")

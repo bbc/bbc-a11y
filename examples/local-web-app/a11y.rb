@@ -36,29 +36,17 @@ class Server
 end
 
 server = Server.new
+server.start
 
-BBC::A11y.configure do
+at_exit do
+  server.stop
+end
 
-  before_all do
-    server.start
-  end
+page "http://localhost:#{server.port}/perfect.html" do
+  skip_standard "W3C"
+end
 
-  after_all do
-    server.stop
-  end
-
-  page "http://localhost:#{server.port}/perfect.html" do
-    skip_standard "W3C"
-  end
-
-  page "http://localhost:#{server.port}/missing_header.html" do
-    skip_standard "W3C"
-    skip_standard "Check headings"
-
-    customize_world do
-      def Xassert_title_describes_primary_content_of_document(title, doc)
-        puts "TODO"
-      end
-    end
-  end
+page "http://localhost:#{server.port}/missing_header.html" do
+  skip_standard "W3C"
+  skip_standard "Check headings"
 end

@@ -42,12 +42,12 @@ end
 
 ### Skipping scenarios
 
-Nobody's perfect. Use `skip_scenario` in the configuration to opt-out of certain checks.
+Nobody's perfect. Use `skip_standard` in the configuration to opt-out of certain checks.
 
 ```
 BBC::A11y.configure do
   page "http://bbc.co.uk" do
-    skip_scenario /W3C/
+    skip_standard /W3C/
   end
 
   page "http://bbc.co.uk/news"

@@ -13,17 +13,14 @@ Gem::Specification.new do |s|
   s.license     = "MIT"
   s.required_ruby_version = ">= 1.9.3"
 
-  s.add_dependency 'cucumber', '~> 2.0.0.rc'
-  s.add_dependency 'rspec',  '~> 3.0'
   s.add_dependency 'capybara'
-  s.add_dependency 'poltergeist'
-  s.add_dependency 'phantomjs'
-  s.add_dependency 'w3c_validators'
-  s.add_dependency 'cld'
   s.add_dependency 'colorize'
+
+  s.add_development_dependency 'rspec',  '~> 3.0'
   s.add_development_dependency 'aruba'
   s.add_development_dependency 'pry'
   s.add_development_dependency 'rake'
+  s.add_development_dependency 'cucumber'
 
   s.rubygems_version = ">= 1.6.1"
   s.files            = `git ls-files`.split("\n").reject {|path| path =~ /\.gitignore$/ }

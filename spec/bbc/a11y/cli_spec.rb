@@ -9,25 +9,7 @@ module BBC
       let(:stderr) { StringIO.new }
 
       def run(args = [])
-        CLI.new(stdin, stdout, stderr, args).call(runner)
-      end
-
-      it "uses a single URL from the CLI args if given" do
-        expect(runner).to receive(:new) do |settings, cucumber_args|
-          expect(settings.pages.length).to eq 1
-          expect(settings.pages[0].url).to eq "http://foo.com"
-          double(call: nil)
-        end
-        run ["http://foo.com"]
-      end
-
-      it "splits a11y and cucumber args" do
-        expect(runner).to receive(:new) do |settings, cucumber_args|
-          expect(settings.pages.length).to eq 1
-          expect(cucumber_args).to eq ["--tags", "~@wip"]
-          double(call: nil)
-        end
-        run ["http://foo.com", "--", "--tags", "~@wip"]
+        CLI.new(stdin, stdout, stderr, args).call
       end
 
       context "if the configuration fails to parse" do

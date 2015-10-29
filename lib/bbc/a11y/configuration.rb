@@ -4,22 +4,17 @@ module BBC
   module A11y
 
     def self.configure(&block)
-      @settings = Configuration::DSL.new(block).settings
+      Configuration::DSL.new(block).settings
     end
 
     # TODO: add tests for this?
     def self.configure_from_file(filename)
-      @settings = Configuration::DSL.new(File.read(filename), filename).settings
-    end
-
-    def self.configuration
-      @settings ||= Configuration::Settings.new
+      Configuration::DSL.new(File.read(filename), filename).settings
     end
 
     module Configuration
       def self.parse(filename)
         BBC::A11y.configure_from_file(filename)
-        BBC::A11y.configuration
       end
 
       def self.for_urls(urls)
@@ -68,10 +63,22 @@ module BBC
 
       class PageSettings
         attr_reader :url
+        attr_reader :skipped_standards
 
-        def initialize(url)
+        def initialize(url, skipped_standards=[])
           @url = url
+          @skipped_standards = skipped_standards
           freeze
+        end
+
+        def merge(other)
+          self.class.new(url, skipped_standards + other.skipped_standards)
+        end
+
+        def skip_standard?(standard)
+          @skipped_standards.any? { |pattern|
+            pattern.match(standard.name)
+          }
         end
       end
 
@@ -130,6 +137,10 @@ module BBC
         def initialize(url, block)
           @settings = PageSettings.new(url)
           instance_eval &block if block
+        end
+
+        def skip_standard(pattern)
+          @settings.skipped_standards << pattern
         end
 
       end

@@ -1,7 +1,7 @@
 require 'capybara'
 require 'bbc/a11y/linter'
 
-Given(/^a standards-compliant website running at http:\/\/localhost:(\d+)$/) do |port|
+Given(/^a website running at http:\/\/localhost:(\d+)$/) do |port|
   WebServer.ensure_running_on(port)
 end
 

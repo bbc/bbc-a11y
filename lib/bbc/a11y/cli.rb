@@ -1,5 +1,7 @@
 require 'bbc/a11y/configuration'
-require 'bbc/a11y'
+require 'bbc/a11y/linter'
+require 'open-uri'
+require 'capybara'
 
 module BBC
   module A11y
@@ -12,45 +14,36 @@ module BBC
         @stdin, @stdout, @stderr, @args = stdin, stdout, stderr, args
       end
 
-      def call(runner)
-        trap_interrupt
-        runner.new(settings, cucumber_args).call
-      rescue TestsFailed
-        exit 1
+      def call
+        all_errors = []
+        settings.pages.each do |page|
+          errors = check_standards_for(page.url)
+          if errors.empty?
+            stdout.puts "✓ #{page.url}"
+          else
+            stdout.puts "✗ #{page.url}"
+            stdout.puts errors.map { |error|
+              "  - #{error}"
+            }.join("\n")
+          end
+          all_errors += errors
+        end
+        exit 1 unless all_errors.empty?
       rescue Configuration::ParseError => error
         exit_with_message error.message
       end
 
       private
 
+      def check_standards_for(url)
+        html = open(url).read
+        Linter.new(Capybara.string(html)).run.errors.to_a
+      end
+
       def settings
-        return Configuration.for_urls(a11y_args) if a11y_args.any?
-        A11y.until_version('0.1.0') do
-          exit_with_message "Please rename your .a11y.rb configuration file to a11y.rb" if File.exist?(".a11y.rb")
-        end
+        return Configuration.for_urls(@args) if @args.any?
         configuration_file = File.expand_path("a11y.rb")
         Configuration.parse(configuration_file)
-      end
-
-      def a11y_args
-        if args.find_index('--')
-          args[0..(args.find_index('--') - 1)]
-        else
-          args
-        end
-      end
-
-      def cucumber_args
-        return [] unless args.include?('--')
-        args[(args.find_index('--') + 1)..-1]
-      end
-
-      def trap_interrupt
-        trap('INT') do
-          exit!(1) if Cucumber.wants_to_quit
-          Cucumber.wants_to_quit = true
-          STDERR.puts "\nExiting... Interrupt again to exit immediately."
-        end
       end
 
       def exit_with_message(*messages)
@@ -62,10 +55,7 @@ module BBC
       private :stdin, :stderr, :stdout, :args
 
       HELP = %{
-Usage: a11y [-- cucumber-args]
-
-cucumber-args   - Arguments to pass to Cucumber when running the tests. See cucumber --help
-                  for details.
+Usage: a11y [url]
 }
 
     end

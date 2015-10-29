@@ -1,4 +1,3 @@
-@wip
 Feature: Exit status
 
   For CI, we need to make sure the process exits with a non-zero
@@ -9,6 +8,6 @@ Feature: Exit status
     Then the exit status should be 0
 
   Scenario: Failing test
-    Given a standards-compliant website running at http://localhost:54321
+    Given a website running at http://localhost:54321
     When I run `a11y http://localhost:54321/missing_header.html`
     Then the exit status should be 1

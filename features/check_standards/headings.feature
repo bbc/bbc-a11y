@@ -18,6 +18,17 @@ Feature: Headings
   Headings should not be used for non-heading purposes, i.e. to identify blocks of content. A heading should always
   be followed either by non-heading content or by a heading of one level deeper.
 
+  Scenario: No main heading
+    Given a page with the HTML:
+      """
+      <h2>Heading 2</h2>
+      """
+    When I validate the page
+    Then it fails with the message:
+    """
+    A document must have exactly one heading. Found 0 h1 elements.
+    """
+
   Scenario: More than one main heading
     Given a page with the HTML:
       """
@@ -109,6 +120,10 @@ Feature: Headings
       Given a page with the HTML:
         """
         <div role="main">
+          <h1>Main heading</h1>
+          <p>non-heading content</p>
+          <h2>Another heading</h2>
+          <p>non-heading content</p>
           <h3>Main content</h3>
           <h2>Secondary content</h2>
           <p>non-heading content</p>
@@ -123,6 +138,8 @@ Feature: Headings
     Given a page with the HTML:
       """
       <div role="main">
+        <h1>Main heading</h1>
+        <p>non-heading content</p>
         <h3>Main content</h3>
         <h2>Secondary content</h2>
         <h2>Tertiary content</h2>

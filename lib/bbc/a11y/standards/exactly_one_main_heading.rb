@@ -8,7 +8,7 @@ module BBC
 
         def call(errors)
           count = @page.all('h1').size
-          if count > 1
+          if count != 1
             errors << "A document must have exactly one heading." +
                       " Found #{count} h1 elements."
           end

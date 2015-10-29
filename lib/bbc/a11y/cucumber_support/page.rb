@@ -1,6 +1,5 @@
 require 'rspec/expectations'
 require 'capybara/rspec/matchers'
-require 'bbc/a11y/cucumber_support/heading_hierarchy'
 
 module BBC
   module A11y

@@ -33,6 +33,8 @@ module BBC
       def to_s
         @errors.map(&:to_s).join("\n")
       end
+
+      attr_reader :errors
     end
 
   end

@@ -67,21 +67,11 @@ module BBC
       end
 
       class PageSettings
-        attr_reader :url, :scenarios_to_skip, :world_extensions
+        attr_reader :url
 
-        def initialize(url, scenarios_to_skip = [], world_extensions = [])
+        def initialize(url)
           @url = url
-          @scenarios_to_skip = scenarios_to_skip
-          @world_extensions = world_extensions
           freeze
-        end
-
-        def skip_test_case?(test_case)
-          @scenarios_to_skip.any? { |pattern| test_case.name.match pattern }
-        end
-
-        def merge(other)
-          self.class.new(url, scenarios_to_skip + other.scenarios_to_skip, world_extensions + other.world_extensions)
         end
       end
 
@@ -142,13 +132,6 @@ module BBC
           instance_eval &block if block
         end
 
-        def skip_scenario(name)
-          @settings.scenarios_to_skip << name
-        end
-
-        def customize_world(&block)
-          @settings.world_extensions << Module.new(&block)
-        end
       end
 
     end

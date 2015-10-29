@@ -2,5 +2,5 @@
 $:.unshift(File.dirname(__FILE__) + '/../lib') unless $:.include?(File.dirname(__FILE__) + '/../lib')
 
 require 'bbc/a11y/cli'
-require 'bbc/a11y/cucumber_runner'
-BBC::A11y::CLI.new($stdin, $stdout, $stderr, ARGV.dup).call(BBC::A11y::CucumberRunner)
+
+BBC::A11y::CLI.new($stdin, $stdout, $stderr, ARGV.dup).call

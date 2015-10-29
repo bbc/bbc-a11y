@@ -16,12 +16,12 @@ module BBC
 
       def call
         all_errors = []
-        settings.pages.each do |page|
-          errors = check_standards_for(page.url)
+        settings.pages.each do |page_settings|
+          errors = check_standards_for(page_settings)
           if errors.empty?
-            stdout.puts "✓ #{page.url}"
+            stdout.puts "✓ #{page_settings.url}"
           else
-            stdout.puts "✗ #{page.url}"
+            stdout.puts "✗ #{page_settings.url}"
             stdout.puts errors.map { |error|
               "  - #{error}"
             }.join("\n")
@@ -35,9 +35,10 @@ module BBC
 
       private
 
-      def check_standards_for(url)
-        html = open(url).read
-        Linter.new(Capybara.string(html)).run.errors.to_a
+      def check_standards_for(page_settings)
+        standards = Standards.for(page_settings)
+        html = open(page_settings.url).read
+        Linter.new(Capybara.string(html), standards).run.errors.to_a
       end
 
       def settings

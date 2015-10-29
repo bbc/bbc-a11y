@@ -4,15 +4,16 @@ module BBC
   module A11y
 
     class Linter
-      def initialize(page)
+      def initialize(page, standards=Standards.all)
         @page = page
+        @standards = standards
       end
 
       def run
         errors = []
-        BBC::A11y::Standards::ContentFollowsHeadings.new(@page).call(errors)
-        BBC::A11y::Standards::HeadingHierarchy.new(@page).call(errors)
-        BBC::A11y::Standards::ExactlyOneMainHeading.new(@page).call(errors)
+        @standards.each do |standard|
+          standard.new(@page).call(errors)
+        end
         LintResult.new(errors)
       end
     end

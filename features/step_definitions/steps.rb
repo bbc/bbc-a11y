@@ -1,5 +1,6 @@
 require 'capybara'
 require 'bbc/a11y/linter'
+require 'bbc/a11y/standards'
 
 Given(/^a website running at http:\/\/localhost:(\d+)$/) do |port|
   WebServer.ensure_running_on(port)
@@ -19,8 +20,10 @@ Given(/^a page with the HTML:$/) do |string|
   @page = Capybara.string(string.to_s)
 end
 
-When(/^I validate the page$/) do
-  @result = BBC::A11y::Linter.new(@page).run
+When(/^I validate the (.+) standards$/) do |pattern|
+  regexp = Regexp.new(pattern, Regexp::IGNORECASE)
+  standards = BBC::A11y::Standards.matching regexp
+  @result = BBC::A11y::Linter.new(@page, standards).run
 end
 
 Then(/^it passes$/) do

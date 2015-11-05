@@ -10,7 +10,7 @@ module BBC
         def call(errors)
           heading_levels.each_cons(2).each do |pair|
             if pair.last > pair.first + 1
-              errors << "Headings were not in order: " +
+              errors << "Headings are not in order: " +
                         "h#{pair.first} is followed by h#{pair.last}"
             end
           end

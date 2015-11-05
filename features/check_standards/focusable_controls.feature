@@ -57,6 +57,6 @@ Feature: Focusable Controls
     When I validate the anchor hrefs standards
     Then it fails with the message:
       """
-      <a> tag with no href attribute: /html/body/ul/li[1]/a
-      <a> tag with no href attribute: /html/body/ul/li[3]/a
+      Anchor has no href attribute: /html/body/ul/li[1]/a
+      Anchor has no href attribute: /html/body/ul/li[3]/a
       """

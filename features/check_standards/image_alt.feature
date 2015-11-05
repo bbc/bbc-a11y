@@ -35,5 +35,5 @@ Feature: Image alternative content
     When I validate the image alt standards
     Then it fails with the message:
       """
-      <img> tag with no alt attribute (src="b.jpeg")
+      Image has no alt attribute (src="b.jpeg")
       """

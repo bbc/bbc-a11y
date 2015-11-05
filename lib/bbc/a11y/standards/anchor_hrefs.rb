@@ -8,7 +8,7 @@ module BBC
 
         def call(errors)
           @page.all("a:not([href])").each do |anchor|
-            errors << "<a> tag with no href attribute: #{anchor.path}"
+            errors << "Anchor has no href attribute: #{anchor.path}"
           end
         end
 

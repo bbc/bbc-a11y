@@ -65,7 +65,7 @@ Feature: Headings
     When I validate the heading standards
     Then it fails with the message:
       """
-      Headings were not in order: h1 is followed by h3
+      Headings are not in order: h1 is followed by h3
       """
 
   Scenario: Headings jump back up more than one level
@@ -91,7 +91,7 @@ Feature: Headings
     When I validate the heading standards
     Then it fails with the message:
       """
-      Headings were not in order: h1 is followed by h3
+      Headings are not in order: h1 is followed by h3
       """
 
   Scenario: Heading in a script tag

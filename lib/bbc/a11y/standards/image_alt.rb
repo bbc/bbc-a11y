@@ -8,7 +8,7 @@ module BBC
 
         def call(errors)
           @page.all("img:not([alt])").each do |img|
-            errors << "<img> tag with no alt attribute (src=\"#{img['src']}\")"
+            errors << "Image has no alt attribute (src=\"#{img['src']}\")"
           end
         end
 

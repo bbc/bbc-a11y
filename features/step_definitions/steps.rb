@@ -21,7 +21,7 @@ Given(/^a page with the HTML:$/) do |string|
 end
 
 When(/^I validate the (.+) standards$/) do |pattern|
-  regexp = Regexp.new(pattern, Regexp::IGNORECASE)
+  regexp = Regexp.new(pattern.gsub(' ', ''), Regexp::IGNORECASE)
   standards = BBC::A11y::Standards.matching regexp
   @result = BBC::A11y::Linter.new(@page, standards).run
 end

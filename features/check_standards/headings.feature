@@ -25,9 +25,9 @@ Feature: Headings
       """
     When I validate the heading standards
     Then it fails with the message:
-    """
-    A document must have exactly one heading. Found 0 h1 elements.
-    """
+      """
+      A document must have exactly one heading. Found 0 h1 elements.
+      """
 
   Scenario: More than one main heading
     Given a page with the HTML:
@@ -38,9 +38,9 @@ Feature: Headings
       """
     When I validate the heading standards
     Then it fails with the message:
-    """
-    A document must have exactly one heading. Found 2 h1 elements.
-    """
+      """
+      A document must have exactly one heading. Found 2 h1 elements.
+      """
 
   Scenario: Headings in ascending order
     Given a page with the HTML:

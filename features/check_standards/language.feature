@@ -1,4 +1,3 @@
-@wip
 Feature: Specify content language
 
   The main language of the page **must** be specified.

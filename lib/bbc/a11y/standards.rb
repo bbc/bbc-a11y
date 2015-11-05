@@ -1,3 +1,4 @@
+require 'bbc/a11y/standards/anchor_hrefs'
 require 'bbc/a11y/standards/content_follows_headings'
 require 'bbc/a11y/standards/exactly_one_main_heading'
 require 'bbc/a11y/standards/exactly_one_main_landmark'
@@ -24,6 +25,7 @@ module BBC
 
       def self.all
         [
+          AnchorHrefs,
           ContentFollowsHeadings,
           FormLabels,
           HeadingHierarchy,

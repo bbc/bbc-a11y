@@ -23,6 +23,7 @@ end
 When(/^I validate the (.+) standards$/) do |pattern|
   regexp = Regexp.new(pattern.gsub(' ', ''), Regexp::IGNORECASE)
   standards = BBC::A11y::Standards.matching regexp
+  raise "No standards match '#{pattern}'" unless standards.any?
   @result = BBC::A11y::Linter.new(@page, standards).run
 end
 

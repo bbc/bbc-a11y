@@ -2,6 +2,7 @@ require 'bbc/a11y/standards/content_follows_headings'
 require 'bbc/a11y/standards/exactly_one_main_heading'
 require 'bbc/a11y/standards/exactly_one_main_landmark'
 require 'bbc/a11y/standards/heading_hierarchy'
+require 'bbc/a11y/standards/image_alt'
 require 'bbc/a11y/standards/tab_index'
 
 module BBC
@@ -23,6 +24,7 @@ module BBC
         [
           ContentFollowsHeadings,
           HeadingHierarchy,
+          ImageAlt,
           ExactlyOneMainHeading,
           ExactlyOneMainLandmark,
           TabIndex

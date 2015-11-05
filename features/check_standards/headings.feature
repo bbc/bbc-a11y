@@ -140,7 +140,6 @@ Feature: Headings
       <div role="main">
         <h1>Main heading</h1>
         <p>non-heading content</p>
-        <h3>Main content</h3>
         <h2>Secondary content</h2>
         <h2>Tertiary content</h2>
         <p>non-heading content</p>

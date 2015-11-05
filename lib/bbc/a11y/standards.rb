@@ -1,6 +1,7 @@
 require 'bbc/a11y/standards/content_follows_headings'
 require 'bbc/a11y/standards/exactly_one_main_heading'
 require 'bbc/a11y/standards/exactly_one_main_landmark'
+require 'bbc/a11y/standards/form_labels'
 require 'bbc/a11y/standards/heading_hierarchy'
 require 'bbc/a11y/standards/image_alt'
 require 'bbc/a11y/standards/language_attribute'
@@ -24,6 +25,7 @@ module BBC
       def self.all
         [
           ContentFollowsHeadings,
+          FormLabels,
           HeadingHierarchy,
           ImageAlt,
           ExactlyOneMainHeading,

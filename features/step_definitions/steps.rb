@@ -33,5 +33,5 @@ end
 
 Then(/^it fails with the message:$/) do |message|
   expect(@result).to be_failed
-  expect(@result.to_s).to include message.to_s
+  expect(@result.to_s).to eq message.to_s
 end

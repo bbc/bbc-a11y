@@ -53,3 +53,12 @@ Feature: Correctly use form labels
       Field has no label or title attribute: /html/body/input[4]
       Field has no label or title attribute: /html/body/input[5]
       """
+
+  Scenario: Hidden fields do not need titles
+
+    Given a page with the HTML:
+      """
+      <input type=hidden name=a value=b>
+      """
+    When I validate the form labels standards
+    Then it passes

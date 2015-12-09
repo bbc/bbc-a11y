@@ -8,7 +8,7 @@ module BBC
 
         def call(errors)
           @page.all("form").each do |form|
-            submits = form.all("input[type=submit]")
+            submits = form.all("input[type=submit], button[type=submit]")
             if submits.empty?
               errors << "Form has no submit button: #{form.path}"
             end

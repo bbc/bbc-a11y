@@ -18,7 +18,7 @@ Feature: Form Interactions
   is particularly important to users with cognitive disabilities, but is also
   beneficial to low vision users as an indication of the end of the form.
 
-  Scenario: Form with a submit button
+  Scenario: Form with a submit input
     Given a page with the HTML:
       """
       <form action="/search">
@@ -43,3 +43,15 @@ Feature: Form Interactions
       """
       Form has no submit button: /html/body/form
       """
+  Scenario: Form with a submit button
+    Given a page with the HTML:
+      """
+      <form action="/search">
+        <label for="q">Search term:</label>
+        <input type="text" name="q" id="q">
+        <button type="submit">Search</button>
+      </form>
+      """
+    When I validate the form submit buttons standards
+    Then it passes
+

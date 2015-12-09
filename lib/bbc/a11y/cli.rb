@@ -1,3 +1,4 @@
+# coding: UTF-8
 require 'bbc/a11y/configuration'
 require 'bbc/a11y/linter'
 require 'open-uri'

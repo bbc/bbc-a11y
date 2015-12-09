@@ -18,7 +18,7 @@ module BBC
         private
 
         def potential_offenders
-          "input:not([title]), textarea:not([title]), select:not([title])"
+          "input:not([title]):not([type='hidden']), textarea:not([title]), select:not([title])"
         end
 
         def offender?(field)

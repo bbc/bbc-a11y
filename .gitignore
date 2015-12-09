@@ -3,3 +3,4 @@ Gemfile.lock
 pkg
 tags
 .a11y.rb
+.DS_Store

@@ -34,24 +34,20 @@ Now install the gem:
 You'll need to configure a11y with a set of URLs to run the checks against. Create a file `a11y.rb` in the root of your project that looks something like this:
 
 ```
-BBC::A11y.configure do
-  page "http://bbc.co.uk"
-  page "http://bbc.co.uk/news"
-end
+page "http://bbc.co.uk"
+page "http://bbc.co.uk/news"
 ```
 
 ### Skipping scenarios
 
-Nobody's perfect. Use `skip_scenario` in the configuration to opt-out of certain checks.
+Nobody's perfect. Use `skip_standard` in the configuration to opt-out of certain checks.
 
 ```
-BBC::A11y.configure do
-  page "http://bbc.co.uk" do
-    skip_scenario /W3C/
-  end
-
-  page "http://bbc.co.uk/news"
+page "http://bbc.co.uk" do
+  skip_standard /W3C/
 end
+
+page "http://bbc.co.uk/news"
 ```
 
 A11y will skip any scenarios from the specifications whose name contains that string.

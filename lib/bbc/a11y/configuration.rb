@@ -4,22 +4,17 @@ module BBC
   module A11y
 
     def self.configure(&block)
-      @settings = Configuration::DSL.new(block).settings
+      Configuration::DSL.new(block).settings
     end
 
     # TODO: add tests for this?
     def self.configure_from_file(filename)
-      @settings = Configuration::DSL.new(File.read(filename), filename).settings
-    end
-
-    def self.configuration
-      @settings ||= Configuration::Settings.new
+      Configuration::DSL.new(File.read(filename), filename).settings
     end
 
     module Configuration
       def self.parse(filename)
         BBC::A11y.configure_from_file(filename)
-        BBC::A11y.configuration
       end
 
       def self.for_urls(urls)
@@ -67,21 +62,23 @@ module BBC
       end
 
       class PageSettings
-        attr_reader :url, :scenarios_to_skip, :world_extensions
+        attr_reader :url
+        attr_reader :skipped_standards
 
-        def initialize(url, scenarios_to_skip = [], world_extensions = [])
+        def initialize(url, skipped_standards=[])
           @url = url
-          @scenarios_to_skip = scenarios_to_skip
-          @world_extensions = world_extensions
+          @skipped_standards = skipped_standards
           freeze
         end
 
-        def skip_test_case?(test_case)
-          @scenarios_to_skip.any? { |pattern| test_case.name.match pattern }
+        def merge(other)
+          self.class.new(url, skipped_standards + other.skipped_standards)
         end
 
-        def merge(other)
-          self.class.new(url, scenarios_to_skip + other.scenarios_to_skip, world_extensions + other.world_extensions)
+        def skip_standard?(standard)
+          @skipped_standards.any? { |pattern|
+            pattern.match(standard.name)
+          }
         end
       end
 
@@ -142,13 +139,10 @@ module BBC
           instance_eval &block if block
         end
 
-        def skip_scenario(name)
-          @settings.scenarios_to_skip << name
+        def skip_standard(pattern)
+          @settings.skipped_standards << pattern
         end
 
-        def customize_world(&block)
-          @settings.world_extensions << Module.new(&block)
-        end
       end
 
     end

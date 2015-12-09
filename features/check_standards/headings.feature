@@ -39,9 +39,7 @@ Feature: Headings
     When I validate the heading standards
     Then it fails with the message:
       """
-      A document must have exactly one heading. Found 2 h1 elements:
-        /html/body/h1[1]
-        /html/body/h1[2]
+      A document must have exactly one heading. Found 2 h1 elements.
       """
 
   Scenario: Headings in ascending order

@@ -4,7 +4,7 @@
 
 This project is still at an experimental / proof-of-concept stage. Please set your expectations appropriately, but *do* [give us as much feedback](https://github.com/cucumber-ltd/bbc-a11y/issues) as you can.
 
-#BBC Accessiblity Standards
+#BBC Accessibility Standards
 
 This tool runs a set of tests against a set of URLs to verify whether each one meets the [BBC accessibility standards](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/).
 

@@ -1,4 +1,4 @@
-Feature: Correctly use headings
+ # Correctly use headings
 
   A document **must** have exactly one `<h1>` element.
 
@@ -15,7 +15,7 @@ Feature: Correctly use headings
 
   Heading levels should not be skipped as a predictable document outline is an important factor for understandability.
 
-  Headings should not be used for non-heading purposes, i.e. to identify blocks of content. A heading should always 
+  Headings should not be used for non-heading purposes, i.e. to identify blocks of content. A heading should always
   be followed either by non-heading content or by a heading of one level deeper.
 
   Techniques
@@ -49,7 +49,7 @@ Feature: Correctly use headings
   Notes
   =====
 
-  For the second test, can we check the next text node after each heading and test that it is 
+  For the second test, can we check the next text node after each heading and test that it is
   either not part of a heading element, or is part of a heading level of one level higher?
 
   Questions
@@ -57,9 +57,3 @@ Feature: Correctly use headings
 
   1. Clarify the note, above!
   2. Presumably it's OK for the hierarchy to jump *up* by more than 1? e.g. h1, h2, h3, h4, h2 is ok?
-
-  Scenario: Check headings
-    When I visit the page
-    Then there must be exactly one h1 element
-    And each heading must be followed by content or a heading of one level deeper (h2-h6)
-

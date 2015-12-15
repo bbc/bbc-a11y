@@ -1,4 +1,4 @@
-Feature: Correctly use `title` attributes
+# Use `title` attributes
 
   `title` attributes **must not** be used for critical information and **must not** repeat content that is already visible and associated with the same control or content.
 
@@ -13,7 +13,7 @@ Feature: Correctly use `title` attributes
 
   Key recommendations are:
 
-  - Do not use the `title` attribute unless on a form input as title text is not well supported on links on mobile 
+  - Do not use the `title` attribute unless on a form input as title text is not well supported on links on mobile
   - Do not use `title` attributes and explicit labels together on form fields
 
   Techniques
@@ -44,7 +44,7 @@ Feature: Correctly use `title` attributes
   Tests
   =====
 
-  | Procedure | Expected Result | Type | 
+  | Procedure | Expected Result | Type |
   | --------- | --------------- | ---- |
   | Search source for all uses of the `title` attribute | Ensure no instances contain content that would be required by all users or content that is repeated in associated content | Manual |
   | Search source for all uses of the `title` attribute | Ensure no instances contain content that is repeated within the element | Automated |
@@ -56,16 +56,3 @@ Feature: Correctly use `title` attributes
   =====
 
   The first test is non-automatable, and may well have to be removed as it is too ambiguous.
-
-  Scenario: Check the elements with title attributes
-
-    Examples of failure:
-
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" title="Name" />
-
-        <a href="/news" title="News">News</a>
-
-    When I visit the page
-    Then there must be no elements with a title attribute whose content is repeated within the element
-    And any form fields with associated labels do not have a title attribute

@@ -1,4 +1,4 @@
-Feature: Main landmark
+# Main landmark
 
   A page **must** have exactly one element with `role="main"`
 
@@ -17,8 +17,3 @@ Feature: Main landmark
   Fail:
 
     <div id="main-content"></div>
-
-  Scenario: Check for a single main element
-    When I visit the page
-    Then there should be exactly one element with `role="main"`
-

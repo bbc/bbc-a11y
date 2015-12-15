@@ -1,4 +1,4 @@
-Feature: JavaScript
+ # JavaScript & CSS
 
   Core experience must not rely on JavaScript
 
@@ -30,11 +30,5 @@ Feature: JavaScript
   Notes
   =====
 
-  This is going to have to be a product specific test. Can we provide a template for this test, 
+  This is going to have to be a product specific test. Can we provide a template for this test,
   perhaps looking for elements based on provided selectors and make sure they are in the document?
-
-  @manual
-  Scenario: View the page with JavaScript disabled
-    When I view the page with JavaScript disabled
-    Then all core content is available in the DOM
-

@@ -6,5 +6,5 @@ Feature: Display failing result
     Then it should fail with exactly:
       """
       ✗ http://localhost:54321/missing_header.html
-        - A document must have exactly one heading. Found 0 h1 elements.
+        - A document must have exactly one main heading. Found 0 h1 elements.
       """

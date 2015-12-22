@@ -19,7 +19,7 @@ Feature: Mute errors
     When I validate the exactly one main heading standard
     Then it fails with the message:
       """
-      A document must have exactly one heading. Found 0 h1 elements.
+      A document must have exactly one main heading. Found 0 h1 elements.
       """
     When I add a configuration with:
       """

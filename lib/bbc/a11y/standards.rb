@@ -8,6 +8,7 @@ require 'bbc/a11y/standards/heading_hierarchy'
 require 'bbc/a11y/standards/image_alt'
 require 'bbc/a11y/standards/language_attribute'
 require 'bbc/a11y/standards/tab_index'
+require 'bbc/a11y/standards/title_attribute'
 
 module BBC
   module A11y
@@ -35,7 +36,8 @@ module BBC
           ExactlyOneMainHeading,
           ExactlyOneMainLandmark,
           LanguageAttribute,
-          TabIndex
+          TabIndex,
+          TitleAttribute
         ]
       end
     end

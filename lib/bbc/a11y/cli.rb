@@ -1,6 +1,7 @@
 # coding: UTF-8
 require 'bbc/a11y/configuration'
 require 'bbc/a11y/linter'
+require 'bbc/a11y/runner'
 require 'open-uri'
 require 'capybara'
 require 'colorize'
@@ -14,31 +15,28 @@ module BBC
       end
 
       def call
-        all_errors = []
-        settings.pages.each do |page_settings|
-          errors = check_standards_for(page_settings)
-          if errors.empty?
-            stdout.puts "✓ #{page_settings.url}".colorize(:green)
-          else
-            stdout.puts "✗ #{page_settings.url}".colorize(:red)
-            stdout.puts errors.map { |error|
-              "  - #{error}"
-            }.join("\n")
-          end
-          all_errors += errors
-        end
-        exit 1 unless all_errors.empty?
+        Runner.new(settings, self).run
+        exit 1 if @any_errors
       rescue Configuration::ParseError => error
         exit_with_message error.message
       end
 
-      private
-
-      def check_standards_for(page_settings)
-        standards = Standards.for(page_settings)
-        html = open(page_settings.url).read
-        Linter.new(Capybara.string(html), standards).run.errors.to_a
+      def page_tested(page_settings, errors)
+        if errors.empty?
+          stdout.puts "✓ #{page_settings.url}".colorize(:green)
+        else
+          stdout.puts "✗ #{page_settings.url}".colorize(:red)
+          stdout.puts errors.map { |error| "  - #{error}" }.join("\n")
+        end
+        stdout.puts ""
       end
+
+      def all_pages_tested(summary)
+        stdout.puts "Tested #{summary.pages} pages, errors: #{summary.errors}, skipped: #{summary.skips}"
+        @any_errors = summary.fail?
+      end
+
+      private
 
       def settings
         return Configuration.for_urls(@args) if @args.any?

@@ -1,6 +1,7 @@
 require 'capybara'
 require 'bbc/a11y/linter'
 require 'bbc/a11y/standards'
+require 'bbc/a11y/javascript'
 
 Given(/^a website running at http:\/\/localhost:(\d+)$/) do |port|
   WebServer.ensure_running_on(port)
@@ -17,14 +18,22 @@ Given(/^one test fails$/) do
 end
 
 Given(/^a page with the HTML:$/) do |string|
-  @page = Capybara.string(string.to_s)
+  WebServer.ensure_running_on(54321)
+  WebServer.write_page "scenario.html", "<html><body>#{string}</body></html>"
+  browser.visit 'http://localhost:54321/scenario.html'
 end
 
-When(/^I validate the (.+) standards$/) do |pattern|
-  regexp = Regexp.new(pattern.gsub(' ', ''), Regexp::IGNORECASE)
-  standards = BBC::A11y::Standards.matching regexp
-  raise "No standards match '#{pattern}'" unless standards.any?
-  @result = BBC::A11y::Linter.new(@page, standards).run
+After do
+  WebServer.delete_page "scenario.html"
+end
+
+When(/^I validate the (.+) standards?$/) do |pattern|
+  browser.execute_script(BBC::A11y::Javascript.bundle)
+  validation = browser.evaluate_script("a11y.validate(#{pattern.to_json})")
+  if validation['results'].size != 1
+    raise "#{validation['results'].size} standards match '#{pattern}'"
+  end
+  @result = BBC::A11y::LintResult.from_json(validation)
 end
 
 Then(/^it passes$/) do

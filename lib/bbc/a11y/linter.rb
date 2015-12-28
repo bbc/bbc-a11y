@@ -4,23 +4,25 @@ module BBC
   module A11y
 
     class Linter
-      def initialize(page, standards=Standards.all)
-        @page = page
-        @standards = standards
+      def lint(page_settings)
+        browser.visit page_settings.url
+        browser.execute_script(BBC::A11y::Javascript.bundle)
+        criteria = { skip: page_settings.skipped_standards }.to_json
+        validation = browser.evaluate_script("a11y.validate(#{criteria})")
+        LintResult.from_json(validation)
       end
 
-      def run
-        errors = []
-        @standards.each do |standard|
-          standard.new(@page).call(errors)
-        end
-        LintResult.new(errors)
+      private
+
+      def browser
+        Capybara.current_session
       end
     end
 
     class LintResult
-      def initialize(errors)
+      def initialize(errors, skipped)
         @errors = errors
+        @skipped = skipped
       end
 
       def passed?
@@ -35,7 +37,14 @@ module BBC
         @errors.map(&:to_s).join("\n")
       end
 
-      attr_reader :errors
+      def self.from_json(json)
+        errors = json["results"].map { |standard|
+          standard["errors"].map { |error| error.join " " }
+        }.flatten
+        LintResult.new(errors, json["skipped"])
+      end
+
+      attr_reader :errors, :skipped
     end
 
   end

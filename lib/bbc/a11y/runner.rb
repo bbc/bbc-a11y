@@ -1,4 +1,8 @@
 require 'bbc/a11y/standards'
+require 'bbc/a11y/javascript'
+require 'phantomjs/poltergeist'
+
+Capybara.default_driver = :poltergeist
 
 module BBC
   module A11y
@@ -12,9 +16,10 @@ module BBC
         @summary = RunSummary.new
         @summary.pages = @settings.pages.size
         @settings.pages.each do |page_settings|
-          errors = check_standards_for(page_settings)
-          @summary.errors += errors.size
-          @listener.page_tested(page_settings, errors)
+          lint_result = check_standards_for(page_settings)
+          @summary.errors += lint_result.errors.size
+          @summary.skips += lint_result.skipped.size
+          @listener.page_tested(page_settings, lint_result)
         end
         @listener.all_pages_tested(@summary)
       end
@@ -22,10 +27,7 @@ module BBC
       private
 
       def check_standards_for(page_settings)
-        standards = Standards.for(page_settings)
-        @summary.skips += Standards.all.size - standards.size
-        html = open(page_settings.url).read
-        Linter.new(Capybara.string(html), standards).run.errors.to_a
+        Linter.new.lint(page_settings)
       end
 
       class RunSummary

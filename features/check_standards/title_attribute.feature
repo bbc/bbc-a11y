@@ -23,7 +23,7 @@ Feature: Correctly use `title` attributes
         <img src="close.png" />
       </button>
       """
-    When I validate the title attribute standards
+    When I validate the title attributes only on inputs standards
     Then it passes
 
   Scenario: Anchor tag with title attribute
@@ -33,8 +33,8 @@ Feature: Correctly use `title` attributes
         <img src="close.png" />
       </a>
       """
-    When I validate the title attribute standards
+    When I validate the title attributes only on inputs standards
     Then it fails with the message:
       """
-      Element (not a form input) has a title attribute: /html/body/a
+      Non-input element has title attribute: /html/body/a
       """

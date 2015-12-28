@@ -13,11 +13,11 @@ class WebServer
 
     def options(port)
       default = {
-        :Port => port.to_i, 
-        :DocumentRoot => DOCUMENT_ROOT, 
+        :Port => port.to_i,
+        :DocumentRoot => DOCUMENT_ROOT,
       }
       disable_logging = {
-        :AccessLog => [], 
+        :AccessLog => [],
         :Logger => WEBrick::Log::new("/dev/null", 7)
       }
       unless ENV['DEBUG']
@@ -25,6 +25,17 @@ class WebServer
       else
         default
       end
+    end
+
+    def write_page(path, html)
+      full_path = File.join(DOCUMENT_ROOT, path)
+      File.open(full_path, 'w') { |file| file.write(html) }
+    end
+
+    def delete_page(path)
+      full_path = File.join(DOCUMENT_ROOT, path)
+      File.delete(full_path)
+    rescue Errno::ENOENT
     end
   end
 end

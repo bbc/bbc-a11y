@@ -23,12 +23,12 @@ module BBC
         exit_with_message error.message
       end
 
-      def page_tested(page_settings, errors)
-        if errors.empty?
+      def page_tested(page_settings, lint_result)
+        if lint_result.passed?
           stdout.puts green("✓ #{page_settings.url}")
         else
           stdout.puts red("✗ #{page_settings.url}")
-          stdout.puts errors.map { |error| "  - #{error}" }.join("\n")
+          stdout.puts lint_result.errors.map { |error| "  - #{error}" }.join("\n")
         end
         stdout.puts ""
       end

@@ -23,7 +23,7 @@ Feature: Image alternative content
       <img src="a.jpeg" alt="A picture of something" />
       <img src="b.jpeg" alt="" />
       """
-    When I validate the image alt standards
+    When I validate the images must have alt attributes standards
     Then it passes
 
   Scenario: Images without alt attributes
@@ -32,8 +32,8 @@ Feature: Image alternative content
       <img src="a.jpeg" alt="A picture of something" />
       <img src="b.jpeg" />
       """
-    When I validate the image alt standards
+    When I validate the images must have alt attributes standards
     Then it fails with the message:
       """
-      Image has no alt attribute (src="b.jpeg")
+      Image has no alt attribute: /html/body/img[2]
       """

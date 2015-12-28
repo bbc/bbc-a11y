@@ -4,3 +4,5 @@ pkg
 tags
 .DS_Store
 a11y.rb
+node_modules
+lib/bbc/a11y/js/bundle.js

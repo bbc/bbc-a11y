@@ -23,10 +23,10 @@ Feature: Headings
       """
       <h2>Heading 2</h2>
       """
-    When I validate the heading standards
+    When I validate the exactly one main heading standards
     Then it fails with the message:
       """
-      A document must have exactly one main heading. Found 0 h1 elements.
+      Found 0 h1 elements.
       """
 
   Scenario: More than one main heading
@@ -36,12 +36,10 @@ Feature: Headings
       <h2>Heading 2</h2>
       <h1>Heading 1</h1>
       """
-    When I validate the heading standards
+    When I validate the exactly one main heading standards
     Then it fails with the message:
       """
-      A document must have exactly one main heading. Found 2 h1 elements:
-      * /html/body/h1[1]
-      * /html/body/h1[2]
+      Found 2 h1 elements: /html/body/h1[1] /html/body/h1[2]
       """
 
   Scenario: Headings in ascending order
@@ -54,7 +52,7 @@ Feature: Headings
       <h5>Heading 5</h5>
       <h6>Heading 6</h6>
       """
-    When I validate the heading standards
+    When I validate the headings must be in ascending order standards
     Then it passes
 
   Scenario: Headings in invalid order
@@ -64,10 +62,10 @@ Feature: Headings
       <h3>Heading 3</h3>
       <h2>Heading 2</h2>
       """
-    When I validate the heading standards
+    When I validate the headings must be in ascending order standards
     Then it fails with the message:
       """
-      Headings are not in order: h1 is followed by h3
+      Headings are not in order: /html/body/h1 /html/body/h3
       """
 
   Scenario: Headings jump back up more than one level
@@ -80,7 +78,7 @@ Feature: Headings
       <h2>Heading 2b</h2>
       <h3>Heading 3b</h3>
       """
-    When I validate the heading standards
+    When I validate the headings must be in ascending order standards
     Then it passes
 
   Scenario: Heading is hidden
@@ -90,10 +88,10 @@ Feature: Headings
       <h3 style="display:none">Heading 3</h3>
       <h2>Heading 2</h2>
       """
-    When I validate the heading standards
+    When I validate the headings must be in ascending order standards
     Then it fails with the message:
       """
-      Headings are not in order: h1 is followed by h3
+      Headings are not in order: /html/body/h1 /html/body/h3
       """
 
   Scenario: Heading in a script tag
@@ -105,7 +103,7 @@ Feature: Headings
       </script>
       <h2>Heading 2</h2>
       """
-    When I validate the heading standards
+    When I validate the headings must be in ascending order standards
     Then it passes
 
   Scenario: Subheading before the first main heading
@@ -115,7 +113,7 @@ Feature: Headings
       <h1>Heading 1</h1>
       <h2>Heading 2</h2>
       """
-    When I validate the heading standards
+    When I validate the headings must be in ascending order standards
     Then it passes
 
     Scenario: Content between headings
@@ -127,13 +125,14 @@ Feature: Headings
           <h2>Another heading</h2>
           <p>non-heading content</p>
           <h3>Main content</h3>
+          non-heading content
           <h2>Secondary content</h2>
           <p>non-heading content</p>
           <h2>Tertiary content</h2>
-          <p>Lorem ipsum…</p>
+          non-heading content
         </div>
         """
-      When I validate the heading standards
+      When I validate the content must follow headings standards
       Then it passes
 
   Scenario: No content between headings
@@ -147,8 +146,8 @@ Feature: Headings
         <p>non-heading content</p>
       </div>
       """
-    When I validate the heading standards
+    When I validate the content must follow headings standards
     Then it fails with the message:
       """
-      Heading elements must be followed by content. No content follows a h2.
+      No content follows: /html/body/div/h2[1]
       """

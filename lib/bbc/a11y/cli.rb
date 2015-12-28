@@ -23,9 +23,9 @@ module BBC
 
       def page_tested(page_settings, errors)
         if errors.empty?
-          stdout.puts "✓ #{page_settings.url}".colorize(:green)
+          stdout.puts green("✓ #{page_settings.url}")
         else
-          stdout.puts "✗ #{page_settings.url}".colorize(:red)
+          stdout.puts red("✗ #{page_settings.url}")
           stdout.puts errors.map { |error| "  - #{error}" }.join("\n")
         end
         stdout.puts ""
@@ -42,6 +42,26 @@ module BBC
       end
 
       private
+
+      def red(message)
+        colorize_if_tty(message, :red)
+      end
+
+      def green(message)
+        colorize_if_tty(message, :green)
+      end
+
+      def colorize_if_tty(message, colour)
+        if tty?
+          message.colorize(colour)
+        else
+          message
+        end
+      end
+
+      def tty?
+        (stdout.tty? || ENV['TTY'] == 'true') && ENV['TTY'] != 'false'
+      end
 
       def summary_message(count, noun, verb)
         "#{count} #{noun}#{count == 1 ? '' : 's'} #{verb}"

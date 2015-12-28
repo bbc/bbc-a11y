@@ -13,5 +13,5 @@ Feature: Display result summary
     When I run `a11y`
     Then it should fail with:
       """
-      Tested 3 pages, errors: 1, skipped: 1
+      3 pages checked, 1 error found, 1 standard skipped
       """

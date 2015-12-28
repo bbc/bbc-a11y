@@ -32,11 +32,20 @@ module BBC
       end
 
       def all_pages_tested(summary)
-        stdout.puts "Tested #{summary.pages} pages, errors: #{summary.errors}, skipped: #{summary.skips}"
+        messages = [
+          summary_message(summary.pages, 'page', 'checked'),
+          summary_message(summary.errors, 'error', 'found'),
+          summary_message(summary.skips, 'standard', 'skipped')
+        ]
+        stdout.puts(messages.join(', '))
         @any_errors = summary.fail?
       end
 
       private
+
+      def summary_message(count, noun, verb)
+        "#{count} #{noun}#{count == 1 ? '' : 's'} #{verb}"
+      end
 
       def settings
         return Configuration.for_urls(@args) if @args.any?

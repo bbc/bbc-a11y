@@ -10,6 +10,8 @@ module BBC
     # TODO: add tests for this?
     def self.configure_from_file(filename)
       Configuration::DSL.new(File.read(filename), filename).settings
+    rescue Errno::ENOENT
+      raise Configuration::MissingConfigurationFileError.new
     end
 
     module Configuration
@@ -20,6 +22,14 @@ module BBC
       def self.for_urls(urls)
         page_settings = urls.map { |url| PageSettings.new(url) }
         Settings.new.with_pages(page_settings)
+      end
+
+      MissingConfigurationFileError = Class.new(StandardError) do
+        def message
+          "Missing configuration file (a11y.rb).\n\n" +
+          "Please visit http://www.rubydoc.info/gems/bbc-a11y " +
+          "for more information."
+        end
       end
 
       ParseError = Class.new(StandardError) do

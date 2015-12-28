@@ -19,6 +19,8 @@ module BBC
         exit 1 if @any_errors
       rescue Configuration::ParseError => error
         exit_with_message error.message
+      rescue Configuration::MissingConfigurationFileError => error
+        exit_with_message error.message
       end
 
       def page_tested(page_settings, errors)

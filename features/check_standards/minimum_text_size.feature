@@ -26,7 +26,7 @@ Feature: Minimum text size
       </style>
       <span>Some text</span> with <span>more <b>text</b> also</span>.
       """
-    When I validate the minimum text size standards
+    When I validate the "minimum text size" standard
     Then it fails with the message:
       """
       Text size too small (10px): /html/body

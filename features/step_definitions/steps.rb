@@ -27,9 +27,9 @@ After do
   WebServer.delete_page "scenario.html"
 end
 
-When(/^I validate the (.+) standards?$/) do |pattern|
+When(/^I validate the \"([^\"]+)\" standard$/) do |standard_name|
   browser.execute_script(BBC::A11y::Javascript.bundle)
-  validation = browser.evaluate_script("a11y.validate(#{pattern.to_json})")
+  validation = browser.evaluate_script("a11y.validate(#{standard_name.to_json})")
   if validation['results'].size != 1
     raise "#{validation['results'].size} standards match '#{pattern}'"
   end

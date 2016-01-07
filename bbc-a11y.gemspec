@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'colorize'
 
   s.add_development_dependency 'rspec',  '~> 3.0'
-  s.add_development_dependency 'aruba'
+  s.add_development_dependency 'aruba', '~> 0.9'
   s.add_development_dependency 'pry'
   s.add_development_dependency 'rake'
   s.add_development_dependency 'cucumber'

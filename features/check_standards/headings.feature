@@ -42,6 +42,15 @@ Feature: Headings
       Found 2 h1 elements: /html/body/h1[1] /html/body/h1[2]
       """
 
+  Scenario: More than one main heading, but only one visible
+    Given a page with the HTML:
+      """
+      <h1>A Heading</h1>
+      <h1 style="display:none">Another Heading</h1>
+      """
+    When I validate the "exactly one main heading" standard
+    Then it passes
+
   Scenario: Headings in ascending order
     Given a page with the HTML:
       """

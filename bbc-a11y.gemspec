@@ -4,7 +4,7 @@ $LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
 Gem::Specification.new do |s|
   s.name        = 'bbc-a11y'
   s.version     = File.read(File.expand_path("../lib/bbc/a11y/version", __FILE__))
-  s.authors     = ["Matt Wynne", "Ian Pouncey"]
+  s.authors     = ["Matt Wynne", "Ian Pouncey", "Josh Chisholm"]
   s.description = "A tool for testing the compliance of web URLs against the BBC's accessibilty guidelines"
   s.summary     = "bbc-a11y-#{s.version}"
   s.email       = "github@ipouncey.co.uk"
@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'cucumber'
 
   s.rubygems_version = ">= 1.6.1"
-  s.files            = `git ls-files`.split("\n").reject {|path| path =~ /\.gitignore$/ }
+  s.files            = `git ls-files`.split("\n").reject { |path| path =~ /\.gitignore$/ } + ['lib/bbc/a11y/js/bundle.js']
   s.test_files       = `git ls-files -- {spec,features}/*`.split("\n")
   s.executables      = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.rdoc_options     = ["--charset=UTF-8"]

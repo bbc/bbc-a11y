@@ -5,6 +5,7 @@
   "main": "index.js",
   "directories": {},
   "scripts": {
+    "test": "karma start --single-run",
     "browserify": "browserify ./lib/bbc/a11y/js/a11y.js -o ./lib/bbc/a11y/js/bundle.js"
   },
   "repository": {

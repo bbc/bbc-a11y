@@ -12,4 +12,14 @@ describe('minimum text size standard', function() {
     standard.validate($, fail);
     expect(failures).to.eql([]);
   });
+
+  it('ignores comment nodes', function() {
+    $('<div style="font-size: 1px"><!-- this is a comment --></div>').appendTo('body');
+    var failures = [];
+    var fail = function(failure) {
+      failures.push(failure);
+    }
+    standard.validate($, fail);
+    expect(failures).to.eql([]);
+  });
 });

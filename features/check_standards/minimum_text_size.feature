@@ -45,3 +45,12 @@ Feature: Minimum text size
         """
       When I validate the "minimum text size" standard
       Then it passes
+
+    Scenario: Text nodes with only whitespace
+      Given a page with the HTML:
+        """
+        <div id="blq-global" style="font-size: 1px"> <div id="blq-pre-mast">  </div> &nbsp;
+        </div>
+        """
+      When I validate the "minimum text size" standard
+      Then it passes

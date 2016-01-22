@@ -34,3 +34,14 @@ Feature: Minimum text size
       Text size too small (10px): /html/body/span[2]
       Text size too small (9px): /html/body/span[2]/b
       """
+
+    Scenario: Hidden elements with small text
+      Given a page with the HTML:
+        """
+        <style>
+          span { display: none; }
+        </style>
+        <span style="font-size: 1px">Tiny text, but it's hidden!</span>
+        """
+      When I validate the "minimum text size" standard
+      Then it passes

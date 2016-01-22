@@ -1,6 +1,5 @@
 require 'capybara'
 require 'bbc/a11y/linter'
-require 'bbc/a11y/standards'
 require 'bbc/a11y/javascript'
 
 Given(/^a website running at http:\/\/localhost:(\d+)$/) do |port|

@@ -1,4 +1,3 @@
-require 'bbc/a11y/standards'
 require 'bbc/a11y/javascript'
 require 'phantomjs/poltergeist'
 

@@ -1,5 +1,3 @@
-require 'bbc/a11y/standards'
-
 module BBC
   module A11y
 

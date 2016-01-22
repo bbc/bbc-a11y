@@ -44,7 +44,7 @@ Nobody's perfect. Use `skip_standard` in the configuration to opt-out of certain
 
 ```
 page "http://bbc.co.uk" do
-  skip_standard /W3C/
+  skip_standard 'anchors must have hrefs' 
 end
 
 page "http://bbc.co.uk/news"

@@ -1,9 +1,5 @@
 [![Circle CI](https://circleci.com/gh/cucumber-ltd/bbc-a11y.svg?style=svg&circle-token=00d656fd091643ad692c78ca60e30ad95df9563a)](https://circleci.com/gh/cucumber-ltd/bbc-a11y)
 
-# WARNING - PROTOTYPE SOFTWARE
-
-This project is still at an experimental / proof-of-concept stage. Please set your expectations appropriately, but *do* [give us as much feedback](https://github.com/cucumber-ltd/bbc-a11y/issues) as you can.
-
 #BBC Accessibility Standards
 
 This tool runs a set of tests against a set of URLs to verify whether each one meets the [BBC accessibility standards](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/).
@@ -44,7 +40,7 @@ Nobody's perfect. Use `skip_standard` in the configuration to opt-out of certain
 
 ```
 page "http://bbc.co.uk" do
-  skip_standard 'anchors must have hrefs' 
+  skip_standard 'anchors must have hrefs'
 end
 
 page "http://bbc.co.uk/news"

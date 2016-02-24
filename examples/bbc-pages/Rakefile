@@ -1,3 +1,0 @@
-task :default do
-  sh "bundle exec ../../bin/a11y"
-end

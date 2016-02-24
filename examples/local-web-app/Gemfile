@@ -1,4 +1,0 @@
-source 'https://rubygems.org'
-
-gem 'rack'
-gem 'bbc-a11y', path: '../..'

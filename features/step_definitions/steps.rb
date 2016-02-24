@@ -65,7 +65,7 @@ end
 
 Then(/^I see red in the output$/) do
   all_output = all_commands.map { |c| c.output }.join("\n")
-  expect(all_output).to include('[0;31;49m✗')
+  expect(all_output).to include("\e[31m✗")
 end
 
 Then(/^I see monochrome output$/) do

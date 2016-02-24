@@ -2,9 +2,9 @@
 require 'bbc/a11y/configuration'
 require 'bbc/a11y/linter'
 require 'bbc/a11y/runner'
+require 'bbc/a11y/string_colours'
 require 'open-uri'
 require 'capybara'
-require 'colorize'
 
 module BBC
   module A11y
@@ -46,16 +46,16 @@ module BBC
       private
 
       def red(message)
-        colorize_if_tty(message, :red)
+        colourize_if_tty(message, :red)
       end
 
       def green(message)
-        colorize_if_tty(message, :green)
+        colourize_if_tty(message, :green)
       end
 
-      def colorize_if_tty(message, colour)
+      def colourize_if_tty(message, colour)
         if tty?
-          message.colorize(colour)
+          message.send(colour)
         else
           message
         end

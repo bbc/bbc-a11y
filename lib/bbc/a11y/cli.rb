@@ -41,6 +41,9 @@ module BBC
         ]
         stdout.puts(messages.join(', '))
         @any_errors = summary.fail?
+        unless @any_errors
+          stdout.puts NO_ERRORS_MESSAGE
+        end
       end
 
       private
@@ -85,6 +88,16 @@ module BBC
 
       HELP = %{
 Usage: a11y [url]
+}
+
+      NO_ERRORS_MESSAGE = %{
+No errors found. But please remember:
+
+"Testing shows the presence, not the absence of bugs" -- Edsger W. Dijkstra
+
+I am only a robot. Always make time to perform manual testing using assistive
+technologies like VoiceOver, JAWS and NVDA to make sure you're providing a good
+user experience.
 }
 
     end

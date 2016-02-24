@@ -1,4 +1,4 @@
-var standard = require('../../../../lib/bbc/a11y/js/standards/minimumTextSize');
+var standard = require('../../../../lib/bbc/a11y/js/standards/minimumTextSize/minimumTextSize');
 var $ = require('jquery');
 var expect = require('chai').expect;
 

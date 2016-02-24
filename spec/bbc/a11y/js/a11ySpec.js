@@ -20,15 +20,15 @@ describe('a11y', function() {
         ]
       },
       {
-        "standard":"Exactly one main landmark",
-        "errors":[
-          ['Found 0 elements with role="main".']
-        ]
-      },
-      {
         "standard":"Html must have lang attribute",
         "errors":[
           ["html tag has no lang attribute:","/html"]
+        ]
+      },
+      {
+        "standard":"Exactly one main landmark",
+        "errors":[
+          ['Found 0 elements with role="main".']
         ]
       }
     ];

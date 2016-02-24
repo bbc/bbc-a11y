@@ -17,7 +17,7 @@ Feature: Correctly use form labels
   reasonably expect to be able to use.
 
   Scenario: All fields have labels or title attributes
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <label for="search">Search the BBC</label>
       <input type="text" id="search" name="q" />
@@ -33,7 +33,7 @@ Feature: Correctly use form labels
     Then it passes
 
   Scenario: Some fields without labels or title attributes
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <input type="text" name="name" title="Name" />
       <input type="email" name="email" title="Email" />
@@ -56,7 +56,7 @@ Feature: Correctly use form labels
 
   Scenario: Hidden fields do not need titles
 
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <input type=hidden name=a value=b>
       """

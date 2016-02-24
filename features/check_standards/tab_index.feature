@@ -18,7 +18,7 @@ Feature: Correctly use `tabindex` attributes
   control such as a `<a>` or `<button>`.
 
   Scenario: Element with negative tab index
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <a href="/news">News</a>
       <button type="submit">Search</button>
@@ -28,7 +28,7 @@ Feature: Correctly use `tabindex` attributes
     Then it passes
 
   Scenario: Focusable elements with zero tab index
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <a href="/news" tabindex="0">News</a>
       <button tabindex="0">Search</button>
@@ -40,7 +40,7 @@ Feature: Correctly use `tabindex` attributes
     Then it passes
 
   Scenario: Unfocusable element with zero tab index
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <a href="/news" tabindex="1">News</a>
       <button type="submit" tabindex="2">Search</button>

@@ -5,7 +5,7 @@ Feature: Provide muting tips
   warning.
 
   Scenario: Generate a warning where there are several bad elements
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <div id="my-amazing-code">
         <h1>I am wonderfull</h1>

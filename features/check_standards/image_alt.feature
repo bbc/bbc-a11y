@@ -18,7 +18,7 @@ Feature: Image alternative content
   the value of the alt attribute or in the immediately surrounding text content.
 
   Scenario: Images with alt attributes
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <img src="a.jpeg" alt="A picture of something" />
       <img src="b.jpeg" alt="" />
@@ -27,7 +27,7 @@ Feature: Image alternative content
     Then it passes
 
   Scenario: Images without alt attributes
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <img src="a.jpeg" alt="A picture of something" />
       <img src="b.jpeg" />

@@ -16,9 +16,15 @@ Given(/^one test fails$/) do
   step "I run `a11y http://localhost:54321/missing_header.html`"
 end
 
-Given(/^a page with the HTML:$/) do |string|
+Given(/^a page with the HTML:$/) do |html|
   WebServer.ensure_running_on(54321)
-  WebServer.write_page "scenario.html", "<html><body>#{string}</body></html>"
+  WebServer.write_page "scenario.html", html
+  browser.visit 'http://localhost:54321/scenario.html'
+end
+
+Given(/^a page with the body:$/) do |body_html|
+  WebServer.ensure_running_on(54321)
+  WebServer.write_page "scenario.html", "<html><body>#{body_html}</body></html>"
   browser.visit 'http://localhost:54321/scenario.html'
 end
 

@@ -12,7 +12,7 @@ Feature: Mute errors
     real examples?
 
   Scenario: Mute any errors from a specific standard
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <p>yo</p>
       """

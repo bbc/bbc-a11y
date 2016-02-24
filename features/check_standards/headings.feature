@@ -19,7 +19,7 @@ Feature: Headings
   be followed either by non-heading content or by a heading of one level deeper.
 
   Scenario: No main heading
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <h2>Heading 2</h2>
       """
@@ -30,7 +30,7 @@ Feature: Headings
       """
 
   Scenario: More than one main heading
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <h1>Heading 1</h1>
       <h2>Heading 2</h2>
@@ -43,7 +43,7 @@ Feature: Headings
       """
 
   Scenario: More than one main heading, but only one visible
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <h1>A Heading</h1>
       <h1 style="display:none">Another Heading</h1>
@@ -52,7 +52,7 @@ Feature: Headings
     Then it passes
 
   Scenario: Headings in ascending order
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <h1>Heading 1</h1>
       <h2>Heading 2</h2>
@@ -65,7 +65,7 @@ Feature: Headings
     Then it passes
 
   Scenario: Headings in invalid order
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <h1>Heading 1</h1>
       <h3>Heading 3</h3>
@@ -78,7 +78,7 @@ Feature: Headings
       """
 
   Scenario: Headings jump back up more than one level
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <h1>Heading 1</h1>
       <h2>Heading 2</h2>
@@ -91,7 +91,7 @@ Feature: Headings
     Then it passes
 
   Scenario: Heading is hidden
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <h1>Heading 1</h1>
       <h3 style="display:none">Heading 3</h3>
@@ -104,7 +104,7 @@ Feature: Headings
       """
 
   Scenario: Heading in a script tag
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <h1>Heading 1</h1>
       <script>
@@ -116,7 +116,7 @@ Feature: Headings
     Then it passes
 
   Scenario: Subheading before the first main heading
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <h3>Ignore me</h3>
       <h1>Heading 1</h1>
@@ -126,7 +126,7 @@ Feature: Headings
     Then it passes
 
     Scenario: Content between headings
-      Given a page with the HTML:
+      Given a page with the body:
         """
         <div role="main">
           <h1>Main heading</h1>
@@ -145,7 +145,7 @@ Feature: Headings
       Then it passes
 
   Scenario: No content between headings
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <div role="main">
         <h1>Main heading</h1>

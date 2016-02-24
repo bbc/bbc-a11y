@@ -19,7 +19,7 @@ Feature: Form Interactions
   beneficial to low vision users as an indication of the end of the form.
 
   Scenario: Form with a submit input
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <form action="/search">
         <label for="q">Search term:</label>
@@ -31,7 +31,7 @@ Feature: Form Interactions
     Then it passes
 
   Scenario: Form with no submit button
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <form action="/search">
         <label for="q">Search term:</label>
@@ -44,7 +44,7 @@ Feature: Form Interactions
       Form has no submit button: /html/body/form
       """
   Scenario: Form with a submit button
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <form action="/search">
         <label for="q">Search term:</label>

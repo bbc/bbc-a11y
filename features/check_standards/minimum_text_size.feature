@@ -13,7 +13,7 @@ Feature: Minimum text size
   with browser tools to resize content.
 
   Scenario: Small text
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <style>
         body {
@@ -36,7 +36,7 @@ Feature: Minimum text size
       """
 
     Scenario: Hidden elements with small text
-      Given a page with the HTML:
+      Given a page with the body:
         """
         <style>
           span { display: none; }
@@ -47,7 +47,7 @@ Feature: Minimum text size
       Then it passes
 
     Scenario: Text nodes with only whitespace
-      Given a page with the HTML:
+      Given a page with the body:
         """
         <div id="blq-global" style="font-size: 1px"> <div id="blq-pre-mast">  </div> &nbsp;
         </div>

@@ -17,7 +17,7 @@ Feature: Correctly use `title` attributes
   - Do not use `title` attributes and explicit labels together on form fields
 
   Scenario: Form field with title attribute
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <button type="button" title="Close Button">
         <img src="close.png" />
@@ -27,7 +27,7 @@ Feature: Correctly use `title` attributes
     Then it passes
 
   Scenario: Anchor tag with title attribute
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <a href="close" title="Close Button">
         <img src="close.png" />

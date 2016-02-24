@@ -33,7 +33,7 @@ Feature: Focusable Controls
   causing confusion to users.
 
   Scenario: All anchor tags have href attributes
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <button type="button">Open panel</button>
       <ul>
@@ -46,7 +46,7 @@ Feature: Focusable Controls
     Then it passes
 
   Scenario: Some anchor tags do not have href attributes
-    Given a page with the HTML:
+    Given a page with the body:
       """
       <ul>
           <li><a>News</a></li>

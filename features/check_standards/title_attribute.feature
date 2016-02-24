@@ -26,6 +26,14 @@ Feature: Correctly use `title` attributes
     When I validate the "title attributes only on inputs" standard
     Then it passes
 
+  Scenario: Hidden element with title attribute
+    Given a page with the body:
+      """
+      <iframe style="display:none" title="Ignore me, I'm invisible"></iframe>
+      """
+    When I validate the "title attributes only on inputs" standard
+    Then it passes
+
   Scenario: Anchor tag with title attribute
     Given a page with the body:
       """

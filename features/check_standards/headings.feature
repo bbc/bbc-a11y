@@ -125,24 +125,34 @@ Feature: Headings
     When I validate the "headings must be in ascending order" standard
     Then it passes
 
-    Scenario: Content between headings
-      Given a page with the body:
-        """
-        <div role="main">
-          <h1>Main heading</h1>
-          <p>non-heading content</p>
-          <h2>Another heading</h2>
-          <p>non-heading content</p>
-          <h3>Main content</h3>
-          non-heading content
-          <h2>Secondary content</h2>
-          <p>non-heading content</p>
-          <h2>Tertiary content</h2>
-          non-heading content
-        </div>
-        """
-      When I validate the "content must follow headings" standard
-      Then it passes
+  Scenario: Content between headings
+    Given a page with the body:
+      """
+      <div role="main">
+        <h1>Main heading</h1>
+        <p>non-heading content</p>
+        <h2>Another heading</h2>
+        <p>non-heading content</p>
+        <h3>Main content</h3>
+        non-heading content
+        <h2>Secondary content</h2>
+        <p>non-heading content</p>
+        <h2>Tertiary content</h2>
+        non-heading content
+      </div>
+      """
+    When I validate the "content must follow headings" standard
+    Then it passes
+
+  Scenario: Heading followed by subheading
+    Given a page with the body:
+      """
+      <h1>Main heading</h1>
+      <h2>Another heading</h2>
+      <p>...and some content</p>
+      """
+    When I validate the "content must follow headings" standard
+    Then it passes
 
   Scenario: No content between headings
     Given a page with the body:

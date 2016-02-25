@@ -15,6 +15,7 @@ module BBC
       end
 
       def call
+        @current_section = nil
         Runner.new(settings, self).run
         exit 1 if @any_errors
       rescue Configuration::ParseError => error

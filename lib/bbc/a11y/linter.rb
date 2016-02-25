@@ -36,6 +36,7 @@ module BBC
       end
 
       def self.from_json(json)
+        raise json.inspect
         errors = json["results"].map { |standard|
           standard["errors"].map { |error| error.join " " }
         }.flatten

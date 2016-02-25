@@ -14,19 +14,28 @@ describe('a11y', function() {
     });
     var expectedErrors = [
       {
-        "standard":"Exactly one main heading",
+        "standard": {
+          "section": "headings",
+          "name": "Exactly one main heading"
+        },
         "errors":[
           ["Found 0 h1 elements."]
         ]
       },
       {
-        "standard":"Html must have lang attribute",
+        "standard": {
+          "section": "indicatingLanguage",
+          "name": "Html must have lang attribute"
+        },
         "errors":[
           ["html tag has no lang attribute:","/html"]
         ]
       },
       {
-        "standard":"Exactly one main landmark",
+        "standard": {
+          "section": "mainLandmark",
+          "name": "Exactly one main landmark"
+        },
         "errors":[
           ['Found 0 elements with role="main".']
         ]

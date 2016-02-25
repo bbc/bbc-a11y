@@ -47,7 +47,7 @@ end
 
 Then(/^it fails with the message:$/) do |message|
   expect(@result).to be_failed
-  expect(@result.to_s).to eq message.to_s
+  expect(@result.errors.map { |e| e.message}.join("\n")).to eq message
 end
 
 Given(/^I am using a TTY terminal$/) do

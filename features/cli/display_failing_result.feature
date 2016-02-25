@@ -6,7 +6,7 @@ Feature: Display failing result
     Then it should fail with:
       """
       ✗ http://localhost:54321/missing_header.html
-        ✗ Headings > Exactly One Main Heading
+        * Headings > Exactly one main heading
           - Found 0 h1 elements.
       """
 
@@ -15,9 +15,9 @@ Feature: Display failing result
     When I run `a11y http://localhost:54321/two_headings_failures.html`
     Then it should fail with:
       """
-      ✗ http://localhost:54321/two_failures.html
-        ✗ Headings > Exactly One Main Heading
-          - Found 0 h1 elements.
-        ✗ Headings > Content Follows Headings
+      ✗ http://localhost:54321/two_headings_failures.html
+        * Headings > Content must follow headings
+          - No content follows: /html/body/h2
+        * Headings > Exactly one main heading
           - Found 0 h1 elements.
       """

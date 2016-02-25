@@ -1,4 +1,4 @@
-Feature: Correctly use `tabindex` attributes
+Feature: Tab Index
 
   Positive `tabindex` attribute values **must not** be used to create a logical tab order.
 

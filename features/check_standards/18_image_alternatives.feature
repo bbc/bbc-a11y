@@ -1,4 +1,4 @@
-Feature: Image alternative content
+Feature: Image Alternatives
 
   All images **must** have an alt attribute.
 

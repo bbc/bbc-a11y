@@ -1,4 +1,4 @@
-Feature: Correctly use form labels
+Feature: Form Labels
 
   Form fields that allow input (`select`, and `textarea` elements, and all
   `input` element types other than image, submit, reset, button, or hidden)

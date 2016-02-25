@@ -1,4 +1,4 @@
-Feature: Correctly use `title` attributes
+Feature: Title Attributes
 
   `title` attributes **must not** be used for critical information and **must not** repeat content that is already visible and associated with the same control or content.
 

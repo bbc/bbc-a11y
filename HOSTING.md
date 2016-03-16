@@ -26,22 +26,23 @@ separate heroku apps connected over the internet.
 ## Example: Deploying to Heroku
 
 We've made a few tweaks to the pa11y apps to make it possible to deploy them to
-[12-factor](http://12factor.net/) hosting environments like
+[12 factor](http://12factor.net/) hosting environments like
 [heroku](http://heroku.com). We're hoping these changes are merged into pa11y,
 but until then, you can deploy these forks of pa11y to heroku, specifically the
-`12-factor` branches, as follows:
+`bbc-a11y` branches, like this:
 
 ```
 git clone https://github.com/joshski/pa11y-webservice
 cd pa11y-webservice
 heroku create your-pa11y-webservice
-git push heroku 12-factor:master
+heroku buildpacks:set https://github.com/datamail/heroku-buildpack-nodejs-phantomjs.git
+git push heroku bbc-a11y:master
 cd ..
 
 git clone https://github.com/joshski/pa11y-dashboard
 cd pa11y-dashboard
 heroku create your-pa11y-dashboard
-git push heroku 12-factor:master
+git push heroku bbc-a11y:master
 cd ..
 ```
 

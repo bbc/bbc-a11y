@@ -6,7 +6,7 @@ Feature: Display failing result
     Then it should fail with:
       """
       ✗ http://localhost:54321/missing_header.html
-        * Headings > Exactly one main heading
+        * Headings: Exactly one main heading
           - Found 0 h1 elements.
       """
 
@@ -16,8 +16,8 @@ Feature: Display failing result
     Then it should fail with:
       """
       ✗ http://localhost:54321/two_headings_failures.html
-        * Headings > Content must follow headings
+        * Headings: Content must follow headings
           - No content follows: /html/body/h2
-        * Headings > Exactly one main heading
+        * Headings: Exactly one main heading
           - Found 0 h1 elements.
       """

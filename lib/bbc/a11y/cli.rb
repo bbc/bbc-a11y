@@ -32,8 +32,8 @@ module BBC
           current_name = nil
           lint_result.errors.each do |error|
             if error.section != current_section || error.name != current_name
-              humanised_section = error.section.gsub(/[A-Z]/) { |a| ' ' + a }.gsub(/^\w/) { |w| w.upcase }
-              stdout.puts "  * #{humanised_section} > #{error.name}"
+              humanised_section = humanise(error.section)
+              stdout.puts "  * #{humanised_section}: #{error.name}"
             end
             stdout.puts "    - #{error.message}"
             current_section = error.section
@@ -57,6 +57,10 @@ module BBC
       end
 
       private
+
+      def humanise(word)
+        word.gsub(/[A-Z]/) { |a| ' ' + a }.gsub(/^\w/) { |w| w.upcase }
+      end
 
       def red(message)
         colourize_if_tty(message, :red)

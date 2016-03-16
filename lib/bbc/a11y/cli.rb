@@ -28,7 +28,17 @@ module BBC
           stdout.puts green("✓ #{page_settings.url}")
         else
           stdout.puts red("✗ #{page_settings.url}")
-          stdout.puts lint_result.errors.map { |error| "  - #{error}" }.join("\n")
+          current_section = nil
+          current_name = nil
+          lint_result.errors.each do |error|
+            if error.section != current_section || error.name != current_name
+              humanised_section = humanise(error.section)
+              stdout.puts "  * #{humanised_section}: #{error.name}"
+            end
+            stdout.puts "    - #{error.message}"
+            current_section = error.section
+            current_name = error.name
+          end
         end
         stdout.puts ""
       end
@@ -47,6 +57,10 @@ module BBC
       end
 
       private
+
+      def humanise(word)
+        word.gsub(/[A-Z]/) { |a| ' ' + a }.gsub(/^\w/) { |w| w.upcase }
+      end
 
       def red(message)
         colourize_if_tty(message, :red)

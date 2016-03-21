@@ -38,6 +38,7 @@ When(/^I validate the \"([^\"]+)\" standard$/) do |standard_name|
   if validation['results'].size != 1
     raise "#{validation['results'].size} standards match '#{pattern}'"
   end
+  puts validation['results'].inspect
   @result = BBC::A11y::LintResult.from_json(validation)
 end
 

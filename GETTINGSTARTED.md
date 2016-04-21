@@ -41,7 +41,7 @@ checks.
 
 ```
 page "http://bbc.co.uk" do
-  skip_standard 'anchors must have hrefs'
+  skip_standard 'Focusable controls: Anchors must have hrefs'
 end
 
 page "http://bbc.co.uk/news"

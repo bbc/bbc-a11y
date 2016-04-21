@@ -16,7 +16,7 @@ Feature: Mute errors
       """
       <p>yo</p>
       """
-    When I validate the "exactly one main heading" standard
+    When I validate the "Headings: exactly one main heading" standard
     Then it fails with the message:
       """
       Found 0 h1 elements.

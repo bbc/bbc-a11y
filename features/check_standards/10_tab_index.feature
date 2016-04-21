@@ -24,7 +24,7 @@ Feature: Tab Index
       <button type="submit">Search</button>
       <div tabindex="-1"></div>
       """
-    When I validate the "elements with zero tab index must be fields" standard
+    When I validate the "Tab index: elements with zero tab index must be fields" standard
     Then it passes
 
   Scenario: Focusable elements with zero tab index
@@ -36,7 +36,7 @@ Feature: Tab Index
       <select tabindex="0"></select>
       <textarea tabindex="0"></textarea>
       """
-    When I validate the "elements with zero tab index must be fields" standard
+    When I validate the "Tab index: elements with zero tab index must be fields" standard
     Then it passes
 
   Scenario: Unfocusable element with zero tab index
@@ -47,7 +47,7 @@ Feature: Tab Index
       <div tabindex="3"></div>
       <div tabindex="0"></div>
       """
-    When I validate the "elements with zero tab index must be fields" standard
+    When I validate the "Tab index: elements with zero tab index must be fields" standard
     Then it fails with the message:
       """
       Non-field element with tabindex=0: /html/body/div[2]

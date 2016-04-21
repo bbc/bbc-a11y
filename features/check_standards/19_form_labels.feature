@@ -29,7 +29,7 @@ Feature: Form Labels
 
       <input type="text" name="q" title="Search the BBC" />
       """
-    When I validate the "fields must have labels or titles" standard
+    When I validate the "Form labels: fields must have labels or titles" standard
     Then it passes
 
   Scenario: Some fields without labels or title attributes
@@ -44,7 +44,7 @@ Feature: Form Labels
       <input type="text" name="q" aria-label="Search the BBC" />
       <input type="text" name="q" placeholder="Search the BBC" />
       """
-    When I validate the "fields must have labels or titles" standard
+    When I validate the "Form labels: fields must have labels or titles" standard
     Then it fails with the message:
       """
       Field has no label or title attribute: /html/body/textarea
@@ -60,5 +60,5 @@ Feature: Form Labels
       """
       <input type=hidden name=a value=b>
       """
-    When I validate the "fields must have labels or titles" standard
+    When I validate the "Form labels: fields must have labels or titles" standard
     Then it passes

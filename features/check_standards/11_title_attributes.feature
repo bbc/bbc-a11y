@@ -23,7 +23,7 @@ Feature: Title Attributes
         <img src="close.png" />
       </button>
       """
-    When I validate the "title attributes only on inputs" standard
+    When I validate the "Title attributes: title attributes only on inputs" standard
     Then it passes
 
   Scenario: Hidden element with title attribute
@@ -31,7 +31,7 @@ Feature: Title Attributes
       """
       <iframe style="display:none" title="Ignore me, I'm invisible"></iframe>
       """
-    When I validate the "title attributes only on inputs" standard
+    When I validate the "Title attributes: title attributes only on inputs" standard
     Then it passes
 
   Scenario: Anchor tag with title attribute
@@ -41,7 +41,7 @@ Feature: Title Attributes
         <img src="close.png" />
       </a>
       """
-    When I validate the "title attributes only on inputs" standard
+    When I validate the "Title attributes: title attributes only on inputs" standard
     Then it fails with the message:
       """
       Non-input element has title attribute: /html/body/a

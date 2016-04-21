@@ -5,7 +5,7 @@ Feature: Skipping Standards
     And a file named "a11y.rb" with:
       """
       page "http://localhost:54321/missing_header.html" do
-        skip_standard "exactly one main heading"
+        skip_standard "Headings: exactly one main heading"
       end
       """
     When I run `a11y`

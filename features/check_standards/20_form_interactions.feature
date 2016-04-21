@@ -27,7 +27,7 @@ Feature: Form Interactions
         <input type="submit" value="Search">
       </form>
       """
-    When I validate the "forms must have submit buttons" standard
+    When I validate the "Form interactions: forms must have submit buttons" standard
     Then it passes
 
   Scenario: Form with no submit button
@@ -38,7 +38,7 @@ Feature: Form Interactions
         <input type="text" name="q" id="q">
       </form>
       """
-    When I validate the "forms must have submit buttons" standard
+    When I validate the "Form interactions: forms must have submit buttons" standard
     Then it fails with the message:
       """
       Form has no submit button: /html/body/form
@@ -52,5 +52,5 @@ Feature: Form Interactions
         <button type="submit">Search</button>
       </form>
       """
-    When I validate the "forms must have submit buttons" standard
+    When I validate the "Form interactions: forms must have submit buttons" standard
     Then it passes

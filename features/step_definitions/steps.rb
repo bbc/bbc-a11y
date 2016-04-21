@@ -36,9 +36,8 @@ When(/^I validate the \"([^\"]+)\" standard$/) do |standard_name|
   browser.execute_script(BBC::A11y::Javascript.bundle)
   validation = browser.evaluate_script("a11y.validate(#{standard_name.to_json})")
   if validation['results'].size != 1
-    raise "#{validation['results'].size} standards match '#{pattern}'"
+    raise "#{validation['results'].size} standards match '#{standard_name}' (expected 1 match)"
   end
-  puts validation['results'].inspect
   @result = BBC::A11y::LintResult.from_json(validation)
 end
 

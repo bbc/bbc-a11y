@@ -45,7 +45,7 @@ describe('a11y', function() {
   });
 
   it('skips standards', function() {
-    var validation = a11y.validate({ skip: ['Exactly one main landmark'] });
+    var validation = a11y.validate({ skip: ['Main landmark: Exactly one main landmark'] });
     expect(validation.skipped).to.eql(['Exactly one main landmark']);
   });
 });

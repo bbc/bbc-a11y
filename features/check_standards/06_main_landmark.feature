@@ -12,7 +12,7 @@ Feature: Main landmark
       """
       <div role="main">Main element</div>
       """
-    When I validate the "exactly one main landmark" standard
+    When I validate the "Main landmark: exactly one main landmark" standard
     Then it passes
 
   Scenario: Page has two main elements
@@ -21,7 +21,7 @@ Feature: Main landmark
       <div role="main">Main one</div>
       <div role="main">Main two</div>
       """
-    When I validate the "exactly one main landmark" standard
+    When I validate the "Main landmark: exactly one main landmark" standard
     Then it fails with the message:
       """
       Found 2 elements with role="main": /html/body/div[1] /html/body/div[2]
@@ -32,7 +32,7 @@ Feature: Main landmark
       """
       <div role="not-main">Main one</div>
       """
-    When I validate the "exactly one main landmark" standard
+    When I validate the "Main landmark: exactly one main landmark" standard
     Then it fails with the message:
       """
       Found 0 elements with role="main".

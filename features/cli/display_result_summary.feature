@@ -7,7 +7,7 @@ Feature: Display result summary
       page "http://localhost:54321/perfect.html"
       page "http://localhost:54321/missing_header.html"
       page "http://localhost:54321/missing_header.html?again!" do
-        skip_standard "exactly one main heading"
+        skip_standard "Headings: exactly one main heading"
       end
       """
     When I run `a11y`

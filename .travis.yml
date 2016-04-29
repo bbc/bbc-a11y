@@ -3,6 +3,7 @@ rvm:
   2.2
 before_script:
   - npm install
+  - export PATH=$PWD/node_modules/.bin:$PATH
 script:
   - bundle exec rake
   - npm test

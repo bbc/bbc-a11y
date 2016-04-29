@@ -18,18 +18,14 @@ end
 
 Given(/^a page with the HTML:$/) do |html|
   WebServer.ensure_running_on(54321)
-  WebServer.write_page "scenario.html", html
-  browser.visit 'http://localhost:54321/scenario.html'
+  browser.visit 'http://localhost:54321/blank.html'
+  browser.execute_script "document.write(#{html.to_json});"
 end
 
 Given(/^a page with the body:$/) do |body_html|
   WebServer.ensure_running_on(54321)
-  WebServer.write_page "scenario.html", "<html><body>#{body_html}</body></html>"
-  browser.visit 'http://localhost:54321/scenario.html'
-end
-
-After do
-  WebServer.delete_page "scenario.html"
+  browser.visit 'http://localhost:54321/blank.html'
+  browser.execute_script "document.body.innerHTML = #{body_html.to_json}"
 end
 
 When(/^I validate the \"([^\"]+)\" standard$/) do |standard_name|

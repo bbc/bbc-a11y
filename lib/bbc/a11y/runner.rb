@@ -1,8 +1,9 @@
 require 'bbc/a11y/javascript'
 require 'phantomjs/poltergeist'
+require 'phantomjs'
 
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, js_errors: false)
+  Capybara::Poltergeist::Driver.new(app, js_errors: false, :phantomjs => Phantomjs.path)
 end
 
 Capybara.default_driver = :poltergeist

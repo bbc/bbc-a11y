@@ -17,7 +17,9 @@ then:
 
 Create or amend your your project's `Gemfile` to include this line:
 
-    gem 'bbc-a11y`
+    gem 'bbc-a11y'
+    
+    source 'https://rubygems.org'
 
 Now install the gem:
 

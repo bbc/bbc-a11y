@@ -74,21 +74,17 @@ module BBC
       class PageSettings
         attr_reader :url
         attr_reader :skipped_standards
+        attr_reader :only_standards
 
-        def initialize(url, skipped_standards=[])
+        def initialize(url, skipped_standards=[], only_standards=[])
           @url = url
           @skipped_standards = skipped_standards
+          @only_standards = only_standards
           freeze
         end
 
         def merge(other)
           self.class.new(url, skipped_standards + other.skipped_standards)
-        end
-
-        def skip_standard?(standard)
-          @skipped_standards.any? { |pattern|
-            pattern.match(standard.name)
-          }
         end
       end
 
@@ -151,6 +147,10 @@ module BBC
 
         def skip_standard(pattern)
           @settings.skipped_standards << pattern
+        end
+
+        def only_standard(pattern)
+          @settings.only_standards << pattern
         end
 
       end

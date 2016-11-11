@@ -18,7 +18,7 @@ then:
 Create or amend your your project's `Gemfile` to include this line:
 
     gem 'bbc-a11y'
-    
+
     source 'https://rubygems.org'
 
 Now install the gem:
@@ -49,7 +49,14 @@ end
 page "http://bbc.co.uk/news"
 ```
 
-A11y will skip any standards from whose name matches that string.
+A11y will skip any standards from whose name matches that string. Or you could
+use `only_standard` when you want to focus your attention on just one problem:
+
+```
+page "http://bbc.co.uk" do
+  only_standard 'Focusable controls: Anchors must have hrefs'
+end
+```
 
 ## Running it
 

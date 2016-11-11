@@ -23,9 +23,9 @@ describe('standards', function() {
     });
   });
 
-  describe('.matching({ only: "Focusable controls: Anchors must have hrefs" })', function() {
+  describe('.matching({ only: ["Focusable controls: Anchors must have hrefs"] })', function() {
     it('finds one standard', function() {
-      var matches = standards.matching({ only: "Focusable controls: Anchors must have hrefs" });
+      var matches = standards.matching({ only: ["Focusable controls: Anchors must have hrefs"] });
       expect(matches.standards.length).to.equal(1);
     });
   });

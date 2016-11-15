@@ -17,9 +17,11 @@ then:
 
 Create or amend your your project's `Gemfile` to include the `bbc-a11y` gem:
 
-    source 'https://rubygems.org'
-    
-    gem 'bbc-a11y'
+```ruby
+source 'https://rubygems.org'
+
+gem 'bbc-a11y'
+```
 
 Now install the gem:
 
@@ -31,7 +33,7 @@ You'll need to configure a11y with a set of URLs to run the checks against.
 Create a file called `a11y.rb` in the root of your project that looks something
 like this:
 
-```
+```ruby
 page "http://bbc.co.uk"
 page "http://bbc.co.uk/news"
 ```
@@ -41,7 +43,7 @@ page "http://bbc.co.uk/news"
 Nobody's perfect. Use `skip_standard` in the configuration to opt-out of certain
 checks.
 
-```
+```ruby
 page "http://bbc.co.uk" do
   skip_standard 'Focusable controls: Anchors must have hrefs'
 end
@@ -52,7 +54,7 @@ page "http://bbc.co.uk/news"
 A11y will skip any standards from whose name matches that string. Or you could
 use `only_standard` when you want to focus your attention on just one problem:
 
-```
+```ruby
 page "http://bbc.co.uk" do
   only_standard 'Focusable controls: Anchors must have hrefs'
 end

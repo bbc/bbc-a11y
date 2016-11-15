@@ -15,11 +15,11 @@ then:
 
 ### Adding a11y to your project's Gemfile
 
-Create or amend your your project's `Gemfile` to include this line:
-
-    gem 'bbc-a11y'
+Create or amend your your project's `Gemfile` to include the `bbc-a11y` gem:
 
     source 'https://rubygems.org'
+    
+    gem 'bbc-a11y'
 
 Now install the gem:
 

@@ -5,7 +5,7 @@ module BBC
       def lint(page_settings)
         browser.visit page_settings.url
         browser.execute_script(BBC::A11y::Javascript.bundle)
-        criteria = { skip: page_settings.skipped_standards }.to_json
+        criteria = { skip: page_settings.skipped_standards, only: page_settings.only_standards }.to_json
         validation = browser.evaluate_script("a11y.validate(#{criteria})")
         LintResult.from_json(validation)
       end

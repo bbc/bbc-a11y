@@ -48,4 +48,10 @@ describe('a11y', function() {
     var validation = a11y.validate({ skip: ['Main landmark: Exactly one main landmark'] });
     expect(validation.skipped).to.eql(['Exactly one main landmark']);
   });
+
+  it('only runs specific standards', function() {
+    var validation = a11y.validate({ only: ['Main landmark: Exactly one main landmark'] });
+    expect(validation.results.length).to.equal(1)
+    expect(validation.results[0].standard.name).to.equal('Exactly one main landmark')
+  });
 });

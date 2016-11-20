@@ -23,6 +23,7 @@
     "browser-monkey": "^1.26.3",
     "browserify": "^12.0.1",
     "chai": "^3.4.1",
+    "cucumber-electron": "^1.0.1",
     "jquery": "^2.1.4",
     "karma": "^0.13.16",
     "karma-browserify": "^4.4.2",

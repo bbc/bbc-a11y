@@ -5,7 +5,7 @@
   "main": "index.js",
   "directories": {},
   "scripts": {
-    "test": "karma start --single-run --browsers PhantomJS && ./cucumber",
+    "test": "karma start --single-run --browsers PhantomJS && ./node_modules/.bin/cucumber-electron",
     "browserify": "browserify ./lib/bbc/a11y/js/a11y.js -o ./lib/bbc/a11y/js/bundle.js",
     "watchify": "watchify ./lib/bbc/a11y/js/a11y.js -o ./lib/bbc/a11y/js/bundle.js"
   },

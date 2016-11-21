@@ -109,12 +109,12 @@ module.exports = function() {
   })
 
   this.Then(/^it should fail with:$/, function (string) {
-    var output = this.stderr + this.stdout
+    var output = this.stdout + this.stderr
     assert(output.indexOf(string) > -1, "Expected:\n" + string + "\nActual:\n" + output)
   })
 
   this.Then(/^it should fail with exactly:$/, function (string) {
-    var output = this.stderr + this.stdout
+    var output = this.stdout + this.stderr
     assert.equal(string, output, "Expected:\n" + string + "\nActual:\n" + output)
   })
 
@@ -127,7 +127,11 @@ module.exports = function() {
     var actualMessage = this.validationResult.results.filter(function(result) {
       return result.errors.length > 0
     }).map(function(err) {
-      return err.errors.map(function(e) { return e.join(" ") }).join("\n");
+      return err.errors.map(function(e) {
+        return e.map(function(a) {
+          return a.xpath ? a.xpath : a
+        }).join(" ")
+      }).join("\n");
     }).join("\n")
     assert.equal(message, actualMessage)
   })

@@ -26,7 +26,7 @@ function createWindow () {
 
   mainWindow.webContents.on('devtools-opened', () => {
     setImmediate(() => {
-      mainWindow.show()
+      // mainWindow.show()
       // mainWindow.webContents.inspectElement(100, 101)
     })
   })

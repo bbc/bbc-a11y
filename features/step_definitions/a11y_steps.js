@@ -13,7 +13,7 @@ function runA11y(args) {
   return new Promise(function(resolve, reject) {
     const execFile = require('child_process').execFile
     const result = {}
-    var child = execFile(path.resolve(__dirname, '../../bin/a11y'), (args && [args]) || [], { cwd: tempDir }, (error, stdout, stderr) => {
+    var child = execFile(path.resolve(__dirname, '../../bin/a11y.js'), (args && [args]) || [], { cwd: tempDir }, (error, stdout, stderr) => {
       if (error) {
         result.error = error
       }

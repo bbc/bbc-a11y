@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>BBC a11y</title>
+    <style>
+      * { box-sizing: border-box; }
+      header { display: flex; padding: 10px; flex-flow: row; }
+      header > * { font-size: 1em }
+      body { height: 100vh; display: flex; flex-flow: column; margin: 0; padding: 0; background-color: #eee }
+      #addressBar { display: flex; flex: 1 1 auto; margin: 0; max-height: 30px; border-bottom: 1px solid #fff; margin-right: 10px }
+      iframe { display: flex; flex: 1 1 auto; margin: 0; border: none; background-color: #fff; border-top: 1px solid #ccc }
+    </style>
+  </head>
+  <body>
+    <header>
+      <input id="addressBar" type="text" />
+      <button id="nextPageButton">Next</button>
+    </header>
+    <iframe id="mainFrame"></iframe>
+  </body>
+  <script>
+    require('./renderer')
+  </script>
+</html>

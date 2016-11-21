@@ -20,7 +20,7 @@ Feature: Report configuration errors
 
       `paage` is not part of the configuration language
 
-      For help learning the configuration DSL, please visit https://github.com/cucumber-ltd/bbc-a11y
+      For help learning the configuration DSL, please visit https://github.com/bbc/bbc-a11y
 
       """
 
@@ -38,6 +38,6 @@ Feature: Report configuration errors
 
         divided by 0
 
-        For help learning the configuration DSL, please visit https://github.com/cucumber-ltd/bbc-a11y
+        For help learning the configuration DSL, please visit https://github.com/bbc/bbc-a11y
 
         """

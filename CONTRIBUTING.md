@@ -3,8 +3,8 @@
 ## How can I contribute?
 
 We welcome contributions of all shapes and sizes, but we prefer them in the form
-of Github [issues](https://github.com/cucumber-ltd/bbc-a11y/issues/new) or [pull requests](https://help.github.com/articles/using-pull-requests). Please have a quick look at our [existing
-issues](https://github.com/cucumber-ltd/bbc-a11y/issues) before posting, as you may find we are already thinking about or working
+of Github [issues](https://github.com/bbc/bbc-a11y/issues/new) or [pull requests](https://help.github.com/articles/using-pull-requests). Please have a quick look at our [existing
+issues](https://github.com/bbc/bbc-a11y/issues) before posting, as you may find we are already thinking about or working
 on a fix.
 
 ## Improving standards checks

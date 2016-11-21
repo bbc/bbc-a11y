@@ -49,7 +49,7 @@ module BBC
              "",
              super,
              "",
-             "For help learning the configuration DSL, please visit https://github.com/cucumber-ltd/bbc-a11y"
+             "For help learning the configuration DSL, please visit https://github.com/bbc/bbc-a11y"
            ]
         end
       end

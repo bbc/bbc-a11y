@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cucumber-ltd/bbc-a11y.git"
+    "url": "git+https://github.com/bbc/bbc-a11y.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cucumber-ltd/bbc-a11y/issues"
+    "url": "https://github.com/bbc/bbc-a11y/issues"
   },
-  "homepage": "https://github.com/cucumber-ltd/bbc-a11y#readme",
+  "homepage": "https://github.com/bbc/bbc-a11y#readme",
   "devDependencies": {
     "browser-monkey": "^1.26.3",
     "browserify": "^12.0.1",

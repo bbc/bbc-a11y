@@ -46,3 +46,11 @@ Feature: Title Attributes
       """
       Non-input element has title attribute: /html/body/a
       """
+
+  Scenario: Iframe tag with title attribute
+    Given a page with the body:
+      """
+      <iframe src="perfect.html" title="Rainbows and unicorns"></iframe>
+      """
+    When I validate the "Title attributes: title attributes only on inputs" standard
+    Then it passes

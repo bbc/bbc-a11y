@@ -1,5 +1,20 @@
-language: javascript
-before_script:
+language: node_js
+
+node_js:
+  - "7"
+
+addons:
+  apt:
+    packages:
+      - xvfb
+
+install:
   - npm install
+
+before_script:
+  - export DISPLAY=':99.0'
+  - sh -e /etc/init.d/xvfb start
+  - sleep 3
+
 script:
   - ./cucumber

@@ -7,13 +7,19 @@ describe('xpath', function() {
     it('replaces element values with xpaths', function() {
       var values = [document.head, document.body];
       var replaced = xpath.replaceElementsWithXPaths(values);
-      expect(replaced).to.eql(['/html/head', '/html/body']);
+      expect(replaced).to.eql([
+        { xpath: '/html/head', element: document.head },
+        { xpath: '/html/body', element: document.body }
+      ]);
     });
 
     it('replaces jquery values with xpaths', function() {
       var values = [$(document.head), $(document.body)];
       var replaced = xpath.replaceElementsWithXPaths(values);
-      expect(replaced).to.eql(['/html/head', '/html/body']);
+      expect(replaced).to.eql([
+        { xpath: '/html/head', element: document.head },
+        { xpath: '/html/body', element: document.body }
+      ]);
     });
 
     it('uses element id values for shorter xpaths', function() {
@@ -33,7 +39,11 @@ describe('xpath', function() {
     it('replaces elements in nested arrays', function() {
       var values = [1, [document.body], [[$(document.head)]]];
       var replaced = xpath.replaceElementsWithXPaths(values);
-      expect(replaced).to.eql([1, '/html/body', '/html/head']);
+      expect(replaced).to.eql([
+        1,
+        { xpath: '/html/body', element: document.body },
+        { xpath: '/html/head', element: document.head }
+      ]);
     });
   });
 });

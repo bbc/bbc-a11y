@@ -31,6 +31,7 @@ code:
 Once those are installed, you can install the Ruby dependencies:
 
   ```
+  gem install bundle
   bundle install
   ```
 

@@ -78,6 +78,30 @@ Feature: Form Labels
     When I validate the "Form labels: fields must have labels or titles" standard
     Then it passes
 
+  Scenario: Submit inputs do not need labels or title attributes
+    Given a page with the body:
+      """
+      <input type="submit" />
+      """
+    When I validate the "Form labels: fields must have labels or titles" standard
+    Then it passes
+
+  Scenario: Reset inputs do not need labels or title attributes
+    Given a page with the body:
+      """
+      <input type="reset" />
+      """
+    When I validate the "Form labels: fields must have labels or titles" standard
+    Then it passes
+
+  Scenario: Image inputs do not need labels or title attributes
+    Given a page with the body:
+      """
+      <input type="image" />
+      """
+    When I validate the "Form labels: fields must have labels or titles" standard
+    Then it passes
+
   Scenario: Buttons do not need labels or title attributes
     Given a page with the body:
       """
@@ -85,3 +109,14 @@ Feature: Form Labels
       """
     When I validate the "Form labels: fields must have labels or titles" standard
     Then it passes
+
+  Scenario: Buttons need text
+    Given a page with the body:
+      """
+      <button></button>
+      """
+    When I validate the "Form labels: fields must have labels or titles" standard
+    Then it fails with the message:
+      """
+      Button has no text: /html/body/button
+      """

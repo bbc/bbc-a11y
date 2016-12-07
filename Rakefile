@@ -4,7 +4,7 @@ Bundler::GemHelper.install_tasks
 task default: [:unit, :acceptance]
 
 task :unit do
-  sh "bundle exec rspec && karma start --single-run"
+  sh "bundle exec rspec && ./node_modules/.bin/karma start --single-run"
 end
 
 task :acceptance do

@@ -55,10 +55,17 @@ Feature: Form Labels
       """
 
   Scenario: Hidden fields do not need titles
-
     Given a page with the body:
       """
       <input type=hidden name=a value=b>
+      """
+    When I validate the "Form labels: fields must have labels or titles" standard
+    Then it passes
+
+  Scenario: Submit buttons do not need title attributes or labels
+    Given a page with the body:
+      """
+      <input name="locator-submit" class="submit" type="submit" value="Search">
       """
     When I validate the "Form labels: fields must have labels or titles" standard
     Then it passes

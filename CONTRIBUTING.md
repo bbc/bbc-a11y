@@ -12,7 +12,12 @@ on a fix.
 If you believe there is a bug or misinterpretation of the BBC Accessibility
 Guidelines, please submit an issue with as much relevant detail as possible.
 Ideally this should include an HTML snippet that demonstrates the problem. Even
-more ideally, you can create or amend a scenario in one of our [cucumber features](features/check_standards).
+more ideally, you can create or amend a scenario in one of our
+[cucumber features](features/check_standards).
+
+If you have any issue with one of the standards checks, please submit a Github
+issue, including a snippet of HTML that demonstrates the problem. There is a
+template in Github that you can follow when you create an issue.
 
 ## Contributing code
 
@@ -49,6 +54,17 @@ Once those are installed, you can install the Ruby dependencies:
 
 You should see red if anything fails. If all tests pass, you are ready to start
 hacking! If not, please get in touch and we'll help you figure it out.
+
+## Process
+
+The basic process for contributing code is as follows:
+
+1. Clone the [Github repo](https://github.com/bbc/bbc-a11y) to your machine.
+2. Familiarise yourself with the [issues](https://github.com/bbc/bbc-a11y) that have already been raised via Github.
+3. If you wish to raise an issue via Github, please do so after checking through existing issues.
+4. If you wish to work on an issue, please check that no one else is, then assign it to yourself.
+5. Create a suitably named branch to work in and commit to, that includes the issue number, eg. i36-focus-styles-test.
+6. If you think you have completed your solution, please submit a pull request for others to review. Do not merge the branch to master.
 
 ### Amending features
 

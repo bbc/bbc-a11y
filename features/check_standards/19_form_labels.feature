@@ -54,7 +54,7 @@ Feature: Form Labels
       Field has no label or title attribute: /html/body/input[5]
       """
 
-  Scenario: Hidden fields do not need titles
+  Scenario: Hidden fields do not need labels or title attributes
     Given a page with the body:
       """
       <input type=hidden name=a value=b>
@@ -65,7 +65,58 @@ Feature: Form Labels
   Scenario: Submit buttons do not need title attributes or labels
     Given a page with the body:
       """
-      <input name="locator-submit" class="submit" type="submit" value="Search">
+      <input type=submit name=a value=b>
       """
     When I validate the "Form labels: fields must have labels or titles" standard
     Then it passes
+
+  Scenario: Reset inputs do not need labels or title attributes
+    Given a page with the body:
+      """
+      <input type=reset name=a value=b>
+      """
+    When I validate the "Form labels: fields must have labels or titles" standard
+    Then it passes
+
+  Scenario: Submit inputs do not need labels or title attributes
+    Given a page with the body:
+      """
+      <input type="submit" />
+      """
+    When I validate the "Form labels: fields must have labels or titles" standard
+    Then it passes
+
+  Scenario: Reset inputs do not need labels or title attributes
+    Given a page with the body:
+      """
+      <input type="reset" />
+      """
+    When I validate the "Form labels: fields must have labels or titles" standard
+    Then it passes
+
+  Scenario: Image inputs do not need labels or title attributes
+    Given a page with the body:
+      """
+      <input type="image" />
+      """
+    When I validate the "Form labels: fields must have labels or titles" standard
+    Then it passes
+
+  Scenario: Buttons do not need labels or title attributes
+    Given a page with the body:
+      """
+      <button>Boo</button>
+      """
+    When I validate the "Form labels: fields must have labels or titles" standard
+    Then it passes
+
+  Scenario: Buttons need text
+    Given a page with the body:
+      """
+      <button></button>
+      """
+    When I validate the "Form labels: fields must have labels or titles" standard
+    Then it fails with the message:
+      """
+      Button has no text: /html/body/button
+      """

@@ -6,3 +6,4 @@ tags
 a11y.rb
 node_modules
 lib/bbc/a11y/js/bundle.js
+.idea

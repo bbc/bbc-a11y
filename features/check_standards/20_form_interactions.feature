@@ -43,6 +43,24 @@ Feature: Form Interactions
       """
       Form has no submit button: /html/body/form
       """
+
+  Scenario: Form with no submit button in an iframe
+    Given a page with the body:
+      """
+      <iframe id="iframe1" src="about:blank"></iframe>
+      <script type="text/javascript">
+        var doc = document.getElementById('iframe1').contentWindow.document;
+        doc.open();
+        doc.write('<form id="naughtyForm"></form>');
+        doc.close();
+      </script>
+      """
+    When I validate the "Form interactions: forms must have submit buttons" standard
+    Then it fails with the message:
+      """
+      Form has no submit button: /html/body/form
+      """
+
   Scenario: Form with a submit button
     Given a page with the body:
       """

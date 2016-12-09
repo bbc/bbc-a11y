@@ -43,6 +43,14 @@ module BBC
         stdout.puts ""
       end
 
+      def run_started
+        stdout.puts "↯ Running bbc-a11y #{a11y_version}, hold tight...\n"
+      end
+
+      def a11y_version
+        File.read(File.expand_path("../version", __FILE__)).strip
+      end
+
       def all_pages_tested(summary)
         messages = [
           summary_message(summary.pages, 'page', 'checked'),

@@ -17,6 +17,7 @@ module BBC
       end
 
       def run
+        @listener.run_started
         @summary = RunSummary.new
         @summary.pages = @settings.pages.size
         @settings.pages.each do |page_settings|

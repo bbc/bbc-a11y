@@ -12,7 +12,8 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     width: 1000,
     height: 600,
-    show: false
+    show: false,
+    webPreferences: {webSecurity: false}
   })
 
   mainWindow.loadURL(url.format({
@@ -27,7 +28,6 @@ function createWindow () {
   mainWindow.webContents.on('devtools-opened', () => {
     setImmediate(() => {
       // mainWindow.show()
-      // mainWindow.webContents.inspectElement(100, 101)
     })
   })
 

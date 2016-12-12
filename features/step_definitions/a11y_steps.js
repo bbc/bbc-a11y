@@ -86,13 +86,23 @@ module.exports = function() {
   this.Given(/^a page with the HTML:$/, function (html) {
     this.pageFrame = document.createElement('iframe')
     document.body.appendChild(this.pageFrame)
-    this.pageFrame.contentWindow.document.write(html)
+    return new Promise((resolve, reject) => {
+      this.pageFrame.addEventListener('load', function() {
+        resolve()
+      })
+      this.pageFrame.srcdoc = html
+    })
   })
 
   this.Given(/^a page with the body:$/, function (body) {
     this.pageFrame = document.createElement('iframe')
     document.body.appendChild(this.pageFrame)
-    this.pageFrame.contentWindow.document.write('<html><body>' + body + '</body></html>')
+    return new Promise((resolve, reject) => {
+      this.pageFrame.addEventListener('load', function() {
+        resolve()
+      })
+      this.pageFrame.srcdoc = '<html><body>' + body + '</body></html>'
+    })
   })
 
   this.When(/^I validate the "([^"]*)" standard$/, function (name) {

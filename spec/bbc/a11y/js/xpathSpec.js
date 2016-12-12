@@ -25,9 +25,10 @@ describe('xpath', function() {
     it('uses element id values for shorter xpaths', function() {
       var top = document.createElement('div')
       top.innerHTML = '<div id="a"><div id="b"><span class="x">ok <b>then</b></span></div></div>'
+      var b = top.querySelector('b')
 
-      var replaced = xpath.replaceElementsWithXPaths([top.querySelector('b')]);
-      expect(replaced).to.eql(["//div[@id='b']/span/b"]);
+      var replaced = xpath.replaceElementsWithXPaths([b]);
+      expect(replaced).to.eql([{ element: b, xpath: "//div[@id='b']/span/b" }]);
     });
 
     it('replaces non-element values with themselves', function() {

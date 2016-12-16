@@ -30,6 +30,18 @@ Feature: Form Interactions
     When I validate the "Form interactions: forms must have submit buttons" standard
     Then it passes
 
+  Scenario: Form with an image input
+    Given a page with the body:
+      """
+      <form action="/search">
+        <label for="q">Search term:</label>
+        <input type="text" name="q" id="q">
+        <input type="image" src="some.png">
+      </form>
+      """
+    When I validate the "Form interactions: forms must have submit buttons" standard
+    Then it passes
+
   Scenario: Form with no submit button
     Given a page with the body:
       """
@@ -43,6 +55,7 @@ Feature: Form Interactions
       """
       Form has no submit button: /html/body/form
       """
+
   Scenario: Form with a submit button
     Given a page with the body:
       """

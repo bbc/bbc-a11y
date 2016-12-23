@@ -1,12 +1,12 @@
 Feature: Skipping Standards
 
+  @config
   Scenario: One standard is skipped
     Given a website running at http://localhost:54321
-    And a file named "a11y.rb" with:
+    And a file named ".a11y" with:
       """
-      page "http://localhost:54321/missing_header.html" do
-        skip_standard "Headings: exactly one main heading"
-      end
+      page http://localhost:54321/missing_header.html
+      skip Headings: exactly one main heading
       """
     When I run `a11y`
     Then it should pass with:
@@ -14,13 +14,13 @@ Feature: Skipping Standards
       ✓ http://localhost:54321/missing_header.html
       """
 
+  @config
   Scenario: All standards except one is skipped
     Given a website running at http://localhost:54321
     And a file named "a11y.rb" with:
       """
-      page "http://localhost:54321/two_headings_failures.html" do
-        only_standard "Headings: exactly one main heading"
-      end
+      page http://localhost:54321/two_headings_failures.html
+      skip Headings: exactly one main heading
       """
     When I run `a11y`
     Then it should fail with:

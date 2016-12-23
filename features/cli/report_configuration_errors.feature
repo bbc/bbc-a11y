@@ -1,7 +1,8 @@
+@config
 Feature: Report configuration errors
 
   Scenario: Call an unknown keyword in the configuration file
-    Given a file named "a11y.rb" with:
+    Given a file named ".a11y" with:
       """
       page "one"
       page "two"
@@ -25,14 +26,14 @@ Feature: Report configuration errors
       """
 
     Scenario: Compilation error in configuration file
-      Given a file named "a11y.rb" with:
+      Given a file named ".a11y" with:
         """
         1/0
         """
       When I run `a11y`
       Then it should fail with exactly:
         """
-        There was an error reading your configuration file at line 1 of 'a11y.rb'
+        There was an error reading your configuration file at line 1 of '.a11y'
 
         => 1/0
 

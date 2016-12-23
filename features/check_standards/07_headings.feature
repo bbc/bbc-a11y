@@ -181,7 +181,7 @@ Feature: Headings
       """
     When I validate the "Headings: content must follow headings" standard
     Then it passes
-  
+
   Scenario: Nested heading followed by heading
     Given a page with the body:
       """

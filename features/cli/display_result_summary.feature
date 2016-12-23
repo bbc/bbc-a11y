@@ -1,14 +1,14 @@
 Feature: Display result summary
 
+  @config
   Scenario: Summarises pages checked and standard results
     Given a website running at http://localhost:54321
-    And a file named "a11y.rb" with:
+    And a file named ".a11y" with:
       """
-      page "http://localhost:54321/perfect.html"
-      page "http://localhost:54321/missing_header.html"
-      page "http://localhost:54321/missing_header.html?again!" do
-        skip_standard "Headings: exactly one main heading"
-      end
+      page http://localhost:54321/perfect.html
+      page http://localhost:54321/missing_header.html
+      page http://localhost:54321/missing_header.html?again!
+      skip Headings: exactly one main heading
       """
     When I run `a11y`
     Then it should fail with:

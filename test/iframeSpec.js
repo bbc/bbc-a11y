@@ -1,10 +1,10 @@
-var a11y = require('../../../../lib/bbc/a11y/js/a11y.js');
-var expect = require('chai').expect;
-var $ = require('jquery');
+var a11y = require('../lib/bbc/a11y/js/a11y.js')
+var expect = require('chai').expect
+var $ = require('jquery')
 
 describe('a11y validating in frames', function() {
   beforeEach(function() {
-    $('body').html('<html><body><h1>Top level</h1><iframe src="about:blank"></iframe></body></html>');
+    $('body').html('<html><body><h1>Top level</h1><iframe src="about:blank"></iframe></body></html>')
     this.iframe1 = document.querySelector('iframe')
     var doc = this.iframe1.contentWindow.document
     doc.open()
@@ -35,5 +35,5 @@ describe('a11y validating in frames', function() {
         ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe3, xpath: "/html/body/iframe[2]" }, ':', 'Found 0 h1 elements.']
       ]
     }])
-  });
-});
+  })
+})

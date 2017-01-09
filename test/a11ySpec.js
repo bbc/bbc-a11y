@@ -1,24 +1,24 @@
-var a11y = require('../../../../lib/bbc/a11y/js/a11y.js');
-var expect = require('chai').expect;
-var $ = require('jquery');
+var a11y = require('../lib/bbc/a11y/js/a11y.js')
+var expect = require('chai').expect
+var $ = require('jquery')
 
 describe('a11y', function() {
   beforeEach(function() {
-    $('body').html('');
+    $('body').html('')
   })
 
   it('validates the DOM', function() {
-    var validation = a11y.validate();
+    var validation = a11y.validate()
     var errors = validation.results.filter(function(standardResult) {
-      return standardResult.errors.length > 0;
+      return standardResult.errors.length > 0
     }).map(function(standardResult) {
       standardResult.errors = standardResult.errors.map(function(error) {
         return error.map(function(segment) {
-          return segment.xpath ? segment.xpath : segment;
+          return segment.xpath ? segment.xpath : segment
         })
-      });
-      return standardResult;
-    });
+      })
+      return standardResult
+    })
     var expectedErrors = [
       {
         "standard": {
@@ -47,18 +47,18 @@ describe('a11y', function() {
           ['Found 0 elements with role="main".']
         ]
       }
-    ];
-    expect(JSON.stringify(errors)).to.equal(JSON.stringify(expectedErrors));
-  });
+    ]
+    expect(JSON.stringify(errors)).to.equal(JSON.stringify(expectedErrors))
+  })
 
   it('skips standards', function() {
-    var validation = a11y.validate({ skip: ['Main landmark: Exactly one main landmark'] });
-    expect(validation.skipped).to.eql(['Exactly one main landmark']);
-  });
+    var validation = a11y.validate({ skip: ['Main landmark: Exactly one main landmark'] })
+    expect(validation.skipped).to.eql(['Exactly one main landmark'])
+  })
 
   it('only runs specific standards', function() {
-    var validation = a11y.validate({ only: ['Main landmark: Exactly one main landmark'] });
+    var validation = a11y.validate({ only: ['Main landmark: Exactly one main landmark'] })
     expect(validation.results.length).to.equal(1)
     expect(validation.results[0].standard.name).to.equal('Exactly one main landmark')
-  });
-});
+  })
+})

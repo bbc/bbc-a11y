@@ -13,7 +13,7 @@ function createWindow () {
     width: 1000,
     height: 600,
     show: false,
-    webPreferences: {webSecurity: false}
+    webPreferences: { webSecurity: false }
   })
 
   mainWindow.loadURL(url.format({

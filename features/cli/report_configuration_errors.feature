@@ -1,43 +1,36 @@
-@config
 Feature: Report configuration errors
 
   Scenario: Call an unknown keyword in the configuration file
-    Given a file named ".a11y" with:
+    Given a file named "a11y.js" with:
       """
-      page "one"
-      page "two"
-      paage "http://bad.com"
-      page "three"
-      page "four"
+      page("one")
+      page("two")
+      paage("http://bad.com")
+      page("three")
+      page("four")
       """
     When I run `a11y`
     Then it should fail with exactly:
       """
-      There was an error reading your configuration file at line 3 of 'a11y.rb'
+      There was an error reading your configuration file at line 3 of 'a11y.js'
 
-         page "two"
-      => paage "http://bad.com"
-         page "three"
-
-      `paage` is not part of the configuration language
+      paage is not defined
 
       For help learning the configuration DSL, please visit https://github.com/bbc/bbc-a11y
 
       """
 
     Scenario: Compilation error in configuration file
-      Given a file named ".a11y" with:
+      Given a file named "a11y.js" with:
         """
-        1/0
+        throw new Error("oops")
         """
       When I run `a11y`
       Then it should fail with exactly:
         """
-        There was an error reading your configuration file at line 1 of '.a11y'
+        There was an error reading your configuration file at line 1 of 'a11y.js'
 
-        => 1/0
-
-        divided by 0
+        oops
 
         For help learning the configuration DSL, please visit https://github.com/bbc/bbc-a11y
 

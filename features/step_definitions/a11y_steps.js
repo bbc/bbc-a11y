@@ -14,7 +14,7 @@ function runA11y(args) {
   return new Promise(function(resolve, reject) {
     const execFile = childProcess.execFile
     const result = {}
-    var child = execFile(path.resolve(__dirname, '../../bin/a11y.js'), (args && [args]) || [], { cwd: tempDir }, (error, stdout, stderr) => {
+    var child = execFile(path.resolve(__dirname, '../../bin/bbc-a11y.js'), (args && [args]) || [], { cwd: tempDir }, (error, stdout, stderr) => {
       if (error) {
         result.error = error
       }
@@ -33,7 +33,7 @@ function runA11yInteractively(args) {
   return new Promise(function(resolve, reject) {
     const spawn = childProcess.spawn
     const splitArgs = args.split(' ').concat('--interactive')
-    const interactiveProcess = spawn(path.resolve(__dirname, '../../bin/a11y.js'), splitArgs, { cwd: tempDir })
+    const interactiveProcess = spawn(path.resolve(__dirname, '../../bin/bbc-a11y.js'), splitArgs, { cwd: tempDir })
     setTimeout(() => { interactiveProcess.kill('SIGINT') }, 2000)
     resolve(interactiveProcess)
   })

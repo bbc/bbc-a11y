@@ -10,7 +10,7 @@
     "watchify": "watchify ./lib/bbc/a11y/js/a11y.js -o ./lib/bbc/a11y/js/bundle.js"
   },
   "bin": {
-    "bbc-a11y": "./bin/a11y.js"
+    "bbc-a11y": "./bin/bbc-a11y.js"
   },
   "repository": {
     "type": "git",

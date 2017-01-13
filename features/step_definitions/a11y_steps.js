@@ -7,7 +7,7 @@ var webServer = require('../support/web_server')
 var childProcess = require('child_process')
 var path = require('path')
 
-var tempDir = __dirname + '/tmp'
+var tempDir = path.resolve(__dirname + '/../../tmp')
 
 function runA11y(args) {
   return new Promise(function(resolve, reject) {

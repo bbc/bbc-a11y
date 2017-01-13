@@ -2,72 +2,67 @@
 
 ## Installing bbc-a11y to validate your project
 
-bbc-a11y is packaged as a Ruby gem. You'll most likely want to create a
+bbc-a11y is packaged as an npm module. You'll most likely want to create a
 stand-alone repo to run your accessibility tests, but you can also add it as
 part of an existing repo.
 
 ### Prerequisites
 
-[Install Ruby](https://www.ruby-lang.org/en/documentation/installation/) and
-then:
+[Install Node.js](https://nodejs.org/en/download/) and then create a
+`package.json` file in your project using the `npm` command line tool:
 
-    gem install bundler
+    npm init
 
-### Adding a11y to your project's Gemfile
+### Add a11y to your project's dependencies
 
-Create or amend your your project's `Gemfile` to include the `bbc-a11y` gem:
+Add bbc-a11y to your project with npm:
 
-```ruby
-source 'https://rubygems.org'
-
-gem 'bbc-a11y'
-```
-
-Now install the gem:
-
-    bundle install
+    npm install bbc-a11y
 
 ## Configuring a11y for your project
 
 You'll need to configure a11y with a set of URLs to run the checks against.
-Create a file called `a11y.rb` in the root of your project that looks something
+Create a file called `a11y.js` in the root of your project that looks something
 like this:
 
-```ruby
-page "http://bbc.co.uk"
-page "http://bbc.co.uk/news"
+```js
+page("http://bbc.co.uk")
+page("http://bbc.co.uk/news")
 ```
 
 ### Skipping standards checks
 
-Nobody's perfect. Use `skip_standard` in the configuration to opt-out of certain
+Nobody's perfect. Use `skip` in the configuration to opt-out of certain
 checks.
 
-```ruby
-page "http://bbc.co.uk" do
-  skip_standard 'Focusable controls: Anchors must have hrefs'
-end
+```js
+page("http://bbc.co.uk", {
+  skip: [
+    'Focusable controls: Anchors must have hrefs',
+    'Headings: exactly one main heading'
+  ]
+})
 
-page "http://bbc.co.uk/news"
+page("http://bbc.co.uk/news")
 ```
 
-A11y will skip any standards from whose name matches that string. Or you could
-use `only_standard` when you want to focus your attention on just one problem:
+bbc-a11y will skip any standards whose name matches those strings. Or you could
+use `only` when you want to focus your attention on just one problem:
 
-```ruby
-page "http://bbc.co.uk" do
-  only_standard 'Focusable controls: Anchors must have hrefs'
-end
+```js
+page("http://bbc.co.uk", {
+  only: 'Focusable controls: Anchors must have hrefs'
+})
 ```
 
 ## Running it
 
 Once you're configured, you can run the tests using the `a11y` command, from the
-directory where your `a11y.rb` configuration file is stored:
+directory where your `a11y.js` configuration file is stored:
 
-    bundle exec a11y
+    ./node_modules/.bin/bbc-a11y
 
-This will pick up your `a11y.rb` configuration file and run the a11y checks on
+This will pick up your `a11y.js` configuration file and run the a11y checks on
 each page specified in your configuration. Output is printed to the console.
 
 ## Using a11y in build scripts

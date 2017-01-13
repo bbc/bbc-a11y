@@ -1,6 +1,6 @@
 {
   "name": "bbc-a11y",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "BBC Accessibility standards checker",
   "main": "index.js",
   "directories": {},
@@ -8,6 +8,9 @@
     "test": "./node_modules/.bin/electron-mocha --renderer && ./node_modules/.bin/cucumber-electron",
     "browserify": "browserify ./lib/bbc/a11y/js/a11y.js -o ./lib/bbc/a11y/js/bundle.js",
     "watchify": "watchify ./lib/bbc/a11y/js/a11y.js -o ./lib/bbc/a11y/js/bundle.js"
+  },
+  "bin": {
+    "bbc-a11y": "./bin/a11y.js"
   },
   "repository": {
     "type": "git",

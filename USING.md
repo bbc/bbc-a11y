@@ -14,25 +14,15 @@ clone of this repo.
 ### Prerequisites
 
 If necessary, follow instructions for 
-[installing Node.js and updating npm](https://docs.npmjs.com/getting-started/installing-node). 
-Check this with:
-
-    npm
-
-Then ensure you have karma installed (needed for testing bbc-a11y is OK):
-    
-    npm install karma-mocha mocha diff
+[installing Node.js and updating npm](https://docs.npmjs.com/getting-started/installing-node).
     
 ### Installing bbc-a11y
 
-Create an up-to-date clone of the bbc-a11y github repo (electron branch) and cd
-into the folder it is in. Then:
-
-    npm install
-    npm test
-    ./bin/a11y.js http://www.bbc.co.uk
-
-You can run bbc-a11y against any valid URL.
+1. Clone the repository: ``` $ git clone -b electron https://github.com/bbc/bbc-a11y.git ```
+2. Change directory to the clone ```$ cd cd bbc-a11y/ ```
+3. Install the tool ``` $ npm install ```
+4. Run the tests to ensure all is installed well ``` $ npm test ``` (note: you will need to quit this process with CTRL+C to close it)
+5. Run the tool against a URL: ``` ./bin/a11y.js http://www.bbc.co.uk ``` replacing 'http://www.bbc.co.uk' with the URL you wish to test.
 
 ## How do I set up bbc-a11y as part of my project?
 

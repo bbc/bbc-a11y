@@ -4,7 +4,7 @@ Feature: Missing configuration file warning
     When I run `a11y`
     Then it should fail with:
       """
-      Missing configuration file (a11y.rb).
+      Missing configuration file (a11y.js).
 
-      Please visit http://www.rubydoc.info/gems/bbc-a11y for more information.
+      Please visit http://github.com/bbc/bbc-a11y for more information.
       """

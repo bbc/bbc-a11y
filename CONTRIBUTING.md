@@ -29,28 +29,15 @@ setup before you can start hacking on the code:
 You'll need to install a few things on your system before you can work on the
 code:
 
-  * Ruby (1.9.3 is required, 2.0+ is recommended)
   * node.js (5.0+ is recommended)
-  * phantomjs
 
-Once those are installed, you can install the Ruby dependencies:
+Once those are installed, you can install the npm dependencies:
 
-  ```
-  gem install bundle
-  bundle install
-  ```
-
-...and the node.js dependencies:
-
-  ```
   npm install
-  ```
 
 ...then finally run all the tests to verify:
 
-  ```
-  bundle exec rake
-  ```
+  npm test
 
 You should see red if anything fails. If all tests pass, you are ready to start
 hacking! If not, please get in touch and we'll help you figure it out.
@@ -82,7 +69,7 @@ When it's time to implement your changes, you might need to write Ruby, or
 JavaScript, or both. The standards checks are implemented in JavaScript,
 whereas the command-line runner is implemented in Ruby.
 
-There are high-level cucumber features, and low-level specs for both Ruby and
+There are high-level cucumber features, and low-level specs, both implemented in
 JavaScript. The cucumber features are generally broad in scope have more moving
 parts, so depending on the change, it can be difficult to understand why things
 fail, and to iterate on changes. In this case you should consider writing or

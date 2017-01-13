@@ -5,7 +5,13 @@ var jquery = require('jquery')
 var electron = require('electron')
 var remoteConsole = electron.remote.getGlobal('console')
 
-var argv = JSON.parse(decodeURIComponent(window.location.hash.substr(1)))
+let argv = JSON.parse(decodeURIComponent(window.location.hash.substr(1)))
+
+let exit = electron.remote.process.exit
+if (argv.indexOf('--interactive') > -1) {
+  argv = argv.filter(part => part != '--interactive')
+  exit = () => {}
+}
 
 function loadUrl(url) {
   return new Promise(function(resolve, reject) {
@@ -18,15 +24,8 @@ function loadUrl(url) {
       resolve(jquery(mainFrame).contents())
     }
 
-    addressBar.onkeydown = function(e) {
-      if (e.keyCode == 13) {
-        console.clear()
-        mainFrame.src = addressBar.value
-      }
-    }
-
     mainFrame.src = url
   })
 }
 
-new Runner().run(argv, loadUrl, new Reporter(console, remoteConsole), electron.remote.process.exit)
+new Runner().run(argv, loadUrl, new Reporter(console, remoteConsole), exit)

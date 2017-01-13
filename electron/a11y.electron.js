@@ -7,6 +7,12 @@ const path = require('path')
 const url = require('url')
 
 let mainWindow
+let interactiveMode = false
+
+let argv = process.argv.slice(2)
+if (argv.indexOf('--interactive') > -1) {
+  interactiveMode = true
+}
 
 function createWindow () {
   mainWindow = new BrowserWindow({
@@ -20,14 +26,16 @@ function createWindow () {
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true,
-    hash: encodeURIComponent(JSON.stringify(process.argv.slice(2)))
+    hash: encodeURIComponent(JSON.stringify(argv))
   }))
 
   mainWindow.webContents.openDevTools()
 
   mainWindow.webContents.on('devtools-opened', () => {
     setImmediate(() => {
-      // mainWindow.show()
+      if (interactiveMode) {
+        mainWindow.show()
+      }
     })
   })
 

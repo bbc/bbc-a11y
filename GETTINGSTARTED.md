@@ -8,8 +8,9 @@ part of an existing repo.
 
 ### Prerequisites
 
-[Install Node.js](https://nodejs.org/en/download/) and then create a
-`package.json` file in your project using the `npm` command line tool:
+[Install node.js](https://docs.npmjs.com/getting-started/installing-node) and
+then create a `package.json` file in your project using the `npm` command line
+tool that comes with node.js:
 
     npm init
 
@@ -57,15 +58,23 @@ page("http://bbc.co.uk", {
 
 ## Running it
 
-Once you're configured, you can run the tests using the `a11y` command, from the
-directory where your `a11y.js` configuration file is stored:
+Once you're configured, you can run the tests using the `bbc-a11y` command, from
+the directory where your `a11y.js` configuration file is stored:
 
     ./node_modules/.bin/bbc-a11y
 
 This will pick up your `a11y.js` configuration file and run the a11y checks on
 each page specified in your configuration. Output is printed to the console.
 
+## Interactive mode
+
+To debug failures, running bbc-a11y in _interactive mode_ will show a browser
+window with development tools, allowing you to explore the failures and the
+elements that relate to each failure:
+
+    bbc-a11y http://www.bbc.co.uk --interactive
+
 ## Using a11y in build scripts
 
-The `a11y` executable will exit with a non-zero status code if there are any
+The `bbc-a11y` executable will exit with a non-zero status code if there are any
 standards failures, for convenient integration with CI tools like Jenkins.

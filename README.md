@@ -10,8 +10,7 @@ project today.
 
 ## Using BBC A11y
 
-The [getting started guide](GETTINGSTARTED.md) shows how to use a11y in your
-project.
+The [using guide](USING.md) shows how to use a11y in your project.
 
 ## Contributing to BBC A11y
 

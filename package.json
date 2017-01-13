@@ -1,6 +1,6 @@
 {
   "name": "bbc-a11y",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "BBC Accessibility standards checker",
   "main": "index.js",
   "directories": {},

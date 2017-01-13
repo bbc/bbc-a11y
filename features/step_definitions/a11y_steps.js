@@ -123,11 +123,11 @@ module.exports = function() {
     assert(output.indexOf(string) > -1, "Expected:\n" + string + "\nActual:\n" + output)
   })
 
-  this.Then(/^it should fail with exactly:$/, function (string) {
-    var output = (this.stdout + this.stderr)
+  this.Then(/^it should fail with exactly:$/, function (expectedOutput) {
+    var actualOutput = (this.stdout + this.stderr)
     // HACK: work around stupid travis issue with xvfb
-    var sanitisedOutput = output.split("\n").filter(line => line != 'Xlib:  extension "RANDR" missing on display ":99.0".').join("\n")
-    assert.equal(string, output, "Expected:\n" + string + "\nActual:\n" + sanitisedOutput)
+    var sanitisedActualOutput = actualOutput.split("\n").filter(line => line != 'Xlib:  extension "RANDR" missing on display ":99.0".').join("\n")
+    assert.equal(sanitisedActualOutput, expectedOutput, "Expected:\n" + expectedOutput.replace(/\n/g, "[\\n]\n") + "\nActual:\n" + sanitisedActualOutput.replace(/\n/g, "[\\n]\n"))
   })
 
   this.Then(/^it should pass with:$/, function (string) {

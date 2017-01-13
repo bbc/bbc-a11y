@@ -6,12 +6,13 @@ var jquery = require('jquery')
 var webServer = require('../support/web_server')
 var childProcess = require('child_process')
 var path = require('path')
+var console = require('electron').remote.getGlobal('console')
 
 var tempDir = path.resolve(__dirname + '/../../tmp')
 
 function runA11y(args) {
   return new Promise(function(resolve, reject) {
-    const execFile = require('child_process').execFile
+    const execFile = childProcess.execFile
     const result = {}
     var child = execFile(path.resolve(__dirname, '../../bin/a11y.js'), (args && [args]) || [], { cwd: tempDir }, (error, stdout, stderr) => {
       if (error) {
@@ -26,6 +27,16 @@ function runA11y(args) {
       resolve(result)
     })
   });
+}
+
+function runA11yInteractively(args) {
+  return new Promise(function(resolve, reject) {
+    const spawn = childProcess.spawn
+    const splitArgs = args.split(' ').concat('--interactive')
+    const interactiveProcess = spawn(path.resolve(__dirname, '../../bin/a11y.js'), splitArgs, { cwd: tempDir })
+    setTimeout(() => { interactiveProcess.kill('SIGINT') }, 2000)
+    resolve(interactiveProcess)
+  })
 }
 
 module.exports = function() {
@@ -60,13 +71,20 @@ module.exports = function() {
       })
   })
 
-  this.When(/^I run `a11y (.+)`$/, function (url) {
+  this.When(/^I run `a11y (http:[^\s]+)`$/, function (url) {
     var scenario = this
     return runA11y(url)
       .then(function(result) {
         scenario.stdout = result.stdout
         scenario.stderr = result.stderr
         scenario.exitCode = result.exitCode
+      })
+  })
+
+  this.When(/^I run `a11y (http:[^\s]+) --interactive`$/, function (url) {
+    return runA11yInteractively(url)
+      .then(interactiveProcess => {
+        this.interactiveProcess = interactiveProcess
       })
   })
 
@@ -150,7 +168,22 @@ module.exports = function() {
 
   this.Then(/^the exit status should be (\d+)$/, function (status) {
     assert.equal(this.exitCode, status)
-  });
+  })
+
+  this.When(/^the window should remain open$/, function () {
+    return new Promise((resolve, reject) => {
+      this.interactiveProcess.on('error', e => reject(e))
+      this.interactiveProcess.on('close', (code, signal) => {
+        resolve()
+      })
+      this.interactiveProcess.stdout.on('data', data => {
+        if (data.toString().indexOf('Testing shows the presence, not the absence of bugs')) {
+          setTimeout(() => reject(new Error("Failed to kill the process")), 100)
+          this.interactiveProcess.kill('SIGINT')
+        }
+      })
+    })
+  })
 
   this.Before(function(scenario, callback) {
     childProcess.exec('rm -rf ' + tempDir, function(err, out) {

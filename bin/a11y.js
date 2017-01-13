@@ -11,3 +11,8 @@ var child = childProcess.spawn(electron, args, { stdio: 'inherit' })
 child.on('close', function (code) {
   process.exit(code)
 })
+
+process.on('SIGINT', function () {
+  child.kill('SIGINT')
+  child.kill('SIGTERM')
+})

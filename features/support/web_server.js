@@ -1,13 +1,18 @@
 var express = require('express')
+var fs = require('fs')
 
 module.exports = {
-  appsByPort: {
-
-  },
+  appsByPort: {},
 
   ensureRunningOn: function(port) {
     if (this.appsByPort[port]) return Promise.resolve()
     var app = express()
+    let good = true
+    app.get('/goodThenBad.html', (req, res) => {
+      const page = good ? 'perfect.html' : 'missing_header.html'
+      good = !good
+      res.set('Cache-Control', 'max-age=86400').status(200).end(fs.readFileSync(__dirname + '/web_server/' + page))
+    })
     app.use(express.static(__dirname + '/web_server'))
     return new Promise(function(resolve, reject) {
       var listener = app.listen(port, function(err) {

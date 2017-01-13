@@ -13,27 +13,27 @@
     "type": "git",
     "url": "git+https://github.com/bbc/bbc-a11y.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Josh Chisholm <josh@featurist.co.uk>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/bbc/bbc-a11y/issues"
   },
   "homepage": "https://github.com/bbc/bbc-a11y#readme",
-  "devDependencies": {
-    "browser-monkey": "^1.26.3",
-    "browserify": "^12.0.1",
-    "chai": "^3.4.1",
-    "cucumber-electron": "^1.2.5",
-    "diff": "^3.1.0",
-    "electron-mocha": "^3.3.0",
-    "express": "^4.14.0",
-    "jquery": "^2.1.4",
-    "mkdirp": "^0.5.1",
-    "mocha": "^3.2.0",
-    "rimraf": "^2.5.4",
-    "watchify": "^3.6.1"
-  },
   "dependencies": {
-    "electron": "^1.4.13"
+    "electron": "1.4.14",
+    "jquery": "3.1.1"
+  },
+  "devDependencies": {
+    "browser-monkey": "1.29.2",
+    "browserify": "13.3.0",
+    "chai": "3.5.0",
+    "cucumber-electron": "1.2.5",
+    "diff": "3.2.0",
+    "electron-mocha": "3.3.0",
+    "express": "4.14.0",
+    "mkdirp": "0.5.1",
+    "mocha": "3.2.0",
+    "rimraf": "2.5.4",
+    "watchify": "3.6.1"
   }
 }

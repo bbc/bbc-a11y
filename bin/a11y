@@ -1,6 +1,0 @@
-#!/usr/bin/env ruby
-$:.unshift(File.dirname(__FILE__) + '/../lib') unless $:.include?(File.dirname(__FILE__) + '/../lib')
-
-require 'bbc/a11y/cli'
-
-BBC::A11y::CLI.new($stdin, $stdout, $stderr, ARGV.dup).call

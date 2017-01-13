@@ -17,8 +17,8 @@ if (argv.indexOf('--interactive') > -1) {
 
 function createWindow () {
   mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 600,
+    width: 1024,
+    height: 800,
     show: false,
     webPreferences: { webSecurity: false }
   })
@@ -30,7 +30,7 @@ function createWindow () {
     hash: encodeURIComponent(JSON.stringify(argv))
   }))
 
-  mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools({ mode: 'bottom' })
 
   mainWindow.webContents.on('devtools-opened', () => {
     setImmediate(() => {

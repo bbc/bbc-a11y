@@ -6,7 +6,7 @@ Feature: Specify URL via config
       """
       page('http://localhost:54321/perfect.html')
       """
-    When I run `a11y`
+    When I run `bbc-a11y`
     Then it should pass with:
       """
       ✓ http://localhost:54321/perfect.html

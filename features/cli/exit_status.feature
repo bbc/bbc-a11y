@@ -9,5 +9,5 @@ Feature: Exit status
 
   Scenario: Failing test
     Given a website running at http://localhost:54321
-    When I run `a11y http://localhost:54321/missing_header.html`
+    When I run `bbc-a11y http://localhost:54321/missing_header.html`
     Then the exit status should be 1

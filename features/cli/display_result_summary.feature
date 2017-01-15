@@ -10,7 +10,7 @@ Feature: Display result summary
         skip: "Headings: exactly one main heading"
       })
       """
-    When I run `a11y`
+    When I run `bbc-a11y`
     Then it should fail with:
       """
       3 pages checked, 1 error found, 1 standard skipped
@@ -18,7 +18,7 @@ Feature: Display result summary
 
   Scenario: Reminds users to consider usability beyond lint results
     Given a website running at http://localhost:54321
-    When I run `a11y http://localhost:54321/perfect.html`
+    When I run `bbc-a11y http://localhost:54321/perfect.html`
     Then it should pass with:
       """
       No errors found. But please remember:

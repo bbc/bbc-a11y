@@ -8,7 +8,7 @@ Feature: Skipping Standards
         skip: "Headings: exactly one main heading"
       })
       """
-    When I run `a11y`
+    When I run `bbc-a11y`
     Then it should pass with:
       """
       ✓ http://localhost:54321/missing_header.html
@@ -22,7 +22,7 @@ Feature: Skipping Standards
         only: "Headings: exactly one main heading"
       })
       """
-    When I run `a11y`
+    When I run `bbc-a11y`
     Then it should fail with:
       """
       1 page checked, 1 error found, 11 standards skipped

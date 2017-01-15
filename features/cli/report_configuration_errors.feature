@@ -9,7 +9,7 @@ Feature: Report configuration errors
       page("three")
       page("four")
       """
-    When I run `a11y`
+    When I run `bbc-a11y`
     Then it should fail with exactly:
       """
       There was an error reading your configuration file at line 3 of 'a11y.js'
@@ -25,7 +25,7 @@ Feature: Report configuration errors
         """
         throw new Error("oops")
         """
-      When I run `a11y`
+      When I run `bbc-a11y`
       Then it should fail with exactly:
         """
         There was an error reading your configuration file at line 1 of 'a11y.js'

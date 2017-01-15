@@ -15,7 +15,8 @@ function runA11y(args) {
   return new Promise(function(resolve, reject) {
     const execFile = childProcess.execFile
     const result = {}
-    var child = execFile(path.resolve(__dirname, '../../bin/bbc-a11y.js'), (args && [args]) || [], { cwd: tempDir }, (error, stdout, stderr) => {
+    const binaryPath = path.resolve(__dirname, '../../bin/bbc-a11y.js')
+    const child = execFile(binaryPath, (args && [args]) || [], { cwd: tempDir }, (error, stdout, stderr) => {
       if (error) {
         result.error = error
       }
@@ -63,7 +64,7 @@ defineSupportCode(function({ Given, When, Then, Before, After }) {
       })
   })
 
-  When(/^I run `a11y`$/, function () {
+  When(/^I run `bbc-a11y`$/, function () {
     var scenario = this
     return runA11y('')
       .then(function(result) {
@@ -73,7 +74,7 @@ defineSupportCode(function({ Given, When, Then, Before, After }) {
       })
   })
 
-  When(/^I run `a11y (http:[^\s]+)`$/, function (url) {
+  When(/^I run `bbc-a11y (http:[^\s]+)`$/, function (url) {
     var scenario = this
     return runA11y(url)
       .then(function(result) {
@@ -83,7 +84,7 @@ defineSupportCode(function({ Given, When, Then, Before, After }) {
       })
   })
 
-  When(/^I run `a11y (http:[^\s]+) --interactive`$/, function (url) {
+  When(/^I run `bbc-a11y (http:[^\s]+) --interactive`$/, function (url) {
     return runA11yInteractively(url)
       .then(interactiveProcess => {
         this.interactiveProcess = interactiveProcess

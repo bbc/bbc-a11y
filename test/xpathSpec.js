@@ -1,4 +1,4 @@
-var xpath = require('../lib/bbc/a11y/js/xpath.js')
+var xpath = require('../lib/xpath.js')
 var expect = require('chai').expect
 var $ = require('jquery')
 

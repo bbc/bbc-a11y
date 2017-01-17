@@ -1,4 +1,4 @@
-var configLoader = require('../lib/bbc/a11y/js/configLoader')
+var configLoader = require('../lib/configLoader')
 var assert = require('assert')
 var path = require('path')
 

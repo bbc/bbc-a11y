@@ -1,5 +1,5 @@
-var Runner = require('../lib/bbc/a11y/js/runner')
-var Reporter = require('../lib/bbc/a11y/js/reporter')
+var Runner = require('../lib/runner')
+var Reporter = require('../lib/reporter')
 var jquery = require('jquery')
 
 var electron = require('electron')

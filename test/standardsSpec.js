@@ -1,4 +1,4 @@
-var standards = require('../lib/bbc/a11y/js/standards.js')
+var standards = require('../lib/standards')
 var expect = require('chai').expect
 
 describe('standards', function() {

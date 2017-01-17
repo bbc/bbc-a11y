@@ -1,4 +1,4 @@
-var a11y = require('../lib/bbc/a11y/js/a11y.js')
+var a11y = require('../lib/a11y.js')
 var expect = require('chai').expect
 var $ = require('jquery')
 

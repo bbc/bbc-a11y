@@ -6,10 +6,10 @@ var electron = require('electron')
 var remoteConsole = electron.remote.getGlobal('console')
 
 let argv = electron.remote.process.argv.slice(2)
+const commandLineArgs = require('../lib/commandLineArgs').parse(argv)
 
 let exit = electron.remote.process.exit
-if (argv.indexOf('--interactive') > -1) {
-  argv = argv.filter(part => part != '--interactive')
+if (commandLineArgs.interactiveMode) {
   exit = () => {}
 }
 
@@ -28,4 +28,4 @@ function loadUrl(url) {
   })
 }
 
-new Runner().run(argv, loadUrl, new Reporter(console, remoteConsole), exit)
+new Runner().run(commandLineArgs.urls, loadUrl, new Reporter(console, remoteConsole), exit)

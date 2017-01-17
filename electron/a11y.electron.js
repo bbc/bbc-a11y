@@ -6,14 +6,9 @@ const BrowserWindow = electron.BrowserWindow
 
 const path = require('path')
 const url = require('url')
+const commandLineArgs = require('../lib/commandLineArgs').parse(process.argv)
 
 let mainWindow
-let interactiveMode = false
-
-let argv = process.argv.slice(2)
-if (argv.indexOf('--interactive') > -1) {
-  interactiveMode = true
-}
 
 function createWindow () {
   mainWindow = new BrowserWindow({
@@ -26,15 +21,14 @@ function createWindow () {
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
-    slashes: true,
-    hash: encodeURIComponent(JSON.stringify(argv))
+    slashes: true
   }))
 
   mainWindow.webContents.openDevTools({ mode: 'bottom' })
 
   mainWindow.webContents.on('devtools-opened', () => {
     setImmediate(() => {
-      if (interactiveMode) {
+      if (commandLineArgs.interactiveMode) {
         mainWindow.show()
       }
     })

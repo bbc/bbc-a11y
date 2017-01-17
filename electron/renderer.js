@@ -5,7 +5,7 @@ var jquery = require('jquery')
 var electron = require('electron')
 var remoteConsole = electron.remote.getGlobal('console')
 
-let argv = JSON.parse(decodeURIComponent(window.location.hash.substr(1)))
+let argv = electron.remote.process.argv.slice(2)
 
 let exit = electron.remote.process.exit
 if (argv.indexOf('--interactive') > -1) {

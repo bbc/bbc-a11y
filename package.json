@@ -29,7 +29,7 @@
   "devDependencies": {
     "browserify": "13.3.0",
     "chai": "3.5.0",
-    "cucumber-electron": "2.0.1",
+    "cucumber-electron": "2.0.3",
     "diff": "3.2.0",
     "electron-mocha": "3.3.0",
     "express": "4.14.0",

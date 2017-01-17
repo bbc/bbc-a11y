@@ -210,6 +210,28 @@ Feature: Headings
     When I validate the "Headings: content must follow headings" standard
     Then it passes
 
+  Scenario: Nested heading surrounded by no whitespace followed by content
+    Given a page with the body:
+      """
+      <div>
+        <div><h1>News headlines</h1></div>
+        Content
+      </div>
+      """
+    When I validate the "Headings: content must follow headings" standard
+    Then it passes
+
+  Scenario: Doubly-nested heading surrounded by no whitespace followed by content
+    Given a page with the body:
+      """
+      <div>
+        <div><div><h1>News headlines</h1></div></div>
+        Content
+      </div>
+      """
+    When I validate the "Headings: content must follow headings" standard
+    Then it passes
+
   Scenario: Non-nested heading followed by nested content
     Given a page with the body:
       """

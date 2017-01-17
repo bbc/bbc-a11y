@@ -1,4 +1,4 @@
-var standard = require('../lib/bbc/a11y/js/standards/minimumTextSize/textCannotBeTooSmall')
+var standard = require('../lib/standards/minimumTextSize/textCannotBeTooSmall')
 var $ = require('jquery')
 var expect = require('chai').expect
 

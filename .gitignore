@@ -5,5 +5,5 @@ tags
 .DS_Store
 /a11y.js
 node_modules
-lib/bbc/a11y/js/bundle.js
+lib/bundle.js
 .idea

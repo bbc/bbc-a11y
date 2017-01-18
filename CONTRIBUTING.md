@@ -42,6 +42,27 @@ Once those are installed, you can install the npm dependencies:
 You should see red if anything fails. If all tests pass, you are ready to start
 hacking! If not, please get in touch and we'll help you figure it out.
 
+## Troubleshooting
+
+Modern builds of OS X / MacOS exhibit an issue with ruby-2.0.0. If on `bundle install` you get an issue resembling `rack-2.0.1 requires ruby version >= 2.2.2, which is incompatible with the current version,
+ruby 2.0.0p648`, you may need to upgrade to a more recent Ruby build. 
+
+You can do this with a versioning manager, such as [RVM](http://rvm.io).
+
+For example, having installed RVM, you need to install the relevant version of Ruby:
+
+  ```
+  rvm install ruby-2.3.3
+  ```
+
+...then ensure you're using the new version:
+
+  ```
+  rvm use ruby-2.3.3
+  ```
+
+And then you need to follow the above instructions again, from `gem install bundle` onwards
+
 ## Process
 
 The basic process for contributing code is as follows:

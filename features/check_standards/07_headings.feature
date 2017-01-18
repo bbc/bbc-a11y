@@ -171,6 +171,22 @@ Feature: Headings
       No content follows: /html/body/div/h2[1]
       """
 
+  Scenario: Nested heading followed by heading of the same level
+    Given a page with the body:
+      """
+      <h1>Main heading</h1>
+      <div>
+        <h2>Subheading</h2>
+      </div>
+      <h2>Another subheading</h2>
+      Content
+      """
+    When I validate the "Headings: content must follow headings" standard
+    Then it fails with the message:
+      """
+      No content follows: /html/body/div/h2
+      """
+
   Scenario: Nested heading followed by non-nested content
     Given a page with the body:
       """
@@ -181,21 +197,6 @@ Feature: Headings
       """
     When I validate the "Headings: content must follow headings" standard
     Then it passes
-
-  Scenario: Nested heading followed by heading
-    Given a page with the body:
-      """
-      <div>
-        <h1>Main heading</h1>
-      </div>
-      <h1>Another heading</h1>
-      """
-    When I validate the "Headings: content must follow headings" standard
-    Then it fails with the message:
-      """
-      No content follows: /html/body/div/h1
-      No content follows: /html/body/h1
-      """
 
   Scenario: Nested heading followed by nested content
     Given a page with the body:

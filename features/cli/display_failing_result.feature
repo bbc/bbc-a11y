@@ -2,10 +2,10 @@ Feature: Display failing result
 
   Scenario: One standard fails
     Given a website running at http://localhost:54321
-    When I run `bbc-a11y http://localhost:54321/missing_header.html`
+    When I run `bbc-a11y http://localhost:54321/missing_main_heading.html`
     Then it should fail with:
       """
-      ✗ http://localhost:54321/missing_header.html
+      ✗ http://localhost:54321/missing_main_heading.html
         * Headings: Exactly one main heading
           - Found 0 h1 elements.
       """

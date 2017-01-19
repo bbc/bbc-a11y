@@ -4,14 +4,14 @@ Feature: Skipping Standards
     Given a website running at http://localhost:54321
     And a file named "a11y.js" with:
       """
-      page("http://localhost:54321/missing_header.html", {
+      page("http://localhost:54321/missing_main_heading.html", {
         skip: "Headings: exactly one main heading"
       })
       """
     When I run `bbc-a11y`
     Then it should pass with:
       """
-      ✓ http://localhost:54321/missing_header.html
+      ✓ http://localhost:54321/missing_main_heading.html
       """
 
   Scenario: All standards except one is skipped

@@ -95,7 +95,7 @@ defineSupportCode(function({ Given, When, Then, Before, After }) {
     var scenario = this
     return webServer.ensureRunningOn(54321)
       .then(function() {
-        return runA11y('http://localhost:54321/missing_header.html')
+        return runA11y('http://localhost:54321/missing_main_heading.html')
       })
       .then(function(result) {
         scenario.stdout = result.stdout

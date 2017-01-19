@@ -43,15 +43,15 @@ function runA11yInteractively(args) {
 
 defineSupportCode(function({ Given, When, Then, Before, After }) {
 
-  Given(/^a website running at http:\/\/localhost:(\d+)$/, function(port) {
+  Given('a website running at http:\/\/localhost:{port:int}', function(port) {
     return webServer.ensureRunningOn(Number(port))
   })
 
-  Given(/^a file named "([^"]*)" with:$/, function (path, contents) {
+  Given('a file named {path:stringInDoubleQuotes} with:', function (path, contents) {
     require('fs').writeFileSync(tempDir + '/' + path, contents, 'utf-8')
   })
 
-  Given(/^all the tests pass$/, function () {
+  Given('all the tests pass', function () {
     var scenario = this
     return webServer.ensureRunningOn(54321)
       .then(function() {
@@ -64,7 +64,7 @@ defineSupportCode(function({ Given, When, Then, Before, After }) {
       })
   })
 
-  When(/^I run `bbc-a11y`$/, function () {
+  When('I run `bbc-a11y`', function () {
     var scenario = this
     return runA11y('')
       .then(function(result) {
@@ -74,7 +74,7 @@ defineSupportCode(function({ Given, When, Then, Before, After }) {
       })
   })
 
-  When(/^I run `bbc-a11y (http:[^\s]+)`$/, function (url) {
+  When('I run `bbc-a11y {url:url}`', function (url) {
     var scenario = this
     return runA11y(url)
       .then(function(result) {
@@ -84,27 +84,26 @@ defineSupportCode(function({ Given, When, Then, Before, After }) {
       })
   })
 
-  When(/^I run `bbc-a11y (http:[^\s]+) --interactive`$/, function (url) {
+  When('I run `bbc-a11y {url:url} --interactive`', function (url) {
     return runA11yInteractively(url)
       .then(interactiveProcess => {
         this.interactiveProcess = interactiveProcess
       })
   })
 
-  When(/^I run a11y against a failing page$/, function () {
-    var scenario = this
+  When('I run a11y against a failing page', function () {
     return webServer.ensureRunningOn(54321)
-      .then(function() {
+      .then(() => {
         return runA11y('http://localhost:54321/missing_main_heading.html')
       })
-      .then(function(result) {
-        scenario.stdout = result.stdout
-        scenario.stderr = result.stderr
-        scenario.exitCode = result.exitCode
+      .then(result => {
+        this.stdout = result.stdout
+        this.stderr = result.stderr
+        this.exitCode = result.exitCode
       })
   })
 
-  Given(/^a page with the HTML:$/, function (html) {
+  Given('a page with the HTML:', function (html) {
     this.pageFrame = document.createElement('iframe')
     document.body.appendChild(this.pageFrame)
     return new Promise((resolve, reject) => {
@@ -115,7 +114,7 @@ defineSupportCode(function({ Given, When, Then, Before, After }) {
     })
   })
 
-  Given(/^a page with the body:$/, function (body) {
+  Given('a page with the body:', function (body) {
     this.pageFrame = document.createElement('iframe')
     document.body.appendChild(this.pageFrame)
     return new Promise((resolve, reject) => {
@@ -126,37 +125,37 @@ defineSupportCode(function({ Given, When, Then, Before, After }) {
     })
   })
 
-  When(/^I validate the "([^"]*)" standard$/, function (name) {
+  When('I validate the {name:stringInDoubleQuotes} standard', function (name) {
     var $ = jquery(this.pageFrame.contentDocument)
     var standards = Standards.matching(name)
     this.validationResult = standards.validate($.find.bind($))
   })
 
-  Then(/^it passes$/, function () {
+  Then('it passes', function () {
     var pass = !this.validationResult.results.find(function(result) {
       return result.errors.length > 0
     })
     assert(pass)
   })
 
-  Then(/^it should fail with:$/, function (string) {
+  Then('it should fail with:', function (string) {
     var output = this.stdout + this.stderr
     assert(output.indexOf(string) > -1, "Expected:\n" + string + "\nActual:\n" + output)
   })
 
-  Then(/^it should fail with exactly:$/, function (expectedOutput) {
+  Then('it should fail with exactly:', function (expectedOutput) {
     var actualOutput = (this.stdout + this.stderr)
     // HACK: work around stupid travis issue with xvfb
     var sanitisedActualOutput = actualOutput.split("\n").filter(line => line != 'Xlib:  extension "RANDR" missing on display ":99.0".').join("\n")
     assert.equal(sanitisedActualOutput, expectedOutput, "Expected:\n" + expectedOutput.replace(/\n/g, "[\\n]\n") + "\nActual:\n" + sanitisedActualOutput.replace(/\n/g, "[\\n]\n"))
   })
 
-  Then(/^it should pass with:$/, function (string) {
+  Then('it should pass with:', function (string) {
     var output = this.stdout
     assert(output.indexOf(string) > -1, "Expected: " + string + "\nActual:   " + output)
   })
 
-  Then(/^it fails with the message:$/, function (message) {
+  Then('it fails with the message:', function (message) {
     var actualMessage = this.validationResult.results.filter(function(result) {
       return result.errors.length > 0
     }).map(function(err) {
@@ -169,11 +168,11 @@ defineSupportCode(function({ Given, When, Then, Before, After }) {
     assert.equal(message, actualMessage)
   })
 
-  Then(/^the exit status should be (\d+)$/, function (status) {
+  Then('the exit status should be {status:int}', function (status) {
     assert.equal(this.exitCode, status)
   })
 
-  When(/^the window should remain open$/, function () {
+  When('the window should remain open', function () {
     return new Promise((resolve, reject) => {
       this.interactiveProcess.on('error', e => reject(e))
       this.interactiveProcess.on('close', (code, signal) => {

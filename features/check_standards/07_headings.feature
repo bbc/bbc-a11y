@@ -2,21 +2,26 @@ Feature: Headings
 
   A document **must** have exactly one `<h1>` element.
 
-  Heading levels after the document `<h1>` element **must** be sequential and **must not** skip heading levels.
+  Heading levels after the document `<h1>` element **must** be sequential and
+  **must not** skip heading levels.
 
   Heading elements **must** be followed by content.
 
   Rationale
   =========
 
-  A logical heading structure is invaluable for users of screen readers and similar assistive technologies to help navigate content.
+  A logical heading structure is invaluable for users of screen readers and
+  similar assistive technologies to help navigate content.
 
-  Users should be able to use the document's `<h1>` identify its main content. Documents should have one main subject.
+  Users should be able to use the document's `<h1>` identify its main content.
+  Documents should have one main subject.
 
-  Heading levels should not be skipped as a predictable document outline is an important factor for understandability.
+  Heading levels should not be skipped as a predictable document outline is an
+  important factor for understandability.
 
-  Headings should not be used for non-heading purposes, i.e. to identify blocks of content. A heading should always
-  be followed either by non-heading content or by a heading of one level deeper.
+  Headings should not be used for non-heading purposes, i.e. to identify blocks
+  of content. A heading should always be followed either by non-heading content
+  or by a heading of one level deeper.
 
   Scenario: No main heading
     Given a page with the body:

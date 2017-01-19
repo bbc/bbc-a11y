@@ -7,8 +7,8 @@ Feature: Specify content language
   Rationale
   =========
 
-  Assistive technologies such as screen readers have support for different languages,
-  allowing for appropriate pronunciation.
+  Assistive technologies such as screen readers have support for different
+  languages, allowing for appropriate pronunciation.
 
   Scenario: lang attribute on html element
     Given a page with the HTML:

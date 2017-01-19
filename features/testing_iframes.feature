@@ -5,7 +5,7 @@ Feature: Testing iframes
     And a page with the body:
       """
       <h1>This frame has no main heading:</h1>
-      <iframe src="http://localhost:54321/missing_header.html"></iframe>
+      <iframe src="http://localhost:54321/missing_main_heading.html"></iframe>
       """
     When I validate the "Headings: exactly one main heading" standard
     Then it fails with the message:

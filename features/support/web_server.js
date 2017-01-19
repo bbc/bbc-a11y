@@ -9,7 +9,7 @@ module.exports = {
     var app = express()
     let good = true
     app.get('/goodThenBad.html', (req, res) => {
-      const page = good ? 'perfect.html' : 'missing_header.html'
+      const page = good ? 'perfect.html' : 'missing_main_heading.html'
       good = !good
       res.set('Cache-Control', 'max-age=86400').status(200).end(fs.readFileSync(__dirname + '/web_server/' + page))
     })

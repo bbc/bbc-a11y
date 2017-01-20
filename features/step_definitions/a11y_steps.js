@@ -1,61 +1,26 @@
 const { defineSupportCode } = require('cucumber')
 var assert = require('assert')
-var mkdirp = require('mkdirp')
-var rimraf = require('rimraf')
 var Standards = require('../../lib/standards')
 var jquery = require('jquery')
 var webServer = require('../support/web_server')
-var childProcess = require('child_process')
-var path = require('path')
+
 var console = require('electron').remote.getGlobal('console')
 
-var tempDir = path.resolve(__dirname + '/../../tmp')
-
-function runA11y(args) {
-  return new Promise(function(resolve, reject) {
-    const execFile = childProcess.execFile
-    const result = {}
-    const binaryPath = path.resolve(__dirname, '../../bin/bbc-a11y.js')
-    const child = execFile(binaryPath, (args && [args]) || [], { cwd: tempDir }, (error, stdout, stderr) => {
-      if (error) {
-        result.error = error
-      }
-      result.stdout = stdout
-      result.stderr = stderr
-    });
-
-    child.on('close', function (code) {
-      result.exitCode = code
-      resolve(result)
-    })
-  });
-}
-
-function runA11yInteractively(args) {
-  return new Promise(function(resolve, reject) {
-    const spawn = childProcess.spawn
-    const splitArgs = args.split(' ').concat('--interactive')
-    const interactiveProcess = spawn(path.resolve(__dirname, '../../bin/bbc-a11y.js'), splitArgs, { cwd: tempDir })
-    setTimeout(() => { interactiveProcess.kill('SIGINT') }, 2000)
-    resolve(interactiveProcess)
-  })
-}
-
-defineSupportCode(function({ Given, When, Then, Before, After }) {
+defineSupportCode(function({ Given, When, Then }) {
 
   Given('a website running at http:\/\/localhost:{port:int}', function(port) {
     return webServer.ensureRunningOn(Number(port))
   })
 
   Given('a file named {path:stringInDoubleQuotes} with:', function (path, contents) {
-    require('fs').writeFileSync(tempDir + '/' + path, contents, 'utf-8')
+    require('fs').writeFileSync(this.tempDir + '/' + path, contents, 'utf-8')
   })
 
   Given('all the tests pass', function () {
     var scenario = this
     return webServer.ensureRunningOn(54321)
-      .then(function() {
-        return runA11y('http://localhost:54321/perfect.html')
+      .then(() => {
+        return this.runA11y('http://localhost:54321/perfect.html')
       })
       .then(function(result) {
         scenario.stdout = result.stdout
@@ -66,7 +31,7 @@ defineSupportCode(function({ Given, When, Then, Before, After }) {
 
   When('I run `bbc-a11y`', function () {
     var scenario = this
-    return runA11y('')
+    return this.runA11y('')
       .then(function(result) {
         scenario.stdout = result.stdout
         scenario.stderr = result.stderr
@@ -76,7 +41,7 @@ defineSupportCode(function({ Given, When, Then, Before, After }) {
 
   When('I run `bbc-a11y {url:url}`', function (url) {
     var scenario = this
-    return runA11y(url)
+    return this.runA11y(url)
       .then(function(result) {
         scenario.stdout = result.stdout
         scenario.stderr = result.stderr
@@ -85,7 +50,7 @@ defineSupportCode(function({ Given, When, Then, Before, After }) {
   })
 
   When('I run `bbc-a11y {url:url} --interactive`', function (url) {
-    return runA11yInteractively(url)
+    return this.runA11yInteractively(url)
       .then(interactiveProcess => {
         this.interactiveProcess = interactiveProcess
       })
@@ -94,7 +59,7 @@ defineSupportCode(function({ Given, When, Then, Before, After }) {
   When('I run a11y against a failing page', function () {
     return webServer.ensureRunningOn(54321)
       .then(() => {
-        return runA11y('http://localhost:54321/missing_main_heading.html')
+        return this.runA11y('http://localhost:54321/missing_main_heading.html')
       })
       .then(result => {
         this.stdout = result.stdout
@@ -185,16 +150,6 @@ defineSupportCode(function({ Given, When, Then, Before, After }) {
         }
       })
     })
-  })
-
-  Before(function(scenario, callback) {
-    childProcess.exec('rm -rf ' + tempDir, function(err, out) {
-      mkdirp(tempDir, callback)
-    });
-  })
-
-  After(function(scenario) {
-    if (!scenario.isFailed() && this.pageFrame) this.pageFrame.style.display = 'none'
   })
 
 })

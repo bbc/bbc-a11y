@@ -11,7 +11,7 @@ const commandLineArgs = require('../lib/commandLineArgs').parse(argv)
 const exit = commandLineArgs.interactive ?
   () => {} : electron.remote.process.exit
 
-function loadUrl(url) {
+function loadPage(page) {
   return new Promise(function(resolve, reject) {
     var mainFrame = document.getElementById('mainFrame')
     var addressBar = document.getElementById('addressBar')
@@ -22,8 +22,8 @@ function loadUrl(url) {
       resolve(jquery(mainFrame).contents())
     }
 
-    mainFrame.src = url
+    mainFrame.src = page.url
   })
 }
 
-new Runner().run(commandLineArgs.urls, loadUrl, new Reporter(console, remoteConsole), exit)
+new Runner().run(commandLineArgs.urls, loadPage, new Reporter(console, remoteConsole), exit)

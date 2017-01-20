@@ -19,8 +19,8 @@ describe('Runner', function() {
   })
 
   function run(argv) {
-    function loadUrl(url) {
-      events.push({ type: 'loadUrl', url: url })
+    function loadPage(page) {
+      events.push({ type: 'loadPage', page })
       return Promise.resolve(jquery(mainFrame).contents())
     }
     var devToolsConsole = {
@@ -43,7 +43,7 @@ describe('Runner', function() {
       events.push({ type: 'exit', args: [].slice.apply(arguments) })
     }
 
-    return new Runner().run(argv, loadUrl, new Reporter(devToolsConsole, commandLineConsole), exit)
+    return new Runner().run(argv, loadPage, new Reporter(devToolsConsole, commandLineConsole), exit)
       .then(function() {
         return Promise.resolve(events)
       })
@@ -53,7 +53,7 @@ describe('Runner', function() {
     it('checks the URL', function() {
       return run(['http://some/url'])
         .then(function(events) {
-          assert.deepEqual(events[0], { type: 'loadUrl', url: 'http://some/url' })
+          assert.deepEqual(events[0], { type: 'loadPage', page: { url: 'http://some/url' } })
           assert.deepEqual(events[events.length - 1], { type: 'exit', args: [1] })
         })
     })
@@ -63,7 +63,7 @@ describe('Runner', function() {
     it('loads the config file', function() {
       return run([])
         .then(function(events) {
-          assert.deepEqual(events[0], { type: 'loadUrl', url: 'http://www.bbc.co.uk' })
+          assert.deepEqual(events[0], { type: 'loadPage', page: { url: 'http://www.bbc.co.uk' } })
           assert.deepEqual(events[events.length - 1], { type: 'exit', args: [1] })
         })
     })

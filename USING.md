@@ -56,6 +56,29 @@ page("http://bbc.co.uk", {
 })
 ```
 
+## Viewport Width
+
+Because responsive web pages can vary depending on the width of the browser
+browser window, bbc-a11y allows the viewport width to be specified. Either
+you can pass a command line argument when checking a single URL, like this:
+
+    ./node_modules/.bin/bbc-a11y http://www.bbc.co.uk --width=800
+
+...or you can add an option to any page in your configuration file like this:
+
+```js
+page("http://bbc.co.uk", {
+  width: 800
+})
+```
+
+To test the same URL with multiple widths, you can loop over the widths in your
+configuration file, for example:
+
+```js
+[800, 1000].forEach(width => page("http://bbc.co.uk", { width }))
+```
+
 ## Running it
 
 Once you're configured, you can run the tests using the `bbc-a11y` command, from

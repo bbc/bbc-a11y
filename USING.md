@@ -95,7 +95,7 @@ To debug failures, running bbc-a11y in _interactive mode_ will show a browser
 window with development tools, allowing you to explore the failures and the
 elements that relate to each failure:
 
-    bbc-a11y http://www.bbc.co.uk --interactive
+    ./node_modules/.bin/bbc-a11y http://www.bbc.co.uk --interactive
 
 ## Using a11y in build scripts
 

@@ -28,7 +28,7 @@ function createWindow () {
 
   mainWindow.webContents.on('devtools-opened', () => {
     setImmediate(() => {
-      if (commandLineArgs.interactiveMode) {
+      if (commandLineArgs.interactive) {
         mainWindow.show()
       }
     })

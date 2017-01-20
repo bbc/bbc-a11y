@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/bbc/bbc-a11y#readme",
   "dependencies": {
+    "commander": "^2.9.0",
     "electron": "1.4.14",
     "jquery": "3.1.1"
   },

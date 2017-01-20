@@ -5,10 +5,10 @@ var jquery = require('jquery')
 var electron = require('electron')
 var remoteConsole = electron.remote.getGlobal('console')
 
-const argv = electron.remote.process.argv.slice(2)
+const argv = electron.remote.process.argv
 const commandLineArgs = require('../lib/commandLineArgs').parse(argv)
 
-const exit = commandLineArgs.interactiveMode ?
+const exit = commandLineArgs.interactive ?
   () => {} : electron.remote.process.exit
 
 function loadUrl(url) {

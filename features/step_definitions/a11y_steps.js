@@ -38,6 +38,10 @@ defineSupportCode(function({ Given, When, Then }) {
       })
   })
 
+  When('I run `bbc-a11y {url:url} --width {width:int}`', function (url, width) {
+    return this.runA11y(`url --width ${width}`)
+  })
+
   When('I run a11y against a failing page', function () {
     return webServer.ensureRunningOn(54321)
       .then(() => {
@@ -119,7 +123,7 @@ defineSupportCode(function({ Given, When, Then }) {
     assert.equal(this.exitCode, status)
   })
 
-  When('the window should remain open', function () {
+  Then('the window should remain open', function () {
     return new Promise((resolve, reject) => {
       this.interactiveProcess.on('error', e => reject(e))
       this.interactiveProcess.on('close', (code, signal) => {
@@ -132,6 +136,10 @@ defineSupportCode(function({ Given, When, Then }) {
         }
       })
     })
+  })
+
+  Then('it should run in a viewport {width:int} pixels wide', function (width) {
+    assert.equal(width, electron.remote.getCurrentWindow().getContentSize()[0])
   })
 
 })

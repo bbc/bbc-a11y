@@ -38,8 +38,8 @@ defineSupportCode(function({ Given, When, Then }) {
       })
   })
 
-  When('I run `bbc-a11y {url:url} --width {width:int}`', function (url, width) {
-    return this.runA11y(`url --width ${width}`)
+  When('I run `bbc-a11y {url:url} --width={width:int}`', function (url, width) {
+    return this.runA11y(`${url} --width=${width}`)
   })
 
   When('I run a11y against a failing page', function () {
@@ -102,8 +102,8 @@ defineSupportCode(function({ Given, When, Then }) {
   })
 
   Then('it should pass with:', function (string) {
-    var output = this.stdout
-    assert(output.indexOf(string) > -1, "Expected: " + string + "\nActual:   " + output)
+    var actualOutput = (this.stdout + this.stderr)
+    assert(actualOutput.indexOf(string) > -1, "Expected: " + string + "\nActual:   " + actualOutput)
   })
 
   Then('it fails with the message:', function (message) {
@@ -136,10 +136,6 @@ defineSupportCode(function({ Given, When, Then }) {
         }
       })
     })
-  })
-
-  Then('it should run in a viewport {width:int} pixels wide', function (width) {
-    assert.equal(width, electron.remote.getCurrentWindow().getContentSize()[0])
   })
 
 })

@@ -12,7 +12,7 @@ let mainWindow
 
 function createWindow () {
   mainWindow = new BrowserWindow({
-    width: 1024,
+    width: commandLineArgs.width || 1024,
     height: 800,
     show: false,
     webPreferences: { webSecurity: false }

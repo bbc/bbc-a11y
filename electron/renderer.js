@@ -26,4 +26,6 @@ function loadPage(page) {
   })
 }
 
-new Runner().run(commandLineArgs.urls, loadPage, new Reporter(console, remoteConsole), exit)
+const pages = commandLineArgs.urls.map(url => ({ url, width: commandLineArgs.width }))
+
+new Runner().run(pages, loadPage, new Reporter(console, remoteConsole), exit)

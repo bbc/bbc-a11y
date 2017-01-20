@@ -5,15 +5,19 @@ var jquery = require('jquery')
 var electron = require('electron')
 var remoteConsole = electron.remote.getGlobal('console')
 
-let argv = JSON.parse(decodeURIComponent(window.location.hash.substr(1)))
+const argv = electron.remote.process.argv
+const commandLineArgs = require('../lib/commandLineArgs').parse(argv)
 
-let exit = electron.remote.process.exit
-if (argv.indexOf('--interactive') > -1) {
-  argv = argv.filter(part => part != '--interactive')
-  exit = () => {}
-}
+const exit = commandLineArgs.interactive ?
+  () => {} : electron.remote.process.exit
 
-function loadUrl(url) {
+function loadPage(page) {
+  if (page.width) {
+    const win = electron.remote.getCurrentWindow()
+    const currentHeight = win.getContentSize()[1]
+    win.setContentSize(page.width, currentHeight, false)
+  }
+
   return new Promise(function(resolve, reject) {
     var mainFrame = document.getElementById('mainFrame')
     var addressBar = document.getElementById('addressBar')
@@ -24,8 +28,10 @@ function loadUrl(url) {
       resolve(jquery(mainFrame).contents())
     }
 
-    mainFrame.src = url
+    mainFrame.src = page.url
   })
 }
 
-new Runner().run(argv, loadUrl, new Reporter(console, remoteConsole), exit)
+const pages = commandLineArgs.urls.map(url => ({ url, width: commandLineArgs.width }))
+
+new Runner().run(pages, loadPage, new Reporter(console, remoteConsole), exit)

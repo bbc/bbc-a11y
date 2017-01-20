@@ -38,6 +38,19 @@ describe('configLoader.load(pathToConfigModule)', function() {
     })
   })
 
+  context('when the config module specifies viewport width', function() {
+    it('resolves with a list of pages', function() {
+      return configLoader.load(pathToConfigModule('viewportWidth'))
+        .then(function(config) {
+          assert.deepEqual(config, {
+            pages: [
+              { url: 'http://www.bbc.co.uk', width: 789 }
+            ]
+          })
+        })
+    })
+  })
+
   context('when the config module has a syntax error', function() {
     it('rejects with the syntax error', function() {
       return configLoader.load(pathToConfigModule('syntaxError'))

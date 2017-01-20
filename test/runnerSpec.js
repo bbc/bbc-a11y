@@ -18,9 +18,9 @@ describe('Runner', function() {
     document.body.appendChild(addressBar)
   })
 
-  function run(argv) {
-    function loadUrl(url) {
-      events.push({ type: 'loadUrl', url: url })
+  function run(pages) {
+    function loadPage(page) {
+      events.push({ type: 'loadPage', page })
       return Promise.resolve(jquery(mainFrame).contents())
     }
     var devToolsConsole = {
@@ -43,27 +43,38 @@ describe('Runner', function() {
       events.push({ type: 'exit', args: [].slice.apply(arguments) })
     }
 
-    return new Runner().run(argv, loadUrl, new Reporter(devToolsConsole, commandLineConsole), exit)
+    return new Runner().run(pages, loadPage, new Reporter(devToolsConsole, commandLineConsole), exit)
       .then(function() {
         return Promise.resolve(events)
       })
   }
 
-  context('with a single a URL as an argument', function() {
+  context('with a single a page as an argument', function() {
     it('checks the URL', function() {
-      return run(['http://some/url'])
+      return run([{ url: 'http://some/url' }])
         .then(function(events) {
-          assert.deepEqual(events[0], { type: 'loadUrl', url: 'http://some/url' })
+          assert.deepEqual(events[0], { type: 'loadPage', page: { url: 'http://some/url' } })
           assert.deepEqual(events[events.length - 1], { type: 'exit', args: [1] })
         })
     })
   })
 
   context('with no arguments', function() {
+    var cwd
+
+    beforeEach(function() {
+      cwd = process.cwd
+      process.cwd = function() { return require('path').join(__dirname, 'runnerSpec') }
+    })
+
+    afterEach(function() {
+      process.cwd = cwd
+    })
+
     it('loads the config file', function() {
       return run([])
         .then(function(events) {
-          assert.deepEqual(events[0], { type: 'loadUrl', url: 'http://www.bbc.co.uk' })
+          assert.deepEqual(events[0], { type: 'loadPage', page: { url: 'http://www.bbc.co.uk/sport' } })
           assert.deepEqual(events[events.length - 1], { type: 'exit', args: [1] })
         })
     })

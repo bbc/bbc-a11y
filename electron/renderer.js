@@ -12,6 +12,12 @@ const exit = commandLineArgs.interactive ?
   () => {} : electron.remote.process.exit
 
 function loadPage(page) {
+  if (page.width) {
+    const win = electron.remote.getCurrentWindow()
+    const currentHeight = win.getContentSize()[1]
+    win.setContentSize(page.width, currentHeight, false)
+  }
+
   return new Promise(function(resolve, reject) {
     var mainFrame = document.getElementById('mainFrame')
     var addressBar = document.getElementById('addressBar')

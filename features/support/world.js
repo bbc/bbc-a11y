@@ -9,19 +9,20 @@ function A11yWorld() {
   this.tempDir = path.resolve(__dirname + '/../../tmp')
 
   this.runA11y = args => {
+    const execArgs = (args && args.split(' ')) || []
     return new Promise((resolve, reject) => {
       const result = {}
       const binaryPath = path.resolve(__dirname, '../../bin/bbc-a11y.js')
-      const child = execFile(binaryPath, (args && [args]) || [], { cwd: this.tempDir }, (error, stdout, stderr) => {
+      const child = execFile(binaryPath, execArgs, { cwd: this.tempDir }, (error, stdout, stderr) => {
         if (error) {
-          result.error = error
+          this.error = error
         }
-        result.stdout = stdout
-        result.stderr = stderr
+        this.stdout = stdout
+        this.stderr = stderr
       });
 
-      child.on('close', function (code) {
-        result.exitCode = code
+      child.on('close', code => {
+        this.exitCode = code
         resolve(result)
       })
     });

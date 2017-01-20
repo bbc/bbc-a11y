@@ -17,36 +17,18 @@ defineSupportCode(function({ Given, When, Then }) {
   })
 
   Given('all the tests pass', function () {
-    var scenario = this
     return webServer.ensureRunningOn(54321)
       .then(() => {
         return this.runA11y('http://localhost:54321/perfect.html')
       })
-      .then(function(result) {
-        scenario.stdout = result.stdout
-        scenario.stderr = result.stderr
-        scenario.exitCode = result.exitCode
-      })
   })
 
   When('I run `bbc-a11y`', function () {
-    var scenario = this
-    return this.runA11y('')
-      .then(function(result) {
-        scenario.stdout = result.stdout
-        scenario.stderr = result.stderr
-        scenario.exitCode = result.exitCode
-      })
+    return this.runA11y()
   })
 
   When('I run `bbc-a11y {url:url}`', function (url) {
-    var scenario = this
     return this.runA11y(url)
-      .then(function(result) {
-        scenario.stdout = result.stdout
-        scenario.stderr = result.stderr
-        scenario.exitCode = result.exitCode
-      })
   })
 
   When('I run `bbc-a11y {url:url} --interactive`', function (url) {

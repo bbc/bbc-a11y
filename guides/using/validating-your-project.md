@@ -1,10 +1,8 @@
-## BBC A11y User Guide
+## Using bbc-a11y to validate your web project
 
-## Installing bbc-a11y to validate your project
-
-bbc-a11y is packaged as an npm module. You'll most likely want to create a
-stand-alone repo to run your accessibility tests, but you can also add it as
-part of an existing repo.
+If you have a web project, the best way to use bbc-a11y is to install it in your
+project repository, so that everybody on the team can validate the accessibility
+of your app at any time.
 
 ### Prerequisites
 
@@ -16,9 +14,10 @@ tool that comes with node.js:
 
 ### Add a11y to your project's dependencies
 
-Add bbc-a11y to your project with npm:
+Once you have a package.json file, add bbc-a11y to your development
+dependencies like this:
 
-    npm install bbc-a11y
+    npm install bbc-a11y --save-dev
 
 ## Configuring a11y for your project
 
@@ -30,6 +29,41 @@ like this:
 page("http://bbc.co.uk")
 page("http://bbc.co.uk/news")
 ```
+
+## Running bbc-a11y
+
+Once you're configured, you can run the tests using the `bbc-a11y` command, from
+the directory where your `a11y.js` configuration file is stored:
+
+    ./node_modules/.bin/bbc-a11y
+
+This will pick up your `a11y.js` configuration file and run the a11y checks on
+each page specified in your configuration. Output is printed to the console.
+
+This is a bit cumbersome to type, so we recommend that you add a task to the
+`scripts` section of your package.json file, like this:
+
+```json
+{
+  "name": "your-web-project",
+  "scripts": {
+    "a11y": "bbc-a11y"
+  }
+}
+
+After doing this, you can run bbc-a11y via npm, like this:
+
+    npm run a11y
+
+```
+
+## Interactive mode
+
+To debug failures, running bbc-a11y in _interactive mode_ will show a browser
+window with development tools, allowing you to explore the failures and the
+elements that relate to each failure:
+
+    ./node_modules/.bin/bbc-a11y http://www.bbc.co.uk --interactive
 
 ### Skipping standards checks
 
@@ -95,24 +129,6 @@ configuration file, for example:
 ```js
 [800, 1000].forEach(width => page("http://bbc.co.uk", { width }))
 ```
-
-## Running it
-
-Once you're configured, you can run the tests using the `bbc-a11y` command, from
-the directory where your `a11y.js` configuration file is stored:
-
-    ./node_modules/.bin/bbc-a11y
-
-This will pick up your `a11y.js` configuration file and run the a11y checks on
-each page specified in your configuration. Output is printed to the console.
-
-## Interactive mode
-
-To debug failures, running bbc-a11y in _interactive mode_ will show a browser
-window with development tools, allowing you to explore the failures and the
-elements that relate to each failure:
-
-    ./node_modules/.bin/bbc-a11y http://www.bbc.co.uk --interactive
 
 ## Using a11y in build scripts
 

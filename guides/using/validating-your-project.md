@@ -1,10 +1,10 @@
-## Using bbc-a11y to validate your web project
+# Using bbc-a11y to validate your web project
 
 If you have a web project, the best way to use bbc-a11y is to install it in your
 project repository, so that everybody on the team can validate the accessibility
 of your app at any time.
 
-### Prerequisites
+## Prerequisites
 
 [Install node.js](https://docs.npmjs.com/getting-started/installing-node) and
 then create a `package.json` file in your project using the `npm` command line
@@ -12,7 +12,7 @@ tool that comes with node.js:
 
     npm init
 
-### Add a11y to your project's dependencies
+## Add a11y to your project's dependencies
 
 Once you have a package.json file, add bbc-a11y to your development
 dependencies like this:
@@ -65,7 +65,7 @@ elements that relate to each failure:
 
     ./node_modules/.bin/bbc-a11y http://www.bbc.co.uk --interactive
 
-### Skipping standards checks
+## Skipping standards checks
 
 Nobody's perfect. Use `skip` in the configuration to opt-out of certain
 checks.

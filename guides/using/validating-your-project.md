@@ -107,7 +107,7 @@ page("http://bbc.co.uk", {
 })
 ```
 
-## Viewport Width
+## Setting the viewport width
 
 Because responsive web pages can vary depending on the width of the browser
 browser window, bbc-a11y allows the viewport width to be specified. Either

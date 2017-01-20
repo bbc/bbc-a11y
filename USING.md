@@ -56,6 +56,23 @@ page("http://bbc.co.uk", {
 })
 ```
 
+## Hiding errors
+
+To hide particular errors, for example if there are areas of the page which you
+cannot control, use `hide` in your page configuration, like this:
+
+```js
+// hide all errors that mention 'orb-modules' anywhere
+page("http://bbc.co.uk", {
+  hide: 'orb-modules'
+})
+
+// hide all errors that mention 'heading' or 'Text size'
+page("http://bbc.co.uk", {
+  hide: ['heading', 'Text size']
+})
+```
+
 ## Viewport Width
 
 Because responsive web pages can vary depending on the width of the browser

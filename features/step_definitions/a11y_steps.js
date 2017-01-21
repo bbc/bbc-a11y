@@ -1,19 +1,20 @@
 const { defineSupportCode } = require('cucumber')
-var assert = require('assert')
-var Standards = require('../../lib/standards')
-var jquery = require('jquery')
-var webServer = require('../support/web_server')
+const assert = require('assert')
+const path = require('path')
+const Standards = require('../../lib/standards')
+const jquery = require('jquery')
+const webServer = require('../support/web_server')
 
 var console = require('electron').remote.getGlobal('console')
 
 defineSupportCode(function({ Given, When, Then }) {
 
-  Given('a website running at http:\/\/localhost:{port:int}', function(port) {
+  Given('a website running at http:\/\/localhost:{port:int}', function (port) {
     return webServer.ensureRunningOn(Number(port))
   })
 
-  Given('a file named {path:stringInDoubleQuotes} with:', function (path, contents) {
-    require('fs').writeFileSync(this.tempDir + '/' + path, contents, 'utf-8')
+  Given('a file named {filePath:stringInDoubleQuotes} with:', function (filePath, contents) {
+    return this.writeFile(filePath, contents)
   })
 
   Given('all the tests pass', function () {
@@ -40,6 +41,10 @@ defineSupportCode(function({ Given, When, Then }) {
 
   When('I run `bbc-a11y {url:url} --width={width:int}`', function (url, width) {
     return this.runA11y(`${url} --width=${width}`)
+  })
+
+  When('I run `bbc-a11y --config={configPath}`', function (configPath) {
+    return this.runA11y(`--config=${configPath}`)
   })
 
   When('I run a11y against a failing page', function () {

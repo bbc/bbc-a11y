@@ -130,6 +130,13 @@ configuration file, for example:
 [800, 1000].forEach(width => page("http://bbc.co.uk", { width }))
 ```
 
+## Specifying a configuration file path
+
+Use the `--config` command line option to specify an alternative location for
+the configuration file:
+
+    ./node_modules/.bin/bbc-a11y --config ./path/to/a11y.js
+
 ## Using a11y in build scripts
 
 The `bbc-a11y` executable will exit with a non-zero status code if there are any

@@ -33,7 +33,8 @@ describe('a11y validating in frames', function() {
         ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, ':', 'Found 0 h1 elements.'],
         ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe2, xpath: "/html/body/iframe[1]" }, ':', 'Found 0 h1 elements.'],
         ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe3, xpath: "/html/body/iframe[2]" }, ':', 'Found 0 h1 elements.']
-      ]
+      ],
+      hiddenErrors: []
     }])
   })
 })

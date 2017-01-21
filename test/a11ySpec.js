@@ -27,7 +27,8 @@ describe('a11y', function() {
         },
         "errors":[
           ["Found 0 h1 elements."]
-        ]
+        ],
+        "hiddenErrors": []
       },
       {
         "standard": {
@@ -36,7 +37,8 @@ describe('a11y', function() {
         },
         "errors":[
           ["html tag has no lang attribute:","/html"]
-        ]
+        ],
+        "hiddenErrors": []
       },
       {
         "standard": {
@@ -45,7 +47,8 @@ describe('a11y', function() {
         },
         "errors":[
           ['Found 0 elements with role="main".']
-        ]
+        ],
+        "hiddenErrors": []
       }
     ]
     expect(JSON.stringify(errors)).to.equal(JSON.stringify(expectedErrors))
@@ -54,6 +57,15 @@ describe('a11y', function() {
   it('skips standards', function() {
     var validation = a11y.validate({ skip: ['Main landmark: Exactly one main landmark'] })
     expect(validation.skipped).to.eql(['Exactly one main landmark'])
+  })
+
+  it('hides errors', function() {
+    var validation = a11y.validate({ hide: ['Found 0 elements with role="main".'] })
+    var resultsWithErrors = validation.results.filter(function(standardResult) {
+      return standardResult.hiddenErrors.length > 0
+    })
+    expect(resultsWithErrors[0].errors).to.eql([])
+    expect(resultsWithErrors[0].hiddenErrors).to.eql([['Found 0 elements with role="main".']])
   })
 
   it('only runs specific standards', function() {

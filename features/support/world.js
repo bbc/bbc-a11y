@@ -7,13 +7,13 @@ const path = require('path')
 
 function A11yWorld() {
   this.tempDir = path.resolve(__dirname + '/../../tmp')
+  this.binaryPath = path.resolve(__dirname, '../../bin/bbc-a11y.js')
 
   this.runA11y = args => {
     const execArgs = (args && args.split(' ')) || []
     return new Promise((resolve, reject) => {
       const result = {}
-      const binaryPath = path.resolve(__dirname, '../../bin/bbc-a11y.js')
-      const child = execFile(binaryPath, execArgs, { cwd: this.tempDir }, (error, stdout, stderr) => {
+      const child = execFile(this.binaryPath, execArgs, { cwd: this.tempDir }, (error, stdout, stderr) => {
         if (error) {
           this.error = error
         }
@@ -31,9 +31,20 @@ function A11yWorld() {
   this.runA11yInteractively = args => {
     return new Promise((resolve, reject) => {
       const splitArgs = args.split(' ').concat('--interactive')
-      const interactiveProcess = spawn(path.resolve(__dirname, '../../bin/bbc-a11y.js'), splitArgs, { cwd: this.tempDir })
+      const interactiveProcess = spawn(this.binaryPath, splitArgs, { cwd: this.tempDir })
       setTimeout(() => { interactiveProcess.kill('SIGINT') }, 2000)
       resolve(interactiveProcess)
+    })
+  }
+
+  this.writeFile = (filePath, contents) => {
+    const fullPath = path.join(this.tempDir, filePath)
+    return new Promise(function(resolve, reject) {
+      mkdirp(path.dirname(fullPath), error => {
+        if (error) return reject(error)
+        require('fs').writeFileSync(fullPath, contents, 'utf-8')
+        resolve()
+      })
     })
   }
 }

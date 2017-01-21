@@ -2,6 +2,7 @@ var Runner = require('../lib/runner')
 var Reporter = require('../lib/reporter')
 var jquery = require('jquery')
 var assert = require('assert')
+const path = require('path')
 
 describe('Runner', function() {
   var mainFrame, addressBar, events
@@ -18,7 +19,7 @@ describe('Runner', function() {
     document.body.appendChild(addressBar)
   })
 
-  function run(pages) {
+  function run(pages, configPath) {
     function loadPage(page) {
       events.push({ type: 'loadPage', page })
       return Promise.resolve(jquery(mainFrame).contents())
@@ -43,7 +44,7 @@ describe('Runner', function() {
       events.push({ type: 'exit', args: [].slice.apply(arguments) })
     }
 
-    return new Runner().run(pages, loadPage, new Reporter(devToolsConsole, commandLineConsole), exit)
+    return new Runner(configPath).run(pages, loadPage, new Reporter(devToolsConsole, commandLineConsole), exit)
       .then(function() {
         return Promise.resolve(events)
       })
@@ -60,19 +61,9 @@ describe('Runner', function() {
   })
 
   context('with no arguments', function() {
-    var cwd
-
-    beforeEach(function() {
-      cwd = process.cwd
-      process.cwd = function() { return require('path').join(__dirname, 'runnerSpec') }
-    })
-
-    afterEach(function() {
-      process.cwd = cwd
-    })
-
     it('loads the config file', function() {
-      return run([])
+      const configPath = path.join(__dirname, 'runnerSpec', 'a11y.js')
+      return run([], configPath)
         .then(function(events) {
           assert.deepEqual(events[0], { type: 'loadPage', page: { url: 'http://www.bbc.co.uk/sport' } })
           assert.deepEqual(events[events.length - 1], { type: 'exit', args: [1] })

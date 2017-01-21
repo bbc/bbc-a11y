@@ -13,6 +13,11 @@ describe('commandLineArgs.parse(argv)', function() {
     assert.equal(true, args.interactive)
   })
 
+  it('parses --config as a string', function() {
+    const args = commandLineArgs.parse(['node', 'bbc-a11y', '--config=foo'])
+    assert.equal('foo', args.configPath)
+  })
+
   it('parses all other arguments as URLs', function() {
     const args = commandLineArgs.parse(['node', 'bbc-a11y', 'foo', 'bar'])
     assert.deepEqual(['foo', 'bar'], args.urls)

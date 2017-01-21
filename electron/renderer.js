@@ -1,9 +1,10 @@
-var Runner = require('../lib/runner')
-var Reporter = require('../lib/reporter')
-var jquery = require('jquery')
+const Runner = require('../lib/runner')
+const Reporter = require('../lib/reporter')
+const jquery = require('jquery')
+const path = require('path')
 
-var electron = require('electron')
-var remoteConsole = electron.remote.getGlobal('console')
+const electron = require('electron')
+const remoteConsole = electron.remote.getGlobal('console')
 
 const argv = electron.remote.process.argv
 const commandLineArgs = require('../lib/commandLineArgs').parse(argv)
@@ -34,4 +35,7 @@ function loadPage(page) {
 
 const pages = commandLineArgs.urls.map(url => ({ url, width: commandLineArgs.width }))
 
-new Runner().run(pages, loadPage, new Reporter(console, remoteConsole), exit)
+const configPath = path.resolve(commandLineArgs.configPath || path.join(process.cwd(), 'a11y.js'))
+
+new Runner(configPath)
+  .run(pages, loadPage, new Reporter(console, remoteConsole), exit)

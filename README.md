@@ -6,7 +6,9 @@ standards](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/).
 
 This project is a work in progress, but it is stable and you can use it to
 validate the accessibility of your website, or add use it in your web project
-today:
+today.
+
+[![Build Status](https://travis-ci.org/bbc/bbc-a11y.svg?branch=master)](https://travis-ci.org/bbc/bbc-a11y)
 
 ## Using BBC A11y to validate web pages
 

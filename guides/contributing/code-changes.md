@@ -10,7 +10,7 @@ things on your system:
 
 You'll also need a [Github account](https://github.com/join)
 
-Once you are signed into Github you'll need to can [fork and clone the bbc-a11y repository](https://guides.github.com/activities/forking/).
+Once you are signed into Github you can [fork and clone the bbc-a11y repository](https://guides.github.com/activities/forking/).
 
 Now that you have a copy of the code on your system you'll need to install the
 development dependencies. Node.js ships with a package manager called

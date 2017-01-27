@@ -63,3 +63,29 @@ Feature: Title Attributes
       """
     When I validate the "Title attributes: title attributes only on inputs" standard
     Then it passes
+
+  Scenario: Title attribute duplicates content
+    Given a page with the body:
+      """
+      <a href="back" title="Back to Home">
+        <img src="back.png" /> Back to Home
+      </a>
+      """
+    When I validate the "Title attributes: title attributes must not duplicate content" standard
+    Then it fails with the message:
+      """
+      Title attribute duplicates content: /html/body/a
+      """
+
+  Scenario: Title attribute duplicates nested content
+    Given a page with the body:
+      """
+      <a href="back" title="Back to Home">
+        <span>Back to <b>Home</b></span>
+      </a>
+      """
+    When I validate the "Title attributes: title attributes must not duplicate content" standard
+    Then it fails with the message:
+      """
+      Title attribute duplicates content: /html/body/a
+      """

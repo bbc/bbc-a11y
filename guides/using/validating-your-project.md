@@ -141,3 +141,14 @@ the configuration file:
 
 The `bbc-a11y` executable will exit with a non-zero status code if there are any
 standards failures, for convenient integration with CI tools like Jenkins.
+
+## Using a custom reporter
+
+If your CI system renders reports in particular format, you can write your own
+reporter module and specify the path to it using the `--reporter` command line
+option:
+
+    ./node_modules/.bin/bbc-a11y --reporter ./path/to/reporter.js
+
+See the (custom reporter feature)[../../features/custom_reporter.feature] for
+an example of the reporter API.

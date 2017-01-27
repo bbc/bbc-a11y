@@ -47,6 +47,10 @@ defineSupportCode(function({ Given, When, Then }) {
     return this.runA11y(`--config=${configPath}`)
   })
 
+  When('I run `bbc-a11y --reporter custom/reporter.js`', function () {
+    return this.runA11y(`--reporter=custom/reporter.js`)
+  })
+
   When('I run a11y against a failing page', function () {
     return webServer.ensureRunningOn(54321)
       .then(() => {

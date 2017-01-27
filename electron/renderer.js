@@ -9,7 +9,8 @@ const remoteConsole = electron.remote.getGlobal('console')
 const argv = electron.remote.process.argv
 const commandLineArgs = require('../lib/commandLineArgs').parse(argv)
 
-const Reporter = require(path.join(process.cwd(), commandLineArgs.reporter || '../lib/reporter'))
+const Reporter = require(commandLineArgs.reporter ?
+  path.join(process.cwd(), commandLineArgs.reporter) : '../lib/reporter')
 
 const exit = commandLineArgs.interactive ?
   () => {} : electron.remote.process.exit

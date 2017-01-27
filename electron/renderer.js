@@ -1,5 +1,5 @@
 const Runner = require('../lib/runner')
-const Reporter = require('../lib/reporter')
+
 const jquery = require('jquery')
 const path = require('path')
 
@@ -8,6 +8,8 @@ const remoteConsole = electron.remote.getGlobal('console')
 
 const argv = electron.remote.process.argv
 const commandLineArgs = require('../lib/commandLineArgs').parse(argv)
+
+const Reporter = require(path.join(process.cwd(), commandLineArgs.reporter || '../lib/reporter'))
 
 const exit = commandLineArgs.interactive ?
   () => {} : electron.remote.process.exit

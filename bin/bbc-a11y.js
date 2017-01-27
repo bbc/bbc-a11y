@@ -6,7 +6,17 @@ var path = require('path')
 var electron = require('electron')
 
 var args = [path.join(__dirname, '..', 'electron', 'a11y.electron')].concat(process.argv.slice(2))
-var child = childProcess.spawn(electron, args, { stdio: 'inherit' })
+
+var child = childProcess.spawn(electron, args)
+child.stdout.pipe(process.stdout)
+process.stdin.pipe(child.stdin)
+
+child.stderr.on('data', function (data) {
+  var str = data.toString('utf8')
+  // Silence Chromium noise
+  if (str.match(/^\[\d+\:\d+/)) return
+  process.stderr.write(data)
+})
 
 child.on('close', function (code) {
   process.exit(code)

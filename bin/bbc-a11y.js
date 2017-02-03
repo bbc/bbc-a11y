@@ -5,7 +5,7 @@ var path = require('path')
 
 var electron = require('electron')
 
-var args = [path.join(__dirname, '..', 'electron', 'a11y.electron')].concat(process.argv.slice(2))
+var args = [path.join(__dirname, '..', 'electron', 'bbc-a11y.js')].concat(process.argv.slice(2))
 
 var child = childProcess.spawn(electron, args)
 child.stdout.pipe(process.stdout)

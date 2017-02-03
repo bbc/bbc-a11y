@@ -113,7 +113,7 @@ Because responsive web pages can vary depending on the width of the browser
 browser window, bbc-a11y allows the viewport width to be specified. Either
 you can pass a command line argument when checking a single URL, like this:
 
-    ./node_modules/.bin/bbc-a11y http://www.bbc.co.uk --width=800
+    ./node_modules/.bin/bbc-a11y http://www.bbc.co.uk --width 800
 
 ...or you can add an option to any page in your configuration file like this:
 
@@ -148,7 +148,7 @@ standards failures, for convenient integration with CI tools like Jenkins.
 
 Override the human-readable output format with JSON instead like this:
 
-    ./node_modules/.bin/bbc-a11y --reporter=json
+    ./node_modules/.bin/bbc-a11y --reporter json
 
 ## Using a custom reporter
 
@@ -156,7 +156,7 @@ If your CI system renders reports in different format, you can write your own
 reporter module and specify the path to it using the `--reporter` command line
 option:
 
-    ./node_modules/.bin/bbc-a11y --reporter=./path/to/reporter.js
+    ./node_modules/.bin/bbc-a11y --reporter ./path/to/reporter.js
 
 See the (custom reporter feature)[../../features/custom_reporter.feature] for
 an example of the reporter API.

@@ -46,7 +46,7 @@ Feature: Custom Reporter
 
       module.exports = Reporter
       """
-    When I run `bbc-a11y --reporter=custom/reporter.js`
+    When I run `bbc-a11y --reporter custom/reporter.js`
     Then it should fail with exactly:
       """
       STARTED

@@ -6,7 +6,7 @@ Feature: Specify path to config file
       """
       page('http://localhost:54321/perfect.html')
       """
-    When I run `bbc-a11y --config=path/to/a11y.js`
+    When I run `bbc-a11y --config path/to/a11y.js`
     Then it should pass with:
       """
       ✓ http://localhost:54321/perfect.html

@@ -123,6 +123,8 @@ page("http://bbc.co.uk", {
 })
 ```
 
+If you don't specify a width, the viewport will be 1024px wide.
+
 To test the same URL with multiple widths, you can loop over the widths in your
 configuration file, for example:
 

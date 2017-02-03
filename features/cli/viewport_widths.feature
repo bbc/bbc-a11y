@@ -29,3 +29,19 @@ Feature: Viewport Widths
       """
       ✓ http://localhost:54321/perfect_when_666_wide.html --width=666
       """
+
+  Scenario: Viewport is restored to default width when is specified then not specified
+    Given a website running at http://localhost:54321
+    And a file named "a11y.js" with:
+      """
+      page("http://localhost:54321/perfect_when_666_wide.html", {
+        width: 666
+      })
+      page("http://localhost:54321/perfect_when_666_wide.html")
+      """
+    When I run `bbc-a11y`
+    Then it should fail with:
+      """
+      ✓ http://localhost:54321/perfect_when_666_wide.html --width=666
+      ✗ http://localhost:54321/perfect_when_666_wide.html
+      """

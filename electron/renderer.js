@@ -16,10 +16,12 @@ const exit = commandLineArgs.interactive ?
   () => {} : electron.remote.process.exit
 
 function loadPage(page) {
-  if (page.width) {
-    const win = electron.remote.getCurrentWindow()
-    const currentHeight = win.getContentSize()[1]
-    win.setContentSize(page.width, currentHeight, false)
+  const win = electron.remote.getCurrentWindow()
+  const [currentWidth, currentHeight] = win.getContentSize()
+  const newWidth = page.width || 1024
+  const isResized = currentWidth != newWidth
+  if (isResized) {
+    win.setContentSize(newWidth, currentHeight, false)
   }
 
   return new Promise(function(resolve, reject) {
@@ -32,7 +34,9 @@ function loadPage(page) {
       resolve(jquery(mainFrame).contents())
     }
 
-    mainFrame.src = page.url
+    setTimeout(function() {
+      mainFrame.src = page.url
+    }, isResized ? 100 : 0)
   })
 }
 

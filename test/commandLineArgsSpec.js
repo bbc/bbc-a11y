@@ -4,7 +4,7 @@ var assert = require('assert')
 describe('commandLineArgs.parse(argv)', function() {
 
   it('parses --width integer as viewport width', function() {
-    const args = commandLineArgs.parse(['node', 'bbc-a11y', '--width 777'])
+    const args = commandLineArgs.parse(['node', 'bbc-a11y', '--width', '777'])
     assert.equal(777, args.width)
   })
 
@@ -14,7 +14,7 @@ describe('commandLineArgs.parse(argv)', function() {
   })
 
   it('parses --config as a string', function() {
-    const args = commandLineArgs.parse(['node', 'bbc-a11y', '--config foo'])
+    const args = commandLineArgs.parse(['node', 'bbc-a11y', '--config', 'foo'])
     assert.equal('foo', args.configPath)
   })
 

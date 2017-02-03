@@ -1,5 +1,5 @@
 var Runner = require('../lib/runner')
-var Reporter = require('../lib/reporter')
+var Reporter = require('../lib/reporters/pretty')
 var jquery = require('jquery')
 var assert = require('assert')
 const path = require('path')

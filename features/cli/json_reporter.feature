@@ -102,7 +102,7 @@ Feature: JSON Reporter
                 {
                   "standard": {
                     "section": "tabIndex",
-                    "name": "Elements with zero tab index must be fields"
+                    "name": "Zero tab index must only be set on elements which are focusable by default"
                   },
                   "errors": [],
                   "hiddenErrors": []
@@ -218,7 +218,7 @@ Feature: JSON Reporter
                 {
                   "standard": {
                     "section": "tabIndex",
-                    "name": "Elements with zero tab index must be fields"
+                    "name": "Zero tab index must only be set on elements which are focusable by default"
                   },
                   "errors": [],
                   "hiddenErrors": []

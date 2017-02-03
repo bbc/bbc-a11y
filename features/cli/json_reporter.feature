@@ -6,7 +6,7 @@ Feature: JSON Reporter
       page("http://localhost:54321/perfect.html")
       page("http://localhost:54321/missing_main_heading.html")
       """
-    When I run `bbc-a11y --reporter=json`
+    When I run `bbc-a11y --reporter json`
     Then it should fail with exactly:
       """
       {

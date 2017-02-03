@@ -39,16 +39,16 @@ defineSupportCode(function({ Given, When, Then }) {
       })
   })
 
-  When('I run `bbc-a11y {url:url} --width={width:int}`', function (url, width) {
-    return this.runA11y(`${url} --width=${width}`)
+  When('I run `bbc-a11y {url:url} --width {width:int}`', function (url, width) {
+    return this.runA11y(`${url} --width ${width}`)
   })
 
-  When('I run `bbc-a11y --config={configPath}`', function (configPath) {
-    return this.runA11y(`--config=${configPath}`)
+  When('I run `bbc-a11y --config {configPath}`', function (configPath) {
+    return this.runA11y(`--config ${configPath}`)
   })
 
-  When('I run `bbc-a11y --reporter={reporter}`', function (reporter) {
-    return this.runA11y(`--reporter=${reporter}`)
+  When('I run `bbc-a11y --reporter {reporter}`', function (reporter) {
+    return this.runA11y(`--reporter ${reporter}`)
   })
 
   When('I run `bbc-a11y --help`', function () {

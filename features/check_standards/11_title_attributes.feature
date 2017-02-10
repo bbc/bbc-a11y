@@ -32,7 +32,7 @@ Feature: Title Attributes
         <img src="close.png" />
       </button>
       """
-    When I validate the "Title attributes: title attributes only on inputs" standard
+    When I validate the "Title Attributes: Title attributes only on inputs" standard
     Then it passes
 
   Scenario: Hidden element with title attribute
@@ -40,7 +40,7 @@ Feature: Title Attributes
       """
       <iframe style="display:none" title="Ignore me, I'm invisible"></iframe>
       """
-    When I validate the "Title attributes: title attributes only on inputs" standard
+    When I validate the "Title Attributes: Title attributes only on inputs" standard
     Then it passes
 
   Scenario: Anchor tag with title attribute
@@ -50,7 +50,7 @@ Feature: Title Attributes
         <img src="close.png" />
       </a>
       """
-    When I validate the "Title attributes: title attributes only on inputs" standard
+    When I validate the "Title Attributes: Title attributes only on inputs" standard
     Then it fails with the message:
       """
       Non-input element has title attribute: /html/body/a
@@ -61,7 +61,7 @@ Feature: Title Attributes
       """
       <iframe src="perfect.html" title="Rainbows and unicorns"></iframe>
       """
-    When I validate the "Title attributes: title attributes only on inputs" standard
+    When I validate the "Title Attributes: Title attributes only on inputs" standard
     Then it passes
 
   Scenario: Title attribute duplicates content
@@ -71,7 +71,7 @@ Feature: Title Attributes
         <img src="back.png" /> Back to Home
       </a>
       """
-    When I validate the "Title attributes: title attributes must not duplicate content" standard
+    When I validate the "Title Attributes: Title attributes must not duplicate content" standard
     Then it fails with the message:
       """
       Title attribute duplicates content: /html/body/a
@@ -84,7 +84,7 @@ Feature: Title Attributes
         <span>Back to <b>Home</b></span>
       </a>
       """
-    When I validate the "Title attributes: title attributes must not duplicate content" standard
+    When I validate the "Title Attributes: Title attributes must not duplicate content" standard
     Then it fails with the message:
       """
       Title attribute duplicates content: /html/body/a

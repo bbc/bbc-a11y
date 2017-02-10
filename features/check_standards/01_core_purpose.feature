@@ -19,7 +19,7 @@ Feature: Core Purpose
 
     * Progressive enhancement
 
-    * Minimum text size
+    * Minimum Text Size
 
   It is not a reason to ignore accessibility for non-core page elements.
 

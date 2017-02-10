@@ -2,7 +2,7 @@ var standard = require('../lib/standards/minimumTextSize/textCannotBeTooSmall')
 var $ = require('jquery')
 var expect = require('chai').expect
 
-describe('minimum text size standard', function() {
+describe('Minimum Text Size standard', function() {
   it('ignores text nodes with parents with display: none', function() {
     $('<div style="display:none font-size: 1px">Text!</div>').appendTo('body')
     var failures = []

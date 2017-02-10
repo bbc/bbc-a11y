@@ -26,7 +26,7 @@ describe('a11y validating in frames', function() {
     var validation = a11y.validate({ only: ['Headings: Exactly one main heading']})
     expect(validation.results).to.eql([{
       standard: {
-        section: 'headings',
+        section: 'Headings',
         name: 'Exactly one main heading',
       },
       errors: [

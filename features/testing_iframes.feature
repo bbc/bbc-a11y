@@ -7,7 +7,7 @@ Feature: Testing iframes
       <h1>This frame has no main heading:</h1>
       <iframe src="http://localhost:54321/missing_main_heading.html"></iframe>
       """
-    When I validate the "Headings: exactly one main heading" standard
+    When I validate the "Headings: Exactly one main heading" standard
     Then it fails with the message:
       """
       In frame /html/body/iframe : Found 0 h1 elements.
@@ -20,7 +20,7 @@ Feature: Testing iframes
       <h1>This frame has no main heading:</h1>
       <iframe src="http://localhost:54321/iframe.html"></iframe>
       """
-    When I validate the "Headings: exactly one main heading" standard
+    When I validate the "Headings: Exactly one main heading" standard
     Then it fails with the message:
       """
       In frame /html/body/iframe : Found 0 h1 elements.
@@ -34,7 +34,7 @@ Feature: Testing iframes
       <h1>This frame has no main heading:</h1>
       <iframe src="http://127.0.0.1:54321/iframe.html"></iframe>
       """
-    When I validate the "Headings: exactly one main heading" standard
+    When I validate the "Headings: Exactly one main heading" standard
     Then it fails with the message:
       """
       In frame /html/body/iframe : Found 0 h1 elements.

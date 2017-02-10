@@ -73,8 +73,8 @@ checks.
 ```js
 page("http://bbc.co.uk", {
   skip: [
-    'Focusable controls: Anchors must have hrefs',
-    'Headings: exactly one main heading'
+    'Focusable Controls: Anchors must have hrefs',
+    'Headings: Exactly one main heading'
   ]
 })
 
@@ -86,7 +86,7 @@ use `only` when you want to focus your attention on just one problem:
 
 ```js
 page("http://bbc.co.uk", {
-  only: 'Focusable controls: Anchors must have hrefs'
+  only: 'Focusable Controls: Anchors must have hrefs'
 })
 ```
 

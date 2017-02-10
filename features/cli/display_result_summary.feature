@@ -7,7 +7,7 @@ Feature: Display result summary
       page("http://localhost:54321/perfect.html")
       page("http://localhost:54321/missing_main_heading.html")
       page("http://localhost:54321/missing_main_heading.html?again!", {
-        skip: "Headings: exactly one main heading"
+        skip: "Headings: Exactly one main heading"
       })
       """
     When I run `bbc-a11y`

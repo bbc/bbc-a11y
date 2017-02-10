@@ -36,7 +36,7 @@ Feature: Display failing result
       ✗ http://localhost:54321/heading_and_title_attribute_failures.html
         * Headings: Exactly one main heading
           - Found 0 h1 elements.
-        * Title attributes: title attributes only on inputs
+        * Title attributes: Title attributes only on inputs
           - Non-input element has title attribute: /html/body/p/span
 
       For details on how to fix these errors, please see the following pages:

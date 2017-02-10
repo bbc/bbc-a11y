@@ -21,7 +21,7 @@ Feature: JSON Reporter
               "results": [
                 {
                   "standard": {
-                    "section": "Focusable Controls",
+                    "section": "Focusable controls",
                     "name": "Anchors must have hrefs"
                   },
                   "errors": [],
@@ -29,7 +29,7 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
-                    "section": "Form Interactions",
+                    "section": "Form interactions",
                     "name": "Forms must have submit buttons"
                   },
                   "errors": [],
@@ -37,7 +37,7 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
-                    "section": "Form Labels",
+                    "section": "Form labels",
                     "name": "Fields must have labels or titles"
                   },
                   "errors": [],
@@ -69,7 +69,7 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
-                    "section": "Image Alternatives",
+                    "section": "Image alternatives",
                     "name": "Images must have alt attributes"
                   },
                   "errors": [],
@@ -77,7 +77,7 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
-                    "section": "Indicating Language",
+                    "section": "Indicating language",
                     "name": "Html must have lang attribute"
                   },
                   "errors": [],
@@ -85,15 +85,15 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
-                    "section": "Main Landmark",
-                    "name": "Exactly one main landmark"
+                    "section": "Main landmark",
+                    "name": "Exactly one Main landmark"
                   },
                   "errors": [],
                   "hiddenErrors": []
                 },
                 {
                   "standard": {
-                    "section": "Minimum Text Size",
+                    "section": "Minimum text size",
                     "name": "Text cannot be too small"
                   },
                   "errors": [],
@@ -101,15 +101,15 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
-                    "section": "Tab Index",
-                    "name": "Zero tab index must only be set on elements which are focusable by default"
+                    "section": "Tab index",
+                    "name": "Zero Tab index must only be set on elements which are focusable by default"
                   },
                   "errors": [],
                   "hiddenErrors": []
                 },
                 {
                   "standard": {
-                    "section": "Title Attributes",
+                    "section": "Title attributes",
                     "name": "Title attributes must not duplicate content"
                   },
                   "errors": [],
@@ -117,7 +117,7 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
-                    "section": "Title Attributes",
+                    "section": "Title attributes",
                     "name": "Title attributes only on inputs"
                   },
                   "errors": [],
@@ -133,7 +133,7 @@ Feature: JSON Reporter
               "results": [
                 {
                   "standard": {
-                    "section": "Focusable Controls",
+                    "section": "Focusable controls",
                     "name": "Anchors must have hrefs"
                   },
                   "errors": [],
@@ -141,7 +141,7 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
-                    "section": "Form Interactions",
+                    "section": "Form interactions",
                     "name": "Forms must have submit buttons"
                   },
                   "errors": [],
@@ -149,7 +149,7 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
-                    "section": "Form Labels",
+                    "section": "Form labels",
                     "name": "Fields must have labels or titles"
                   },
                   "errors": [],
@@ -185,7 +185,7 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
-                    "section": "Image Alternatives",
+                    "section": "Image alternatives",
                     "name": "Images must have alt attributes"
                   },
                   "errors": [],
@@ -193,7 +193,7 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
-                    "section": "Indicating Language",
+                    "section": "Indicating language",
                     "name": "Html must have lang attribute"
                   },
                   "errors": [],
@@ -201,15 +201,15 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
-                    "section": "Main Landmark",
-                    "name": "Exactly one main landmark"
+                    "section": "Main landmark",
+                    "name": "Exactly one Main landmark"
                   },
                   "errors": [],
                   "hiddenErrors": []
                 },
                 {
                   "standard": {
-                    "section": "Minimum Text Size",
+                    "section": "Minimum text size",
                     "name": "Text cannot be too small"
                   },
                   "errors": [],
@@ -217,15 +217,15 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
-                    "section": "Tab Index",
-                    "name": "Zero tab index must only be set on elements which are focusable by default"
+                    "section": "Tab index",
+                    "name": "Zero Tab index must only be set on elements which are focusable by default"
                   },
                   "errors": [],
                   "hiddenErrors": []
                 },
                 {
                   "standard": {
-                    "section": "Title Attributes",
+                    "section": "Title attributes",
                     "name": "Title attributes must not duplicate content"
                   },
                   "errors": [],
@@ -233,7 +233,7 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
-                    "section": "Title Attributes",
+                    "section": "Title attributes",
                     "name": "Title attributes only on inputs"
                   },
                   "errors": [],

@@ -1,4 +1,4 @@
-Feature: Tab Index
+Feature: Tab index
 
   Positive `tabindex` attribute values **must not** be used to create a logical
   tab order.
@@ -21,17 +21,17 @@ Feature: Tab Index
   element. There are no circumstances in which it is not better to use a
   natively focusable control such as a `<a>` or `<button>`.
 
-  Scenario: Element with negative tab index
+  Scenario: Element with negative Tab index
     Given a page with the body:
       """
       <a href="/news">News</a>
       <button type="submit">Search</button>
       <div tabindex="-1"></div>
       """
-    When I validate the "Tab Index: Zero tab index must only be set on elements which are focusable by default" standard
+    When I validate the "Tab index: Zero Tab index must only be set on elements which are focusable by default" standard
     Then it passes
 
-  Scenario: Focusable elements with zero tab index
+  Scenario: Focusable elements with zero Tab index
     Given a page with the body:
       """
       <a href="/news" tabindex="0">News</a>
@@ -40,10 +40,10 @@ Feature: Tab Index
       <select tabindex="0"></select>
       <textarea tabindex="0"></textarea>
       """
-    When I validate the "Tab Index: Zero tab index must only be set on elements which are focusable by default" standard
+    When I validate the "Tab index: Zero Tab index must only be set on elements which are focusable by default" standard
     Then it passes
 
-  Scenario: Unfocusable element with zero tab index
+  Scenario: Unfocusable element with zero Tab index
     Given a page with the body:
       """
       <a href="/news" tabindex="1">News</a>
@@ -51,7 +51,7 @@ Feature: Tab Index
       <div tabindex="3"></div>
       <div tabindex="0"></div>
       """
-    When I validate the "Tab Index: Zero tab index must only be set on elements which are focusable by default" standard
+    When I validate the "Tab index: Zero Tab index must only be set on elements which are focusable by default" standard
     Then it fails with the message:
       """
       Non-focusable element with tabindex=0: /html/body/div[2]

@@ -19,13 +19,13 @@ a summary of those standards and the level of test coverage currently provided.
 | Resizable text          |     x     |        x       |    x   |
 | Tabindex                |    yes    |        x       |    x   |
 | Title attributes        |    yes    |        x       |    x   |
-| Focusable Controls      |    yes    |        x       |    x   |
+| Focusable controls      |    yes    |        x       |    x   |
 | Visible on focus        |     x     |        x       |    x   |
 | Control styles          |     x     |        x       |    x   |
 | Focus styles            |     x     |        x       |    x   |
 | Colour contrast         |     x     |        x       |    x   |
 | Colour and meaning      |     x     |        x       |    x   |
-| Image Alternatives      |    yes    |        x       |    x   |
+| Image alternatives      |    yes    |        x       |    x   |
 | Form labels             |    yes    |        x       |    x   |
 | Form interactions       |    yes    |        x       |    x   |
 | Tables                  |     x     |        x       |    x   |

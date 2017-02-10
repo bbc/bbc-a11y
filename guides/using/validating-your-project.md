@@ -74,7 +74,7 @@ checks.
 page("http://bbc.co.uk", {
   skip: [
     'Focusable controls: Anchors must have hrefs',
-    'Headings: exactly one main heading'
+    'Headings: Exactly one main heading'
   ]
 })
 

@@ -1,4 +1,4 @@
-Feature: Focusable Controls
+Feature: Focusable controls
 
   Controls for JavaScript enhanced interactions **must** be `<a>`, `<button>`,
   or `<input>` elements if that is the only mechanism for controlling them.
@@ -42,7 +42,7 @@ Feature: Focusable Controls
           <li><a href="#entertainmenttab">Entertainment</a></li>
       </ul>
       """
-    When I validate the "Focusable controls: anchors must have hrefs" standard
+    When I validate the "Focusable controls: Anchors must have hrefs" standard
     Then it passes
 
   Scenario: Some anchor tags do not have href attributes
@@ -54,7 +54,7 @@ Feature: Focusable Controls
           <li><a>Entertainment</a></li>
       </ul>
       """
-    When I validate the "Focusable controls: anchors must have hrefs" standard
+    When I validate the "Focusable controls: Anchors must have hrefs" standard
     Then it fails with the message:
       """
       Anchor has no href attribute: /html/body/ul/li[1]/a

@@ -23,7 +23,7 @@ Feature: Specify content language
         </body>
       </html>
       """
-    When I validate the "Indicating language: html must have lang attribute" standard
+    When I validate the "Indicating language: Html must have lang attribute" standard
     Then it passes
 
   Scenario: Missing lang attribute on html element
@@ -39,7 +39,7 @@ Feature: Specify content language
         </body>
       </html>
       """
-    When I validate the "Indicating language: html must have lang attribute" standard
+    When I validate the "Indicating language: Html must have lang attribute" standard
     Then it fails with the message:
       """
       html tag has no lang attribute: /html

@@ -91,8 +91,9 @@ defineSupportCode(function({ Given, When, Then }) {
 
   When('I validate the {name:stringInDoubleQuotes} standard', function (name) {
     var $ = jquery(this.pageFrame.contentDocument)
-    var standards = Standards.matching(name)
-    this.validationResult = standards.validate($.find.bind($))
+    var matching = Standards.matching(name)
+    if (matching.standards.length != 1) throw new Error("Expected 1 standard called '" + name + "', found " + matching.standards.length)
+    this.validationResult = matching.validate($.find.bind($))
   })
 
   Then('it passes', function () {

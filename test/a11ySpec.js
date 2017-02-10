@@ -22,7 +22,7 @@ describe('a11y', function() {
     var expectedErrors = [
       {
         "standard": {
-          "section": "headings",
+          "section": "Headings",
           "name": "Exactly one main heading"
         },
         "errors":[
@@ -32,7 +32,7 @@ describe('a11y', function() {
       },
       {
         "standard": {
-          "section": "indicatingLanguage",
+          "section": "Indicating language",
           "name": "Html must have lang attribute"
         },
         "errors":[
@@ -42,8 +42,8 @@ describe('a11y', function() {
       },
       {
         "standard": {
-          "section": "mainLandmark",
-          "name": "Exactly one main landmark"
+          "section": "Main landmark",
+          "name": "Exactly one Main landmark"
         },
         "errors":[
           ['Found 0 elements with role="main".']
@@ -55,8 +55,8 @@ describe('a11y', function() {
   })
 
   it('skips standards', function() {
-    var validation = a11y.validate({ skip: ['Main landmark: Exactly one main landmark'] })
-    expect(validation.skipped).to.eql(['Exactly one main landmark'])
+    var validation = a11y.validate({ skip: ['Main landmark: Exactly one Main landmark'] })
+    expect(validation.skipped).to.eql(['Exactly one Main landmark'])
   })
 
   it('hides errors', function() {
@@ -69,8 +69,8 @@ describe('a11y', function() {
   })
 
   it('only runs specific standards', function() {
-    var validation = a11y.validate({ only: ['Main landmark: Exactly one main landmark'] })
+    var validation = a11y.validate({ only: ['Main landmark: Exactly one Main landmark'] })
     expect(validation.results.length).to.equal(1)
-    expect(validation.results[0].standard.name).to.equal('Exactly one main landmark')
+    expect(validation.results[0].standard.name).to.equal('Exactly one Main landmark')
   })
 })

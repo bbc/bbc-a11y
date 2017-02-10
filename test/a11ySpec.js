@@ -12,6 +12,7 @@ describe('a11y', function() {
     var errors = validation.results.filter(function(standardResult) {
       return standardResult.errors.length > 0
     }).map(function(standardResult) {
+      standardResult.standard.section = standardResult.standard.section.title
       standardResult.errors = standardResult.errors.map(function(error) {
         return error.map(function(segment) {
           return segment.xpath ? segment.xpath : segment

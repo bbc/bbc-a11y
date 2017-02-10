@@ -7,7 +7,7 @@ Feature: Form interactions
   `input[type=hidden]` elements to store state) **must** have a submit button in
   the form of a `<input>[type=submit,image]` or `<button>[type=submit]` element.
 
-  Changes to the page **must** location must only take place on explicit user
+  Changes to the page location **must** must only take place on explicit user
   action i.e. when a submit button is activated. They must not take place when
   change (particularly for `select` elements), focus, or blur events are fired.
 

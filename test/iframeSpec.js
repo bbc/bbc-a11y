@@ -1,4 +1,5 @@
 var a11y = require('../lib/a11y.js')
+var Standards = require('../lib/standards')
 var expect = require('chai').expect
 var $ = require('jquery')
 
@@ -26,7 +27,7 @@ describe('a11y validating in frames', function() {
     var validation = a11y.validate({ only: ['Headings: Exactly one main heading']})
     expect(validation.results).to.eql([{
       standard: {
-        section: 'Headings',
+        section: Standards.sections.headings,
         name: 'Exactly one main heading',
       },
       errors: [

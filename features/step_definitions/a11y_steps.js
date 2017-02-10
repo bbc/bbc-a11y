@@ -105,7 +105,7 @@ defineSupportCode(function({ Given, When, Then }) {
 
   Then('it should fail with:', function (string) {
     var output = this.stdout + this.stderr
-    assert(output.indexOf(string) > -1, "Expected:\n" + string + "\nActual:\n" + output)
+    assert(output.indexOf(string) > -1, "\n------------------\nExpected:\n------------------\n" + string + "\n------------------\nActual:\n------------------\n" + output)
   })
 
   Then('it should fail with exactly:', function (expectedOutput) {

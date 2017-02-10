@@ -46,7 +46,7 @@ function loadPage(page) {
 
     setTimeout(function() {
       mainFrame.src = page.url
-    }, isResized ? 100 : 0)
+    }, isResized ? 200 : 0)
   })
 }
 

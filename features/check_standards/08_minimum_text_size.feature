@@ -30,8 +30,6 @@ Feature: Minimum text size
     Then it fails with the message:
       """
       Text size too small (10px): /html/body
-      Text size too small (10px): /html/body/span[1]
-      Text size too small (10px): /html/body/span[2]
       Text size too small (9px): /html/body/span[2]/b
       """
 

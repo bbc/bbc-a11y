@@ -122,6 +122,14 @@ Feature: JSON Reporter
                   },
                   "errors": [],
                   "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Visible on focus",
+                    "name": "Elements must be visible on focus"
+                  },
+                  "errors": [],
+                  "hiddenErrors": []
                 }
               ],
               "skipped": []
@@ -235,6 +243,14 @@ Feature: JSON Reporter
                   "standard": {
                     "section": "Title attributes",
                     "name": "Title attributes only on inputs"
+                  },
+                  "errors": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Visible on focus",
+                    "name": "Elements must be visible on focus"
                   },
                   "errors": [],
                   "hiddenErrors": []

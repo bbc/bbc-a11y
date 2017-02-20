@@ -67,3 +67,14 @@ Feature: Form interactions
       """
     When I validate the "Form interactions: Forms must have submit buttons" standard
     Then it passes
+
+  Scenario: Hidden form with no submit button
+    Given a page with the body:
+      """
+      <form action="/search" style="display: none">
+        <label for="q">Search term:</label>
+        <input type="text" name="q" id="q">
+      </form>
+      """
+    When I validate the "Form interactions: Forms must have submit buttons" standard
+    Then it passes

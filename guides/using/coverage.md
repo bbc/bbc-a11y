@@ -20,7 +20,7 @@ a summary of those standards and the level of test coverage currently provided.
 | Tabindex                |    yes    |        x       |    x   |
 | Title attributes        |    yes    |        x       |    x   |
 | Focusable controls      |    yes    |        x       |    x   |
-| Visible on focus        |     x     |        x       |    x   |
+| Visible on focus        |    yes    |        x       |    x   |
 | Control styles          |     x     |        x       |    x   |
 | Focus styles            |     x     |        x       |    x   |
 | Colour contrast         |     x     |        x       |    x   |
@@ -28,7 +28,7 @@ a summary of those standards and the level of test coverage currently provided.
 | Image alternatives      |    yes    |        x       |    x   |
 | Form labels             |    yes    |        x       |    x   |
 | Form interactions       |    yes    |        x       |    x   |
-| Tables                  |     x     |        x       |    x   |
+| Tables                  |    yes    |        x       |    x   |
 
 ## BBC Standards and Guidelines for Mobile Accessibility
 

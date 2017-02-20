@@ -103,9 +103,14 @@ defineSupportCode(function({ Given, When, Then }) {
     assert(pass)
   })
 
-  Then('it should fail with:', function (string) {
-    var output = this.stdout + this.stderr
-    assert(output.indexOf(string) > -1, "\n------------------\nExpected:\n------------------\n" + string + "\n------------------\nActual:\n------------------\n" + output)
+  Then('it should fail with:', function (expectedOutput) {
+    var actualOutput = this.stdout + this.stderr
+    expectedOutput = expectedOutput.replace('[count all standards - 1]', Standards.all.length - 1)
+    assert(actualOutput.indexOf(expectedOutput) > -1,
+      "\n------------------\nExpected:\n------------------\n" +
+      expectedOutput +
+      "\n------------------\nActual:\n------------------\n" +
+      actualOutput)
   })
 
   Then('it should fail with exactly:', function (expectedOutput) {

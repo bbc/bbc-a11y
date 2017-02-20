@@ -25,5 +25,5 @@ Feature: Skipping Standards
     When I run `bbc-a11y`
     Then it should fail with:
       """
-      1 page checked, 1 error found, 12 standards skipped
+      1 page checked, 1 error found, [count all standards - 1] standards skipped
       """

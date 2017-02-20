@@ -109,6 +109,14 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
+                    "section": "Tables",
+                    "name": "Use tables for data"
+                  },
+                  "errors": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
                     "section": "Title attributes",
                     "name": "Title attributes must not duplicate content"
                   },
@@ -227,6 +235,14 @@ Feature: JSON Reporter
                   "standard": {
                     "section": "Tab index",
                     "name": "Zero Tab index must only be set on elements which are focusable by default"
+                  },
+                  "errors": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Tables",
+                    "name": "Use tables for data"
                   },
                   "errors": [],
                   "hiddenErrors": []

@@ -135,7 +135,7 @@ defineSupportCode(function({ Given, When, Then }) {
         }).join(" ")
       }).join("\n");
     }).join("\n")
-    assert.equal(message, actualMessage)
+    assert.equal(actualMessage, message)
   })
 
   Then('the exit status should be {status:int}', function (status) {

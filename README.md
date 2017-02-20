@@ -34,3 +34,9 @@ refer to the guide that best describes you:
 
 * I would like to
   [change the code](./guides/contributing/code-changes.md)
+
+## Coverage
+
+Not all of the standards are covered by automated checks. Some standards are
+very difficult or impossible to cover with automated tests, others are partially
+covered or work in progress, as [summarised here](./guides/coverage.md)

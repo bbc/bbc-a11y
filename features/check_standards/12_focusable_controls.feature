@@ -60,3 +60,11 @@ Feature: Focusable controls
       Anchor has no href attribute: /html/body/ul/li[1]/a
       Anchor has no href attribute: /html/body/ul/li[3]/a
       """
+
+  Scenario: Hidden anchor tag with no href attribute
+    Given a page with the body:
+      """
+      <a style="display:none">I'm invisible, ignore me</a>
+      """
+    When I validate the "Focusable controls: Anchors must have hrefs" standard
+    Then it passes

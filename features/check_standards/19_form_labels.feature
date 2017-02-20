@@ -54,6 +54,16 @@ Feature: Form labels
       Field has no label or title attribute: /html/body/input[5]
       """
 
+  Scenario: Hidden input fields
+    Given a page with the body:
+      """
+      <input type="text" name="name" style="display: none" />
+      <textarea name="text" style="display: none"></textarea>
+      <select name="select" style="display: none"></textarea>
+      """
+    When I validate the "Form labels: Fields must have labels or titles" standard
+    Then it passes
+
   Scenario: Hidden fields do not need labels or Title attributes
     Given a page with the body:
       """

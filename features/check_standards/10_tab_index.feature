@@ -56,3 +56,14 @@ Feature: Tab index
       """
       Non-focusable element with tabindex=0: /html/body/div[2]
       """
+
+    Scenario: Unfocusable element with zero Tab index
+      Given a page with the body:
+        """
+        <a href="/news" tabindex="1">News</a>
+        <button type="submit" tabindex="2">Search</button>
+        <div tabindex="3"></div>
+        <div tabindex="0" style="display:none"></div>
+        """
+      When I validate the "Tab index: Zero Tab index must only be set on elements which are focusable by default" standard
+      Then it passes

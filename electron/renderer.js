@@ -44,9 +44,20 @@ function loadPage(page) {
       resolve(jquery(mainFrame).contents())
     }
 
-    setTimeout(function() {
+    if (isResized) {
+      function waitForResize() {
+        setTimeout(function() {
+          if (window.innerWidth == newWidth) {
+            mainFrame.src = page.url
+          } else {
+            waitForResize()
+          }
+        }, 10)
+      }
+      waitForResize()
+    } else {
       mainFrame.src = page.url
-    }, isResized ? 200 : 0)
+    }
   })
 }
 

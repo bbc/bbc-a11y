@@ -13,6 +13,9 @@ module.exports = {
       good = !good
       res.set('Cache-Control', 'max-age=86400').status(200).end(fs.readFileSync(__dirname + '/web_server/' + page))
     })
+    app.get('/x-frame-options.html', (req, res) => {
+      res.set('x-frame-options', 'SAMEORIGIN').status(200).end(fs.readFileSync(__dirname + '/web_server/perfect.html'))
+    })
     app.use(express.static(__dirname + '/web_server'))
     return new Promise(function(resolve, reject) {
       var listener = app.listen(port, function(err) {

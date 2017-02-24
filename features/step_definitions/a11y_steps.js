@@ -97,10 +97,14 @@ defineSupportCode(function({ Given, When, Then }) {
   })
 
   Then('it passes', function () {
-    var pass = !this.validationResult.results.find(function(result) {
-      return result.errors.length > 0
-    })
-    assert(pass)
+    if ('exitCode' in this) {
+      assert.equal(this.exitCode, 0, "\n" + this.stdout + this.stderr)
+    } else {
+      var pass = !this.validationResult.results.find(function(result) {
+        return result.errors.length > 0
+      })
+      assert(pass)
+    }
   })
 
   Then('it should fail with:', function (expectedOutput) {

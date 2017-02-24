@@ -35,8 +35,10 @@ function createWindow () {
   })
 
   mainWindow.webContents.session.webRequest.onHeadersReceived({}, function (d, c) {
-    if(d.responseHeaders['X-Frame-Options']){
-      delete d.responseHeaders['X-Frame-Options'];
+    for (var header in d.responseHeaders) {
+      if (header.toLowerCase() == 'x-frame-options') {
+        delete d.responseHeaders[header]
+      }
     }
     c({ cancel: false, responseHeaders: d.responseHeaders })
   })

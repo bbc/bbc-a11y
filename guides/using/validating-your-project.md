@@ -150,6 +150,12 @@ Override the human-readable output format with JSON instead like this:
 
     ./node_modules/.bin/bbc-a11y --reporter json
 
+## Output results in JUnit format
+
+Override the human-readable output format with a JUNit report (test-report.xml) instead like this:
+
+    ./node_modules/.bin/bbc-a11y --reporter junit
+
 ## Using a custom reporter
 
 If your CI system renders reports in different format, you can write your own

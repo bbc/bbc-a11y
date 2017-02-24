@@ -26,7 +26,8 @@
   "dependencies": {
     "commander": "^2.9.0",
     "electron": "1.4.14",
-    "jquery": "3.1.1"
+    "jquery": "3.1.1",
+    "junit-report-builder": "^1.1.1"
   },
   "devDependencies": {
     "browserify": "13.3.0",

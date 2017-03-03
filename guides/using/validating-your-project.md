@@ -50,12 +50,11 @@ This is a bit cumbersome to type, so we recommend that you add a task to the
     "a11y": "bbc-a11y"
   }
 }
+```
 
 After doing this, you can run bbc-a11y via npm, like this:
 
     npm run a11y
-
-```
 
 ## Interactive mode
 

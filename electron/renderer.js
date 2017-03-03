@@ -34,31 +34,53 @@ function loadPage(page) {
     win.setContentSize(newWidth, currentHeight, false)
   }
 
-  return new Promise(function(resolve, reject) {
-    var mainFrame = document.getElementById('mainFrame')
-    var addressBar = document.getElementById('addressBar')
+  var mainFrame = document.getElementById('mainFrame')
+  var addressBar = document.getElementById('addressBar')
 
-    mainFrame.onload = function() {
-      console.clear()
-      console.log("BBC a11y is validating...")
-      resolve(jquery(mainFrame).contents())
-    }
+  var promise = Promise.resolve()
 
-    if (isResized) {
-      function waitForResize() {
-        setTimeout(function() {
-          if (window.innerWidth == newWidth) {
-            mainFrame.src = page.url
-          } else {
-            waitForResize()
-          }
-        }, 10)
+  if (page.visit) {
+    promise = promise.then(function() {
+      return page.visit(mainFrame)
+    })
+  }
+
+  return promise.then(function() {
+    return new Promise(function(resolve, reject) {
+      function validateFrame() {
+        console.clear()
+        console.log("BBC a11y is validating...")
+        resolve(jquery(mainFrame).contents())
       }
-      waitForResize()
-    } else {
-      mainFrame.src = page.url
-    }
+
+      function loadUrl() {
+        if (page.visit) {
+          validateFrame()
+        } else {
+          mainFrame.onload = function() {
+            validateFrame()
+          }
+          mainFrame.src = page.url
+        }
+      }
+
+      if (isResized) {
+        function waitForResize() {
+          setTimeout(function() {
+            if (window.innerWidth == newWidth) {
+              loadUrl()
+            } else {
+              waitForResize()
+            }
+          }, 10)
+        }
+        waitForResize()
+      } else {
+        loadUrl()
+      }
+    });
   })
+
 }
 
 const pages = commandLineArgs.urls.map(url => ({ url, width: commandLineArgs.width }))

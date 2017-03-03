@@ -13,5 +13,5 @@ Feature: Command Line Help
         -i, --interactive          show browser window and leave open for debugging
         -w, --width <pixels>       override viewport width
         -c, --config <config>      path to config file
-        -r, --reporter <reporter>  json or [path to custom reporter module]
+        -r, --reporter <reporter>  json or junit or [path to custom reporter module]
     """

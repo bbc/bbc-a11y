@@ -13,16 +13,31 @@ Feature: Display failing result
         - http://www.bbc.co.uk/guidelines/futuremedia/accessibility/html/headings.shtml
       """
 
-  Scenario: Two failing checks from the same standard
+  Scenario: One standard generates a warning
     Given a website running at http://localhost:54321
-    When I run `bbc-a11y http://localhost:54321/two_headings_failures.html`
+    When I run `bbc-a11y http://localhost:54321/subheading_first.html`
     Then it should fail with:
       """
-      ✗ http://localhost:54321/two_headings_failures.html
+      ✓ http://localhost:54321/subheading_first.html
+        ⚠ Headings: Headings must be in ascending order
+          - First heading was not a main heading: /html/body/h3
+
+      For details on how to fix these errors, please see the following pages:
+        - http://www.bbc.co.uk/guidelines/futuremedia/accessibility/html/headings.shtml
+      """
+
+  Scenario: Failures and warnings from the same standard
+    Given a website running at http://localhost:54321
+    When I run `bbc-a11y http://localhost:54321/two_headings_failures_and_one_warning.html`
+    Then it should fail with:
+      """
+      ✗ http://localhost:54321/two_headings_failures_and_one_warning.html
         * Headings: Content must follow headings
           - No content follows: /html/body/h2
         * Headings: Exactly one main heading
           - Found 0 h1 elements.
+        ⚠ Headings: Headings must be in ascending order
+          - First heading was not a main heading: /html/body/h2
 
       For details on how to fix these errors, please see the following pages:
         - http://www.bbc.co.uk/guidelines/futuremedia/accessibility/html/headings.shtml

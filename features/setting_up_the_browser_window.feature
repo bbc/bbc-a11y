@@ -27,5 +27,5 @@ Feature: Setting up the browser window
       """
       ✓ Members area (after logging in)
 
-      1 page checked, 0 errors found, 0 standards skipped
+      1 page checked, 0 errors found, 0 warnings, 0 standards skipped
       """

@@ -43,5 +43,6 @@ Feature: Viewport Widths
     Then it should fail with:
       """
       ✓ http://localhost:54321/perfect_when_666_wide.html --width 666
+      
       ✗ http://localhost:54321/perfect_when_666_wide.html
       """

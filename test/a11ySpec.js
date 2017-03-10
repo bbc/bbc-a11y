@@ -29,6 +29,7 @@ describe('a11y', function() {
         "errors":[
           ["Found 0 h1 elements."]
         ],
+        "warnings": [],
         "hiddenErrors": []
       },
       {
@@ -39,6 +40,7 @@ describe('a11y', function() {
         "errors":[
           ["html tag has no lang attribute:","/html"]
         ],
+        "warnings": [],
         "hiddenErrors": []
       },
       {
@@ -49,6 +51,7 @@ describe('a11y', function() {
         "errors":[
           ['Found 0 elements with role="main".']
         ],
+        "warnings": [],
         "hiddenErrors": []
       }
     ]

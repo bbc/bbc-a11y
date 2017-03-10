@@ -25,6 +25,7 @@ Feature: Setting Cookies
     Then it should fail with:
       """
       ✓ http://localhost:54321/good_with_cookie.html
+
       ✗ http://localhost:54321/good_with_cookie.html
         * Main landmark: Exactly one Main landmark
           - Found 0 elements with role="main".

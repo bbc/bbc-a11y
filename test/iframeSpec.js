@@ -9,7 +9,7 @@ describe('a11y validating in frames', function() {
     this.iframe1 = document.querySelector('iframe')
     var doc = this.iframe1.contentWindow.document
     doc.open()
-    doc.write('<html><body><h2>Second level</h2><iframe src="about:blank"></iframe><iframe src="about:blank"></iframe></body></html>')
+    doc.write('<html><body><p>Second level</p><iframe src="about:blank"></iframe><iframe src="about:blank"></iframe></body></html>')
     doc.close()
     this.iframe2 = doc.body.querySelectorAll('iframe')[0]
     var doc2 = this.iframe2.contentWindow.document
@@ -21,21 +21,39 @@ describe('a11y validating in frames', function() {
     doc3.open()
     doc3.write('<html><body><h3>Third level again<h3></body></html>')
     doc3.close()
+
+    this.heading1 = doc2.getElementsByTagName('h3')[0]
+    this.heading2 = doc3.getElementsByTagName('h3')[0]
   })
 
   it('validates in iframes', function() {
-    var validation = a11y.validate({ only: ['Headings: Exactly one main heading']})
-    expect(validation.results).to.eql([{
-      standard: {
-        section: Standards.sections.headings,
-        name: 'Exactly one main heading',
+    var validation = a11y.validate({ only: ['Headings: Exactly one main heading', 'Headings: Headings must be in ascending order']})
+    expect(validation.results).to.eql([
+      {
+        standard: {
+          section: Standards.sections.headings,
+          name: 'Exactly one main heading',
+        },
+        errors: [
+          ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, ':', 'Found 0 h1 elements.'],
+          ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe2, xpath: "/html/body/iframe[1]" }, ':', 'Found 0 h1 elements.'],
+          ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe3, xpath: "/html/body/iframe[2]" }, ':', 'Found 0 h1 elements.']
+        ],
+        warnings: [],
+        hiddenErrors: []
       },
-      errors: [
-        ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, ':', 'Found 0 h1 elements.'],
-        ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe2, xpath: "/html/body/iframe[1]" }, ':', 'Found 0 h1 elements.'],
-        ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe3, xpath: "/html/body/iframe[2]" }, ':', 'Found 0 h1 elements.']
-      ],
-      hiddenErrors: []
-    }])
+      {
+        standard: {
+          section: Standards.sections.headings,
+          name: 'Headings must be in ascending order',
+        },
+        errors: [],
+        warnings: [
+          ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe2, xpath: "/html/body/iframe[1]" }, ':', 'First heading was not a main heading:', { element: this.heading1, xpath: '/html/body/h3[1]' }],
+          ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe3, xpath: "/html/body/iframe[2]" }, ':', 'First heading was not a main heading:', { element: this.heading2, xpath: '/html/body/h3[1]' }]
+        ],
+        hiddenErrors: []
+      }
+    ])
   })
 })

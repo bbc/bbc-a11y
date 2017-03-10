@@ -19,7 +19,7 @@ Feature: Hiding errors
       """
       ✓ http://localhost:54321/errors_in_orb_modules.html
 
-      1 page checked, 0 errors found, 2 errors hidden, 0 standards skipped
+      1 page checked, 0 errors found, 2 errors hidden, 0 warnings, 0 standards skipped
       """
 
   Scenario: Hide errors matching multiple patterns
@@ -38,5 +38,5 @@ Feature: Hiding errors
       """
       ✓ http://localhost:54321/errors_in_orb_modules.html
 
-      1 page checked, 0 errors found, 2 errors hidden, 0 standards skipped
+      1 page checked, 0 errors found, 2 errors hidden, 0 warnings, 0 standards skipped
       """

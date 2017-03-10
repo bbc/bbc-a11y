@@ -128,7 +128,10 @@ Feature: Headings
       <h2>Heading 2</h2>
       """
     When I validate the "Headings: Headings must be in ascending order" standard
-    Then it passes
+    Then it passes with the warning:
+      """
+      First heading was not a main heading: /html/body/h3
+      """
 
   Scenario: Content between headings
     Given a page with the body:

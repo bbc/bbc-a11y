@@ -28,32 +28,14 @@ describe('a11y validating in frames', function() {
 
   it('validates in iframes', function() {
     var validation = a11y.validate({ only: ['Headings: Exactly one main heading', 'Headings: Headings must be in ascending order']})
-    expect(validation.results).to.eql([
-      {
-        standard: {
-          section: Standards.sections.headings,
-          name: 'Exactly one main heading',
-        },
-        errors: [
-          ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, ':', 'Found 0 h1 elements.'],
-          ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe2, xpath: "/html/body/iframe[1]" }, ':', 'Found 0 h1 elements.'],
-          ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe3, xpath: "/html/body/iframe[2]" }, ':', 'Found 0 h1 elements.']
-        ],
-        warnings: [],
-        hiddenErrors: []
-      },
-      {
-        standard: {
-          section: Standards.sections.headings,
-          name: 'Headings must be in ascending order',
-        },
-        errors: [],
-        warnings: [
-          ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe2, xpath: "/html/body/iframe[1]" }, ':', 'First heading was not a main heading:', { element: this.heading1, xpath: '/html/body/h3[1]' }],
-          ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe3, xpath: "/html/body/iframe[2]" }, ':', 'First heading was not a main heading:', { element: this.heading2, xpath: '/html/body/h3[1]' }]
-        ],
-        hiddenErrors: []
-      }
+    expect(validation.results[0].errors).to.eql([
+      ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, ':', 'Found 0 h1 elements.'],
+      ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe2, xpath: "/html/body/iframe[1]" }, ':', 'Found 0 h1 elements.'],
+      ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe3, xpath: "/html/body/iframe[2]" }, ':', 'Found 0 h1 elements.']
+    ])
+    expect(validation.results[1].warnings).to.eql([
+      ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe2, xpath: "/html/body/iframe[1]" }, ':', 'First heading was not a main heading:', { element: this.heading1, xpath: '/html/body/h3[1]' }],
+      ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe3, xpath: "/html/body/iframe[2]" }, ':', 'First heading was not a main heading:', { element: this.heading2, xpath: '/html/body/h3[1]' }]
     ])
   })
 })

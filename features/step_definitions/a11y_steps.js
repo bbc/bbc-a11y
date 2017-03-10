@@ -107,6 +107,23 @@ defineSupportCode(function({ Given, When, Then }) {
     }
   })
 
+  Then('it passes with the warning:', function (message) {
+    var pass = !this.validationResult.results.find(function(result) {
+      return result.errors.length > 0
+    })
+    assert(pass)
+    var actualMessage = this.validationResult.results.filter(function(result) {
+      return result.warnings.length > 0
+    }).map(function(result) {
+      return result.warnings.map(function(e) {
+        return e.map(function(a) {
+          return a.xpath ? a.xpath : a
+        }).join(" ")
+      }).join("\n");
+    }).join("\n")
+    assert.equal(actualMessage, message)
+  })
+
   Then('it should fail with:', function (expectedOutput) {
     var actualOutput = this.stdout + this.stderr
     expectedOutput = expectedOutput.replace('[count all standards - 1]', Standards.all.length - 1)

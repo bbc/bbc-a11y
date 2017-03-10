@@ -25,6 +25,7 @@ Feature: JSON Reporter
                     "name": "Anchors must have hrefs"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -33,6 +34,7 @@ Feature: JSON Reporter
                     "name": "Forms must have submit buttons"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -41,6 +43,7 @@ Feature: JSON Reporter
                     "name": "Fields must have labels or titles"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -49,6 +52,7 @@ Feature: JSON Reporter
                     "name": "Content must follow headings"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -57,6 +61,7 @@ Feature: JSON Reporter
                     "name": "Exactly one main heading"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -65,6 +70,7 @@ Feature: JSON Reporter
                     "name": "Headings must be in ascending order"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -73,6 +79,7 @@ Feature: JSON Reporter
                     "name": "Images must have alt attributes"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -81,6 +88,7 @@ Feature: JSON Reporter
                     "name": "Html must have lang attribute"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -89,6 +97,7 @@ Feature: JSON Reporter
                     "name": "Exactly one Main landmark"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -97,6 +106,7 @@ Feature: JSON Reporter
                     "name": "Text cannot be too small"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -105,6 +115,7 @@ Feature: JSON Reporter
                     "name": "Zero Tab index must only be set on elements which are focusable by default"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -113,6 +124,7 @@ Feature: JSON Reporter
                     "name": "Use tables for data"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -121,6 +133,7 @@ Feature: JSON Reporter
                     "name": "Title attributes must not duplicate content"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -129,6 +142,7 @@ Feature: JSON Reporter
                     "name": "Title attributes only on inputs"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -137,6 +151,7 @@ Feature: JSON Reporter
                     "name": "Elements must be visible on focus"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 }
               ],
@@ -153,6 +168,7 @@ Feature: JSON Reporter
                     "name": "Anchors must have hrefs"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -161,6 +177,7 @@ Feature: JSON Reporter
                     "name": "Forms must have submit buttons"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -169,6 +186,7 @@ Feature: JSON Reporter
                     "name": "Fields must have labels or titles"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -177,6 +195,7 @@ Feature: JSON Reporter
                     "name": "Content must follow headings"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -189,6 +208,7 @@ Feature: JSON Reporter
                       "Found 0 h1 elements."
                     ]
                   ],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -197,6 +217,7 @@ Feature: JSON Reporter
                     "name": "Headings must be in ascending order"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -205,6 +226,7 @@ Feature: JSON Reporter
                     "name": "Images must have alt attributes"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -213,6 +235,7 @@ Feature: JSON Reporter
                     "name": "Html must have lang attribute"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -221,6 +244,7 @@ Feature: JSON Reporter
                     "name": "Exactly one Main landmark"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -229,6 +253,7 @@ Feature: JSON Reporter
                     "name": "Text cannot be too small"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -237,6 +262,7 @@ Feature: JSON Reporter
                     "name": "Zero Tab index must only be set on elements which are focusable by default"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -245,6 +271,7 @@ Feature: JSON Reporter
                     "name": "Use tables for data"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -253,6 +280,7 @@ Feature: JSON Reporter
                     "name": "Title attributes must not duplicate content"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -261,6 +289,7 @@ Feature: JSON Reporter
                     "name": "Title attributes only on inputs"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 },
                 {
@@ -269,6 +298,7 @@ Feature: JSON Reporter
                     "name": "Elements must be visible on focus"
                   },
                   "errors": [],
+                  "warnings": [],
                   "hiddenErrors": []
                 }
               ],

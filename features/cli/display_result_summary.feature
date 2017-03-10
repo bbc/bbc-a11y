@@ -5,10 +5,10 @@ Feature: Display result summary
     And a file named "a11y.js" with:
       """
       page("http://localhost:54321/perfect.html")
-      page("http://localhost:54321/missing_main_heading.html")
-      page("http://localhost:54321/missing_main_heading.html?again!", {
+      page("http://localhost:54321/missing_main_heading.html", {
         skip: "Headings: Exactly one main heading"
       })
+      page("http://localhost:54321/missing_main_heading.html?again!")
       """
     When I run `bbc-a11y`
     Then it should fail with:

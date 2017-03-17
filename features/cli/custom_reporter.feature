@@ -20,14 +20,6 @@ Feature: Custom Reporter
         this.console.log("CHECKED", page.url)
       }
 
-      Reporter.prototype.pagePassed = function(page, validationResult) {
-        this.console.log("PASSED", page.url)
-      }
-
-      Reporter.prototype.pageFailed = function(page, validationResult) {
-        this.console.log("FAILED", page.url)
-      }
-
       Reporter.prototype.runEnded = function() {
         this.console.log("ENDED")
       }
@@ -51,9 +43,7 @@ Feature: Custom Reporter
       """
       STARTED
       CHECKED http://localhost:54321/perfect.html
-      PASSED http://localhost:54321/perfect.html
       CHECKED http://localhost:54321/missing_main_heading.html
-      FAILED http://localhost:54321/missing_main_heading.html
       ENDED
 
       """

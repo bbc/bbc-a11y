@@ -14,7 +14,7 @@ Feature: Visible On Focus
         <a href="http://www.bbc.co.uk/">BBC</a>
       </div>
       """
-    When I validate the "Visible on focus: Elements must be visible on focus" standard
+    When I test the "Visible on focus: Elements must be visible on focus" standard
     Then it fails with the message:
       """
       Element is invisible on focus: /html/body/div/a
@@ -34,7 +34,7 @@ Feature: Visible On Focus
         <a href="http://www.bbc.co.uk/">BBC</a>
       </div>
       """
-    When I validate the "Visible on focus: Elements must be visible on focus" standard
+    When I test the "Visible on focus: Elements must be visible on focus" standard
     Then it fails with the message:
       """
       Element is invisible on focus: /html/body/div/a
@@ -45,5 +45,5 @@ Feature: Visible On Focus
       """
       <a href="http://www.bbc.co.uk/">BBC</a>
       """
-    When I validate the "Visible on focus: Elements must be visible on focus" standard
+    When I test the "Visible on focus: Elements must be visible on focus" standard
     Then it passes

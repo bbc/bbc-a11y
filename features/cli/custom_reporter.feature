@@ -16,7 +16,7 @@ Feature: Custom Reporter
         this.console.log("STARTED")
       }
 
-      Reporter.prototype.pageChecked = function(page, validationResult) {
+      Reporter.prototype.pageChecked = function(page, pageResult) {
         this.console.log("CHECKED", page.url)
       }
 

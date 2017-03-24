@@ -7,9 +7,9 @@ describe('a11y', function() {
     $('body').html('')
   })
 
-  it('validates the DOM', function() {
-    var validation = a11y.validate()
-    var errors = validation.results.filter(function(standardResult) {
+  it('tests the DOM', function() {
+    var outcome = a11y.test()
+    var errors = outcome.results.filter(function(standardResult) {
       return standardResult.errors.length > 0
     }).map(function(standardResult) {
       standardResult.standard.section = standardResult.standard.section.title
@@ -59,8 +59,8 @@ describe('a11y', function() {
   })
 
   it('skips standards', function() {
-    var validation = a11y.validate({ skip: ['Main landmark: Exactly one Main landmark'] })
-    expect(validation.skipped).to.eql([
+    var result = a11y.test({ skip: ['Main landmark: Exactly one Main landmark'] })
+    expect(result.skipped).to.eql([
       {
         section: 'Main landmark',
         name: 'Exactly one Main landmark'
@@ -69,8 +69,8 @@ describe('a11y', function() {
   })
 
   it('hides errors', function() {
-    var validation = a11y.validate({ hide: ['Found 0 elements with role="main".'] })
-    var resultsWithErrors = validation.results.filter(function(standardResult) {
+    var outcome = a11y.test({ hide: ['Found 0 elements with role="main".'] })
+    var resultsWithErrors = outcome.results.filter(function(standardResult) {
       return standardResult.hiddenErrors.length > 0
     })
     expect(resultsWithErrors[0].errors).to.eql([])
@@ -78,8 +78,8 @@ describe('a11y', function() {
   })
 
   it('only runs specific standards', function() {
-    var validation = a11y.validate({ only: ['Main landmark: Exactly one Main landmark'] })
-    expect(validation.results.length).to.equal(1)
-    expect(validation.results[0].standard.name).to.equal('Exactly one Main landmark')
+    var outcome = a11y.test({ only: ['Main landmark: Exactly one Main landmark'] })
+    expect(outcome.results.length).to.equal(1)
+    expect(outcome.results[0].standard.name).to.equal('Exactly one Main landmark')
   })
 })

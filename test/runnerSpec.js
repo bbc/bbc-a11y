@@ -30,6 +30,9 @@ describe('Runner', function() {
       },
       error: function() {
         events.push({ type: 'devToolsConsole.error', args: [].slice.apply(arguments) })
+      },
+      warn: function() {
+        events.push({ type: 'devToolsConsole.warn', args: [].slice.apply(arguments) })
       }
     }
     var commandLineConsole = {
@@ -38,6 +41,9 @@ describe('Runner', function() {
       },
       error: function() {
         events.push({ type: 'commandLineConsole.error', args: [].slice.apply(arguments) })
+      },
+      warn: function() {
+        events.push({ type: 'commandLineConsole.warn', args: [].slice.apply(arguments) })
       }
     }
     function exit() {
@@ -63,6 +69,7 @@ describe('Runner', function() {
   context('with no arguments', function() {
     it('loads the config file', function() {
       const configPath = path.join(__dirname, 'runnerSpec', 'a11y.js')
+      debugger
       return run([], configPath)
         .then(function(events) {
           assert.deepEqual(events[0], { type: 'loadPage', page: { url: 'http://www.bbc.co.uk/sport' } })

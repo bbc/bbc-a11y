@@ -3,7 +3,9 @@ Feature: JSON Reporter
     Given a website running at http://localhost:54321
     And a file named "a11y.js" with:
       """
-      page("http://localhost:54321/perfect.html")
+      page("http://localhost:54321/perfect.html", {
+        skip: ["Main landmark: Exactly one Main landmark"]
+      })
       page("http://localhost:54321/missing_main_heading.html")
       """
     When I run `bbc-a11y --reporter json`
@@ -13,7 +15,7 @@ Feature: JSON Reporter
         "pagesChecked": 2,
         "errorsFound": 1,
         "errorsHidden": 0,
-        "standardsSkipped": 0,
+        "standardsSkipped": 1,
         "pages": [
           {
             "url": "http://localhost:54321/perfect.html",
@@ -93,15 +95,6 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
-                    "section": "Main landmark",
-                    "name": "Exactly one Main landmark"
-                  },
-                  "errors": [],
-                  "warnings": [],
-                  "hiddenErrors": []
-                },
-                {
-                  "standard": {
                     "section": "Minimum text size",
                     "name": "Text cannot be too small"
                   },
@@ -155,7 +148,13 @@ Feature: JSON Reporter
                   "hiddenErrors": []
                 }
               ],
-              "skipped": []
+              "skipped": [
+                {
+                  "section": "Main landmark",
+                  "name": "Exactly one Main landmark"
+                }
+              ],
+              "errorsFound": 0
             }
           },
           {
@@ -302,7 +301,8 @@ Feature: JSON Reporter
                   "hiddenErrors": []
                 }
               ],
-              "skipped": []
+              "skipped": [],
+              "errorsFound": 1
             }
           }
         ]

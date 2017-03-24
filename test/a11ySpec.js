@@ -60,7 +60,12 @@ describe('a11y', function() {
 
   it('skips standards', function() {
     var validation = a11y.validate({ skip: ['Main landmark: Exactly one Main landmark'] })
-    expect(validation.skipped).to.eql(['Exactly one Main landmark'])
+    expect(validation.skipped).to.eql([
+      {
+        section: 'Main landmark',
+        name: 'Exactly one Main landmark'
+      }
+    ])
   })
 
   it('hides errors', function() {

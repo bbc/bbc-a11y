@@ -1,7 +1,7 @@
-# Using bbc-a11y to validate your web project
+# Using bbc-a11y to test your web project
 
 If you have a web project, the best way to use bbc-a11y is to install it in your
-project repository, so that everybody on the team can validate the accessibility
+project repository, so that everybody on the team can test the accessibility
 of your app at any time.
 
 ## Prerequisites
@@ -211,13 +211,13 @@ after loggin in:
 page('Members area (after logging in)', {
   visit: function (frame) {
     frame.src = 'http://mywebsite.com/login'
-    return new Promise(function (validate) {
+    return new Promise(function (test) {
       frame.onload = function () {
         var loginPage = frame.contentDocument
         loginPage.getElementById('username').value = 'some-username'
         loginPage.getElementById('password').value = 'some-password'
         loginPage.getElementById('loginButton').click()
-        frame.onload = validate
+        frame.onload = test
       }
     })
   }

@@ -29,7 +29,7 @@ Feature: Page Titles
         title: 'Chocolate brownies - Yummy recipe site'
       }
       """
-    When I validate the "Page titles: Title element must identify main content" standard
+    When I test the "Page titles: Title element must identify main content" standard
     Then it passes
 
   Scenario: Valid page title with template string
@@ -51,7 +51,7 @@ Feature: Page Titles
         title: '{h1:first} - Yummy recipe site'
       }
       """
-    When I validate the "Page titles: Title element must identify main content" standard
+    When I test the "Page titles: Title element must identify main content" standard
     Then it passes
 
   Scenario: Valid page title with template function
@@ -73,7 +73,7 @@ Feature: Page Titles
         title: $ => $('h1').text() + ' - Yummy recipe site'
       }
       """
-    When I validate the "Page titles: Title element must identify main content" standard
+    When I test the "Page titles: Title element must identify main content" standard
     Then it passes
 
   Scenario: Valid page title with invalid template
@@ -95,7 +95,7 @@ Feature: Page Titles
         title: 666
       }
       """
-    When I validate the "Page titles: Title element must identify main content" standard
+    When I test the "Page titles: Title element must identify main content" standard
     Then it fails with the message:
       """
       Invalid title 666
@@ -120,7 +120,7 @@ Feature: Page Titles
         title: $ => $('h1').text() + ' - Yummy recipe site'
       }
       """
-    When I validate the "Page titles: Title element must identify main content" standard
+    When I test the "Page titles: Title element must identify main content" standard
     Then it fails with the message:
       """
       Title element failed to identify main content: expected "Sausage rolls - Yummy recipe site", actual "Oops wrong title - Yummy recipe site"

@@ -27,7 +27,7 @@ Feature: Form interactions
         <input type="submit" value="Search">
       </form>
       """
-    When I validate the "Form interactions: Forms must have submit buttons" standard
+    When I test the "Form interactions: Forms must have submit buttons" standard
     Then it passes
 
   Scenario: Form with an image input
@@ -39,7 +39,7 @@ Feature: Form interactions
         <input type="image" src="some.png">
       </form>
       """
-    When I validate the "Form interactions: Forms must have submit buttons" standard
+    When I test the "Form interactions: Forms must have submit buttons" standard
     Then it passes
 
   Scenario: Form with no submit button
@@ -50,7 +50,7 @@ Feature: Form interactions
         <input type="text" name="q" id="q">
       </form>
       """
-    When I validate the "Form interactions: Forms must have submit buttons" standard
+    When I test the "Form interactions: Forms must have submit buttons" standard
     Then it fails with the message:
       """
       Form has no submit button: /html/body/form
@@ -65,7 +65,7 @@ Feature: Form interactions
         <button type="submit">Search</button>
       </form>
       """
-    When I validate the "Form interactions: Forms must have submit buttons" standard
+    When I test the "Form interactions: Forms must have submit buttons" standard
     Then it passes
 
   Scenario: Hidden form with no submit button
@@ -76,5 +76,5 @@ Feature: Form interactions
         <input type="text" name="q" id="q">
       </form>
       """
-    When I validate the "Form interactions: Forms must have submit buttons" standard
+    When I test the "Form interactions: Forms must have submit buttons" standard
     Then it passes

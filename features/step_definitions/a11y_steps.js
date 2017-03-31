@@ -93,18 +93,18 @@ defineSupportCode(function({ Given, When, Then }) {
     eval(`this.pageConfiguration = ${string}`)
   })
 
-  When('I validate the {name:stringInDoubleQuotes} standard', function (name) {
+  When('I test the {name:stringInDoubleQuotes} standard', function (name) {
     var $ = jquery(this.pageFrame.contentDocument)
     var matching = Standards.matching(name)
     if (matching.standards.length != 1) throw new Error("Expected 1 standard called '" + name + "', found " + matching.standards.length)
-    this.validationResult = matching.validate($.find.bind($), this.pageConfiguration || {})
+    this.outcome = matching.test($.find.bind($), this.pageConfiguration || {})
   })
 
   Then('it passes', function () {
     if ('exitCode' in this) {
       assert.equal(this.exitCode, 0, "\n" + this.stdout + this.stderr)
     } else {
-      var pass = !this.validationResult.results.find(function(result) {
+      var pass = !this.outcome.results.find(function(result) {
         return result.errors.length > 0
       })
       assert(pass)
@@ -112,11 +112,11 @@ defineSupportCode(function({ Given, When, Then }) {
   })
 
   Then('it passes with the warning:', function (message) {
-    var pass = !this.validationResult.results.find(function(result) {
+    var pass = !this.outcome.results.find(function(result) {
       return result.errors.length > 0
     })
     assert(pass)
-    var actualMessage = this.validationResult.results.filter(function(result) {
+    var actualMessage = this.outcome.results.filter(function(result) {
       return result.warnings.length > 0
     }).map(function(result) {
       return result.warnings.map(function(e) {
@@ -152,7 +152,7 @@ defineSupportCode(function({ Given, When, Then }) {
   })
 
   Then('it fails with the message:', function (message) {
-    var actualMessage = this.validationResult.results.filter(function(result) {
+    var actualMessage = this.outcome.results.filter(function(result) {
       return result.errors.length > 0
     }).map(function(err) {
       return err.errors.map(function(e) {

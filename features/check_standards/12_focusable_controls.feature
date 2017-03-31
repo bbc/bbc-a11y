@@ -42,7 +42,7 @@ Feature: Focusable controls
           <li><a href="#entertainmenttab">Entertainment</a></li>
       </ul>
       """
-    When I validate the "Focusable controls: Anchors must have hrefs" standard
+    When I test the "Focusable controls: Anchors must have hrefs" standard
     Then it passes
 
   Scenario: Some anchor tags do not have href attributes
@@ -54,7 +54,7 @@ Feature: Focusable controls
           <li><a>Entertainment</a></li>
       </ul>
       """
-    When I validate the "Focusable controls: Anchors must have hrefs" standard
+    When I test the "Focusable controls: Anchors must have hrefs" standard
     Then it fails with the message:
       """
       Anchor has no href attribute: /html/body/ul/li[1]/a
@@ -66,5 +66,5 @@ Feature: Focusable controls
       """
       <a style="display:none">I'm invisible, ignore me</a>
       """
-    When I validate the "Focusable controls: Anchors must have hrefs" standard
+    When I test the "Focusable controls: Anchors must have hrefs" standard
     Then it passes

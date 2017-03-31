@@ -80,7 +80,7 @@ Feature: Tables
         </tr>
       </table>
       """
-    When I validate the "Tables: Use tables for data" standard
+    When I test the "Tables: Use tables for data" standard
     Then it passes
 
   Scenario: Table with datatable="0"
@@ -95,7 +95,7 @@ Feature: Tables
         </tr>
       </table>
       """
-    When I validate the "Tables: Use tables for data" standard
+    When I test the "Tables: Use tables for data" standard
     Then it fails with the message:
       """
       Table used for layout: /html/body/table
@@ -108,7 +108,7 @@ Feature: Tables
         This isn't a table, it's just made to look like one
       </div>
       """
-    When I validate the "Tables: Use tables for data" standard
+    When I test the "Tables: Use tables for data" standard
     Then it fails with the message:
       """
       Table used for layout: /html/body/div
@@ -138,7 +138,7 @@ Feature: Tables
         </tr>
       </table>
       """
-    When I validate the "Tables: Use tables for data" standard
+    When I test the "Tables: Use tables for data" standard
     Then it fails with the message:
       """
       Table used for layout: /html/body/table
@@ -153,7 +153,7 @@ Feature: Tables
         </tr>
       </table>
       """
-    When I validate the "Tables: Use tables for data" standard
+    When I test the "Tables: Use tables for data" standard
     Then it fails with the message:
       """
       Table used for layout: /html/body/table
@@ -184,7 +184,7 @@ Feature: Tables
         <tr><td>19</td></tr>
       </table>
       """
-    When I validate the "Tables: Use tables for data" standard
+    When I test the "Tables: Use tables for data" standard
     Then it fails with the message:
       """
       Table used for layout: /html/body/table
@@ -206,7 +206,7 @@ Feature: Tables
         </tr>
       </table>
       """
-    When I validate the "Tables: Use tables for data" standard
+    When I test the "Tables: Use tables for data" standard
     Then it fails with the message:
       """
       Table used for layout: /html/body/table
@@ -227,7 +227,7 @@ Feature: Tables
         </tr>
       </table>
       """
-    When I validate the "Tables: Use tables for data" standard
+    When I test the "Tables: Use tables for data" standard
     Then it fails with the message:
       """
       Table used for layout: /html/body/table
@@ -270,7 +270,7 @@ Feature: Tables
         </tr>
       </table>
       """
-    When I validate the "Tables: Use tables for data" standard
+    When I test the "Tables: Use tables for data" standard
     Then it fails with the message:
       """
       Table used for layout: /html/body/table[1]

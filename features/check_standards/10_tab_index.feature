@@ -28,7 +28,7 @@ Feature: Tab index
       <button type="submit">Search</button>
       <div tabindex="-1"></div>
       """
-    When I validate the "Tab index: Zero Tab index must only be set on elements which are focusable by default" standard
+    When I test the "Tab index: Zero Tab index must only be set on elements which are focusable by default" standard
     Then it passes
 
   Scenario: Focusable elements with zero Tab index
@@ -40,7 +40,7 @@ Feature: Tab index
       <select tabindex="0"></select>
       <textarea tabindex="0"></textarea>
       """
-    When I validate the "Tab index: Zero Tab index must only be set on elements which are focusable by default" standard
+    When I test the "Tab index: Zero Tab index must only be set on elements which are focusable by default" standard
     Then it passes
 
   Scenario: Unfocusable element with zero Tab index
@@ -51,7 +51,7 @@ Feature: Tab index
       <div tabindex="3"></div>
       <div tabindex="0"></div>
       """
-    When I validate the "Tab index: Zero Tab index must only be set on elements which are focusable by default" standard
+    When I test the "Tab index: Zero Tab index must only be set on elements which are focusable by default" standard
     Then it fails with the message:
       """
       Non-focusable element with tabindex=0: /html/body/div[2]
@@ -65,5 +65,5 @@ Feature: Tab index
         <div tabindex="3"></div>
         <div tabindex="0" style="display:none"></div>
         """
-      When I validate the "Tab index: Zero Tab index must only be set on elements which are focusable by default" standard
+      When I test the "Tab index: Zero Tab index must only be set on elements which are focusable by default" standard
       Then it passes

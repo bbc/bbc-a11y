@@ -47,18 +47,18 @@ function loadPage(page) {
 
   return promise.then(function() {
     return new Promise(function(resolve, reject) {
-      function validateFrame() {
+      function testFrame() {
         console.clear()
-        console.log("BBC a11y is validating...")
+        console.log("BBC a11y is testing the page...")
         resolve(jquery(mainFrame).contents())
       }
 
       function loadUrl() {
         if (page.visit) {
-          validateFrame()
+          testFrame()
         } else {
           mainFrame.onload = function() {
-            validateFrame()
+            testFrame()
           }
           mainFrame.src = page.url
         }

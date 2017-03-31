@@ -131,6 +131,12 @@ configuration file, for example:
 [800, 1000].forEach(width => page("http://bbc.co.uk", { width }))
 ```
 
+## Semi-automated tests
+
+Some tests cannot be fully automated. These
+[semi-automated tests](./semi-automated-tests.md) need additional page
+configuration before they can be executed by bbc-a11y. 
+
 ## Specifying a configuration file path
 
 Use the `--config` command line option to specify an alternative location for

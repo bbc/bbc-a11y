@@ -30,6 +30,9 @@ describe('Runner', function() {
       },
       error: function() {
         events.push({ type: 'devToolsConsole.error', args: [].slice.apply(arguments) })
+      },
+      warn: function() {
+        events.push({ type: 'devToolsConsole.warn', args: [].slice.apply(arguments) })
       }
     }
     var commandLineConsole = {
@@ -38,6 +41,9 @@ describe('Runner', function() {
       },
       error: function() {
         events.push({ type: 'commandLineConsole.error', args: [].slice.apply(arguments) })
+      },
+      warn: function() {
+        events.push({ type: 'commandLineConsole.warn', args: [].slice.apply(arguments) })
       }
     }
     function exit() {

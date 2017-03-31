@@ -104,6 +104,15 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
+                    "section": "Page titles",
+                    "name": "Title element must identify main content"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
                     "section": "Tab index",
                     "name": "Zero Tab index must only be set on elements which are focusable by default"
                   },
@@ -250,6 +259,15 @@ Feature: JSON Reporter
                   "standard": {
                     "section": "Minimum text size",
                     "name": "Text cannot be too small"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Page titles",
+                    "name": "Title element must identify main content"
                   },
                   "errors": [],
                   "warnings": [],

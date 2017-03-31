@@ -133,8 +133,9 @@ configuration file, for example:
 
 ## Semi-automated tests
 
-Some tests cannot be fully automated. These [semi-automated tests] need
-additional page configuration to be executed by bbc-a11y. 
+Some tests cannot be fully automated. These
+[semi-automated tests](./semi-automated-tests.md) need additional page
+configuration before they can be executed by bbc-a11y. 
 
 ## Specifying a configuration file path
 

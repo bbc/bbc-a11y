@@ -149,6 +149,15 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
+                    "section": "Validation",
+                    "name": "All documents must have a W3C recommended doctype"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
                     "section": "Visible on focus",
                     "name": "Elements must be visible on focus"
                   },
@@ -304,6 +313,15 @@ Feature: JSON Reporter
                   "standard": {
                     "section": "Title attributes",
                     "name": "Title attributes only on inputs"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Validation",
+                    "name": "All documents must have a W3C recommended doctype"
                   },
                   "errors": [],
                   "warnings": [],

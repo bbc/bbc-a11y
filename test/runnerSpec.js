@@ -69,7 +69,6 @@ describe('Runner', function() {
   context('with no arguments', function() {
     it('loads the config file', function() {
       const configPath = path.join(__dirname, 'runnerSpec', 'a11y.js')
-      debugger
       return run([], configPath)
         .then(function(events) {
           assert.deepEqual(events[0], { type: 'loadPage', page: { url: 'http://www.bbc.co.uk/sport' } })

@@ -10,6 +10,28 @@ Feature: Page Titles
   user will hear and acts as a confirmation of what page they have arrived at.
   Document titles commonly have the same content as the main <h1> element.
 
+  Scenario: Valid page title with string
+    Given a page with the HTML:
+      """
+      <!DOCTYPE html>
+      <html lang="en-GB">
+        <head>
+          <title>Chocolate brownies - Yummy recipe site</title>
+        </head>
+        <body>
+          <h1>Chocolate brownies</h1>
+        </body>
+      </html>
+      """
+    When my page configuration is:
+      """
+      {
+        title: 'Chocolate brownies - Yummy recipe site'
+      }
+      """
+    When I validate the "Page titles: Title element must identify main content" standard
+    Then it passes
+
   Scenario: Valid page title with template string
     Given a page with the HTML:
       """
@@ -26,7 +48,7 @@ Feature: Page Titles
     When my page configuration is:
       """
       {
-        pageTitleFormat: '{h1:first} - Yummy recipe site'
+        title: '{h1:first} - Yummy recipe site'
       }
       """
     When I validate the "Page titles: Title element must identify main content" standard
@@ -48,7 +70,7 @@ Feature: Page Titles
     When my page configuration is:
       """
       {
-        pageTitleFormat: $ => $('h1').text() + ' - Yummy recipe site'
+        title: $ => $('h1').text() + ' - Yummy recipe site'
       }
       """
     When I validate the "Page titles: Title element must identify main content" standard
@@ -70,13 +92,13 @@ Feature: Page Titles
     When my page configuration is:
       """
       {
-        pageTitleFormat: 666
+        title: 666
       }
       """
     When I validate the "Page titles: Title element must identify main content" standard
     Then it fails with the message:
       """
-      Invalid pageTitleFormat 666
+      Invalid title 666
       """
 
   Scenario: Invalid page title
@@ -95,7 +117,7 @@ Feature: Page Titles
     When my page configuration is:
       """
       {
-        pageTitleFormat: $ => $('h1').text() + ' - Yummy recipe site'
+        title: $ => $('h1').text() + ' - Yummy recipe site'
       }
       """
     When I validate the "Page titles: Title element must identify main content" standard

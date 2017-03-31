@@ -97,7 +97,8 @@ defineSupportCode(function({ Given, When, Then }) {
     var $ = jquery(this.pageFrame.contentDocument)
     var matching = Standards.matching(name)
     if (matching.standards.length != 1) throw new Error("Expected 1 standard called '" + name + "', found " + matching.standards.length)
-    this.outcome = matching.test($.find.bind($), this.pageConfiguration || {})
+    return matching.test($.find.bind($), this.pageConfiguration || {})
+      .then(outcome => this.outcome = outcome)
   })
 
   Then('it passes', function () {

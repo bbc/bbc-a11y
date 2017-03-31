@@ -11,8 +11,40 @@ Feature: Validation
   document follows a recognised standard Doctype.
 
   Scenario: Valid for doctype
+    Given a page with the HTML:
+      """
+      <!DOCTYPE html>
+      <html lang="en-GB">
+        <head>
+          <title>Page title</title>
+          <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        </head>
+        <body>
+          <h1>And a heading</h1>
+        </body>
+      </html>
+      """
+    When I test the "Validation: Markup must validate against doctype" standard
+    Then it passes
 
   Scenario: Invalid for doctype
+    Given a page with the HTML:
+      """
+      <!DOCTYPE html>
+      <html lang="en-GB">
+        <head>
+          <title>Page title</title>
+        </head>
+        <body>
+          <h1>And a heading</h1>
+        </body>
+      </html>
+      """
+    When I test the "Validation: Markup must validate against doctype" standard
+    Then it fails with the message:
+      """
+      The character encoding was not declared. Proceeding using “windows-1252”.
+      """
 
   Scenario: No doctype specified
     Given a page with the HTML:

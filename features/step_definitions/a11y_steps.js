@@ -105,10 +105,10 @@ defineSupportCode(function({ Given, When, Then }) {
     if ('exitCode' in this) {
       assert.equal(this.exitCode, 0, "\n" + this.stdout + this.stderr)
     } else {
-      var pass = !this.outcome.results.find(function(result) {
+      var resultsWithErrors = this.outcome.results.filter(function(result) {
         return result.errors.length > 0
       })
-      assert(pass)
+      assert(resultsWithErrors.length == 0, "\nExpected pass, but it failed with:\n" + require('util').inspect(resultsWithErrors, false, null))
     }
   })
 

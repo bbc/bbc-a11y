@@ -28,7 +28,7 @@ Feature: Custom Reporter
         this.console.log("UNEXPECTED ERROR")
       }
 
-      Reporter.prototype.configMissing = function(error) {
+      Reporter.prototype.configMissing = function() {
         this.console.log("CONFIG MISSING")
       }
 

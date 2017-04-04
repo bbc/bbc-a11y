@@ -14,73 +14,72 @@ switch (commandLineArgs.reporter) {
   case 'json':
   case 'junit':
     Reporter = require(`../lib/reporters/${commandLineArgs.reporter}`)
-    break;
+    break
   case undefined:
     Reporter = require('../lib/reporters/pretty')
-    break;
+    break
   default:
     Reporter = require(path.join(process.cwd(), commandLineArgs.reporter))
 }
 
-const exit = commandLineArgs.interactive ?
-  () => {} : electron.remote.process.exit
+const exit = commandLineArgs.interactive
+  ? () => {} : electron.remote.process.exit
 
-function loadPage(page) {
+function loadPage (page) {
   const win = electron.remote.getCurrentWindow()
   const [currentWidth, currentHeight] = win.getContentSize()
   const newWidth = page.width || 1024
-  const isResized = currentWidth != newWidth
+  const isResized = currentWidth !== newWidth
   if (isResized) {
     win.setContentSize(newWidth, currentHeight, false)
   }
 
   var mainFrame = document.getElementById('mainFrame')
-  var addressBar = document.getElementById('addressBar')
 
   var promise = Promise.resolve()
 
   if (page.visit) {
-    promise = promise.then(function() {
+    promise = promise.then(function () {
       return page.visit(mainFrame)
     })
   }
 
-  return promise.then(function() {
-    return new Promise(function(resolve, reject) {
-      function testFrame() {
+  return promise.then(function () {
+    return new Promise(function (resolve, reject) {
+      function testFrame () {
         console.clear()
-        console.log("BBC a11y is testing the page...")
+        console.log('BBC a11y is testing the page...')
         resolve(jquery(mainFrame).contents())
       }
 
-      function loadUrl() {
+      function loadUrl () {
         if (page.visit) {
           testFrame()
         } else {
-          mainFrame.onload = function() {
+          mainFrame.onload = function () {
             testFrame()
           }
           mainFrame.src = page.url
         }
       }
 
+      function waitForResize () {
+        setTimeout(function () {
+          if (window.innerWidth === newWidth) {
+            loadUrl()
+          } else {
+            waitForResize()
+          }
+        }, 10)
+      }
+
       if (isResized) {
-        function waitForResize() {
-          setTimeout(function() {
-            if (window.innerWidth == newWidth) {
-              loadUrl()
-            } else {
-              waitForResize()
-            }
-          }, 10)
-        }
         waitForResize()
       } else {
         loadUrl()
       }
-    });
+    })
   })
-
 }
 
 const pages = commandLineArgs.urls.map(url => ({ url, width: commandLineArgs.width }))

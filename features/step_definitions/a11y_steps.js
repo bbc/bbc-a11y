@@ -1,15 +1,12 @@
+/* eslint no-eval: "off" */
 const { defineSupportCode } = require('cucumber')
 const assert = require('assert')
-const path = require('path')
 const Standards = require('../../lib/standards')
 const jquery = require('jquery')
 const webServer = require('../support/web_server')
 
-var console = require('electron').remote.getGlobal('console')
-
-defineSupportCode(function({ Given, When, Then }) {
-
-  Given('a website running at http:\/\/localhost:{port:int}', function (port) {
+defineSupportCode(function ({ Given, When, Then }) {
+  Given('a website running at http://localhost:{port:int}', function (port) {
     return webServer.ensureRunningOn(Number(port))
   })
 
@@ -71,7 +68,7 @@ defineSupportCode(function({ Given, When, Then }) {
     this.pageFrame = document.createElement('iframe')
     document.body.appendChild(this.pageFrame)
     return new Promise((resolve, reject) => {
-      this.pageFrame.addEventListener('load', function() {
+      this.pageFrame.addEventListener('load', function () {
         resolve()
       })
       this.pageFrame.srcdoc = html
@@ -82,7 +79,7 @@ defineSupportCode(function({ Given, When, Then }) {
     this.pageFrame = document.createElement('iframe')
     document.body.appendChild(this.pageFrame)
     return new Promise((resolve, reject) => {
-      this.pageFrame.addEventListener('load', function() {
+      this.pageFrame.addEventListener('load', function () {
         resolve()
       })
       this.pageFrame.srcdoc = '<html><body>' + body + '</body></html>'
@@ -96,36 +93,36 @@ defineSupportCode(function({ Given, When, Then }) {
   When('I test the {name:stringInDoubleQuotes} standard', function (name) {
     var $ = jquery(this.pageFrame.contentDocument)
     var matching = Standards.matching(name)
-    if (matching.standards.length != 1) throw new Error("Expected 1 standard called '" + name + "', found " + matching.standards.length)
+    if (matching.standards.length !== 1) throw new Error("Expected 1 standard called '" + name + "', found " + matching.standards.length)
     return matching.test($.find.bind($), this.pageConfiguration || {})
-      .then(outcome => this.outcome = outcome)
+      .then(outcome => { this.outcome = outcome })
   })
 
   Then('it passes', function () {
     if ('exitCode' in this) {
-      assert.equal(this.exitCode, 0, "\n" + this.stdout + this.stderr)
+      assert.equal(this.exitCode, 0, '\n' + this.stdout + this.stderr)
     } else {
-      var resultsWithErrors = this.outcome.results.filter(function(result) {
+      var resultsWithErrors = this.outcome.results.filter(function (result) {
         return result.errors.length > 0
       })
-      assert(resultsWithErrors.length == 0, "\nExpected pass, but it failed with:\n" + require('util').inspect(resultsWithErrors, false, null))
+      assert(resultsWithErrors.length === 0, '\nExpected pass, but it failed with:\n' + require('util').inspect(resultsWithErrors, false, null))
     }
   })
 
   Then('it passes with the warning:', function (message) {
-    var pass = !this.outcome.results.find(function(result) {
+    var pass = !this.outcome.results.find(function (result) {
       return result.errors.length > 0
     })
     assert(pass)
-    var actualMessage = this.outcome.results.filter(function(result) {
+    var actualMessage = this.outcome.results.filter(function (result) {
       return result.warnings.length > 0
-    }).map(function(result) {
-      return result.warnings.map(function(e) {
-        return e.map(function(a) {
+    }).map(function (result) {
+      return result.warnings.map(function (e) {
+        return e.map(function (a) {
           return a.xpath ? a.xpath : a
-        }).join(" ")
-      }).join("\n");
-    }).join("\n")
+        }).join(' ')
+      }).join('\n')
+    }).join('\n')
     assert.equal(actualMessage, message)
   })
 
@@ -133,35 +130,35 @@ defineSupportCode(function({ Given, When, Then }) {
     var actualOutput = this.stdout + this.stderr
     expectedOutput = expectedOutput.replace('[count all standards - 1]', Standards.all.length - 1)
     assert(actualOutput.indexOf(expectedOutput) > -1,
-      "\n------------------\nExpected:\n------------------\n" +
+      '\n------------------\nExpected:\n------------------\n' +
       expectedOutput +
-      "\n------------------\nActual:\n------------------\n" +
+      '\n------------------\nActual:\n------------------\n' +
       actualOutput)
   })
 
   Then('it should fail with exactly:', function (expectedOutput) {
     var actualOutput = (this.stdout + this.stderr)
     // HACK: work around stupid travis issue with xvfb
-    var sanitisedActualOutput = actualOutput.split("\n").filter(line => line != 'Xlib:  extension "RANDR" missing on display ":99.0".').join("\n")
-    assert.equal(sanitisedActualOutput, expectedOutput, "Expected:\n" + expectedOutput.replace(/\n/g, "[\\n]\n") + "\nActual:\n" + sanitisedActualOutput.replace(/\n/g, "[\\n]\n"))
+    var sanitisedActualOutput = actualOutput.split('\n').filter(line => line !== 'Xlib:  extension "RANDR" missing on display ":99.0".').join('\n')
+    assert.equal(sanitisedActualOutput, expectedOutput, 'Expected:\n' + expectedOutput.replace(/\n/g, '[\\n]\n') + '\nActual:\n' + sanitisedActualOutput.replace(/\n/g, '[\\n]\n'))
   })
 
   Then('it should pass with:', function (string) {
     var actualOutput = (this.stdout + this.stderr)
-    assert(actualOutput.indexOf(string) > -1, "Expected: " + string + "\nActual:   " + actualOutput)
+    assert(actualOutput.indexOf(string) > -1, 'Expected: ' + string + '\nActual:   ' + actualOutput)
     assert.equal(this.exitCode, 0)
   })
 
   Then('it fails with the message:', function (message) {
-    var actualMessage = this.outcome.results.filter(function(result) {
+    var actualMessage = this.outcome.results.filter(function (result) {
       return result.errors.length > 0
-    }).map(function(err) {
-      return err.errors.map(function(e) {
-        return e.map(function(a) {
+    }).map(function (err) {
+      return err.errors.map(function (e) {
+        return e.map(function (a) {
           return a.xpath ? a.xpath : a
-        }).join(" ")
-      }).join("\n");
-    }).join("\n")
+        }).join(' ')
+      }).join('\n')
+    }).join('\n')
     assert.equal(actualMessage, message)
   })
 
@@ -177,11 +174,10 @@ defineSupportCode(function({ Given, When, Then }) {
       })
       this.interactiveProcess.stdout.on('data', data => {
         if (data.toString().indexOf('Testing shows the presence, not the absence of bugs')) {
-          setTimeout(() => reject(new Error("Failed to kill the process")), 100)
+          setTimeout(() => reject(new Error('Failed to kill the process')), 100)
           this.interactiveProcess.kill('SIGINT')
         }
       })
     })
   })
-
 })

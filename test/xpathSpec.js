@@ -1,10 +1,11 @@
+/* eslint-env mocha */
 var xpath = require('../lib/xpath.js')
 var expect = require('chai').expect
 var $ = require('jquery')
 
-describe('xpath', function() {
-  describe('.replaceElementsWithXPaths()', function() {
-    it('replaces element values with xpaths', function() {
+describe('xpath', function () {
+  describe('.replaceElementsWithXPaths()', function () {
+    it('replaces element values with xpaths', function () {
       var values = [document.head, document.body]
       var replaced = xpath.replaceElementsWithXPaths(values)
       expect(replaced).to.eql([
@@ -13,7 +14,7 @@ describe('xpath', function() {
       ])
     })
 
-    it('replaces jquery values with xpaths', function() {
+    it('replaces jquery values with xpaths', function () {
       var values = [$(document.head), $(document.body)]
       var replaced = xpath.replaceElementsWithXPaths(values)
       expect(replaced).to.eql([
@@ -22,7 +23,7 @@ describe('xpath', function() {
       ])
     })
 
-    it('uses element id values for shorter xpaths', function() {
+    it('uses element id values for shorter xpaths', function () {
       var top = document.createElement('div')
       top.innerHTML = '<div id="a"><div id="b"><span class="x">ok <b>then</b></span></div></div>'
       var b = top.querySelector('b')
@@ -31,13 +32,13 @@ describe('xpath', function() {
       expect(replaced).to.eql([{ element: b, xpath: "//div[@id='b']/span/b" }])
     })
 
-    it('replaces non-element values with themselves', function() {
+    it('replaces non-element values with themselves', function () {
       var values = [1, 'two']
       var replaced = xpath.replaceElementsWithXPaths(values)
       expect(replaced).to.eql(values)
     })
 
-    it('replaces elements in nested arrays', function() {
+    it('replaces elements in nested arrays', function () {
       var values = [1, [document.body], [[$(document.head)]]]
       var replaced = xpath.replaceElementsWithXPaths(values)
       expect(replaced).to.eql([

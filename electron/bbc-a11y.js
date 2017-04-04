@@ -36,7 +36,7 @@ function createWindow () {
 
   mainWindow.webContents.session.webRequest.onHeadersReceived({}, function (d, c) {
     for (var header in d.responseHeaders) {
-      if (header.toLowerCase() == 'x-frame-options') {
+      if (header.toLowerCase() === 'x-frame-options') {
         delete d.responseHeaders[header]
       }
     }
@@ -44,7 +44,7 @@ function createWindow () {
   })
 
   mainWindow.on('closed', function () {
-    mainWindow.removeAllListeners();
+    mainWindow.removeAllListeners()
     mainWindow = null
   })
 }

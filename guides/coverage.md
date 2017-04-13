@@ -12,7 +12,7 @@ a summary of those standards and the level of test coverage currently provided.
 | Validation              |     x     |        x       |    x   |
 | Progressive enhancement |     x     |        x       |    x   |
 | Indicating language     |    yes    |        x       |    x   |
-| Page titles             |     x     |        x       |    x   |
+| Page titles             |     x     |       yes      |    x   |
 | Main landmarks          |    yes    |        x       |    x   |
 | Headings                |    yes    |        x       |    x   |
 | Minimum test size       |    yes    |        x       |    x   |

@@ -10,7 +10,7 @@ describe('a11y', function() {
   it('tests the DOM', function() {
     return a11y.test().then(function(outcome) {
       var errors = outcome.flatten().errorsFound
-      expect(errors).to.equal(5)
+      expect(errors).to.equal(3)
     })
   })
 

@@ -155,6 +155,16 @@ Override the human-readable output format with JSON instead like this:
 
     ./node_modules/.bin/bbc-a11y --reporter json
 
+## Output results in JUnit format
+
+Override the human-readable output format with a JUNit report instead like this:
+
+    ./node_modules/.bin/bbc-a11y --reporter junit
+
+You'll probably want to redirect the output to a file, e.g:
+
+    ./node_modules/.bin/bbc-a11y --reporter junit > bbc-a11y-junit-results.xml
+
 ## Using a custom reporter
 
 If your CI system renders reports in different format, you can write your own

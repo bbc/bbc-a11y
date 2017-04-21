@@ -3,7 +3,7 @@ var Standards = require('../lib/standards')
 var expect = require('chai').expect
 var $ = require('jquery')
 
-describe('a11y validating in frames', function() {
+describe('a11y testing in frames', function() {
   beforeEach(function() {
     $('body').html('<html><body><h1>Top level</h1><iframe src="about:blank"></iframe></body></html>')
     this.iframe1 = document.querySelector('iframe')

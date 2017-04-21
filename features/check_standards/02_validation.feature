@@ -27,7 +27,7 @@ Feature: Validation
     And my page configuration is:
       """
       {
-        validateHTML: true
+        w3cValidator: 'https://validator.w3.org/nu/'
       }
       """
     When I test the "Validation: Markup must validate against doctype" standard
@@ -49,7 +49,7 @@ Feature: Validation
     When my page configuration is:
       """
       {
-        validateHTML: true
+        w3cValidator: 'https://validator.w3.org/nu/'
       }
       """
     And I test the "Validation: Markup must validate against doctype" standard

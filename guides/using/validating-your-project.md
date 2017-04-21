@@ -135,7 +135,27 @@ configuration file, for example:
 
 Some tests cannot be fully automated. These
 [semi-automated tests](./semi-automated-tests.md) need additional page
-configuration before they can be executed by bbc-a11y. 
+configuration before they can be executed by bbc-a11y.
+
+## W3C HTML Validation
+
+bbc-a11y can validate HTML using a W3C validation service. Specify the URL of
+the validator as `w3cValidator` in your page configuration, for example:
+
+```js
+page('http://bbc.co.uk', {
+  w3cValidator: 'https://validator.w3.org/nu/'
+})
+```
+
+This can be set to any of the following URLs:
+
+  * https://checker.html5.org/
+  * https://html5.validator.nu/
+  * https://validator.w3.org/nu/
+
+...or you can specify the URL of your own validator instance after following the
+[w3c guide](https://validator.github.io/validator/).
 
 ## Specifying a configuration file path
 

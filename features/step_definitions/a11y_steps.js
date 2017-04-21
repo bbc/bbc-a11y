@@ -97,17 +97,18 @@ defineSupportCode(function({ Given, When, Then }) {
     var $ = jquery(this.pageFrame.contentDocument)
     var matching = Standards.matching(name)
     if (matching.standards.length != 1) throw new Error("Expected 1 standard called '" + name + "', found " + matching.standards.length)
-    this.outcome = matching.test($.find.bind($), this.pageConfiguration || {})
+    return matching.test($.find.bind($), this.pageConfiguration || {})
+      .then(outcome => this.outcome = outcome)
   })
 
   Then('it passes', function () {
     if ('exitCode' in this) {
       assert.equal(this.exitCode, 0, "\n" + this.stdout + this.stderr)
     } else {
-      var pass = !this.outcome.results.find(function(result) {
+      var resultsWithErrors = this.outcome.results.filter(function(result) {
         return result.errors.length > 0
       })
-      assert(pass)
+      assert(resultsWithErrors.length == 0, "\nExpected pass, but it failed with:\n" + require('util').inspect(resultsWithErrors, false, null))
     }
   })
 

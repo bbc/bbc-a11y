@@ -24,6 +24,12 @@ Feature: Validation
         </body>
       </html>
       """
+    And my page configuration is:
+      """
+      {
+        validateHTML: true
+      }
+      """
     When I test the "Validation: Markup must validate against doctype" standard
     Then it passes
 
@@ -40,7 +46,13 @@ Feature: Validation
         </body>
       </html>
       """
-    When I test the "Validation: Markup must validate against doctype" standard
+    When my page configuration is:
+      """
+      {
+        validateHTML: true
+      }
+      """
+    And I test the "Validation: Markup must validate against doctype" standard
     Then it fails with the message:
       """
       The character encoding was not declared. Proceeding using “windows-1252”.

@@ -14,7 +14,7 @@
       var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
       return b ? b.pop() : '';
     }
-    if (getCookieValue('open') == 'sesame') {
+    if (getCookieValue('open') === 'sesame') {
       document.getElementById('p').setAttribute('role', 'main')
     }
     document.body.innerHTML += "<pre>document.cookie=" + document.cookie + "</pre>"

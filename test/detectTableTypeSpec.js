@@ -1,3 +1,4 @@
+/* eslint-env mocha */
 var detectTableType = require('../lib/detectTableType')
 var expect = require('chai').expect
 
@@ -5,7 +6,6 @@ describe('detectTableType', function () {
   var container, table
 
   beforeEach(function () {
-
     container = document.createElement('div')
     table = document.createElement('table')
     document.body.appendChild(container)
@@ -224,7 +224,7 @@ describe('detectTableType', function () {
     })
   })
 
-  function rowsWithTwoColumns(n) {
+  function rowsWithTwoColumns (n) {
     var rows = ''
     for (var i = 0; i < n; i++) { rows += '<tr><td>1</td><td>2</td></tr>' }
     return rows

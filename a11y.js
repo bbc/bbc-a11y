@@ -1,3 +1,4 @@
+/* global page */
 page('http://www.bbc.co.uk', {
   skip: [
     'Headings: Content must follow headings',

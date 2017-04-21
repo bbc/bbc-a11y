@@ -5,7 +5,7 @@
   "main": "index.js",
   "directories": {},
   "scripts": {
-    "test": "./node_modules/.bin/electron-mocha --renderer && ./node_modules/.bin/cucumber-electron",
+    "test": "./node_modules/.bin/electron-mocha --renderer && ./node_modules/.bin/cucumber-electron && standard",
     "browserify": "browserify ./lib/a11y.js -o ./dist/bundle.js",
     "watchify": "watchify ./lib/a11y.js -o ./dist/bundle.js",
     "web-server": "node -e \"require('./features/support/web_server').ensureRunningOn(7654).then(() => console.log('http://localhost:7654'))\""
@@ -39,6 +39,12 @@
     "mkdirp": "0.5.1",
     "mocha": "3.2.0",
     "rimraf": "2.5.4",
+    "standard": "^9.0.2",
     "watchify": "3.6.1"
+  },
+  "standard": {
+    "ignore": [
+      "test/configs/syntaxError.js"
+    ]
   }
 }

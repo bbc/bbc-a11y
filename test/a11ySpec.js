@@ -1,22 +1,23 @@
+/* eslint-env mocha */
 var a11y = require('../lib/a11y.js')
 var expect = require('chai').expect
 var $ = require('jquery')
 
-describe('a11y', function() {
-  beforeEach(function() {
+describe('a11y', function () {
+  beforeEach(function () {
     $('body').html('')
   })
 
-  it('tests the DOM', function() {
-    return a11y.test().then(function(outcome) {
+  it('tests the DOM', function () {
+    return a11y.test().then(function (outcome) {
       var errors = outcome.flatten().errorsFound
       expect(errors).to.equal(3)
     })
   })
 
-  it('skips standards', function() {
+  it('skips standards', function () {
     return a11y.test({ skip: ['Main landmark: Exactly one Main landmark'] })
-      .then(function(outcome) {
+      .then(function (outcome) {
         expect(outcome.skipped).to.eql([
           {
             section: 'Main landmark',
@@ -26,10 +27,10 @@ describe('a11y', function() {
       })
   })
 
-  it('hides errors', function() {
+  it('hides errors', function () {
     return a11y.test({ hide: ['Found 0 elements with role="main".'] })
-      .then(function(outcome) {
-        var resultsWithErrors = outcome.results.filter(function(standardResult) {
+      .then(function (outcome) {
+        var resultsWithErrors = outcome.results.filter(function (standardResult) {
           return standardResult.hiddenErrors.length > 0
         })
         expect(resultsWithErrors[0].errors).to.eql([])
@@ -37,7 +38,7 @@ describe('a11y', function() {
       })
   })
 
-  it('only runs specific standards', function() {
+  it('only runs specific standards', function () {
     return a11y.test({ only: ['Main landmark: Exactly one Main landmark'] })
       .then(function (outcome) {
         expect(outcome.results.length).to.equal(1)

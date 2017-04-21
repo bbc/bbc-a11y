@@ -1,17 +1,17 @@
+/* eslint-env mocha */
 var configLoader = require('../lib/configLoader')
 var assert = require('assert')
 var path = require('path')
 
-describe('configLoader.load(pathToConfigModule)', function() {
-
-  function pathToConfigModule(name) {
+describe('configLoader.load(pathToConfigModule)', function () {
+  function pathToConfigModule (name) {
     return path.resolve(__dirname, './configs/' + name + '.js')
   }
 
-  context('when the config module lists two pages', function() {
-    it('resolves with a list of pages', function() {
+  context('when the config module lists two pages', function () {
+    it('resolves with a list of pages', function () {
       return configLoader.load(pathToConfigModule('simple'))
-        .then(function(config) {
+        .then(function (config) {
           assert.deepEqual(config, {
             pages: [
               { url: 'http://www.bbc.co.uk' },
@@ -22,10 +22,10 @@ describe('configLoader.load(pathToConfigModule)', function() {
     })
   })
 
-  context('when the config module lists pages with skip and only elements', function() {
-    it('resolves with a list of pages', function() {
+  context('when the config module lists pages with skip and only elements', function () {
+    it('resolves with a list of pages', function () {
       return configLoader.load(pathToConfigModule('skipAndOnly'))
-        .then(function(config) {
+        .then(function (config) {
           assert.deepEqual(config, {
             pages: [
               { url: 'http://www.bbc.co.uk', skip: ['x'] },
@@ -38,10 +38,10 @@ describe('configLoader.load(pathToConfigModule)', function() {
     })
   })
 
-  context('when the config module specifies viewport width', function() {
-    it('resolves with a list of pages', function() {
+  context('when the config module specifies viewport width', function () {
+    it('resolves with a list of pages', function () {
       return configLoader.load(pathToConfigModule('viewportWidth'))
-        .then(function(config) {
+        .then(function (config) {
           assert.deepEqual(config, {
             pages: [
               { url: 'http://www.bbc.co.uk', width: 789 }
@@ -51,88 +51,82 @@ describe('configLoader.load(pathToConfigModule)', function() {
     })
   })
 
-  context('when the config module has a syntax error', function() {
-    it('rejects with the syntax error', function() {
+  context('when the config module has a syntax error', function () {
+    it('rejects with the syntax error', function () {
       return configLoader.load(pathToConfigModule('syntaxError'))
-        .then(function() {
+        .then(function () {
           throw new Error('Expected a rejection')
         })
-        .catch(function(e) {
+        .catch(function (e) {
           assert.equal('Unexpected token >', e.message)
         })
     })
   })
 
-  context('when there is a global page property', function() {
+  context('when there is a global page property', function () {
     var oldPage, hadPage
 
-    beforeEach(function() {
+    beforeEach(function () {
       hadPage = 'page' in global
       oldPage = global.page
       global.page = 666
     })
 
-    afterEach(function() {
-      if (hadPage)
-        global.page = oldPage
-      else
-        delete global.page
+    afterEach(function () {
+      if (hadPage) { global.page = oldPage } else { delete global.page }
     })
 
-    context('and the configuration is valid', function() {
-      it('resets page to its previous value', function() {
+    context('and the configuration is valid', function () {
+      it('resets page to its previous value', function () {
         return configLoader.load(pathToConfigModule('empty'))
-          .then(function() {
+          .then(function () {
             assert.equal(666, global.page)
           })
       })
     })
 
-    context('and the configuration is invalid', function() {
-      it('resets page to its previous value', function() {
+    context('and the configuration is invalid', function () {
+      it('resets page to its previous value', function () {
         return configLoader.load(pathToConfigModule('syntaxError'))
-          .then(function() {
+          .then(function () {
             assert.equal(666, global.page)
           })
-          .catch(function() {
+          .catch(function () {
             assert.equal(666, global.page)
           })
       })
     })
   })
 
-  context('when there is no global page property', function() {
+  context('when there is no global page property', function () {
     var oldPage, hadPage
 
-    beforeEach(function() {
+    beforeEach(function () {
       hadPage = 'page' in global
       oldPage = global.page
       delete global.page
     })
 
-    afterEach(function() {
-      if (hadPage)
-        global.page = oldPage
-      else
-        delete global.page
+    afterEach(function () {
+      if (hadPage) { global.page = oldPage } else { delete global.page }
     })
 
-    context('and the configuration is valid', function() {
-      it('does not set a page property', function() {
+    context('and the configuration is valid', function () {
+      it('does not set a page property', function () {
         return configLoader.load(path.resolve(__dirname, './configs/empty.js'))
-          .then(function() {
+          .then(function () {
             assert(!('page' in global))
           })
       })
     })
 
-    context('and the configuration is invalid', function() {
-      it('does not set a page property', function() {
+    context('and the configuration is invalid', function () {
+      it('does not set a page property', function () {
         return configLoader.load(path.resolve(__dirname, './configs/syntaxError.js'))
-          .then(function() {
+          .then(function () {
             assert(!('page' in global))
           })
-          .catch(function() {
+          .catch(function () {
             assert(!('page' in global))
           })
       })

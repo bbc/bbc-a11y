@@ -1,0 +1,18 @@
+* {
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+h1, textarea, button {
+  margin: 5px;
+}
+h1 {
+  font-size: 1.2em
+}
+textarea {
+  display: block;
+  width: 90%;
+  height: 60px;
+}
+button {
+  font-size: 1.2em
+}

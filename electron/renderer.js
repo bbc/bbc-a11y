@@ -47,5 +47,5 @@ const pages = commandLineArgs.urls.map(url => ({ url, width: commandLineArgs.wid
 
 const configPath = path.resolve(commandLineArgs.configPath || path.join(process.cwd(), 'a11y.js'))
 
-new Runner(configPath)
+new Runner(configPath, commandLineArgs.manual)
   .run(pages, windowAdapter, new Reporter(console, remoteConsole), exit)

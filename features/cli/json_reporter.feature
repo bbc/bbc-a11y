@@ -32,6 +32,15 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
+                    "section": "Focus styles",
+                    "name": "Focused elements must be identifiable"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
                     "section": "Form interactions",
                     "name": "Forms must have submit buttons"
                   },
@@ -192,6 +201,15 @@ Feature: JSON Reporter
                   "standard": {
                     "section": "Focusable controls",
                     "name": "Anchors must have hrefs"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Focus styles",
+                    "name": "Focused elements must be identifiable"
                   },
                   "errors": [],
                   "warnings": [],

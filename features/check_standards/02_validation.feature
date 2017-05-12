@@ -10,6 +10,7 @@ Feature: Validation
   interpreting invalid HTML there will be less risk of problems arising if the
   document follows a recognised standard Doctype.
 
+  @internet
   Scenario: Valid for doctype
     Given a page with the HTML:
       """
@@ -33,6 +34,7 @@ Feature: Validation
     When I test the "Validation: Markup must validate against doctype" standard
     Then it passes
 
+  @internet
   Scenario: Invalid for doctype
     Given a page with the HTML:
       """

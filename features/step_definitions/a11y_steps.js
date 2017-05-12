@@ -6,11 +6,11 @@ const jquery = require('jquery')
 const webServer = require('../support/web_server')
 
 defineSupportCode(function ({ Given, When, Then }) {
-  Given('a website running at http://localhost:{port:int}', function (port) {
+  Given('a website running at http://localhost:{int}', function (port) {
     return webServer.ensureRunningOn(Number(port))
   })
 
-  Given('a file named {filePath:stringInDoubleQuotes} with:', function (filePath, contents) {
+  Given('a file named {stringInDoubleQuotes} with:', function (filePath, contents) {
     return this.writeFile(filePath, contents)
   })
 
@@ -25,18 +25,18 @@ defineSupportCode(function ({ Given, When, Then }) {
     return this.runA11y()
   })
 
-  When('I run `bbc-a11y {url:url}`', function (url) {
+  When('I run `bbc-a11y {url}`', function (url) {
     return this.runA11y(url)
   })
 
-  When('I run `bbc-a11y {url:url} --interactive`', function (url) {
+  When('I run `bbc-a11y {url} --interactive`', function (url) {
     return this.runA11yInteractively(url)
       .then(interactiveProcess => {
         this.interactiveProcess = interactiveProcess
       })
   })
 
-  When('I run `bbc-a11y {url:url} --width {width:int}`', function (url, width) {
+  When('I run `bbc-a11y {url} --width {int}`', function (url, width) {
     return this.runA11y(`${url} --width ${width}`)
   })
 
@@ -90,7 +90,7 @@ defineSupportCode(function ({ Given, When, Then }) {
     eval(`this.pageConfiguration = ${string}`)
   })
 
-  When('I test the {name:stringInDoubleQuotes} standard', function (name) {
+  When('I test the {stringInDoubleQuotes} standard', function (name) {
     var $ = jquery(this.pageFrame.contentDocument)
     var matching = Standards.matching(name)
     if (matching.standards.length !== 1) throw new Error("Expected 1 standard called '" + name + "', found " + matching.standards.length)
@@ -162,7 +162,7 @@ defineSupportCode(function ({ Given, When, Then }) {
     assert.equal(actualMessage, message)
   })
 
-  Then('the exit status should be {status:int}', function (status) {
+  Then('the exit status should be {int}', function (status) {
     assert.equal(this.exitCode, status)
   })
 

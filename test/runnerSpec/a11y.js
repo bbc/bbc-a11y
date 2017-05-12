@@ -1,2 +1,3 @@
 /* global page */
-page('http://www.bbc.co.uk/sport')
+page('http://what/evs')
+page('http://and/another')

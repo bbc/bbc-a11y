@@ -16,7 +16,7 @@ a summary of those standards and the level of test coverage currently provided.
 | Main landmarks          |    yes    |        x       |    x   |
 | Headings                |    yes    |        x       |    x   |
 | Minimum test size       |    yes    |        x       |    x   |
-| Resizable text          |     x     |        x       |    x   |
+| Resizable text          |    yes    |        x       |   yes  |
 | Tabindex                |    yes    |        x       |    x   |
 | Title attributes        |    yes    |        x       |    x   |
 | Focusable controls      |    yes    |        x       |    x   |

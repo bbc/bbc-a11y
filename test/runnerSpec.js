@@ -1,12 +1,11 @@
 /* eslint-env mocha */
 var Runner = require('../lib/runner')
-var Reporter = require('../lib/reporters/pretty')
-var jquery = require('jquery')
+var Reporter = require('../lib/reporters/json')
 var assert = require('assert')
 const path = require('path')
 
 describe('Runner', function () {
-  var mainFrame, addressBar, events
+  var mainFrame, events
 
   beforeEach(function () {
     events = []
@@ -14,17 +13,9 @@ describe('Runner', function () {
     mainFrame = document.createElement('iframe')
     mainFrame.id = 'mainFrame'
     document.body.appendChild(mainFrame)
-
-    addressBar = document.createElement('input')
-    addressBar.id = 'addressBar'
-    document.body.appendChild(addressBar)
   })
 
   function run (pages, configPath) {
-    function loadPage (page) {
-      events.push({ type: 'loadPage', page })
-      return Promise.resolve(jquery(mainFrame).contents())
-    }
     var devToolsConsole = {
       log: function () {
         events.push({ type: 'devToolsConsole.log', args: [].slice.apply(arguments) })
@@ -51,7 +42,25 @@ describe('Runner', function () {
       events.push({ type: 'exit', args: [].slice.apply(arguments) })
     }
 
-    return new Runner(configPath).run(pages, loadPage, new Reporter(devToolsConsole, commandLineConsole), exit)
+    var windowAdapter = {
+      getContentSize () {
+        return {
+          width: Number(mainFrame.getAttribute('width') || 0),
+          height: Number(mainFrame.getAttribute('height') || 0)
+        }
+      },
+
+      setContentSize (width, height) {
+        mainFrame.setAttribute('width', width)
+        mainFrame.setAttribute('height', height)
+      },
+
+      measureInnerWidth () {
+        return this.getContentSize().width
+      }
+    }
+
+    return new Runner(configPath).run(pages, windowAdapter, new Reporter(devToolsConsole, commandLineConsole), exit)
       .then(function () {
         return Promise.resolve(events)
       })
@@ -61,7 +70,8 @@ describe('Runner', function () {
     it('checks the URL', function () {
       return run([{ url: 'http://some/url' }])
         .then(function (events) {
-          assert.deepEqual(events[0], { type: 'loadPage', page: { url: 'http://some/url' } })
+          var firstEventPayload = JSON.parse(events[0].args[0])
+          assert.deepEqual(firstEventPayload.pagesChecked, 1)
           assert.deepEqual(events[events.length - 1], { type: 'exit', args: [1] })
         })
     })
@@ -72,7 +82,8 @@ describe('Runner', function () {
       const configPath = path.join(__dirname, 'runnerSpec', 'a11y.js')
       return run([], configPath)
         .then(function (events) {
-          assert.deepEqual(events[0], { type: 'loadPage', page: { url: 'http://www.bbc.co.uk/sport' } })
+          var firstEventPayload = JSON.parse(events[0].args[0])
+          assert.deepEqual(firstEventPayload.pagesChecked, 2)
           assert.deepEqual(events[events.length - 1], { type: 'exit', args: [1] })
         })
     })

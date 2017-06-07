@@ -1,6 +1,5 @@
 const Runner = require('../lib/runner')
 
-const jquery = require('jquery')
 const path = require('path')
 
 const electron = require('electron')
@@ -8,6 +7,8 @@ const remoteConsole = electron.remote.getGlobal('console')
 
 const argv = electron.remote.process.argv
 const commandLineArgs = require('../lib/commandLineArgs').parse(argv)
+
+const win = electron.remote.getCurrentWindow()
 
 let Reporter
 switch (commandLineArgs.reporter) {
@@ -25,66 +26,26 @@ switch (commandLineArgs.reporter) {
 const exit = commandLineArgs.interactive
   ? () => {} : electron.remote.process.exit
 
-function loadPage (page) {
-  const win = electron.remote.getCurrentWindow()
-  const [currentWidth, currentHeight] = win.getContentSize()
-  const newWidth = page.width || 1024
-  const isResized = currentWidth !== newWidth
-  if (isResized) {
-    win.setContentSize(newWidth, currentHeight, false)
+class ElectronWindowAdapter {
+  getContentSize () {
+    const [width, height] = win.getContentSize()
+    return { width, height }
   }
 
-  var mainFrame = document.getElementById('mainFrame')
-
-  var promise = Promise.resolve()
-
-  if (page.visit) {
-    promise = promise.then(function () {
-      return page.visit(mainFrame)
-    })
+  setContentSize (width, height) {
+    win.setContentSize(width, height, false)
   }
 
-  return promise.then(function () {
-    return new Promise(function (resolve, reject) {
-      function testFrame () {
-        console.clear()
-        console.log('BBC a11y is testing the page...')
-        resolve(jquery(mainFrame).contents())
-      }
-
-      function loadUrl () {
-        if (page.visit) {
-          testFrame()
-        } else {
-          mainFrame.onload = function () {
-            testFrame()
-          }
-          mainFrame.src = page.url
-        }
-      }
-
-      function waitForResize () {
-        setTimeout(function () {
-          if (window.innerWidth === newWidth) {
-            loadUrl()
-          } else {
-            waitForResize()
-          }
-        }, 10)
-      }
-
-      if (isResized) {
-        waitForResize()
-      } else {
-        loadUrl()
-      }
-    })
-  })
+  measureInnerWidth () {
+    return window.innerWidth
+  }
 }
+
+const windowAdapter = new ElectronWindowAdapter()
 
 const pages = commandLineArgs.urls.map(url => ({ url, width: commandLineArgs.width }))
 
 const configPath = path.resolve(commandLineArgs.configPath || path.join(process.cwd(), 'a11y.js'))
 
 new Runner(configPath)
-  .run(pages, loadPage, new Reporter(console, remoteConsole), exit)
+  .run(pages, windowAdapter, new Reporter(console, remoteConsole), exit)

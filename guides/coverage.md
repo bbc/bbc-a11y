@@ -21,7 +21,7 @@ a summary of those standards and the level of test coverage currently provided.
 | Title attributes        |    yes    |        x       |    x   |
 | Focusable controls      |    yes    |        x       |    x   |
 | Visible on focus        |    yes    |        x       |    x   |
-| Control styles          |     x     |        x       |    x   |
+| Control styles          |     x     |        x       |   yes  |
 | Focus styles            |     x     |        x       |   yes  |
 | Colour contrast         |     x     |        x       |    x   |
 | Colour and meaning      |     x     |        x       |    x   |

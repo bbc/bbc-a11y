@@ -11,7 +11,8 @@ h1 {
 textarea {
   display: block;
   width: 90%;
-  height: 60px;
+  height: 40px;
+  font-size: 1em;
 }
 button {
   font-size: 1.2em

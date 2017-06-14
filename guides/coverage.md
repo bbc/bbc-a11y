@@ -23,7 +23,7 @@ a summary of those standards and the level of test coverage currently provided.
 | Visible on focus        |    yes    |        x       |    x   |
 | Control styles          |     x     |        x       |   yes  |
 | Focus styles            |     x     |        x       |   yes  |
-| Colour contrast         |     x     |        x       |    x   |
+| Colour contrast         |     x     |        x       |   yes  |
 | Colour and meaning      |     x     |        x       |    x   |
 | Image alternatives      |    yes    |        x       |    x   |
 | Form labels             |    yes    |        x       |    x   |

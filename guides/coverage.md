@@ -24,7 +24,7 @@ a summary of those standards and the level of test coverage currently provided.
 | Control styles          |     x     |        x       |   yes  |
 | Focus styles            |     x     |        x       |   yes  |
 | Colour contrast         |     x     |        x       |   yes  |
-| Colour and meaning      |     x     |        x       |    x   |
+| Colour and meaning      |     x     |        x       |   yes  |
 | Image alternatives      |    yes    |        x       |    x   |
 | Form labels             |    yes    |        x       |    x   |
 | Form interactions       |    yes    |        x       |    x   |

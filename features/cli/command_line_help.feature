@@ -6,12 +6,13 @@ Feature: Command Line Help
     """
       Usage: bbc-a11y [options] <urls>
 
+
       Options:
 
-        -h, --help                 output usage information
         -V, --version              output the version number
         -i, --interactive          show browser window and leave open for debugging
         -w, --width <pixels>       override viewport width
         -c, --config <config>      path to config file
         -r, --reporter <reporter>  json or [path to custom reporter module]
+        -h, --help                 output usage information
     """

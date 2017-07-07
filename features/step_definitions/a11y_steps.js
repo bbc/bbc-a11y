@@ -145,7 +145,7 @@ defineSupportCode(function ({ Given, When, Then }) {
 
   Then('it should pass with:', function (string) {
     var actualOutput = (this.stdout + this.stderr)
-    assert(actualOutput.indexOf(string) > -1, 'Expected: ' + string + '\nActual:   ' + actualOutput)
+    assert(actualOutput.indexOf(string) > -1, 'Expected:\n' + string + '\nActual:\n' + actualOutput)
     assert.equal(this.exitCode, 0)
   })
 

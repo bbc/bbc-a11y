@@ -30,7 +30,7 @@ Feature: Resizable text
   Scenario: Text must be styled with units that are resizable in all browsers
     Given a page with the body:
       """
-      <p style="16px">Styled in px!</p>
+      <p style="font-size: 16px">Styled in px!</p>
       <style>b { font-size: 18px }</style>
       <b>Styled in px!</b>
       """
@@ -40,3 +40,11 @@ Feature: Resizable text
       Text styled with px unit: /html/body/p
       Text styled with px unit: /html/body/b
       """
+
+  Scenario: User agent stylesheet is ignored
+    Given a page with the body:
+      """
+      <p>Not styled in px!</p>
+      """
+    When I test the "Resizable text: Text must be styled with units that are resizable in all browsers" standard
+    Then it passes

@@ -9,9 +9,11 @@ describe('a11y', function () {
   })
 
   it('tests the DOM', function () {
+    $('html').attr('lang', 'en-gb')
+    $('body').append('<div role="main"><h1>Hello!</h1><p>Some content</p></div>')
     return a11y.test().then(function (outcome) {
-      var errors = outcome.flatten().errorsFound
-      expect(errors).to.equal(3)
+      var flattened = outcome.flatten()
+      expect(flattened.errorsFound).to.equal(0)
     })
   })
 

@@ -8,7 +8,7 @@ a summary of those standards and the level of test coverage currently provided.
 
 | Standard title          | Automated | Semi-automated | Manual |
 | ----------------------- |:---------:|:--------------:|:------:|
-| Core purpose            |     x     |        x       |    x   |
+| Core purpose            |     x     |        x       |   yes  |
 | Validation              |    yes    |        x       |    x   |
 | Progressive enhancement |     x     |        x       |   yes  |
 | Indicating language     |    yes    |        x       |    x   |

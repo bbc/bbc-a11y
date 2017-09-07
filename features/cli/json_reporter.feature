@@ -23,8 +23,62 @@ Feature: JSON Reporter
               "results": [
                 {
                   "standard": {
+                    "section": "Core purpose",
+                    "name": "Core purpose must be defined"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Colour and meaning",
+                    "name": "Information conveyed with colour must also be identifiable from context or markup."
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Colour contrast",
+                    "name": "Colour combinations must pass the WCAG colour contrast check"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Control styles",
+                    "name": "Editorial links must be self-evident"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Control styles",
+                    "name": "Text links must have mouse over state change"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
                     "section": "Focusable controls",
                     "name": "Anchors must have hrefs"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Focus styles",
+                    "name": "Focused elements must be identifiable"
                   },
                   "errors": [],
                   "warnings": [],
@@ -226,8 +280,62 @@ Feature: JSON Reporter
               "results": [
                 {
                   "standard": {
+                    "section": "Core purpose",
+                    "name": "Core purpose must be defined"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Colour and meaning",
+                    "name": "Information conveyed with colour must also be identifiable from context or markup."
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Colour contrast",
+                    "name": "Colour combinations must pass the WCAG colour contrast check"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Control styles",
+                    "name": "Editorial links must be self-evident"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Control styles",
+                    "name": "Text links must have mouse over state change"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
                     "section": "Focusable controls",
                     "name": "Anchors must have hrefs"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Focus styles",
+                    "name": "Focused elements must be identifiable"
                   },
                   "errors": [],
                   "warnings": [],

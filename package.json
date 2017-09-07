@@ -25,22 +25,22 @@
   "homepage": "https://github.com/bbc/bbc-a11y#readme",
   "dependencies": {
     "commander": "2.11.0",
-    "cucumber": "2.3.1",
-    "electron": "1.6.11",
-    "httpism": "3.4.2",
+    "cucumber": "3.0.1",
+    "electron": "1.7.6",
+    "httpism": "3.7.0",
     "jquery": "3.2.1"
   },
   "devDependencies": {
     "browserify": "14.4.0",
-    "chai": "4.0.2",
+    "chai": "4.1.2",
     "cucumber-electron": "2.3.1",
-    "diff": "3.3.0",
-    "electron-mocha": "4.0.0",
-    "express": "4.15.3",
+    "diff": "3.3.1",
+    "electron-mocha": "4.0.2",
+    "express": "4.15.4",
     "mkdirp": "0.5.1",
-    "mocha": "3.4.2",
+    "mocha": "3.5.0",
     "rimraf": "2.6.1",
-    "standard": "10.0.2",
+    "standard": "10.0.3",
     "watchify": "3.9.0"
   },
   "standard": {

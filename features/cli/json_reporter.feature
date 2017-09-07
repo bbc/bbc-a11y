@@ -32,15 +32,6 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
-                    "section": "Focus styles",
-                    "name": "Focused elements must be identifiable"
-                  },
-                  "errors": [],
-                  "warnings": [],
-                  "hiddenErrors": []
-                },
-                {
-                  "standard": {
                     "section": "Form interactions",
                     "name": "Forms must have submit buttons"
                   },
@@ -106,6 +97,42 @@ Feature: JSON Reporter
                   "standard": {
                     "section": "Minimum text size",
                     "name": "Text cannot be too small"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Progressive enhancement",
+                    "name": "Document must not require JavaScript or CSS to function"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Resizable text",
+                    "name": "Content must be visible and usable with page zoomed to 200% of normal"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Resizable text",
+                    "name": "Content must be visible and usable with text resized to 200% of normal"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Resizable text",
+                    "name": "Text must be styled with units that are resizable in all browsers"
                   },
                   "errors": [],
                   "warnings": [],
@@ -208,15 +235,6 @@ Feature: JSON Reporter
                 },
                 {
                   "standard": {
-                    "section": "Focus styles",
-                    "name": "Focused elements must be identifiable"
-                  },
-                  "errors": [],
-                  "warnings": [],
-                  "hiddenErrors": []
-                },
-                {
-                  "standard": {
                     "section": "Form interactions",
                     "name": "Forms must have submit buttons"
                   },
@@ -295,6 +313,42 @@ Feature: JSON Reporter
                   "standard": {
                     "section": "Minimum text size",
                     "name": "Text cannot be too small"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Progressive enhancement",
+                    "name": "Document must not require JavaScript or CSS to function"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Resizable text",
+                    "name": "Content must be visible and usable with page zoomed to 200% of normal"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Resizable text",
+                    "name": "Content must be visible and usable with text resized to 200% of normal"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Resizable text",
+                    "name": "Text must be styled with units that are resizable in all browsers"
                   },
                   "errors": [],
                   "warnings": [],

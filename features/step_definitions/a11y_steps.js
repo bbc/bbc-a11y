@@ -140,6 +140,10 @@ defineSupportCode(function ({ Given, When, Then }) {
     var actualOutput = (this.stdout + this.stderr)
     // HACK: work around stupid travis issue with xvfb
     var sanitisedActualOutput = actualOutput.split('\n').filter(line => line !== 'Xlib:  extension "RANDR" missing on display ":99.0".').join('\n')
+    if (process.env.DEBUG_OUTPUT && sanitisedActualOutput != expectedOutput) {
+      console.log(sanitisedActualOutput)
+      process.exit(1)
+    }
     assert.equal(sanitisedActualOutput, expectedOutput, 'Expected:\n' + expectedOutput.replace(/\n/g, '[\\n]\n') + '\nActual:\n' + sanitisedActualOutput.replace(/\n/g, '[\\n]\n'))
   })
 

@@ -5,15 +5,15 @@ var $ = require('jquery')
 
 describe('xpath', function () {
   describe('.replaceElementsWithXPaths()', function () {
-    function createJQueryElement(tagName) {
+    function createJQueryElement (tagName) {
       return $('<' + tagName + '/>').appendTo('body')
     }
 
-    function createElement(tagName) {
+    function createElement (tagName) {
       return createJQueryElement(tagName)[0]
     }
 
-    beforeEach(function() {
+    beforeEach(function () {
       $('body').html('')
     })
 

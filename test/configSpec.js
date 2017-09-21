@@ -1,16 +1,16 @@
 /* eslint-env mocha */
-var configLoader = require('../lib/configLoader')
+var configLoader = require('../lib/config/loader')
 var assert = require('assert')
 var path = require('path')
 
-describe('configLoader.load(pathToConfigModule)', function () {
+describe('configLoader.loadConfigFromPath(pathToConfigModule)', function () {
   function pathToConfigModule (name) {
     return path.resolve(__dirname, './configs/' + name + '.js')
   }
 
   context('when the config module lists two pages', function () {
     it('resolves with a list of pages', function () {
-      return configLoader.load(pathToConfigModule('simple'))
+      return configLoader.loadConfigFromPath(pathToConfigModule('simple'))
         .then(function (config) {
           assert.deepEqual(config, {
             pages: [
@@ -24,7 +24,7 @@ describe('configLoader.load(pathToConfigModule)', function () {
 
   context('when the config module lists pages with skip and only elements', function () {
     it('resolves with a list of pages', function () {
-      return configLoader.load(pathToConfigModule('skipAndOnly'))
+      return configLoader.loadConfigFromPath(pathToConfigModule('skipAndOnly'))
         .then(function (config) {
           assert.deepEqual(config, {
             pages: [
@@ -40,7 +40,7 @@ describe('configLoader.load(pathToConfigModule)', function () {
 
   context('when the config module specifies viewport width', function () {
     it('resolves with a list of pages', function () {
-      return configLoader.load(pathToConfigModule('viewportWidth'))
+      return configLoader.loadConfigFromPath(pathToConfigModule('viewportWidth'))
         .then(function (config) {
           assert.deepEqual(config, {
             pages: [
@@ -53,7 +53,7 @@ describe('configLoader.load(pathToConfigModule)', function () {
 
   context('when the config module has a syntax error', function () {
     it('rejects with the syntax error', function () {
-      return configLoader.load(pathToConfigModule('syntaxError'))
+      return configLoader.loadConfigFromPath(pathToConfigModule('syntaxError'))
         .then(function () {
           throw new Error('Expected a rejection')
         })
@@ -78,7 +78,7 @@ describe('configLoader.load(pathToConfigModule)', function () {
 
     context('and the configuration is valid', function () {
       it('resets page to its previous value', function () {
-        return configLoader.load(pathToConfigModule('empty'))
+        return configLoader.loadConfigFromPath(pathToConfigModule('empty'))
           .then(function () {
             assert.equal(666, global.page)
           })
@@ -87,7 +87,7 @@ describe('configLoader.load(pathToConfigModule)', function () {
 
     context('and the configuration is invalid', function () {
       it('resets page to its previous value', function () {
-        return configLoader.load(pathToConfigModule('syntaxError'))
+        return configLoader.loadConfigFromPath(pathToConfigModule('syntaxError'))
           .then(function () {
             assert.equal(666, global.page)
           })
@@ -113,7 +113,7 @@ describe('configLoader.load(pathToConfigModule)', function () {
 
     context('and the configuration is valid', function () {
       it('does not set a page property', function () {
-        return configLoader.load(path.resolve(__dirname, './configs/empty.js'))
+        return configLoader.loadConfigFromPath(path.resolve(__dirname, './configs/empty.js'))
           .then(function () {
             assert(!('page' in global))
           })
@@ -122,7 +122,7 @@ describe('configLoader.load(pathToConfigModule)', function () {
 
     context('and the configuration is invalid', function () {
       it('does not set a page property', function () {
-        return configLoader.load(path.resolve(__dirname, './configs/syntaxError.js'))
+        return configLoader.loadConfigFromPath(path.resolve(__dirname, './configs/syntaxError.js'))
           .then(function () {
             assert(!('page' in global))
           })

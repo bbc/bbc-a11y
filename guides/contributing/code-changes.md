@@ -52,12 +52,25 @@ You can run individual features
 (via [cucumber-electron](https://github.com/cucumber/cucumber-electron)) by
 running `./cucumber` from the root of the project. For example:
 
-  ./cucumber features/setting_cookies.feature
+    ./cucumber features/setting_cookies.feature
 
 A similar script for running the low-level [mocha](https://mochajs.org/) tests
 also exists:
 
-  ./mocha test/xpathSpec.js
+    ./mocha test/xpathSpec.js
+
+## Code style
+
+Please stick to [JavaScript standard style](https://standardjs.com/). An npm
+task is available to check your code conforms:
+
+    npm run standard
+
+...and another task will automatically fix any minor issues with your code:
+
+    npm run standard-fix
+
+## Submitting changes
 
 When all your tests pass, push the changes up to your fork and make a comment
 on your pull request and the bbc-a11y team will review your work before merging

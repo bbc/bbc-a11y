@@ -11,6 +11,7 @@ Feature: Command Line Help
 
         -V, --version              output the version number
         -i, --interactive          show browser window and leave open for debugging
+        -m, --manual               include manual tests
         -w, --width <pixels>       override viewport width
         -c, --config <config>      path to config file
         -r, --reporter <reporter>  json or [path to custom reporter module]

@@ -23,8 +23,62 @@ Feature: JSON Reporter
               "results": [
                 {
                   "standard": {
+                    "section": "Core purpose",
+                    "name": "Core purpose must be defined"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Colour and meaning",
+                    "name": "Information conveyed with colour must also be identifiable from context or markup."
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Colour contrast",
+                    "name": "Colour combinations must pass the WCAG colour contrast check"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Control styles",
+                    "name": "Editorial links must be self-evident"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Control styles",
+                    "name": "Text links must have mouse over state change"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
                     "section": "Focusable controls",
                     "name": "Anchors must have hrefs"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Focus styles",
+                    "name": "Focused elements must be identifiable"
                   },
                   "errors": [],
                   "warnings": [],
@@ -97,6 +151,42 @@ Feature: JSON Reporter
                   "standard": {
                     "section": "Minimum text size",
                     "name": "Text cannot be too small"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Progressive enhancement",
+                    "name": "Document must not require JavaScript or CSS to function"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Resizable text",
+                    "name": "Content must be visible and usable with page zoomed to 200% of normal"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Resizable text",
+                    "name": "Content must be visible and usable with text resized to 200% of normal"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Resizable text",
+                    "name": "Text must be styled with units that are resizable in all browsers"
                   },
                   "errors": [],
                   "warnings": [],
@@ -190,8 +280,62 @@ Feature: JSON Reporter
               "results": [
                 {
                   "standard": {
+                    "section": "Core purpose",
+                    "name": "Core purpose must be defined"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Colour and meaning",
+                    "name": "Information conveyed with colour must also be identifiable from context or markup."
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Colour contrast",
+                    "name": "Colour combinations must pass the WCAG colour contrast check"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Control styles",
+                    "name": "Editorial links must be self-evident"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Control styles",
+                    "name": "Text links must have mouse over state change"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
                     "section": "Focusable controls",
                     "name": "Anchors must have hrefs"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Focus styles",
+                    "name": "Focused elements must be identifiable"
                   },
                   "errors": [],
                   "warnings": [],
@@ -277,6 +421,42 @@ Feature: JSON Reporter
                   "standard": {
                     "section": "Minimum text size",
                     "name": "Text cannot be too small"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Progressive enhancement",
+                    "name": "Document must not require JavaScript or CSS to function"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Resizable text",
+                    "name": "Content must be visible and usable with page zoomed to 200% of normal"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Resizable text",
+                    "name": "Content must be visible and usable with text resized to 200% of normal"
+                  },
+                  "errors": [],
+                  "warnings": [],
+                  "hiddenErrors": []
+                },
+                {
+                  "standard": {
+                    "section": "Resizable text",
+                    "name": "Text must be styled with units that are resizable in all browsers"
                   },
                   "errors": [],
                   "warnings": [],

@@ -26,6 +26,15 @@ by adding the `--interactive` command line flag, for example:
 This will show a browser window and show any test errors in the `Console`
 tab of the embedded developer tools.
 
+## Running manual tests
+
+Some standards cannot be fully automated and need a person to answer questions.
+Run bbc-a11y in _manual_ mode to include manual tests:
+
+    bbc-a11y http://www.bbc.co.uk --manual
+
+## Help
+
 If you have any trouble using bbc-a11y as described here, please
 [submit an issue](https://github.com/bbc/bbc-a11y/issues/new) and we will do our
 best to help fix your problem.

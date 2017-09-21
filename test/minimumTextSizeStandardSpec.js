@@ -10,7 +10,7 @@ describe('Minimum text size standard', function () {
     var fail = function (failure) {
       failures.push(failure)
     }
-    standard.test($, fail)
+    standard.test({ $, fail })
     expect(failures).to.eql([])
   })
 
@@ -20,7 +20,7 @@ describe('Minimum text size standard', function () {
     var fail = function (failure) {
       failures.push(failure)
     }
-    standard.test($, fail)
+    standard.test({ $, fail })
     expect(failures).to.eql([])
   })
 
@@ -28,7 +28,7 @@ describe('Minimum text size standard', function () {
     $('<div style="font-size: 1px"><span style="font-size: 2px">Text!</span></div>').appendTo('body')
     var failures = []
     var fail = function (failure) { failures.push(failure) }
-    standard.test($, fail)
+    standard.test({ $, fail })
     expect(failures).to.eql(['Text size too small (2px):'])
   })
 })

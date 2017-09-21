@@ -3,14 +3,11 @@
   <head>
     <meta charset="UTF-8">
     <title>BBC a11y</title>
-    <style>
-      * { box-sizing: border-box; }
-      body { height: 100vh; display: flex; flex-flow: column; margin: 0; padding: 0; background-color: #eee }
-      iframe { display: flex; flex: 1 1 auto; margin: 0; border: none; background-color: #fff; border-top: 1px solid #ccc }
-    </style>
+    <link rel="stylesheet" type="text/css" href="mainWindow.css">
   </head>
   <body>
     <iframe id="mainFrame"></iframe>
+    <iframe id="answerFrame"></iframe>
   </body>
   <script>
     require('./renderer')

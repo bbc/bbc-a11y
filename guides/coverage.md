@@ -8,23 +8,23 @@ a summary of those standards and the level of test coverage currently provided.
 
 | Standard title          | Automated | Semi-automated | Manual |
 | ----------------------- |:---------:|:--------------:|:------:|
-| Core purpose            |     x     |        x       |    x   |
-| Validation              |     x     |        x       |    x   |
-| Progressive enhancement |     x     |        x       |    x   |
+| Core purpose            |     x     |        x       |   yes  |
+| Validation              |    yes    |        x       |    x   |
+| Progressive enhancement |     x     |        x       |   yes  |
 | Indicating language     |    yes    |        x       |    x   |
 | Page titles             |     x     |       yes      |    x   |
 | Main landmarks          |    yes    |        x       |    x   |
 | Headings                |    yes    |        x       |    x   |
 | Minimum test size       |    yes    |        x       |    x   |
-| Resizable text          |     x     |        x       |    x   |
+| Resizable text          |    yes    |        x       |   yes  |
 | Tabindex                |    yes    |        x       |    x   |
 | Title attributes        |    yes    |        x       |    x   |
 | Focusable controls      |    yes    |        x       |    x   |
 | Visible on focus        |    yes    |        x       |    x   |
-| Control styles          |     x     |        x       |    x   |
-| Focus styles            |     x     |        x       |    x   |
-| Colour contrast         |     x     |        x       |    x   |
-| Colour and meaning      |     x     |        x       |    x   |
+| Control styles          |     x     |        x       |   yes  |
+| Focus styles            |     x     |        x       |   yes  |
+| Colour contrast         |     x     |        x       |   yes  |
+| Colour and meaning      |     x     |        x       |   yes  |
 | Image alternatives      |    yes    |        x       |    x   |
 | Form labels             |    yes    |        x       |    x   |
 | Form interactions       |    yes    |        x       |    x   |

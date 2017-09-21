@@ -52,6 +52,10 @@ defineSupportCode(function ({ Given, When, Then }) {
     return this.runA11y(`--help`)
   })
 
+  When('I run `bbc-a11y {url} --manual`', function (url) {
+    return this.runA11yWithManualTests({ url })
+  })
+
   When('I run a11y against a failing page', function () {
     return webServer.ensureRunningOn(54321)
       .then(() => {
@@ -140,6 +144,10 @@ defineSupportCode(function ({ Given, When, Then }) {
     var actualOutput = (this.stdout + this.stderr)
     // HACK: work around stupid travis issue with xvfb
     var sanitisedActualOutput = actualOutput.split('\n').filter(line => line !== 'Xlib:  extension "RANDR" missing on display ":99.0".').join('\n')
+    if (process.env.DEBUG_OUTPUT && sanitisedActualOutput !== expectedOutput) {
+      console.log(sanitisedActualOutput)
+      process.exit(1)
+    }
     assert.equal(sanitisedActualOutput, expectedOutput, 'Expected:\n' + expectedOutput.replace(/\n/g, '[\\n]\n') + '\nActual:\n' + sanitisedActualOutput.replace(/\n/g, '[\\n]\n'))
   })
 
@@ -179,5 +187,20 @@ defineSupportCode(function ({ Given, When, Then }) {
         }
       })
     })
+  })
+
+  Then('I answer the following questions:', function (table) {
+    const questionsAndAnswers = table.hashes()
+    return this.answerManualTestQuestions(questionsAndAnswers)
+  })
+
+  Then('it should result in a pass for {url}', function (url) {
+    return this.countErrorsForUrl(url)
+      .then(count => assert.equal(count, 0))
+  })
+
+  Then('it should result in a fail for {url}', function (url) {
+    return this.countErrorsForUrl(url)
+      .then(count => assert.notEqual(count, 0))
   })
 })

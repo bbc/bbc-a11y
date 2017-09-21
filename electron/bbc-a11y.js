@@ -24,7 +24,11 @@ function createWindow () {
     slashes: true
   }))
 
-  mainWindow.webContents.openDevTools({ mode: 'bottom' })
+  if (commandLineArgs.manual) {
+    mainWindow.show()
+  } else {
+    mainWindow.webContents.openDevTools({ mode: 'bottom' })
+  }
 
   mainWindow.webContents.on('devtools-opened', () => {
     setImmediate(() => {

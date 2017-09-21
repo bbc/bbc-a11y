@@ -1,0 +1,23 @@
+* {
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+body {
+  color: #222;
+}
+h1, textarea, button {
+  margin: 5px;
+}
+h1 {
+  font-size: 1.2em
+}
+textarea {
+  display: block;
+  width: 98%;
+  height: 48px;
+  font-size: 1em;
+  padding: 6px;
+}
+button {
+  font-size: 1.2em
+}

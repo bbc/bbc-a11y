@@ -6,5 +6,5 @@ page('http://www.bbc.co.uk', {
   ]
 })
 page('http://www.bbc.co.uk/news', {
-  only: 'Headings: Content must follow headings'
+  skip: 'Headings: Content must follow headings'
 })

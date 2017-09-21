@@ -31,6 +31,7 @@
     "jquery": "3.2.1"
   },
   "devDependencies": {
+    "browser-monkey": "^2.7.0",
     "browserify": "14.4.0",
     "chai": "4.1.2",
     "cucumber-electron": "2.3.1",

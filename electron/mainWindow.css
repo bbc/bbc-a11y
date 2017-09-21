@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  margin: 0;
+  padding: 0;
+  background-color: #eee
+}
+iframe {
+  display: flex;
+  margin: 0;
+  border: none;
+  background-color: #fff;
+  border-top: 1px solid #ccc
+}
+#mainFrame {
+  flex: 1
+}
+#answerFrame {
+  background-color: #84B0E9;
+  border-top: 2px solid #333;
+  display: none;
+}

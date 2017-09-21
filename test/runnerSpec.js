@@ -60,8 +60,15 @@ describe('Runner', function () {
       }
     }
 
-    return new Runner(configPath)
-      .run(pages, windowAdapter, new Reporter(devToolsConsole, commandLineConsole), exit)
+    return new Runner({
+      configPath,
+      runManualTests: false,
+      pages,
+      windowAdapter,
+      reporter: new Reporter(devToolsConsole, commandLineConsole),
+      exit
+    })
+      .run()
       .then(function () {
         return Promise.resolve(events)
       })

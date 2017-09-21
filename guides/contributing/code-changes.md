@@ -48,6 +48,17 @@ tests cover finer details like individual modules and classes. Please try to
 add scenarios and/or tests for any changes that you make, and don't be afraid to
 ask for help.
 
+You can run individual features
+(via [cucumber-electron](https://github.com/cucumber/cucumber-electron)) by
+running `./cucumber` from the root of the project. For example:
+
+  ./cucumber features/setting_cookies.feature
+
+A similar script for running the low-level [mocha](https://mochajs.org/) tests
+also exists:
+
+  ./mocha test/xpathSpec.js
+
 When all your tests pass, push the changes up to your fork and make a comment
 on your pull request and the bbc-a11y team will review your work before merging
 it into the project.

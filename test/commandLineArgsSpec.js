@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-var commandLineArgs = require('../lib/commandLineArgs')
+var commandLineArgs = require('../lib/cli/args')
 var assert = require('assert')
 
 describe('commandLineArgs.parse(argv)', function () {

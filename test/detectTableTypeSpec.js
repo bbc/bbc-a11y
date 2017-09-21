@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-var detectTableType = require('../lib/detectTableType')
+var detectTableType = require('../lib/standards/tables/support/detectTableType')
 var expect = require('chai').expect
 
 describe('detectTableType', function () {

@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-var xpath = require('../lib/xpath.js')
+var xpath = require('../lib/results/xpath.js')
 var expect = require('chai').expect
 var $ = require('jquery')
 

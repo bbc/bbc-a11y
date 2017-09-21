@@ -62,7 +62,14 @@ function A11yWorld () {
     this.reporter = new NullReporter()
     const windowAdapter = new NullWindowAdapter()
     const exit = () => {}
-    this.manualRun = new Runner('./a11y.js', true).run([{ url }], windowAdapter, this.reporter, exit)
+    this.manualRun = new Runner({
+      configPath: './a11y.js',
+      runManualTests: true,
+      pages: [{ url }],
+      windowAdapter,
+      reporter: this.reporter,
+      exit
+    }).run()
   }
 
   this.answerManualTestQuestions = questionsAndAnswers => {

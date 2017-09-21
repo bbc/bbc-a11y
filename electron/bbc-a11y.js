@@ -6,7 +6,7 @@ const BrowserWindow = electron.BrowserWindow
 
 const path = require('path')
 const url = require('url')
-const commandLineArgs = require('../lib/commandLineArgs').parse(process.argv)
+const commandLineArgs = require('../lib/cli/args').parse(process.argv)
 
 let mainWindow
 

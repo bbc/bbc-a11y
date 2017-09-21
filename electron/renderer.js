@@ -6,7 +6,7 @@ const electron = require('electron')
 const remoteConsole = electron.remote.getGlobal('console')
 
 const argv = electron.remote.process.argv
-const commandLineArgs = require('../lib/commandLineArgs').parse(argv)
+const commandLineArgs = require('../lib/cli/args').parse(argv)
 
 const win = electron.remote.getCurrentWindow()
 

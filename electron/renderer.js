@@ -1,57 +1,26 @@
-const Runner = require('../lib/runner')
-
 const path = require('path')
-
 const electron = require('electron')
+
+const Runner = require('../lib/runner')
+const Reporter = require('../lib/reporter')
+const ElectronWindowAdapter = require('./windowAdapter')
+const CommandLineArgs = require('../lib/cli/args')
+
 const remoteConsole = electron.remote.getGlobal('console')
 
 const argv = electron.remote.process.argv
-const commandLineArgs = require('../lib/cli/args').parse(argv)
+const args = CommandLineArgs.parse(argv)
 
-const win = electron.remote.getCurrentWindow()
+const reporter = Reporter.createReporter({ name: args.reporter, console, remoteConsole })
 
-let Reporter
-switch (commandLineArgs.reporter) {
-  case 'json':
-  case 'junit':
-    Reporter = require(`../lib/reporters/${commandLineArgs.reporter}`)
-    break
-  case undefined:
-    Reporter = require('../lib/reporters/pretty')
-    break
-  default:
-    Reporter = require(path.join(process.cwd(), commandLineArgs.reporter))
-}
+const exit = args.interactive ? () => {} : electron.remote.process.exit
 
-const exit = commandLineArgs.interactive
-  ? () => {} : electron.remote.process.exit
+const configPath = path.resolve(args.configPath || path.join(process.cwd(), 'a11y.js'))
 
-class ElectronWindowAdapter {
-  getContentSize () {
-    const [width, height] = win.getContentSize()
-    return { width, height }
-  }
-
-  setContentSize (width, height) {
-    win.setContentSize(width, height, false)
-  }
-
-  measureInnerWidth () {
-    return window.innerWidth
-  }
-}
+const pages = args.urls.map(url => ({ url, width: args.width }))
 
 const windowAdapter = new ElectronWindowAdapter()
 
-const pages = commandLineArgs.urls.map(url => ({ url, width: commandLineArgs.width }))
+const runManualTests = args.manual
 
-const configPath = path.resolve(commandLineArgs.configPath || path.join(process.cwd(), 'a11y.js'))
-
-new Runner({
-  configPath,
-  runManualTests: commandLineArgs.manual,
-  pages,
-  windowAdapter,
-  reporter: new Reporter(console, remoteConsole),
-  exit
-}).run()
+new Runner({ configPath, pages, windowAdapter, runManualTests, reporter, exit }).run()

@@ -27,7 +27,7 @@
   "homepage": "https://github.com/bbc/bbc-a11y#readme",
   "dependencies": {
     "commander": "2.11.0",
-    "cucumber": "3.0.1",
+    "cucumber": "3.0.3",
     "electron": "1.7.6",
     "httpism": "3.7.0",
     "jquery": "3.2.1"

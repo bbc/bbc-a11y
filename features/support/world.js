@@ -1,4 +1,4 @@
-const { defineSupportCode } = require('cucumber')
+const { setWorldConstructor, Before, After } = require('cucumber')
 const mkdirp = require('mkdirp')
 const { exec, execFile, spawn } = require('child_process')
 const path = require('path')
@@ -103,17 +103,15 @@ function A11yWorld () {
   }
 }
 
-defineSupportCode(function ({ setWorldConstructor, Before, After }) {
-  setWorldConstructor(A11yWorld)
+setWorldConstructor(A11yWorld)
 
-  Before(function (scenario, callback) {
-    exec('rm -rf ' + this.tempDir, (err, out) => {
-      if (err) return callback(err)
-      mkdirp(this.tempDir, callback)
-    })
+Before(function (scenario, callback) {
+  exec('rm -rf ' + this.tempDir, (err, out) => {
+    if (err) return callback(err)
+    mkdirp(this.tempDir, callback)
   })
+})
 
-  After(function (scenario) {
-    if (!scenario.isFailed() && this.pageFrame) this.pageFrame.style.display = 'none'
-  })
+After(function (scenario) {
+  if (scenario.result.status === 'passed' && this.pageFrame) this.pageFrame.style.display = 'none'
 })

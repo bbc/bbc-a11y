@@ -15,7 +15,8 @@ function createWindow () {
     width: commandLineArgs.width || 1024,
     height: 800,
     show: false,
-    webPreferences: { webSecurity: false }
+    webPreferences: { webSecurity: false },
+    icon: path.join(__dirname, 'assets/icons/ico/bbc-a11y.ico')
   })
 
   mainWindow.loadURL(url.format({

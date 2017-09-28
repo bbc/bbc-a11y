@@ -21,9 +21,12 @@ Feature: Display failing result
       ✓ http://localhost:54321/subheading_first.html
         ⚠ Headings: Headings must be in ascending order
           - First heading was not a main heading: /html/body/h3
+        ⚠ Structure: Headings: Headings must be in ascending order
+          - First heading was not a main heading: /html/body/h3
 
       For details on how to fix these errors, please see the following pages:
         - http://www.bbc.co.uk/guidelines/futuremedia/accessibility/html/headings.shtml
+        - http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/structure/headings
       """
 
   Scenario: Failures and warnings from the same standard
@@ -38,9 +41,12 @@ Feature: Display failing result
           - Found 0 h1 elements.
         ⚠ Headings: Headings must be in ascending order
           - First heading was not a main heading: /html/body/h2
+        ⚠ Structure: Headings: Headings must be in ascending order
+          - First heading was not a main heading: /html/body/h2
 
       For details on how to fix these errors, please see the following pages:
         - http://www.bbc.co.uk/guidelines/futuremedia/accessibility/html/headings.shtml
+        - http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/structure/headings
       """
 
   Scenario: Two failing checks from different standards

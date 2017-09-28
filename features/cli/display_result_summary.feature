@@ -14,7 +14,7 @@ Feature: Display result summary
     When I run `bbc-a11y`
     Then it should fail with:
       """
-      4 pages checked, 1 error found, 1 warning, 1 standard skipped
+      4 pages checked, 1 error found, 2 warnings, 1 standard skipped
       """
 
   Scenario: Reminds users to consider usability beyond lint results

@@ -14,13 +14,13 @@ iframe {
   margin: 0;
   border: none;
   background-color: #fff;
-  border-top: 1px solid #ccc
 }
 #mainFrame {
-  flex: 1
+  flex: 1;
 }
 #answerFrame {
   background-color: #84B0E9;
-  border-top: 2px solid #333;
+  border-top: 3px solid #ccc;
   display: none;
+  height: 180px;
 }

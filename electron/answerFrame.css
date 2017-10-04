@@ -4,6 +4,8 @@
 }
 body {
   color: #222;
+  margin: 0;
+  padding: 10px;
 }
 h1, textarea, button {
   margin: 5px;
@@ -12,12 +14,32 @@ h1 {
   font-size: 1.2em
 }
 textarea {
-  display: block;
-  width: 98%;
+  width: 100%;
   height: 48px;
   font-size: 1em;
   padding: 6px;
+  box-sizing: border-box;
+  margin: 0;
+  border: 3px solid #ccc;
+  margin-top: 5px;
 }
 button {
-  font-size: 1.2em
+  font-size: 1.4em;
+  border-width: 3px;
+  min-width: 200px;
+  border-radius: 10px;
+  padding: 5px;
+  height: 42px;
+}
+.pass-button {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  background-color: #77dd77;
+}
+.fail-button {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: #ff6961;
 }

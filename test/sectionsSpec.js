@@ -22,8 +22,7 @@ describe('Standards.sections', function () {
     return Promise.all(Object.values(sections).map(section => {
       return http.get(section.documentationUrl)
         .then(body => {
-          if (body.indexOf('Not found') > -1)
-            throw new Error(`Invalid documentationUrl: ${section.documentationUrl}`)
+          if (body.indexOf('Not found') > -1) { throw new Error(`Invalid documentationUrl: ${section.documentationUrl}`) }
         })
     }))
   })

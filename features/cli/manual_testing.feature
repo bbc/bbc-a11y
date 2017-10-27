@@ -19,13 +19,9 @@ Feature: Manual Testing
       | Is relevant metadata provided for all media?                                                                                                                 | Yes                     |
       | Are volume controls provided for all interactive media?                                                                                                      | Yes                     |
       | Is assistive technology uninterrupted by narrative audio?                                                                                                    | Yes                     |
-      | Do all colour combinations pass the Snook colour contrast check?                                                                                             | Yes                     |
-      | Is information conveyed with colour also identifiable from context or markup?                                                                                | Yes                     |
       | Is the core content of the page accessible without styling?                                                                                                  | Yes                     |
       | Are all touch targets large enough to touch accurately?                                                                                                      | Yes                     |
       | Is an inactive space provided around every actionable element?                                                                                               | Yes                     |
-      | Is the content visible and usable with the page zoomed to 200% of normal?                                                                                    | Yes                     |
-      | Is the content visible and usable with the text resized to 200% of normal?                                                                                   | Yes                     |
       | Do all links have underlines and pointers?                                                                                                                   | Yes                     |
       | Do all actionable and focusable elements visibly change state when focused?                                                                                  | Yes                     |
       | Is the user experience consistent?                                                                                                                           | Yes                     |
@@ -89,13 +85,9 @@ Feature: Manual Testing
     | Is relevant metadata provided for all media?                                                                                                                 | Yes                     |
     | Are volume controls provided for all interactive media?                                                                                                      | Yes                     |
     | Is assistive technology uninterrupted by narrative audio?                                                                                                    | Yes                     |
-    | Do all colour combinations pass the Snook colour contrast check?                                                                                             | Yes                     |
-    | Is information conveyed with colour also identifiable from context or markup?                                                                                | Yes                     |
     | Is the core content of the page accessible without styling?                                                                                                  | Yes                     |
     | Are all touch targets large enough to touch accurately?                                                                                                      | Yes                     |
     | Is an inactive space provided around every actionable element?                                                                                               | Yes                     |
-    | Is the content visible and usable with the page zoomed to 200% of normal?                                                                                    | Yes                     |
-    | Is the content visible and usable with the text resized to 200% of normal?                                                                                   | Yes                     |
     | Do all links have underlines and pointers?                                                                                                                   | Yes                     |
     | Do all actionable and focusable elements visibly change state when focused?                                                                                  | Yes                     |
     | Is the user experience consistent?                                                                                                                           | Yes                     |

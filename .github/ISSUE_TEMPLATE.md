@@ -6,16 +6,16 @@ In general: Please provide as much information as you can to help us solving you
 
 <!--- Provide a general summary description of the issue -->
 
-## Expected Behavior
+## Expected Behaviour
 
 <!--- If you're describing a bug, tell us what should happen -->
 <!--- If you're suggesting a change/improvement, tell us how it should work -->
 <!--- Feel free to use Given / Then / Then if that helps, but please add some plain-language context too -->
 
-## Current Behavior
+## Current Behaviour
 
-<!--- If describing a bug, tell us what happens instead of the expected behavior -->
-<!--- If suggesting a change/improvement, explain the difference from current behavior -->
+<!--- If describing a bug, tell us what happens instead of the expected behaviour -->
+<!--- If suggesting a change/improvement, explain the difference from current behaviour -->
 
 <!--- If you have got some output place it in the code block below. Otherwise remove it. -->
 ~~~

@@ -1,4 +1,4 @@
-# Validating a website using bbc-a11y
+# Checking a website using bbc-a11y
 
 ## Installing bbc-a11y on your system
 

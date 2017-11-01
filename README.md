@@ -1,8 +1,7 @@
-# BBC Accessibility Standards Checker
+# BBC Accessibility Guidelines Checker
 
 This tool runs a set of tests against a set of URLs to verify whether each one
-meets the [BBC accessibility
-standards](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/).
+meets the [BBC accessibility guidelines](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/).
 
 This project is a work in progress, but it is stable and you can use it to
 test the accessibility of your website, or add use it in your web project
@@ -37,6 +36,6 @@ refer to the guide that best describes you:
 
 ## Coverage
 
-Not all of the standards are covered by automated checks. Some standards are
+Not all of the guidelines are covered by automated checks. Some guidelines are
 very difficult or impossible to cover with automated tests, others are partially
 covered or work in progress, as [summarised here](./guides/coverage.md)

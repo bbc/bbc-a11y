@@ -19,7 +19,7 @@ that best describes you:
   [use bbc-a11y to check a website](./guides/using/checking-a-website.md)
 
 * I am a developer or tester and I want to
-  [add bbc-a11y to my web project](./guides/using/validating-your-project.md)
+  [add bbc-a11y to my web project](./guides/using/using-bbc-a11y-in-your-project.md)
 
 ## Contributing to BBC A11y
 

@@ -1,4 +1,4 @@
-# Using bbc-a11y to test your web project
+# Using bbc-a11y in your web project
 
 If you have a web project, the best way to use bbc-a11y is to install it in your
 project repository, so that everybody on the team can test the accessibility

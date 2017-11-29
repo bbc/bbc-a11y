@@ -19,8 +19,8 @@
     "type": "git",
     "url": "git+https://github.com/bbc/bbc-a11y.git"
   },
-  "author": "Josh Chisholm <josh@featurist.co.uk>",
-  "license": "MIT",
+  "author": "BBC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/bbc/bbc-a11y/issues"
   },

@@ -22,10 +22,12 @@ Feature: Choice
     Given I am performing a manual test of the "Design: Choice: Interfaces must provide multiple ways to interact with content" standard
     And I have been asked "Does the interface provide multiple ways to interact with the content?"
 
+  @html @manual
   Scenario: Manual pass
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: Manual fail
     When I answer "No"
     Then the manual test fails

@@ -26,10 +26,12 @@ Feature: Inclusive notifications
     Given I am performing a manual test of the "Notifications: Inclusive notifications: Notifications must be both visible and audible" standard
     And I have been asked "Are notifications both visible and audible?"
 
+  @html @manual
   Scenario: Notifications both visible and audible (manual pass)
     When I answer "Yes (or not applicable)"
     Then the manual test passes
 
+  @html @manual
   Scenario: Notifications only visible or audible, but not both (manual fail)
     When I answer "No"
     Then the manual test fails

@@ -30,10 +30,12 @@ Feature: Instructions
     Given I am performing a manual test of the "Editorial: Instructions: Additional instructions should be provided" standard
     And I have been asked "Are additional instructions provided to supplement visual and audio cues?"
 
+  @html @manual
   Scenario: Manual pass
     When I answer "Yes (or not applicable)"
     Then the manual test passes
 
+  @html @manual
   Scenario: Manual fail
     When I answer "No"
     Then the manual test fails

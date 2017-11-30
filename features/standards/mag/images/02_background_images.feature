@@ -16,10 +16,12 @@ Feature: Background images
     Given I am performing a manual test of the "Images: Background images: Meaningful background images must have accessible alternatives" standard
     And I have been asked "Are accessible alternatives provided for background images that convey information or meaning?"
 
+  @html @manual
   Scenario: Accessible alternatives are provided for background images that convey information or meaning (manual pass)
     When I answer "Yes (or not applicable)"
     Then the manual test passes
 
+  @html @manual
   Scenario: No accessible alternatives are provided for background images that convey information or meaning (manual fail)
     When I answer "No"
     Then the manual test fails

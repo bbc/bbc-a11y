@@ -5,7 +5,7 @@ Feature: Skipping Standards
     And a file named "a11y.js" with:
       """
       page("http://localhost:54321/missing_main_heading.html", {
-        skip: "Headings: Exactly one main heading"
+        skip: "Structure: Headings: Exactly one main heading"
       })
       """
     When I run `bbc-a11y`
@@ -19,7 +19,7 @@ Feature: Skipping Standards
     And a file named "a11y.js" with:
       """
       page("http://localhost:54321/two_headings_failures.html", {
-        only: "Headings: Exactly one main heading"
+        only: "Structure: Headings: Exactly one main heading"
       })
       """
     When I run `bbc-a11y`

@@ -28,10 +28,12 @@ Feature: Alternatives for audio and visual content
     Given I am performing a manual test of the "Audio & Video: Alternatives for audio and visual content: Alternative delivery for embedded media must be provided" standard
     And I have been asked "Is alternative delivery (such as subtitles, sign language, audio description and transcripts) provided with all embedded media?"
 
+  @html @manual
   Scenario: Manual pass
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: Manual fail
     When I answer "No"
     Then the manual test fails

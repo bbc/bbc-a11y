@@ -98,10 +98,18 @@ function A11yWorld () {
       const qa = questionsAndAnswers.shift()
       return this.answerFrameMonkey.find('h1', { text: qa.question }).shouldExist()
         .then(() => this.answerFrameMonkey.click(qa.answer))
-        .catch(e => { throw new Error('Failed to answer "' + qa.question + '" with "' + qa.answer + '"') })
+        .catch(e => { throw new Error('Failed to answer "' + qa.question + '" with "' + qa.answer + '"\nText in answer frame:\n' + this.answerFrame.contentDocument.body.innerText) })
         .then(() => answerNextQuestion())
     }
     return answerNextQuestion()
+  }
+
+  this.answerAllManualTestQuestionsWithOneFail = () => {
+    const answerRestAsPass = () => this.answerFrameMonkey.find('.pass-button').click({ timeout: 50 })
+        .then(() => answerRestAsPass())
+        .catch(e => {})
+    return this.answerFrameMonkey.find('.fail-button').click()
+      .then(() => answerRestAsPass())
   }
 
   this.countErrorsForUrl = url => {

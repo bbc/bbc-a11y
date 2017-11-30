@@ -18,10 +18,12 @@ Feature: Styling and readability
     Given I am performing a manual test of the "Design: Styling and readability: Core content must be accessible when styling is removed" standard
     And I have been asked "Is the core content of the page accessible without styling?"
 
+  @html @manual
   Scenario: Manual pass
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: Manual fail
     When I answer "No"
     Then the manual test fails

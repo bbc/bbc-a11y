@@ -6,15 +6,23 @@ Feature: Summarise Tests
       """
       Tests covered by bbc-a11y:
 
-      Core purpose: Core purpose must be defined
-      Type: manual
-      Fails for each page whose core purpose (to inform, educate, or entertain) is not clearly defined
+      Minimum text size: Text cannot be too small
+      Type: automated
+      Fails for each text node with a computed font size of less than 11px
 
-      Colour and meaning: Information conveyed with colour must also be identifiable from context or markup
-      Type: manual
-      Fails for each page whose information conveyed with colour is not also identifiable from context or markup
+      Principles: All documents must have a W3C recommended doctype
+      Type: automated
+      Fails for each page that is missing a w3c recommended doctype (e.g. <!DOCTYPE html>)
 
-      Colour contrast: Colour combinations must pass the WCAG colour contrast check
+      Principles: Markup must validate against doctype
+      Type: automated
+      Fails for each page whose markup does not validate against a w3c standards validator
+
+      Principles: Anchors must have hrefs
+      Type: automated
+      Fails for each visible <a> element with no href attribute
+
+      Audio & Video: Alternatives for audio and visual content: Alternative delivery for embedded media must be provided
       Type: manual
-      Fails for each page whose colour combinations fail the WCAG colour contrast check
+      Fails for each page that includes embedded media with no alternative delivery
       """

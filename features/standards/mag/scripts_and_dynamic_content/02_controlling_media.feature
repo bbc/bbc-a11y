@@ -24,10 +24,12 @@ Feature: Controlling media
     Given I am performing a manual test of the "Scripts and dynamic content: Controlling media: Media that updates and animation must have a pause, stop or hide control" standard
     And I have been asked "Does all media that updates or animated content have a pause, stop or hide control?"
 
+  @html @manual
   Scenario: Media that updates and animation has a pause, stop or hide control (manual pass)
     When I answer "Yes (or not applicable)"
     Then the manual test passes
 
+  @html @manual
   Scenario: Media that updates or animation has no pause, stop or hide control (manual fail)
     When I answer "No"
     Then the manual test fails

@@ -17,10 +17,12 @@ Feature: Grouped elements
     Given I am performing a manual test of the "Structure: Grouped elements: Grouped interface elements must be represented as a single component" standard
     And I have been asked "Are controls, objects and grouped interface elements represented as a single accessible component?"
 
+  @html @manual
   Scenario: Controls, objects and grouped interface elements represented as a single accessible component (manual pass)
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: Controls, objects and grouped interface elements not represented as a single accessible component (manual fail)
     When I answer "No"
     Then the manual test fails

@@ -14,10 +14,12 @@ Feature: Links to alternative formats
     Given I am performing a manual test of the "Links: Links to alternative formats: Links to alternative formats must indicate that an alternative is opening" standard
     And I have been asked "Do all links to alternative formats indicate that an alternative is opening?"
 
+  @html @manual
   Scenario: Links to alternative formats indicate that an alternative is opening (manual pass)
     When I answer "Yes (or not applicable)"
     Then the manual test passes
 
+  @html @manual
   Scenario: Links to alternative formats do not indicate that an alternative is opening (manual fail)
     When I answer "No"
     Then the manual test fails

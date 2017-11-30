@@ -19,10 +19,12 @@ Feature: Roles, traits and properties
     Given I am performing a manual test of the "Text equivalents: Roles, traits and properties: Elements must have accessibility properties set appropriately" standard
     And I have been asked "Do elements have accessibility properties set appropriately?"
 
+  @html @manual
   Scenario: Elements have accessibility properties set appropriately (manual pass)
     When I answer "Yes (or not applicable)"
     Then the manual test passes
 
+  @html @manual
   Scenario: Elements do not have accessibility properties set appropriately (manual fail)
     When I answer "No"
     Then the manual test fails

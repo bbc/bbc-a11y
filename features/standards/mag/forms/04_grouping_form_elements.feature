@@ -20,10 +20,12 @@ Feature: Grouping form elements
     Given I am performing a manual test of the "Forms: Grouping form elements: Controls, labels, and other form elements must be properly grouped" standard
     And I have been asked "Are controls, labels, and other form elements properly grouped?"
 
+  @html @manual
   Scenario: Controls, labels, and other form elements properly grouped (manual pass)
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: Controls, labels, and other form elements improperly grouped (manual fail)
     When I answer "No"
     Then the manual test fails

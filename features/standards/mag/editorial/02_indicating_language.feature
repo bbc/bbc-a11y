@@ -20,6 +20,17 @@ Feature: Indicating language
   specified default language and any language and dialect setting specified on
   the users device.
 
+  HTML Applicability
+  ==================
+
+  The main language of the page **must** be specified.
+
+  Changes to language within the page **must** be indicated.
+
+  Assistive technologies such as screen readers have support for different
+  languages, allowing for appropriate pronunciation.
+
+  @html @automated
   Scenario: lang attribute on html element
     Given a page with the HTML:
       """
@@ -36,6 +47,7 @@ Feature: Indicating language
     When I test the "Editorial: Indicating language: Html must have lang attribute" standard
     Then it passes
 
+  @html @automated
   Scenario: Missing lang attribute on html element
     Given a page with the HTML:
       """
@@ -55,12 +67,14 @@ Feature: Indicating language
       html tag has no lang attribute: /html
       """
 
+  @html @manual
   Scenario: Changing language with indication (manual pass)
     Given I am performing a manual test of the "Editorial: Indicating language: Changes to language must be indicated" standard
     And I have been asked "Are changes to language indicated?"
     When I answer "Yes (or not applicable)"
     Then the manual test passes
 
+  @html @manual
   Scenario: Changing language with indication (manual fail)
     Given I am performing a manual test of the "Editorial: Indicating language: Changes to language must be indicated" standard
     And I have been asked "Are changes to language indicated?"

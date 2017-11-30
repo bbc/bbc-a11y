@@ -29,14 +29,30 @@ Feature: Colour and meaning
     technologies, could be element tags, hidden text or suitable labels, for
     example ARIA or UlLabel.
 
+  HTML Applicability
+  ==================
+
+  Information conveyed with colour must also be identifiable from context or
+  markup.
+
+  Users who are blind, have low vision, or have colour blindness may not be able
+  to differentiate content (lines on a chart) or states (selected tabs) if
+  colour alone is used.
+
+  Alternatives must be provided for both sighted and non-sighted users, for
+  example a table equivalent of a chart and lines differentiable with different
+  styles (dashed, dotted, etc.).
+
   Background:
     Given I am performing a manual test of the "Design: Colour and meaning: Information conveyed with colour must also be identifiable from context or markup" standard
     And I have been asked "Is information conveyed with colour also identifiable from context or markup?"
 
+  @html @manual
   Scenario: Manual pass
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: Manual fail
     When I answer "No"
     Then the manual test fails

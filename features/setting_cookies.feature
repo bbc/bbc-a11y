@@ -27,11 +27,11 @@ Feature: Setting Cookies
       ✓ http://localhost:54321/good_with_cookie.html
 
       ✗ http://localhost:54321/good_with_cookie.html
-        * Main landmark: Exactly one Main landmark
+        * Structure: Containers and landmarks: Exactly one main landmark
           - Found 0 elements with role="main".
 
       ✗ http://localhost:54321/good_with_cookie.html
-        * Main landmark: Exactly one Main landmark
+        * Structure: Containers and landmarks: Exactly one main landmark
           - Found 0 elements with role="main".
 
       ✓ http://localhost:54321/good_with_cookie.html

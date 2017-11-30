@@ -28,14 +28,22 @@ Feature: Consistency
   * drag gestures for toggle and slider elements,
   * and, where available, support native inertia for scrolling.
 
+  HTML Applicability
+  ==================
+
+  Forms must have a submit button and forms must not update the location of the
+  page on change, focus, or blur events.
+
   Background:
     Given I am performing a manual test of the "Design: Consistency: User experience should be consistent" standard
     And I have been asked "Is the user experience consistent?"
 
+  @html @manual
   Scenario: Manual pass
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: Manual fail
     When I answer "No"
     Then the manual test fails

@@ -23,10 +23,12 @@ Feature: User interactions
     Given I am performing a manual test of the "Focus: User interactions: Actions must be triggered when appropriate" standard
     And I have been asked "Are actions triggered when appropriate for the type of user interaction?"
 
+  @html @manual
   Scenario: Actions triggered when appropriate for the type of user interaction (manual pass)
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: Actions not triggered when appropriate for the type of user interaction (manual fail)
     When I answer "No"
     Then the manual test fails

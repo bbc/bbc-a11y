@@ -29,14 +29,56 @@ Feature: Alternatives for non-text content
   coded as an image with an alternative beginning "Image of ..." would be
   spoken as "Image. Image of ...".
 
-  Background:
+  HTML Applicability
+  ==================
+
+  All images **must** have an alt attribute.
+
+  All editorial significant images **must** have a non-null alt attribute value,
+  or a text alternative in the preceding or following content.
+
+  Assistive technologies such as screen readers will provide a text alternative
+  for images that do not have alt attributes based on the image file name. For
+  images that do not have editorial significance or are described in the
+  surrounding text content it is appropriate to use a null (alt="") value for
+  the image alt attribute to avoid this.
+
+  All editorially significantly images must have a text alternative either as
+  the value of the alt attribute or in the immediately surrounding text content.
+
+  @html @automated
+  Scenario: Images with alt attributes
+    Given a page with the body:
+      """
+      <img src="a.jpeg" alt="A picture of something" />
+      <img src="b.jpeg" alt="" />
+      """
+    When I test the "Text equivalents: Alternatives for non-text content: Images must have alt attributes" standard
+    Then it passes
+
+  @html @automated
+  Scenario: Images without alt attributes
+    Given a page with the body:
+      """
+      <img src="a.jpeg" alt="A picture of something" />
+      <img src="b.jpeg" />
+      """
+    When I test the "Text equivalents: Alternatives for non-text content: Images must have alt attributes" standard
+    Then it fails with the message:
+      """
+      Image has no alt attribute: /html/body/img[2]
+      """
+
+  @html @manual
+  Scenario: Alternatives briefly describe the editorial intent or purpose of images, objects, or elements (manual pass)
     Given I am performing a manual test of the "Text equivalents: Alternatives for non-text content: Alternatives must briefly describe editorial intent" standard
     And I have been asked "Do alternatives briefly describe the editorial intent or purpose of the image, object, or element?"
-
-  Scenario: Alternatives briefly describe the editorial intent or purpose of images, objects, or elements (manual pass)
     When I answer "Yes (or not applicable)"
     Then the manual test passes
 
+  @html @manual
   Scenario: Alternatives do not briefly describe the editorial intent or purpose of images, objects, or elements (manual fail)
+    Given I am performing a manual test of the "Text equivalents: Alternatives for non-text content: Alternatives must briefly describe editorial intent" standard
+    And I have been asked "Do alternatives briefly describe the editorial intent or purpose of the image, object, or element?"
     When I answer "No"
     Then the manual test fails

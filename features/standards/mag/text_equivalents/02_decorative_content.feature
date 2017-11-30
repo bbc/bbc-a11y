@@ -14,10 +14,12 @@ Feature: Decorative content
     Given I am performing a manual test of the "Text equivalents: Decorative content: Decorative images must be hidden from assistive technology" standard
     And I have been asked "Are decorative images hidden from assistive technology?"
 
+  @html @manual
   Scenario: Decorative images hidden from assistive technology (manual pass)
     When I answer "Yes (or not applicable)"
     Then the manual test passes
 
+  @html @manual
   Scenario: Decorative images not hidden from assistive technology (manual fail)
     When I answer "No"
     Then the manual test fails

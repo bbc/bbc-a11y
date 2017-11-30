@@ -15,7 +15,7 @@ Feature: Adjustability
   with a cognitive impairment may adjust a difficulty level, use tutorials or
   enable hints.
 
-  Tip:  Consider the following:
+  Tip: Consider the following:
 
   * Avoid complex controls and interactions.
   * Provide multiple ways to control interactions.
@@ -38,10 +38,12 @@ Feature: Adjustability
     Given I am performing a manual test of the "Design: Adjustability: Interactive media should be adjustable for user ability and preference" standard
     And I have been asked "Is any interactive media adjustable for user ability and preference?"
 
+  @html @manual
   Scenario: Manual pass
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: Manual fail
     When I answer "No"
     Then the manual test fails

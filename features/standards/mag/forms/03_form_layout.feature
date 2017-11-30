@@ -17,10 +17,12 @@ Feature: Form layout
     Given I am performing a manual test of the "Forms: Form layout: Labels must be close and laid out appropriately" standard
     And I have been asked "Are labels placed close to the relevant form control, and laid out appropriately?"
 
+  @html @manual
   Scenario: Labels are close and laid out appropriately (manual pass)
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: Labels are not close or laid out inappropriately (manual fail)
     When I answer "No"
     Then the manual test fails

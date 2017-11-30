@@ -20,10 +20,12 @@ Feature: Images of text
     Given I am performing a manual test of the "Images: Images of text: Images of text should be avoided" standard
     And I have been asked "Are there unnecessary images of text?"
 
+  @html @manual
   Scenario: No images of text (manual pass)
     When I answer "No"
     Then the manual test passes
 
+  @html @manual
   Scenario: Images of text (manual fail)
     When I answer "Yes"
     Then the manual test fails

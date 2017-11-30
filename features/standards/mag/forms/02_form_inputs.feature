@@ -18,10 +18,12 @@ Feature: Form inputs
     Given I am performing a manual test of the "Forms: Form inputs: A default input format must be indicated and supported" standard
     And I have been asked "Is a default input format indicated and supported?"
 
+  @html @manual
   Scenario: A default input format is indicated and supported (manual pass)
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: A default input format is not indicated or supported (manual fail)
     When I answer "No"
     Then the manual test fails

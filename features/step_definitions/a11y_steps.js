@@ -214,9 +214,13 @@ Then('the window should remain open', function () {
   })
 })
 
-Then('I answer the following questions:', function (table) {
+When('I answer the following questions:', function (table) {
   const questionsAndAnswers = table.hashes()
   return this.answerManualTestQuestions(questionsAndAnswers)
+})
+
+When('I answer all questions except one with a pass', function () {
+  return this.answerAllManualTestQuestionsWithOneFail()
 })
 
 Then('it should result in a pass for {url}', function (url) {

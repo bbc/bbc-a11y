@@ -15,10 +15,12 @@ Feature: Combining repeated links
     Given I am performing a manual test of the "Links: Combining repeated links: Repeated links to the same resource must be combined" standard
     And I have been asked "Are repeated links to the same resource combined within a single link?"
 
+  @html @manual
   Scenario: Repeated links to the same resource are combined within a single link (manual pass)
     When I answer "Yes (or not applicable)"
     Then the manual test passes
 
+  @html @manual
   Scenario: Repeated links to the same resource (manual fail)
     When I answer "No"
     Then the manual test fails

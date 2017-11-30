@@ -21,10 +21,12 @@ Feature: Standard operating system notifications
     Given I am performing a manual test of the "Notifications: Standard operating system notifications: Prefer standard operating system notifications" standard
     And I have been asked "Are standard operating system notifications used where available and appropriate?"
 
+  @html @manual
   Scenario: Standard operating system notifications used (manual pass)
     When I answer "Yes (or not applicable)"
     Then the manual test passes
 
+  @html @manual
   Scenario: Non-standard operating system notifications used (manual fail)
     When I answer "No"
     Then the manual test fails

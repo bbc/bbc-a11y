@@ -13,10 +13,12 @@ Feature: Metadata
     Given I am performing a manual test of the "Audio & Video: Metadata: Relevant metadata should be provided for all media" standard
     And I have been asked "Is relevant metadata provided for all media?"
 
+  @html @manual
   Scenario: Manual pass
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: Manual fail
     When I answer "No"
     Then the manual test fails

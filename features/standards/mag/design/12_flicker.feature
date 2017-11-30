@@ -19,10 +19,12 @@ Feature: Flicker
     Given I am performing a manual test of the "Design: Flicker: Content must not flicker or flash" standard
     And I have been asked "Does any content visibly or intentionally flicker or flash more than three times in any one-second period?"
 
+  @html @manual
   Scenario: Manual pass
     When I answer "No"
     Then the manual test passes
 
+  @html @manual
   Scenario: Manual fail
     When I answer "Yes"
     Then the manual test fails

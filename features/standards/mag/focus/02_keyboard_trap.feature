@@ -19,10 +19,12 @@ Feature: Keyboard trap
     Given I am performing a manual test of the "Focus: Keyboard trap: There must not be a keyboard trap" standard
     And I have been asked "Is there a keyboard trap?"
 
+  @html @manual
   Scenario: No keyboard trap exists (manual pass)
     When I answer "No"
     Then the manual test passes
 
+  @html @manual
   Scenario: Keyboard trap exists (manual fail)
     When I answer "Yes"
     Then the manual test fails

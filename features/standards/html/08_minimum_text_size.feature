@@ -12,6 +12,7 @@ Feature: Minimum text size
   vision and there will not have access to assistive technology or be familiar
   with browser tools to resize content.
 
+  @html @automated
   Scenario: Small text
     Given a page with the body:
       """
@@ -33,22 +34,24 @@ Feature: Minimum text size
       Text size too small (9px): /html/body/span[2]/b
       """
 
-    Scenario: Hidden elements with small text
-      Given a page with the body:
-        """
-        <style>
-          span { display: none; }
-        </style>
-        <span style="font-size: 1px">Tiny text, but it's hidden!</span>
-        """
-      When I test the "Minimum text size: Text cannot be too small" standard
-      Then it passes
+  @html @automated
+  Scenario: Hidden elements with small text
+    Given a page with the body:
+      """
+      <style>
+        span { display: none; }
+      </style>
+      <span style="font-size: 1px">Tiny text, but it's hidden!</span>
+      """
+    When I test the "Minimum text size: Text cannot be too small" standard
+    Then it passes
 
-    Scenario: Text nodes with only whitespace
-      Given a page with the body:
-        """
-        <div id="blq-global" style="font-size: 1px"> <div id="blq-pre-mast">  </div> &nbsp;
-        </div>
-        """
-      When I test the "Minimum text size: Text cannot be too small" standard
-      Then it passes
+  @html @automated
+  Scenario: Text nodes with only whitespace
+    Given a page with the body:
+      """
+      <div id="blq-global" style="font-size: 1px"> <div id="blq-pre-mast">  </div> &nbsp;
+      </div>
+      """
+    When I test the "Minimum text size: Text cannot be too small" standard
+    Then it passes

@@ -21,10 +21,12 @@ Feature: Consistent labelling
     Given I am performing a manual test of the "Editorial: Consistent labelling: Consistent labelling should be used" standard
     And I have been asked "Are consistent editorial labels used?"
 
+  @html @manual
   Scenario: Manual pass
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: Manual fail
     When I answer "No"
     Then the manual test fails

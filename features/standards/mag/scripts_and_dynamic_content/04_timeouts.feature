@@ -20,10 +20,12 @@ Feature: Timeouts
     Given I am performing a manual test of the "Scripts and dynamic content: Timeouts: Timed responses must be adjustable" standard
     And I have been asked "Are there any timed responses that are not adjustable?"
 
+  @html @manual
   Scenario: No nonadjustable timed responses (manual pass)
     When I answer "No"
     Then the manual test passes
 
+  @html @manual
   Scenario: Nonadjustable timed responses (manual fail)
     When I answer "Yes"
     Then the manual test fails

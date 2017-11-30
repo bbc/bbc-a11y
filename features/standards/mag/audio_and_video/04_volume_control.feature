@@ -20,10 +20,12 @@ Feature: Volume control
     Given I am performing a manual test of the "Audio & Video: Volume control: Volume controls should be provided for interactive media" standard
     And I have been asked "Are volume controls provided for all interactive media?"
 
+  @html @manual
   Scenario: Manual pass
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: Manual fail
     When I answer "No"
     Then the manual test fails

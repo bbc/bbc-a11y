@@ -22,10 +22,12 @@ Feature: Input control
     Given I am performing a manual test of the "Scripts and dynamic content: Input control: Interaction input control should be adaptable" standard
     And I have been asked "Is interaction input control adaptable?"
 
+  @html @manual
   Scenario: Interaction input control is adaptable (manual pass)
     When I answer "Yes (or not applicable)"
     Then the manual test passes
 
+  @html @manual
   Scenario: Interaction input control is not adaptable (manual fail)
     When I answer "No"
     Then the manual test fails

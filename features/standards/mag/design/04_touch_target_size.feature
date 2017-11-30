@@ -23,10 +23,12 @@ Feature: Touch target size
     Given I am performing a manual test of the "Design: Touch target size: Touch targets must be large enough to touch accurately" standard
     And I have been asked "Are all touch targets large enough to touch accurately?"
 
+  @html @manual
   Scenario: Manual pass
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: Manual fail
     When I answer "No"
     Then the manual test fails

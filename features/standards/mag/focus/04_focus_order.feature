@@ -15,14 +15,28 @@ Feature: Focus order
   focus for customised or enhanced features, e.g. menu drawers that close after
   moving focus onward from the last item.
 
+  HTML Applicability
+  ==================
+
+  Positive `tabindex` attribute values **must not** be used to create a logical
+  tab order.
+
+  Typical BBC pages are made up of several shared components (Global navigation,
+  page content, share tools, location service widgets, etc.) so no one piece of
+  code has complete awareness of the content of the page or when the content
+  updates. Positive `tabindex` values results in unpredictable tab order that do
+  not occur if the natural order of content is relied upon.
+
   Background:
     Given I am performing a manual test of the "Focus: Focus order: Actionable content must be navigable in a meaningful sequence" standard
     And I have been asked "Is actionable content navigable in a meaningful sequence?"
 
+  @html @manual
   Scenario: Navigable in a meaningful sequence (manual pass)
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: Navigable in a meaningless sequence (manual fail)
     When I answer "No"
     Then the manual test fails

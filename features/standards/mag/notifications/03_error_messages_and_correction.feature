@@ -23,10 +23,12 @@ Feature: Error messages and correction
     Given I am performing a manual test of the "Notifications: Error messages and correction: Clear error messages must be provided" standard
     And I have been asked "Are clear error messages provided?"
 
+  @html @manual
   Scenario: Clear error messages provided (manual pass)
     When I answer "Yes (or not applicable)"
     Then the manual test passes
 
+  @html @manual
   Scenario: Unclear error messages provided (manual fail)
     When I answer "No"
     Then the manual test fails

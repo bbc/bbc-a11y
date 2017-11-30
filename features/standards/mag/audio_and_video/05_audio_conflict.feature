@@ -14,10 +14,12 @@ Feature: Audio conflict
     Given I am performing a manual test of the "Audio & Video: Audio conflict: Narrative audio should not conflict with assistive technology" standard
     And I have been asked "Is assistive technology uninterrupted by narrative audio?"
 
+  @html @manual
   Scenario: Manual pass
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: Manual fail
     When I answer "No"
     Then the manual test fails

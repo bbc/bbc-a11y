@@ -4,7 +4,7 @@ Feature: JSON Reporter
     And a file named "a11y.js" with:
       """
       page("http://localhost:54321/perfect.html", {
-        skip: ["Main landmark: Exactly one Main landmark"]
+        skip: ["Structure: Containers and landmarks: Exactly one main landmark"]
       })
       page("http://localhost:54321/missing_main_heading.html")
       """

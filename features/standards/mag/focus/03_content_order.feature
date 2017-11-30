@@ -14,10 +14,12 @@ Feature: Content order
     Given I am performing a manual test of the "Focus: Content order: Content order must be logical" standard
     And I have been asked "Is content logically ordered?"
 
+  @html @manual
   Scenario: Logical content order (manual pass)
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: Illogical content order (manual fail)
     When I answer "No"
     Then the manual test fails

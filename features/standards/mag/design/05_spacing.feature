@@ -14,10 +14,12 @@ Feature: Spacing
     Given I am performing a manual test of the "Design: Spacing: An inactive space should be provided around actionable elements" standard
     And I have been asked "Is an inactive space provided around every actionable element?"
 
+  @html @manual
   Scenario: Manual pass
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: Manual fail
     When I answer "No"
     Then the manual test fails

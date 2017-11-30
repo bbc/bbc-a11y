@@ -20,6 +20,6 @@ Feature: Disabled Caching
     Then it should fail with:
       """
       ✗ http://localhost:54321/goodThenBad.html
-        * Headings: Exactly one main heading
+        * Structure: Headings: Exactly one main heading
           - Found 0 h1 elements.
       """

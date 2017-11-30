@@ -20,14 +20,30 @@ Feature: Actionable elements
 
   Hover states should only act as confirmation that an element is actionable.
 
+  HTML Applicability
+  ==================
+
+  Links that are part of general editorial content must self evident,
+  identifiable by their visual style, and distinguishable from the surrounding
+  content.
+
+  To aid discoverability all links must be made self-evident with their visual style.
+
+  Appropriate styles are:
+
+  * underlined
+  * a different colour, meeting contrast standards, to the surrounding text
+
   Background:
     Given I am performing a manual test of the "Design: Actionable elements: Links must have underlines and pointers" standard
     And I have been asked "Do all links have underlines and pointers?"
 
+  @html @manual
   Scenario: Manual pass
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: Manual fail
     When I answer "No"
     Then the manual test fails

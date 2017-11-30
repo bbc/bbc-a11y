@@ -21,10 +21,12 @@ Feature: Autoplay
     Given I am performing a manual test of the "Audio & Video: Autoplay: Audio must not play automatically without controls" standard
     And I have been asked "Does any audio that plays automatically make the user aware this will happen, or provide a pause/stop/mute button?"
 
+  @html @manual
   Scenario: Manual pass
     When I answer "Yes"
     Then the manual test passes
 
+  @html @manual
   Scenario: Manual fail
     When I answer "No"
     Then the manual test fails

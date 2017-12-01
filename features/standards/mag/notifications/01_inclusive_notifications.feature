@@ -24,7 +24,7 @@ Feature: Inclusive notifications
 
   Background:
     Given I am performing a manual test of the "Notifications: Inclusive notifications: Notifications must be both visible and audible" standard
-    And I have been asked "Are notifications both visible and audible?"
+    And I have been asked "Are notifications both visible and audible (via assistive technology if needed)?"
 
   @html @manual
   Scenario: Notifications both visible and audible (manual pass)

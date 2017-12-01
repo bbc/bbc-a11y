@@ -36,7 +36,7 @@ Feature: Consistency
 
   Background:
     Given I am performing a manual test of the "Design: Consistency: User experience should be consistent" standard
-    And I have been asked "Is the user experience consistent?"
+    And I have been asked "Is the user experience consistent across pages and screens, eg. layout, labels, focus states etc.?"
 
   @html @manual
   Scenario: Manual pass

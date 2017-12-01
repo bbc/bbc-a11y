@@ -17,7 +17,7 @@ Feature: Keyboard trap
 
   Background:
     Given I am performing a manual test of the "Focus: Keyboard trap: There must not be a keyboard trap" standard
-    And I have been asked "Is there a keyboard trap?"
+    And I have been asked "Is anything a keyboard trap?"
 
   @html @manual
   Scenario: No keyboard trap exists (manual pass)

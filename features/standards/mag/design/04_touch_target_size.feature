@@ -21,7 +21,7 @@ Feature: Touch target size
 
   Background:
     Given I am performing a manual test of the "Design: Touch target size: Touch targets must be large enough to touch accurately" standard
-    And I have been asked "Are all touch targets large enough to touch accurately?"
+    And I have been asked "Are all touch targets large enough for accurate interaction (larger than 7mm x 7mm)?"
 
   @html @manual
   Scenario: Manual pass

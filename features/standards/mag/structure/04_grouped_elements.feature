@@ -19,7 +19,7 @@ Feature: Grouped elements
 
   @html @manual
   Scenario: Controls, objects and grouped interface elements represented as a single accessible component (manual pass)
-    When I answer "Yes"
+    When I answer "Yes (or not applicable)"
     Then the manual test passes
 
   @html @manual

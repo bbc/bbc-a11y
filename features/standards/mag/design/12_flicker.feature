@@ -21,7 +21,7 @@ Feature: Flicker
 
   @html @manual
   Scenario: Manual pass
-    When I answer "No"
+    When I answer "No (or not applicable)"
     Then the manual test passes
 
   @html @manual

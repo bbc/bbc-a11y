@@ -28,7 +28,7 @@ Feature: Instructions
 
   Background:
     Given I am performing a manual test of the "Editorial: Instructions: Additional instructions should be provided" standard
-    And I have been asked "Are additional instructions provided to supplement visual and audio cues?"
+    And I have been asked "Are suitable additional instructions provided to supplement visual and audio cues?"
 
   @html @manual
   Scenario: Manual pass

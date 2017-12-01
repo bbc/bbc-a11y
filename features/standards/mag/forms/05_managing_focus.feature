@@ -92,7 +92,7 @@ Feature: Managing focus
   Scenario: Focus or context does not automatically change during user input (manual pass)
     Given I am performing a manual test of the "Forms: Managing focus: Focus or context must not automatically change during user input" standard
     And I have been asked "Does focus or context automatically change during user input?"
-    When I answer "No"
+    When I answer "No (or not applicable)"
     Then the manual test passes
 
   @html @manual

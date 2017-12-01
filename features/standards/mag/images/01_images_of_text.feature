@@ -18,7 +18,7 @@ Feature: Images of text
 
   Background:
     Given I am performing a manual test of the "Images: Images of text: Images of text should be avoided" standard
-    And I have been asked "Are there unnecessary images of text?"
+    And I have been asked "Are there any unnecessary images of text?"
 
   @html @manual
   Scenario: No images of text (manual pass)

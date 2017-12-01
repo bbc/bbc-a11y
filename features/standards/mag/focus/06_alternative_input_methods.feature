@@ -15,11 +15,11 @@ Feature: Alternative input methods
 
   Background:
     Given I am performing a manual test of the "Focus: Alternative input methods: Alternative input methods must be supported" standard
-    And I have been asked "Are alternative input methods supported?"
+    And I have been asked "Are alternative input methods, such as keyboard or voice, supported?"
 
   @html @manual
   Scenario: Alternative input methods supported (manual pass)
-    When I answer "Yes (or not applicable)"
+    When I answer "Yes"
     Then the manual test passes
 
   @html @manual

@@ -13,7 +13,7 @@ Feature: Combining repeated links
 
   Background:
     Given I am performing a manual test of the "Links: Combining repeated links: Repeated links to the same resource must be combined" standard
-    And I have been asked "Are repeated links to the same resource combined within a single link?"
+    And I have been asked "Are neighbouring elements linking to the same resource combined within a single link?"
 
   @html @manual
   Scenario: Repeated links to the same resource are combined within a single link (manual pass)

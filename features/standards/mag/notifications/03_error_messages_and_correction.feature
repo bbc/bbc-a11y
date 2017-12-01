@@ -21,7 +21,7 @@ Feature: Error messages and correction
 
   Background:
     Given I am performing a manual test of the "Notifications: Error messages and correction: Clear error messages must be provided" standard
-    And I have been asked "Are clear error messages provided?"
+    And I have been asked "Are clear accessible error messages provided when needed?"
 
   @html @manual
   Scenario: Clear error messages provided (manual pass)

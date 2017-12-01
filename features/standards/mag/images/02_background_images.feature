@@ -14,7 +14,7 @@ Feature: Background images
 
   Background:
     Given I am performing a manual test of the "Images: Background images: Meaningful background images must have accessible alternatives" standard
-    And I have been asked "Are accessible alternatives provided for background images that convey information or meaning?"
+    And I have been asked "Are accessible alternatives provided for element background images that convey information or meaning?"
 
   @html @manual
   Scenario: Accessible alternatives are provided for background images that convey information or meaning (manual pass)

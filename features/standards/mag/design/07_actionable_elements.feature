@@ -35,8 +35,8 @@ Feature: Actionable elements
   * a different colour, meeting contrast standards, to the surrounding text
 
   Background:
-    Given I am performing a manual test of the "Design: Actionable elements: Links must have underlines and pointers" standard
-    And I have been asked "Do all links have underlines and pointers?"
+    Given I am performing a manual test of the "Design: Actionable elements: Editorial links must be self-evident" standard
+    And I have been asked "Are all links, buttons and other actionable elements in the content self-evident, identifiable by their visual style, and distinguishable from surrounding content?"
 
   @html @manual
   Scenario: Manual pass

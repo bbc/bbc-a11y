@@ -36,7 +36,7 @@ Feature: Colour contrast
 
   Background:
     Given I am performing a manual test of the "Design: Colour contrast: Colour combinations must pass the WCAG colour contrast check" standard
-    And I have been asked "Do all colour combinations pass the Snook colour contrast check?"
+    And I have been asked "Do all text and background colour combinations pass a reliable colour contrast check?"
 
   @html @manual
   Scenario: Manual pass

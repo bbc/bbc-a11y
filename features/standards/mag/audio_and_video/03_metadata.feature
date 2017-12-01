@@ -15,7 +15,7 @@ Feature: Metadata
 
   @html @manual
   Scenario: Manual pass
-    When I answer "Yes"
+    When I answer "Yes (or not applicable)"
     Then the manual test passes
 
   @html @manual

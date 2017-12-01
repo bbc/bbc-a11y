@@ -36,11 +36,11 @@ Feature: Adjustability
 
   Background:
     Given I am performing a manual test of the "Design: Adjustability: Interactive media should be adjustable for user ability and preference" standard
-    And I have been asked "Is any interactive media adjustable for user ability and preference?"
+    And I have been asked "Can all interactive media be suitably adjusted for different user abilities and preferences?"
 
   @html @manual
   Scenario: Manual pass
-    When I answer "Yes"
+    When I answer "Yes (or not applicable)"
     Then the manual test passes
 
   @html @manual

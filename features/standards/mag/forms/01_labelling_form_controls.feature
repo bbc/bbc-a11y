@@ -150,17 +150,3 @@ Feature: Labelling form controls
       """
       Button has no text: /html/body/button
       """
-
-  @html @manual
-  Scenario: All form controls labelled (manual pass)
-    Given I am performing a manual test of the "Forms: Labelling form controls: All form controls must be labelled" standard
-    And I have been asked "Are all form controls labelled?"
-    When I answer "Yes"
-    Then the manual test passes
-
-  @html @manual
-  Scenario: Some form controls not labelled (manual fail)
-    Given I am performing a manual test of the "Forms: Labelling form controls: All form controls must be labelled" standard
-    And I have been asked "Are all form controls labelled?"
-    When I answer "No"
-    Then the manual test fails

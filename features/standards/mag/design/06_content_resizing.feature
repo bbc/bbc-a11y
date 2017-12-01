@@ -68,27 +68,27 @@ Feature: Content resizing
   @html @manual
   Scenario: Manual pass of "Content must be visible and usable with page zoomed to 200% of normal"
     Given I am performing a manual test of the "Design: Content resizing: Content must be visible and usable with page zoomed to 200% of normal" standard
-    And I have been asked "Is the content visible and usable with the page zoomed to 200% of normal?"
+    And I have been asked "Does the content scale when zoom or pinch-zoom is used?"
     When I answer "Yes"
     Then the manual test passes
 
   @html @manual
   Scenario: Manual fail of "Content must be visible and usable with page zoomed to 200% of normal"
     Given I am performing a manual test of the "Design: Content resizing: Content must be visible and usable with page zoomed to 200% of normal" standard
-    And I have been asked "Is the content visible and usable with the page zoomed to 200% of normal?"
+    And I have been asked "Does the content scale when zoom or pinch-zoom is used?"
     When I answer "No"
     Then the manual test fails
 
   @html @manual
   Scenario: Manual pass of "Content must be visible and usable with text resized to 200% of normal"
     Given I am performing a manual test of the "Design: Content resizing: Content must be visible and usable with text resized to 200% of normal" standard
-    And I have been asked "Is the content visible and usable with the text resized to 200% of normal?"
+    And I have been asked "Is the content visible and usable with the text resized to 200% or 50% of default?"
     When I answer "Yes"
     Then the manual test passes
 
   @html @manual
   Scenario: Manual fail of "Content must be visible and usable with text resized to 200% of normal"
     Given I am performing a manual test of the "Design: Content resizing: Content must be visible and usable with text resized to 200% of normal" standard
-    And I have been asked "Is the content visible and usable with the text resized to 200% of normal?"
+    And I have been asked "Is the content visible and usable with the text resized to 200% or 50% of default?"
     When I answer "No"
     Then the manual test fails

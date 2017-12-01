@@ -16,7 +16,7 @@ Feature: Styling and readability
 
   Background:
     Given I am performing a manual test of the "Design: Styling and readability: Core content must be accessible when styling is removed" standard
-    And I have been asked "Is the core content of the page accessible without styling?"
+    And I have been asked "Is the core content of the page readable and usable without styling/CSS?"
 
   @html @manual
   Scenario: Manual pass

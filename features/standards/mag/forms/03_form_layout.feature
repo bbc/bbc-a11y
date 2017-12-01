@@ -19,7 +19,7 @@ Feature: Form layout
 
   @html @manual
   Scenario: Labels are close and laid out appropriately (manual pass)
-    When I answer "Yes"
+    When I answer "Yes (or not applicable)"
     Then the manual test passes
 
   @html @manual

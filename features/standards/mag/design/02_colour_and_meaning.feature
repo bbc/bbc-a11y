@@ -45,11 +45,11 @@ Feature: Colour and meaning
 
   Background:
     Given I am performing a manual test of the "Design: Colour and meaning: Information conveyed with colour must also be identifiable from context or markup" standard
-    And I have been asked "Is information conveyed with colour also identifiable from context or markup?"
+    And I have been asked "Is all information conveyed by colour also conveyed by other means, such as additional style, context or markup?"
 
   @html @manual
   Scenario: Manual pass
-    When I answer "Yes"
+    When I answer "Yes (or not applicable)"
     Then the manual test passes
 
   @html @manual

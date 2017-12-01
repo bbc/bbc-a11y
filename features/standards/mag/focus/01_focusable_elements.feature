@@ -93,13 +93,13 @@ Feature: Focusable elements
   @html @manual
   Scenario: Interactive elements are focusable (manual pass)
     Given I am performing a manual test of the "Focus: Focusable elements: Interactive elements must be focusable" standard
-    And I have been asked "Are all interactive elements focusable?"
+    And I have been asked "Are all (and only) interactive elements focusable?"
     When I answer "Yes"
     Then the manual test passes
 
   @html @manual
   Scenario: Not all interactive elements are focusable (manual fail)
     Given I am performing a manual test of the "Focus: Focusable elements: Interactive elements must be focusable" standard
-    And I have been asked "Are all interactive elements focusable?"
+    And I have been asked "Are all (and only) interactive elements focusable?"
     When I answer "No"
     Then the manual test fails

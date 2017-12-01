@@ -16,11 +16,11 @@ Feature: Form inputs
 
   Background:
     Given I am performing a manual test of the "Forms: Form inputs: A default input format must be indicated and supported" standard
-    And I have been asked "Is a default input format indicated and supported?"
+    And I have been asked "Is a default input format indicated/implied and supported?"
 
   @html @manual
   Scenario: A default input format is indicated and supported (manual pass)
-    When I answer "Yes"
+    When I answer "Yes (or not applicable)"
     Then the manual test passes
 
   @html @manual

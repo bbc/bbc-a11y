@@ -72,13 +72,13 @@ Feature: Alternatives for non-text content
   @html @manual
   Scenario: Alternatives briefly describe the editorial intent or purpose of images, objects, or elements (manual pass)
     Given I am performing a manual test of the "Text equivalents: Alternatives for non-text content: Alternatives must briefly describe editorial intent" standard
-    And I have been asked "Do alternatives briefly describe the editorial intent or purpose of the image, object, or element?"
+    And I have been asked "Do text alternatives briefly describe the editorial intent or purpose of each content image, object, or element?"
     When I answer "Yes (or not applicable)"
     Then the manual test passes
 
   @html @manual
   Scenario: Alternatives do not briefly describe the editorial intent or purpose of images, objects, or elements (manual fail)
     Given I am performing a manual test of the "Text equivalents: Alternatives for non-text content: Alternatives must briefly describe editorial intent" standard
-    And I have been asked "Do alternatives briefly describe the editorial intent or purpose of the image, object, or element?"
+    And I have been asked "Do text alternatives briefly describe the editorial intent or purpose of each content image, object, or element?"
     When I answer "No"
     Then the manual test fails

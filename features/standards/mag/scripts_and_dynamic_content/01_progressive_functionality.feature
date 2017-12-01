@@ -34,13 +34,13 @@ Feature: Progressive functionality
   @html @manual
   Scenario: Scripts and dynamic content built in a progressive manner (manual pass)
     Given I am performing a manual test of the "Scripts and dynamic content: Progressive functionality: Scripts and dynamic content must be built in a progressive manner" standard
-    And I have been asked "Are scripts and dynamic content built in a progressive manner?"
+    And I have been asked "Are scripts and dynamic content added in a progressive manner?"
     When I answer "Yes (or not applicable)"
     Then the manual test passes
 
   @html @manual
   Scenario: Scripts and dynamic content not built in a progressive manner (manual fail)
     Given I am performing a manual test of the "Scripts and dynamic content: Progressive functionality: Scripts and dynamic content must be built in a progressive manner" standard
-    And I have been asked "Are scripts and dynamic content built in a progressive manner?"
+    And I have been asked "Are scripts and dynamic content added in a progressive manner?"
     When I answer "No"
     Then the manual test fails

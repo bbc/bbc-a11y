@@ -13,7 +13,7 @@ Feature: Descriptive links
 
   Background:
     Given I am performing a manual test of the "Links: Descriptive links: Link and navigation text must uniquely describe the target or function" standard
-    And I have been asked "Does all link and navigation text uniquely describe the target or function of the link or item?"
+    And I have been asked "Does each link and navigation text uniquely describe the target or function of the link or item?"
 
   @html @manual
   Scenario: Link and navigation text uniquely describes the target or function (manual pass)

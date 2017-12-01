@@ -60,13 +60,13 @@ Feature: Containers and landmarks
   @html @manual
   Scenario: Containers used to describe page structure (manual pass)
     Given I am performing a manual test of the "Structure: Containers and landmarks: Containers should be used to describe page structure" standard
-    And I have been asked "Are containers used to describe page structure?"
+    And I have been asked "Are suitable containers used to help describe page structure?"
     When I answer "Yes"
     Then the manual test passes
 
   @html @manual
   Scenario: Containers not used to describe page structure (manual fail)
     Given I am performing a manual test of the "Structure: Containers and landmarks: Containers should be used to describe page structure" standard
-    And I have been asked "Are containers used to describe page structure?"
+    And I have been asked "Are suitable containers used to help describe page structure?"
     When I answer "No"
     Then the manual test fails

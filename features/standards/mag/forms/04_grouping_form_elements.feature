@@ -22,7 +22,7 @@ Feature: Grouping form elements
 
   @html @manual
   Scenario: Controls, labels, and other form elements properly grouped (manual pass)
-    When I answer "Yes"
+    When I answer "Yes (or not applicable)"
     Then the manual test passes
 
   @html @manual

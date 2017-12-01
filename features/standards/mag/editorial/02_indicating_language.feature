@@ -70,13 +70,13 @@ Feature: Indicating language
   @html @manual
   Scenario: Changing language with indication (manual pass)
     Given I am performing a manual test of the "Editorial: Indicating language: Changes to language must be indicated" standard
-    And I have been asked "Are changes to language indicated?"
+    And I have been asked "Are any changes to the defined language of the page indicated programmatically?"
     When I answer "Yes (or not applicable)"
     Then the manual test passes
 
   @html @manual
   Scenario: Changing language with indication (manual fail)
     Given I am performing a manual test of the "Editorial: Indicating language: Changes to language must be indicated" standard
-    And I have been asked "Are changes to language indicated?"
+    And I have been asked "Are any changes to the defined language of the page indicated programmatically?"
     When I answer "No"
     Then the manual test fails

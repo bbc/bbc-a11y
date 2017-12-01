@@ -13,7 +13,7 @@ Feature: Feedback and assistance
 
   Background:
     Given I am performing a manual test of the "Notifications: Feedback and assistance: Non-critical feedback or assistance should be provided when appropriate" standard
-    And I have been asked "Is non-critical feedback or assistance provided when appropriate?"
+    And I have been asked "Is non-critical feedback or assistance provided in an accessible way when appropriate?"
 
   @html @manual
   Scenario: Non-critical feedback or assistance provided (manual pass)

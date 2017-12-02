@@ -185,7 +185,7 @@ Then('the window should remain open', function () {
     })
     this.interactiveProcess.stdout.on('data', data => {
       if (data.toString().indexOf('Testing shows the presence, not the absence of bugs')) {
-        setTimeout(() => reject(new Error('Failed to kill the process')), 100)
+        setTimeout(() => reject(new Error('Failed to kill the process')), 500)
         this.interactiveProcess.kill('SIGINT')
       }
     })

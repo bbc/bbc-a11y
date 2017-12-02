@@ -27,7 +27,7 @@ describe('a11y testing in frames', function () {
   })
 
   it('tests contents of iframes', function () {
-    a11y.test({ only: ['Headings: Exactly one main heading', 'Headings: Headings must be in ascending order'] })
+    a11y.test({ only: ['Structure: Headings: Exactly one main heading', 'Headings: Headings must be in ascending order'] })
       .then(function (outcome) {
         expect(outcome.results[0].errors).to.eql([
           ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, ':', 'Found 0 h1 elements.'],

@@ -93,6 +93,28 @@ Given('a page with the body:', function (body) {
   })
 })
 
+Given('I am performing a manual test of the {string} standard', function (standard) {
+  return this.runA11yWithManualTests({ url: 'about:blank', only: [standard] })
+})
+
+Given('I have been asked {string}', function (question) {
+  return this.assertCurrentQuestionIs(question)
+})
+
+When('I answer {string}', function (answer) {
+  return this.answerQuestion(answer)
+})
+
+Then('the manual test fails', function () {
+  return this.countAllErrors()
+    .then(count => assert.notEqual(count, 0))
+})
+
+Then('the manual test passes', function () {
+  return this.countAllErrors()
+    .then(count => assert.equal(count, 0))
+})
+
 When('my page configuration is:', function (string) {
   eval(`this.pageConfiguration = ${string}`)
 })
@@ -192,9 +214,13 @@ Then('the window should remain open', function () {
   })
 })
 
-Then('I answer the following questions:', function (table) {
+When('I answer the following questions:', function (table) {
   const questionsAndAnswers = table.hashes()
   return this.answerManualTestQuestions(questionsAndAnswers)
+})
+
+When('I answer all questions except one with a pass', function () {
+  return this.answerAllManualTestQuestionsWithOneFail()
 })
 
 Then('it should result in a pass for {url}', function (url) {

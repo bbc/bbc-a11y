@@ -40,7 +40,7 @@ function A11yWorld () {
     })
   }
 
-  this.runA11yWithManualTests = ({ url }) => {
+  this.runA11yWithManualTests = ({ url, only }) => {
     if (document.getElementById('mainFrame')) {
       document.getElementById('mainFrame').remove()
     }
@@ -65,11 +65,31 @@ function A11yWorld () {
     this.manualRun = new Runner({
       configPath: './a11y.js',
       runManualTests: true,
-      pages: [{ url }],
+      pages: [{ url, only }],
       windowAdapter,
       reporter: this.reporter,
       exit
     }).run()
+  }
+
+  this.assertCurrentQuestionIs = function (question) {
+    return this.answerFrameMonkey.find('h1', { text: question }).shouldExist()
+  }
+
+  this.answerQuestion = function (answer) {
+    return this.answerFrameMonkey.click(answer)
+  }
+
+  this.countAllErrors = () => {
+    if (!this.manualRun) throw new Error('oops')
+    return this.manualRun.then(() => {
+      const results = this.reporter.results
+      let totalErrors = 0
+      for (const url in results) {
+        totalErrors += results[url].flatten().errorsFound
+      }
+      return totalErrors
+    })
   }
 
   this.answerManualTestQuestions = questionsAndAnswers => {
@@ -78,9 +98,18 @@ function A11yWorld () {
       const qa = questionsAndAnswers.shift()
       return this.answerFrameMonkey.find('h1', { text: qa.question }).shouldExist()
         .then(() => this.answerFrameMonkey.click(qa.answer))
+        .catch(e => { throw new Error('Failed to answer "' + qa.question + '" with "' + qa.answer + '"\nText in answer frame:\n' + this.answerFrame.contentDocument.body.innerText) })
         .then(() => answerNextQuestion())
     }
     return answerNextQuestion()
+  }
+
+  this.answerAllManualTestQuestionsWithOneFail = () => {
+    const answerRestAsPass = () => this.answerFrameMonkey.find('.pass-button').click({ timeout: 50 })
+        .then(() => answerRestAsPass())
+        .catch(e => {})
+    return this.answerFrameMonkey.find('.fail-button').click()
+      .then(() => answerRestAsPass())
   }
 
   this.countErrorsForUrl = url => {

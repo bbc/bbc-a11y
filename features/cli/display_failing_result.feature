@@ -6,11 +6,11 @@ Feature: Display failing result
     Then it should fail with:
       """
       ✗ http://localhost:54321/missing_main_heading.html
-        * Headings: Exactly one main heading
+        * Structure: Headings: Exactly one main heading
           - Found 0 h1 elements.
 
       For details on how to fix these errors, please see the following pages:
-        - http://www.bbc.co.uk/guidelines/futuremedia/accessibility/html/headings.shtml
+        - http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/structure/headings
       """
 
   Scenario: One standard generates a warning
@@ -19,11 +19,11 @@ Feature: Display failing result
     Then it should fail with:
       """
       ✓ http://localhost:54321/subheading_first.html
-        ⚠ Headings: Headings must be in ascending order
+        ⚠ Structure: Headings: Headings must be in ascending order
           - First heading was not a main heading: /html/body/h3
 
       For details on how to fix these errors, please see the following pages:
-        - http://www.bbc.co.uk/guidelines/futuremedia/accessibility/html/headings.shtml
+        - http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/structure/headings
       """
 
   Scenario: Failures and warnings from the same standard
@@ -32,15 +32,15 @@ Feature: Display failing result
     Then it should fail with:
       """
       ✗ http://localhost:54321/two_headings_failures_and_one_warning.html
-        * Headings: Content must follow headings
-          - No content follows: /html/body/h2
-        * Headings: Exactly one main heading
-          - Found 0 h1 elements.
-        ⚠ Headings: Headings must be in ascending order
+        ⚠ Structure: Headings: Headings must be in ascending order
           - First heading was not a main heading: /html/body/h2
+        * Structure: Headings: Exactly one main heading
+          - Found 0 h1 elements.
+        * Structure: Headings: Content must follow headings
+          - No content follows: /html/body/h2
 
       For details on how to fix these errors, please see the following pages:
-        - http://www.bbc.co.uk/guidelines/futuremedia/accessibility/html/headings.shtml
+        - http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/structure/headings
       """
 
   Scenario: Two failing checks from different standards
@@ -49,12 +49,12 @@ Feature: Display failing result
     Then it should fail with:
       """
       ✗ http://localhost:54321/heading_and_title_attribute_failures.html
-        * Headings: Exactly one main heading
+        * Structure: Headings: Exactly one main heading
           - Found 0 h1 elements.
-        * Title attributes: Title attributes only on inputs
+        * Text equivalents: Tooltips and supplementary information: Title attributes only on inputs
           - Non-input element has title attribute: /html/body/p/span
 
       For details on how to fix these errors, please see the following pages:
-        - http://www.bbc.co.uk/guidelines/futuremedia/accessibility/html/headings.shtml
-        - http://www.bbc.co.uk/guidelines/futuremedia/accessibility/html/title-attributes.shtml
+        - http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/structure/headings
+        - http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/text-equivalents/tooltips-and-supplementary-information
       """

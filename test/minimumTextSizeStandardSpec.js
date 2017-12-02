@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-var standard = require('../lib/standards/minimumTextSize/textCannotBeTooSmall')
+var standard = require('../lib/standards/tests/textCannotBeTooSmall')
 var $ = require('jquery')
 var expect = require('chai').expect
 

@@ -6,7 +6,7 @@ Feature: Display result summary
       """
       page("http://localhost:54321/perfect.html")
       page("http://localhost:54321/missing_main_heading.html", {
-        skip: "Headings: Exactly one main heading"
+        skip: "Structure: Headings: Exactly one main heading"
       })
       page("http://localhost:54321/missing_main_heading.html?again!")
       page("http://localhost:54321/subheading_first.html")

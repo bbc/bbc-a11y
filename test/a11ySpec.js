@@ -18,12 +18,12 @@ describe('a11y', function () {
   })
 
   it('skips standards', function () {
-    return a11y.test({ skip: ['Main landmark: Exactly one Main landmark'] })
+    return a11y.test({ skip: ['Structure: Containers and landmarks: Exactly one main landmark'] })
       .then(function (outcome) {
         expect(outcome.skipped).to.eql([
           {
-            section: 'Main landmark',
-            name: 'Exactly one Main landmark'
+            section: 'Structure: Containers and landmarks',
+            name: 'Exactly one main landmark'
           }
         ])
       })
@@ -41,10 +41,10 @@ describe('a11y', function () {
   })
 
   it('only runs specific standards', function () {
-    return a11y.test({ only: ['Main landmark: Exactly one Main landmark'] })
+    return a11y.test({ only: ['Structure: Containers and landmarks: Exactly one main landmark'] })
       .then(function (outcome) {
         expect(outcome.results.length).to.equal(1)
-        expect(outcome.results[0].standard.name).to.equal('Exactly one Main landmark')
+        expect(outcome.results[0].standard.name).to.equal('Exactly one main landmark')
       })
   })
 })

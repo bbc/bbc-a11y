@@ -21,6 +21,9 @@
   },
   "author": "BBC",
   "license": "Apache-2.0",
+  "engines": {
+    "node": ">=8.x"
+  },
   "bugs": {
     "url": "https://github.com/bbc/bbc-a11y/issues"
   },

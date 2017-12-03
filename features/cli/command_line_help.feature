@@ -15,6 +15,6 @@ Feature: Command Line Help
         -w, --width <pixels>       override viewport width
         -c, --config <config>      path to config file
         -r, --reporter <reporter>  json or [path to custom reporter module]
-        -s, --summary              lists all tests with a description of each test
+        --coverage <list|table>    lists all tests with a description of each test
         -h, --help                 output usage information
     """

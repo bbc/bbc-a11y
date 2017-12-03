@@ -13,7 +13,7 @@ const args = CommandLineArgs.parse(argv)
 
 const reporter = Reporter.createReporter({ name: args.reporter, console, remoteConsole })
 
-const summariseTests = !!args.summary
+const { coverage } = args
 
 const exit = args.interactive ? () => {} : electron.remote.process.exit
 
@@ -25,4 +25,12 @@ const windowAdapter = new ElectronWindowAdapter()
 
 const runManualTests = args.manual
 
-new Runner({ configPath, pages, windowAdapter, runManualTests, reporter, summariseTests, exit }).run()
+new Runner({
+  configPath,
+  pages,
+  windowAdapter,
+  runManualTests,
+  reporter,
+  coverage,
+  exit
+}).run()

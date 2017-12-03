@@ -51,8 +51,8 @@ When('I run `bbc-a11y --help`', function () {
   return this.runA11y(`--help`)
 })
 
-When('I run `bbc-a11y --summary`', function () {
-  return this.runA11y(`--summary`)
+When('I run `bbc-a11y --coverage list`', function () {
+  return this.runA11y(`--coverage list`)
 })
 
 When('I run `bbc-a11y {url} --manual`', function (url) {

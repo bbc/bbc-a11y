@@ -1,7 +1,7 @@
 Feature: Summarise Tests
 
   Scenario: Printing a summary of tests
-    When I run `bbc-a11y --summary`
+    When I run `bbc-a11y --coverage list`
     And it should pass with:
       """
       Tests covered by bbc-a11y:

@@ -43,7 +43,7 @@ The following table summarises the old and new names:
 | Headings: Content must follow headings                                                | Structure: Headings: Content must follow headings                                                     |
 | Minimum text size: Text cannot be too small                                           | Design: Content resizing: Text cannot be too small                                                    |
 | Resizable text: Text must be styled with units that are resizable in all browsers     | Design: Content resizing: Text must be styled with units that are resizable in all browsers           |
-| Tab index: Zero Tab index must only be set on elements which are focusable by default | Focus: Focusable elements: Zero Tab index must only be set on elements which are focusable by default |
+| Tab index: Zero Tab index must only be set on elements which are focusable by default | Focus: Focusable elements: Zero tab index must only be set on elements which are focusable by default |
 | Title attributes: Title attributes only on inputs                                     | Text equivalents: Tooltips and supplementary information: Title attributes only on inputs             |
 | Title attributes: Title attributes must not duplicate content                         | Text equivalents: Tooltips and supplementary information: Title attributes must not duplicate content |
 | Focusable controls: Anchors must have hrefs                                           | Principles: Anchors must have hrefs                                                                   |

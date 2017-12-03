@@ -122,7 +122,7 @@ Feature: Summarise Tests
       Type: manual
       Fails for each page with interactive elements that are not focusable
 
-      Focus: Focusable elements: Zero Tab index must only be set on elements which are focusable by default
+      Focus: Focusable elements: Zero tab index must only be set on elements which are focusable by default
       Type: automated
       Fails for each element that is not focusable by default (input, button, select, textarea, a) and has a tabindex attribute set to 0
 

@@ -1,15 +1,13 @@
-FROM node
-MAINTAINER emma.richens@bbc.co.uk
+FROM node:9.3.0
 
-RUN apt-get update && \
-    apt-get install -y libgtk2.0-0 libgconf-2-4 libasound2 libxtst6 libxss1 libnss3 xvfb && \
-    apt-get clean
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+    sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list' && \
+    apt-get update -y && \
+    apt-get install -y google-chrome-stable xvfb
 
-# Install the latest straight from GitHub
-RUN npm install --global git+https://github.com/bbc/bbc-a11y.git
+RUN yarn add global bbc-a11y@mag
 
-RUN rm /usr/local/bin/bbc-a11y
-
-ADD bbc-a11y /usr/local/bin/bbc-a11y
+RUN echo "#!/bin/sh\nxvfb-run node_modules/.bin/bbc-a11y %@" > /usr/local/bin/bbc-a11y
+RUN chmod +x /usr/local/bin/bbc-a11y
 
 ENTRYPOINT ["bbc-a11y"]

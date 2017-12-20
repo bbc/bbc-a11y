@@ -21,6 +21,9 @@ that best describes you:
 * I am a developer or tester and I want to
   [add bbc-a11y to my web project](./guides/using/using-bbc-a11y-in-your-project.md)
 
+* I am a developer or tester and I want to
+  [use docker to run bbc-a11y](./docker/README.md)
+
 ## Contributing to BBC A11y
 
 We welcome contributions of all shapes and sizes. If you want to help, please

@@ -14,7 +14,7 @@ process.stdin.pipe(child.stdin)
 child.stderr.on('data', function (data) {
   var str = data.toString('utf8')
   // Silence Chromium/Electron noise
-  if (str.match(/^\[\d+:\d+/) || str.match(/Electron Helper\[/)) return
+  if (str.match(/^\[\d+:\d+/) || str.match(/Electron Helper\[/) || str.match(/\*\*\* WARNING: Textured window/)) return
   process.stderr.write(data)
 })
 

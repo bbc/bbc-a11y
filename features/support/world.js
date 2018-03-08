@@ -106,8 +106,8 @@ function A11yWorld () {
 
   this.answerAllManualTestQuestionsWithOneFail = () => {
     const answerRestAsPass = () => this.answerFrameMonkey.find('.pass-button').click({ timeout: 50 })
-        .then(() => answerRestAsPass())
-        .catch(e => {})
+      .then(() => answerRestAsPass())
+      .catch(e => {})
     return this.answerFrameMonkey.find('.fail-button').click()
       .then(() => answerRestAsPass())
   }

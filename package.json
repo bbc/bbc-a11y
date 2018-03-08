@@ -10,6 +10,7 @@
     "standard-fix": "standard --fix",
     "browserify": "browserify ./lib/a11y.js -o ./dist/bundle.js",
     "watchify": "watchify ./lib/a11y.js -o ./dist/bundle.js",
+    "generate-coverage": "./scripts/generate-coverage",
     "web-server": "node -e \"require('./features/support/web_server').ensureRunningOn(7654).then(() => console.log('http://localhost:7654'))\""
   },
   "bin": {

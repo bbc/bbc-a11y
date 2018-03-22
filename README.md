@@ -15,7 +15,7 @@ today.
 There are two different ways you might want to use bbc-a11y. Choose the guide
 that best describes you:
 
-* I am non-technical and I want to
+* I am a manual tester or non-technical user and I want to
   [use bbc-a11y to check a website](./guides/using/checking-a-website.md)
 
 * I am a developer or tester and I want to

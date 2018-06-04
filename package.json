@@ -1,17 +1,19 @@
 {
   "name": "bbc-a11y",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "BBC Accessibility standards checker",
   "main": "index.js",
   "directories": {},
   "scripts": {
-    "test": "./node_modules/.bin/electron-mocha --renderer && ./node_modules/.bin/cucumber-electron && standard",
+    "test":
+      "./node_modules/.bin/electron-mocha --renderer && ./node_modules/.bin/cucumber-electron && standard",
     "standard": "standard",
     "standard-fix": "standard --fix",
     "browserify": "browserify ./lib/a11y.js -o ./dist/bundle.js",
     "watchify": "watchify ./lib/a11y.js -o ./dist/bundle.js",
     "generate-coverage": "./scripts/generate-coverage",
-    "web-server": "node -e \"require('./features/support/web_server').ensureRunningOn(7654).then(() => console.log('http://localhost:7654'))\""
+    "web-server":
+      "node -e \"require('./features/support/web_server').ensureRunningOn(7654).then(() => console.log('http://localhost:7654'))\""
   },
   "bin": {
     "bbc-a11y": "./bin/bbc-a11y.js"
@@ -51,8 +53,6 @@
     "watchify": "3.11.0"
   },
   "standard": {
-    "ignore": [
-      "test/configs/syntaxError.js"
-    ]
+    "ignore": ["test/configs/syntaxError.js"]
   }
 }

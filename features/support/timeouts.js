@@ -1,5 +1,3 @@
-var {defineSupportCode} = require('cucumber')
+var { setDefaultTimeout } = require("cucumber");
 
-defineSupportCode(function ({setDefaultTimeout}) {
-  setDefaultTimeout(10000)
-})
+setDefaultTimeout(10000);

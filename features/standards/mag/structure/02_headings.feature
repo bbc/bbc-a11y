@@ -282,7 +282,7 @@ Feature: Headings
     Then it passes
 
   @html @automated
-    Scenario: Heading followed by an iframe with content
+  Scenario: Heading followed by an iframe with content
     Given a website running at http://localhost:54321
     And a page with the body:
       """

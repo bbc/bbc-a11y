@@ -178,7 +178,9 @@ Then('it should fail with exactly:', function (expectedOutput) {
 
 Then('it should pass with:', function (string) {
   var actualOutput = (this.stdout + this.stderr)
-  assert(actualOutput.indexOf(string) > -1, 'Expected:\n' + string + '\nActual:\n' + actualOutput)
+  if (actualOutput.indexOf(string) === -1) {
+    throw new Error('Expected:\n' + string + '\nActual:\n' + actualOutput)
+  }
   assert.equal(this.exitCode, 0)
 })
 

@@ -30,14 +30,14 @@
   },
   "homepage": "https://github.com/bbc/bbc-a11y#readme",
   "dependencies": {
-    "commander": "2.14.1",
+    "commander": "2.15.1",
     "cucumber": "4.2.1",
     "electron": "2.0.2",
-    "httpism": "^3.8.0",
+    "httpism": "3.9.0",
     "jquery": "3.3.1"
   },
   "devDependencies": {
-    "browser-monkey": "^2.7.1",
+    "browser-monkey": "2.7.2",
     "browserify": "16.2.2",
     "chai": "4.1.2",
     "cucumber-electron": "2.5.0",

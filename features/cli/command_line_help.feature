@@ -4,8 +4,8 @@ Feature: Command Line Help
     When I run `bbc-a11y --help`
     Then it should pass with:
     """
-      Usage: bbc-a11y [options] <urls>
 
+      Usage: bbc-a11y [options] <urls>
 
       Options:
 

@@ -1,3 +1,8 @@
+# v2.1.0
+
+* Upgrades dependencies including a major electron update (now at v2.0.2)
+* Moves cucumber to development dependencies
+
 # v2.0.0
 
 * bbc-a11y now follows the BBC Mobile Accessibility Guidelines instead of the

@@ -7,3 +7,4 @@ tags
 node_modules
 lib/bundle.js
 .idea
+yarn.lock

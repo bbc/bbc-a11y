@@ -287,6 +287,17 @@ Feature: Headings
     And a page with the body:
       """
       <h1>Main heading</h1>
+      <iframe src="http://localhost:54321/perfect.html"></iframe>
+      """
+    When I test the "Structure: Headings: Content must follow headings" standard
+    Then it passes
+
+  @html @automated
+  Scenario: Heading followed by a nested iframe with content
+    Given a website running at http://localhost:54321
+    And a page with the body:
+      """
+      <h1>Main heading</h1>
       <div>
         <iframe src="http://localhost:54321/perfect.html"></iframe>
       </div>
@@ -326,6 +337,20 @@ Feature: Headings
 
   @html @automated
   Scenario: Heading followed by a hidden iframe with content
+    Given a website running at http://localhost:54321
+    And a page with the body:
+      """
+      <h1>Main heading</h1>
+      <iframe style="display: none" src="http://localhost:54321/perfect.html"></iframe>
+      """
+    When I test the "Structure: Headings: Content must follow headings" standard
+    Then it fails with the message:
+      """
+      No content follows: /html/body/h1
+      """
+
+  @html @automated
+  Scenario: Heading followed by a hidden nested iframe with content
     Given a website running at http://localhost:54321
     And a page with the body:
       """

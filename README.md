@@ -12,7 +12,7 @@ today.
 
 ## Using BBC A11y to test web pages
 
-There are two different ways you might want to use bbc-a11y. Choose the guide
+There are a few different ways you might want to use bbc-a11y. Choose the guide
 that best describes you:
 
 * I am a manual tester or non-technical user and I want to

@@ -243,3 +243,13 @@ page('Members area (after logging in)', {
   }
 })
 ```
+
+## Help
+
+You can get help by running:
+
+    ./node_modules/.bin/bbc-a11y --help
+
+To find out what version you have installed:
+
+    ./node_modules/.bin/bbc-a11y --version

@@ -35,6 +35,14 @@ Run bbc-a11y in _manual_ mode to include manual tests:
 
 ## Help
 
+You can get help by running:
+
+    bbc-a11y --help
+
+To find out what version you have installed:
+
+    bbc-a11y --version
+
 If you have any trouble using bbc-a11y as described here, please
 [submit an issue](https://github.com/bbc/bbc-a11y/issues/new) and we will do our
 best to help fix your problem.

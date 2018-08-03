@@ -60,7 +60,7 @@ Feature: Content resizing
   with browser tools to resize content.
 
   @html @automated
-  Scenario: Text must be styled with units that are resizable in all browsers
+  Scenario: px styles inline and stylesheet
     Given a page with the body:
       """
       <p style="font-size: 16px">Styled in px!</p>
@@ -73,6 +73,76 @@ Feature: Content resizing
       Text styled with px unit: /html/body/p
       Text styled with px unit: /html/body/b
       """
+
+  @html @automated
+  Scenario: pt styles inline and stylesheet
+    Given a page with the body:
+      """
+      <p style="font-size: 16pt">Styled in pt!</p>
+      <style>b { font-size: 18pt }</style>
+      <b>Styled in pt!</b>
+      """
+    When I test the "Design: Content resizing: Text must be styled with units that are resizable in all browsers" standard
+    Then it fails with the message:
+      """
+      Text styled with pt unit: /html/body/p
+      Text styled with pt unit: /html/body/b
+      """
+
+  @html @automated
+  Scenario: em styles inline and stylesheet
+    Given a page with the body:
+      """
+      <p style="font-size: 16em">Styled in em!</p>
+      <style>b { font-size: 1.5em }</style>
+      <b>Styled in em!</b>
+      """
+    When I test the "Design: Content resizing: Text must be styled with units that are resizable in all browsers" standard
+    Then it passes
+
+  @html @automated
+  Scenario: em and px styles
+    Given a page with the body:
+      """
+      <style>
+        body { font-size: 20px }
+        b { font-size: 1.5em }
+      </style>
+      <b>Styled in em but has px in the styles tree!</b>
+      """
+    When I test the "Design: Content resizing: Text must be styled with units that are resizable in all browsers" standard
+    Then it fails with the message:
+      """
+      Text styled with px unit: /html/body/b
+      """
+
+  @html @automated
+  Scenario: em and pt styles
+    Given a page with the body:
+      """
+      <style>
+        body { font-size: 20pt }
+        b { font-size: 1.5em }
+      </style>
+      <b>Styled in em!</b>
+      """
+    When I test the "Design: Content resizing: Text must be styled with units that are resizable in all browsers" standard
+    Then it fails with the message:
+      """
+      Text styled with pt unit: /html/body/b
+      """
+
+  @html @automated
+  Scenario: px overriden by em styles
+    Given a page with the body:
+      """
+      <style>
+        b { font-size: 12px; font-size: 1.5em; }
+      </style>
+      <b>Styled in em!</b>
+      """
+    When I test the "Design: Content resizing: Text must be styled with units that are resizable in all browsers" standard
+    Then it passes
 
   @html @automated
   Scenario: Small text

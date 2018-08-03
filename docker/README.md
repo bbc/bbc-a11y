@@ -6,6 +6,8 @@ You can use this when you want to run bbc-a11y from a machine on which you can't
 
 For example, electron is not easy to install on CentOS, so if you are using CentOS build agents in your continuous integration environment, this may be useful to you.
 
+The docker image is not always necessary to use bbc-a11y for continuous integration. For example, in TravisCI one option available is to prepend the run script with xvfb-run - [relevant TravisCI documentation](https://docs.travis-ci.com/user/gui-and-headless-browsers/#Using-xvfb-to-Run-Tests-That-Require-a-GUI). Furthermore, an alternative to using the docker image in Jenkins might be to use the [xvfb plugin](https://wiki.jenkins.io/display/JENKINS/Xvfb+Plugin) - though this is untested.
+
 ### Usage
 
 Test a single page:

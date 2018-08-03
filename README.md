@@ -22,7 +22,7 @@ that best describes you:
   [add bbc-a11y to my web project](./guides/using/using-bbc-a11y-in-your-project.md)
 
 * I am a developer or tester and I want to
-  [use docker to run bbc-a11y](./docker/README.md)
+  [use docker to run bbc-a11y within a CI environment](./docker/README.md)
 
 ## Contributing to BBC A11y
 

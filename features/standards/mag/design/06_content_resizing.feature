@@ -101,6 +101,66 @@ Feature: Content resizing
     Then it passes
 
   @html @automated
+  Scenario: cm styles inline and stylesheet
+    Given a page with the body:
+      """
+      <p style="font-size: 16cm">Styled in cm!</p>
+      <style>b { font-size: 1.5cm }</style>
+      <b>Styled in cm!</b>
+      """
+    When I test the "Design: Content resizing: Text must be styled with units that are resizable in all browsers" standard
+    Then it fails with the message:
+      """
+      Text styled with cm unit: /html/body/p
+      Text styled with cm unit: /html/body/b
+      """
+
+  @html @automated
+  Scenario: mm styles inline and stylesheet
+    Given a page with the body:
+      """
+      <p style="font-size: 16mm">Styled in mm!</p>
+      <style>b { font-size: 1.5mm }</style>
+      <b>Styled in mm!</b>
+      """
+    When I test the "Design: Content resizing: Text must be styled with units that are resizable in all browsers" standard
+    Then it fails with the message:
+      """
+      Text styled with mm unit: /html/body/p
+      Text styled with mm unit: /html/body/b
+      """
+
+  @html @automated
+  Scenario: in styles inline and stylesheet
+    Given a page with the body:
+      """
+      <p style="font-size: 16in">Styled in in!</p>
+      <style>b { font-size: 1.5in }</style>
+      <b>Styled in in!</b>
+      """
+    When I test the "Design: Content resizing: Text must be styled with units that are resizable in all browsers" standard
+    Then it fails with the message:
+      """
+      Text styled with in unit: /html/body/p
+      Text styled with in unit: /html/body/b
+      """
+
+  @html @automated
+  Scenario: pc styles inline and stylesheet
+    Given a page with the body:
+      """
+      <p style="font-size: 16pc">Styled in pc!</p>
+      <style>b { font-size: 1.5pc }</style>
+      <b>Styled in pc!</b>
+      """
+    When I test the "Design: Content resizing: Text must be styled with units that are resizable in all browsers" standard
+    Then it fails with the message:
+      """
+      Text styled with pc unit: /html/body/p
+      Text styled with pc unit: /html/body/b
+      """
+
+  @html @automated
   Scenario: em and px styles
     Given a page with the body:
       """

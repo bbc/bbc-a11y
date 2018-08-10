@@ -5,7 +5,7 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
     apt-get update -y && \
     apt-get install -y google-chrome-stable xvfb
 
-RUN yarn add bbc-a11y@2.1.0
+RUN yarn add bbc-a11y@2.2.0
 
 RUN echo '#!/bin/sh\nxvfb-run node_modules/.bin/bbc-a11y "$@"' > /usr/local/bin/bbc-a11y
 RUN chmod +x /usr/local/bin/bbc-a11y

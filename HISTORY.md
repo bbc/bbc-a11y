@@ -1,4 +1,9 @@
+# v2.2.1
+
+* Fixed "Text must be styled with units that are resizable in all browsers" standard failing when using a font-size of `inherit`
+
 # v2.2.0
+
 * Fixed "Text must be styled with units that are resizable in all browsers" standard always failing, despite using only `rem` or `em`
 * Fixed the "Content must follow headings" standard to account for iframes with content after headings
 * Added information to guides about getting help or finding out the version number from the CLI

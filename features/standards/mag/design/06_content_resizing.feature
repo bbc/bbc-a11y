@@ -146,6 +146,16 @@ Feature: Content resizing
       """
 
   @html @automated
+  Scenario: inherit styles
+    Given a page with the body:
+      """
+      <style>b { font-size: 1.5em }</style>
+      <b style="font-size: inherit;">Styled in em!</b>
+      """
+    When I test the "Design: Content resizing: Text must be styled with units that are resizable in all browsers" standard
+    Then it passes
+
+  @html @automated
   Scenario: pc styles inline and stylesheet
     Given a page with the body:
       """

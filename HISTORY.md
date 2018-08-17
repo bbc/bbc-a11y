@@ -1,3 +1,7 @@
+# v2.2.2
+
+* Updated dependencies to fix all current vulnerabilities
+
 # v2.2.1
 
 * Fixed "Text must be styled with units that are resizable in all browsers" standard failing when using a font-size of `inherit`

@@ -1,3 +1,7 @@
+# v2.2.3
+
+* Updated package.json properties so that bbc-a11y is more consumable
+
 # v2.2.2
 
 * Updated dependencies to fix all current vulnerabilities

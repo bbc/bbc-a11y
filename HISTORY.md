@@ -1,3 +1,7 @@
+# v2.2.4
+
+* package.json needs bbc-a11y 'bin' property for Docker
+
 # v2.2.3
 
 * Updated package.json properties so that bbc-a11y is more consumable

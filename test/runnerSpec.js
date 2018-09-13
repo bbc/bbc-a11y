@@ -76,7 +76,7 @@ describe('Runner', function () {
 
   context('with a single a page as an argument', function () {
     it('checks the URL', function (done) {
-      return run([{ url: 'http://some/url' }])
+      run([{ url: 'http://some/url' }])
         .then(function (events) {
           var firstEventPayload = JSON.parse(events[0].args[0])
           assert.deepEqual(firstEventPayload.pagesChecked, 1)
@@ -89,7 +89,7 @@ describe('Runner', function () {
   context('with no arguments', function () {
     it('loads the config file', function (done) {
       const configPath = path.join(__dirname, 'runnerSpec', 'a11y.js')
-      return run([], configPath)
+      run([], configPath)
         .then(function (events) {
           var firstEventPayload = JSON.parse(events[0].args[0])
           assert.deepEqual(firstEventPayload.pagesChecked, 2)

@@ -62,7 +62,7 @@ function A11yWorld () {
     this.reporter = new NullReporter()
     const windowAdapter = new NullWindowAdapter()
     const exit = () => {}
-    this.manualRun = new Runner({
+    this.manualRun = await new Runner({
       configPath: './a11y.js',
       runManualTests: true,
       pages: [{ url, only }],

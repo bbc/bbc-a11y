@@ -70,9 +70,9 @@ function A11yWorld () {
       reporter: this.reporter,
       exit
     }).run()
-    .then(function () {
-      return Promise.resolve();
-    })
+      .then(function () {
+        return Promise.resolve()
+      })
   }
 
   this.assertCurrentQuestionIs = function (question) {

@@ -62,7 +62,7 @@ function A11yWorld () {
     this.reporter = new NullReporter()
     const windowAdapter = new NullWindowAdapter()
     const exit = () => {}
-    this.manualRun = await new Runner({
+    this.manualRun = new Runner({
       configPath: './a11y.js',
       runManualTests: true,
       pages: [{ url, only }],
@@ -70,6 +70,9 @@ function A11yWorld () {
       reporter: this.reporter,
       exit
     }).run()
+    .then(function () {
+      return Promise.resolve();
+    })
   }
 
   this.assertCurrentQuestionIs = function (question) {

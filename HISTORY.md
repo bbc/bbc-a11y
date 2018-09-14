@@ -1,3 +1,7 @@
+# v2.2.5
+
+* Fixes Travis build by updating expected terminal output
+
 # v2.2.4
 
 * package.json needs bbc-a11y 'bin' property for Docker

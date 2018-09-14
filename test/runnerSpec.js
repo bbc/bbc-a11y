@@ -75,26 +75,24 @@ describe('Runner', function () {
   }
 
   context('with a single a page as an argument', function () {
-    it('checks the URL', function (done) {
-      run([{ url: 'http://some/url' }])
+    it('checks the URL', function () {
+      return run([{ url: 'http://some/url' }])
         .then(function (events) {
           var firstEventPayload = JSON.parse(events[0].args[0])
           assert.deepEqual(firstEventPayload.pagesChecked, 1)
           assert.deepEqual(events[events.length - 1], { type: 'exit', args: [1] })
-          done()
         })
     })
   })
 
   context('with no arguments', function () {
-    it('loads the config file', function (done) {
+    it('loads the config file', function () {
       const configPath = path.join(__dirname, 'runnerSpec', 'a11y.js')
-      run([], configPath)
+      return run([], configPath)
         .then(function (events) {
           var firstEventPayload = JSON.parse(events[0].args[0])
           assert.deepEqual(firstEventPayload.pagesChecked, 2)
           assert.deepEqual(events[events.length - 1], { type: 'exit', args: [1] })
-          done()
         })
     })
   })

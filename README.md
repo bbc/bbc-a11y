@@ -19,7 +19,7 @@ that best describes you:
   [use bbc-a11y to check a website](./guides/using/checking-a-website.md)
 
 * I am a developer or tester and I want to
-  [add bbc-a11y to my web project](./guides/using/using-bbc-a11y-in-your-project.md)
+  [add bbc-a11y to my web project or use advance features](./guides/using/using-bbc-a11y-in-your-project.md)
 
 * I am a developer or tester and I want to
   [use docker to run bbc-a11y within a CI environment](./docker/README.md)

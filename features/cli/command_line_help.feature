@@ -7,7 +7,6 @@ Feature: Command Line Help
     Usage: bbc-a11y [options] <urls>
 
     Options:
-
       -V, --version              output the version number
       -i, --interactive          show browser window and leave open for debugging
       -m, --manual               include manual tests

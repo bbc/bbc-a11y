@@ -281,22 +281,22 @@ Feature: Headings
     When I test the "Structure: Headings: Content must follow headings" standard
     Then it passes
 
-  # @html @automated
-  # Scenario: Heading followed by nested heading
-  #   Given a page with the body:
-  #   """
-  #   <h1>Main heading</h1>
-  #   <h2>This is a sub-heading</h2>
-  #   <div>
-  #     <h2>Another h2 heading</h2>
-  #     <p>Hello</p>
-  #   </div>
-  #   """
-  #   When I test the "Structure: Headings: Content must follow headings" standard
-  #   Then it fails with the message:
-  #     """
-  #     No content follows: /html/body/h2
-  #     """
+  @html @automated
+  Scenario: Heading followed by nested heading
+    Given a page with the body:
+    """
+    <h1>Main heading</h1>
+    <h2>This is a sub-heading</h2>
+    <div>
+      <h2>Another h2 heading</h2>
+      <p>Hello</p>
+    </div>
+    """
+    When I test the "Structure: Headings: Content must follow headings" standard
+    Then it fails with the message:
+      """
+      No content follows: /html/body/h2
+      """
 
   # @html @automated
   # Scenario: Heading followed by nested heading after a p tag with only a space

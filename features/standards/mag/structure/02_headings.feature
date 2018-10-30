@@ -281,207 +281,207 @@ Feature: Headings
     When I test the "Structure: Headings: Content must follow headings" standard
     Then it passes
 
-  @html @automated
-  Scenario: Heading followed by nested heading
-    Given a page with the body:
-    """
-    <h1>Main heading</h1>
-    <h2>This is a sub-heading</h2>
-    <div>
-      <h2>Another h2 heading</h2>
-      <p>Hello</p>
-    </div>
-    """
-    When I test the "Structure: Headings: Content must follow headings" standard
-    Then it fails with the message:
-      """
-      No content follows: /html/body/h2
-      """
+  # @html @automated
+  # Scenario: Heading followed by nested heading
+  #   Given a page with the body:
+  #   """
+  #   <h1>Main heading</h1>
+  #   <h2>This is a sub-heading</h2>
+  #   <div>
+  #     <h2>Another h2 heading</h2>
+  #     <p>Hello</p>
+  #   </div>
+  #   """
+  #   When I test the "Structure: Headings: Content must follow headings" standard
+  #   Then it fails with the message:
+  #     """
+  #     No content follows: /html/body/h2
+  #     """
 
-  @html @automated
-  Scenario: Heading followed by nested heading after a p tag with only a space
-    Given a page with the body:
-    """
-    <h1>Main heading</h1>
-    <h2>This is a sub-heading</h2>
-    <div>
-      <p> </p>
-      <h2>Another h2 heading</h2>
-      <p>Hello</p>
-    </div>
-    """
-    When I test the "Structure: Headings: Content must follow headings" standard
-    Then it fails with the message:
-      """
-      No content follows: /html/body/h2
-      """
+  # @html @automated
+  # Scenario: Heading followed by nested heading after a p tag with only a space
+  #   Given a page with the body:
+  #   """
+  #   <h1>Main heading</h1>
+  #   <h2>This is a sub-heading</h2>
+  #   <div>
+  #     <p> </p>
+  #     <h2>Another h2 heading</h2>
+  #     <p>Hello</p>
+  #   </div>
+  #   """
+  #   When I test the "Structure: Headings: Content must follow headings" standard
+  #   Then it fails with the message:
+  #     """
+  #     No content follows: /html/body/h2
+  #     """
 
-  @html @automated
-  Scenario: Heading followed by nested heading after a p tag with only a space and an empty div
-    Given a page with the body:
-    """
-    <h1>Main heading</h1>
-    <h2>This is a sub-heading</h2>
-    <div>
-      <p> </p>
-      <div> </div>
-      <h2>Another h2 heading</h2>
-      <p>Hello</p>
-    </div>
-    """
-    When I test the "Structure: Headings: Content must follow headings" standard
-    Then it fails with the message:
-      """
-      No content follows: /html/body/h2
-      """
+  # @html @automated
+  # Scenario: Heading followed by nested heading after a p tag with only a space and an empty div
+  #   Given a page with the body:
+  #   """
+  #   <h1>Main heading</h1>
+  #   <h2>This is a sub-heading</h2>
+  #   <div>
+  #     <p> </p>
+  #     <div> </div>
+  #     <h2>Another h2 heading</h2>
+  #     <p>Hello</p>
+  #   </div>
+  #   """
+  #   When I test the "Structure: Headings: Content must follow headings" standard
+  #   Then it fails with the message:
+  #     """
+  #     No content follows: /html/body/h2
+  #     """
 
-  @html @automated
-  Scenario: Incorrect nested heading inside a div
-    Given a page with the body:
-    """
-    <h1>Main heading</h1>
-    <h2>This is a sub-heading</h2>
-    <p>This is some text</p>
-    <div>
-      <p> </p>
-      <div> </div>
-      <h2>Another h2 heading</h2>
-      <p> </p>
-    </div>
-    """
-    When I test the "Structure: Headings: Content must follow headings" standard
-    Then it fails with the message:
-      """
-      No content follows: /html/body/div/h2
-      """
+  # @html @automated
+  # Scenario: Incorrect nested heading inside a div
+  #   Given a page with the body:
+  #   """
+  #   <h1>Main heading</h1>
+  #   <h2>This is a sub-heading</h2>
+  #   <p>This is some text</p>
+  #   <div>
+  #     <p> </p>
+  #     <div> </div>
+  #     <h2>Another h2 heading</h2>
+  #     <p> </p>
+  #   </div>
+  #   """
+  #   When I test the "Structure: Headings: Content must follow headings" standard
+  #   Then it fails with the message:
+  #     """
+  #     No content follows: /html/body/div/h2
+  #     """
 
-  @html @automated
-  Scenario: Heading followed by nested heading after a non-empty p tag
-    Given a page with the body:
-    """
-    <h1>Main heading</h1>
-    <h2>This is a sub-heading</h2>
-    <div>
-      <p>Hello</p>
-      <h2>Another h2 heading</h2>
-      <p>Hello</p>
-    </div>
-    """
-    When I test the "Structure: Headings: Content must follow headings" standard
-    Then it passes
+  # @html @automated
+  # Scenario: Heading followed by nested heading after a non-empty p tag
+  #   Given a page with the body:
+  #   """
+  #   <h1>Main heading</h1>
+  #   <h2>This is a sub-heading</h2>
+  #   <div>
+  #     <p>Hello</p>
+  #     <h2>Another h2 heading</h2>
+  #     <p>Hello</p>
+  #   </div>
+  #   """
+  #   When I test the "Structure: Headings: Content must follow headings" standard
+  #   Then it passes
 
-  @html @automated
-  Scenario: Heading followed by empty iframe and h2 at same level
-    Given a page with the body:
-    """
-    <h1>Main heading</h1>
-    <h2>This is a sub-heading</h2>
-    <iframe></iframe>
-    <h2>This is a sub-heading</h2>
-    <p>This is text</p>
-    """
-    When I test the "Structure: Headings: Content must follow headings" standard
-    Then it fails with the message:
-      """
-      No content follows: /html/body/h2[1]
-      """
+  # @html @automated
+  # Scenario: Heading followed by empty iframe and h2 at same level
+  #   Given a page with the body:
+  #   """
+  #   <h1>Main heading</h1>
+  #   <h2>This is a sub-heading</h2>
+  #   <iframe></iframe>
+  #   <h2>This is a sub-heading</h2>
+  #   <p>This is text</p>
+  #   """
+  #   When I test the "Structure: Headings: Content must follow headings" standard
+  #   Then it fails with the message:
+  #     """
+  #     No content follows: /html/body/h2[1]
+  #     """
 
-  @html @automated
-  Scenario: Heading followed by paragraph containing a space and h2 at same level
-    Given a page with the body:
-    """
-    <h1>Main heading</h1>
-    <h2>This is a sub-heading</h2>
-    <p> </p>
-    <h2>This is a sub-heading</h2>
-    <p>This is text</p>
-    """
-    When I test the "Structure: Headings: Content must follow headings" standard
-    Then it fails with the message:
-      """
-      No content follows: /html/body/h2[1]
-      """
+  # @html @automated
+  # Scenario: Heading followed by paragraph containing a space and h2 at same level
+  #   Given a page with the body:
+  #   """
+  #   <h1>Main heading</h1>
+  #   <h2>This is a sub-heading</h2>
+  #   <p> </p>
+  #   <h2>This is a sub-heading</h2>
+  #   <p>This is text</p>
+  #   """
+  #   When I test the "Structure: Headings: Content must follow headings" standard
+  #   Then it fails with the message:
+  #     """
+  #     No content follows: /html/body/h2[1]
+  #     """
 
-  @html @automated
-  Scenario: Heading followed by an iframe with content
-    Given a website running at http://localhost:54321
-    And a page with the body:
-      """
-      <h1>Main heading</h1>
-      <iframe src="http://localhost:54321/perfect.html"></iframe>
-      """
-    When I test the "Structure: Headings: Content must follow headings" standard
-    Then it passes
+  # @html @automated
+  # Scenario: Heading followed by an iframe with content
+  #   Given a website running at http://localhost:54321
+  #   And a page with the body:
+  #     """
+  #     <h1>Main heading</h1>
+  #     <iframe src="http://localhost:54321/perfect.html"></iframe>
+  #     """
+  #   When I test the "Structure: Headings: Content must follow headings" standard
+  #   Then it passes
 
-  @html @automated
-  Scenario: Heading followed by a nested iframe with content
-    Given a website running at http://localhost:54321
-    And a page with the body:
-      """
-      <h1>Main heading</h1>
-      <div>
-        <iframe src="http://localhost:54321/perfect.html"></iframe>
-      </div>
-      """
-    When I test the "Structure: Headings: Content must follow headings" standard
-    Then it passes
+  # @html @automated
+  # Scenario: Heading followed by a nested iframe with content
+  #   Given a website running at http://localhost:54321
+  #   And a page with the body:
+  #     """
+  #     <h1>Main heading</h1>
+  #     <div>
+  #       <iframe src="http://localhost:54321/perfect.html"></iframe>
+  #     </div>
+  #     """
+  #   When I test the "Structure: Headings: Content must follow headings" standard
+  #   Then it passes
 
-  @html @automated
-  Scenario: Heading followed by an iframe without content and then an iframe with content
-    Given a website running at http://localhost:54321
-    And a page with the body:
-      """
-      <h1>Main heading</h1>
-      <div>
-        <iframe></iframe>
-        <iframe src="http://localhost:54321/perfect.html"></iframe>
-      </div>
-      """
-    When I test the "Structure: Headings: Content must follow headings" standard
-    Then it passes
+  # @html @automated
+  # Scenario: Heading followed by an iframe without content and then an iframe with content
+  #   Given a website running at http://localhost:54321
+  #   And a page with the body:
+  #     """
+  #     <h1>Main heading</h1>
+  #     <div>
+  #       <iframe></iframe>
+  #       <iframe src="http://localhost:54321/perfect.html"></iframe>
+  #     </div>
+  #     """
+  #   When I test the "Structure: Headings: Content must follow headings" standard
+  #   Then it passes
 
-  @html @automated
-  Scenario: Heading followed by an iframe without content
-    Given a website running at http://localhost:54321
-    And a page with the body:
-      """
-      <h1>Main heading</h1>
-      <div>
-        <iframe></iframe>
-      </div>
-      """
-    When I test the "Structure: Headings: Content must follow headings" standard
-    Then it fails with the message:
-      """
-      No content follows: /html/body/h1
-      """
+  # @html @automated
+  # Scenario: Heading followed by an iframe without content
+  #   Given a website running at http://localhost:54321
+  #   And a page with the body:
+  #     """
+  #     <h1>Main heading</h1>
+  #     <div>
+  #       <iframe></iframe>
+  #     </div>
+  #     """
+  #   When I test the "Structure: Headings: Content must follow headings" standard
+  #   Then it fails with the message:
+  #     """
+  #     No content follows: /html/body/h1
+  #     """
 
-  @html @automated
-  Scenario: Heading followed by a hidden iframe with content
-    Given a website running at http://localhost:54321
-    And a page with the body:
-      """
-      <h1>Main heading</h1>
-      <iframe style="display: none" src="http://localhost:54321/perfect.html"></iframe>
-      """
-    When I test the "Structure: Headings: Content must follow headings" standard
-    Then it fails with the message:
-      """
-      No content follows: /html/body/h1
-      """
+  # @html @automated
+  # Scenario: Heading followed by a hidden iframe with content
+  #   Given a website running at http://localhost:54321
+  #   And a page with the body:
+  #     """
+  #     <h1>Main heading</h1>
+  #     <iframe style="display: none" src="http://localhost:54321/perfect.html"></iframe>
+  #     """
+  #   When I test the "Structure: Headings: Content must follow headings" standard
+  #   Then it fails with the message:
+  #     """
+  #     No content follows: /html/body/h1
+  #     """
 
-  @html @automated
-  Scenario: Heading followed by a hidden nested iframe with content
-    Given a website running at http://localhost:54321
-    And a page with the body:
-      """
-      <h1>Main heading</h1>
-      <div>
-        <iframe style="display: none" src="http://localhost:54321/perfect.html"></iframe>
-      </div>
-      """
-    When I test the "Structure: Headings: Content must follow headings" standard
-    Then it fails with the message:
-      """
-      No content follows: /html/body/h1
-      """
+  # @html @automated
+  # Scenario: Heading followed by a hidden nested iframe with content
+  #   Given a website running at http://localhost:54321
+  #   And a page with the body:
+  #     """
+  #     <h1>Main heading</h1>
+  #     <div>
+  #       <iframe style="display: none" src="http://localhost:54321/perfect.html"></iframe>
+  #     </div>
+  #     """
+  #   When I test the "Structure: Headings: Content must follow headings" standard
+  #   Then it fails with the message:
+  #     """
+  #     No content follows: /html/body/h1
+  #     """

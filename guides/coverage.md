@@ -1,7 +1,7 @@
 # BBC A11y Test Coverage
 
 bbc-a11y tests URLs against the
-[BBC Mobile Accessibility Guidelines](httpss://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile). This is
+[BBC Mobile Accessibility Guidelines](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile). This is
 a summary of those guidelines and the level of test coverage currently provided.
 
 ## Guidelines

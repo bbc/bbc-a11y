@@ -78,6 +78,15 @@ Feature: Tooltips and supplementary information
     When I test the "Text equivalents: Tooltips and supplementary information: Title attributes only on inputs" standard
     Then it passes
 
+    @html @automated
+  Scenario: Abbreviation tag with title attribute
+    Given a page with the body:
+      """
+      <abbr title="Bob Bobbington">Bob</abbr>
+      """
+    When I test the "Text equivalents: Tooltips and supplementary information: Title attributes only on inputs" standard
+    Then it passes
+
   @html @automated
   Scenario: Title attribute duplicates content
     Given a page with the body:

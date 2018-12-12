@@ -23,7 +23,8 @@
   "author": "BBC",
   "license": "Apache-2.0",
   "engines": {
-    "node": ">=8.x"
+    "node": ">=8.x",
+    "npm": ">=5.2"
   },
   "bugs": {
     "url": "https://github.com/bbc/bbc-a11y/issues"

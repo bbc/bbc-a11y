@@ -140,7 +140,19 @@ Feature: Headings
     Then it passes
 
   @html @automated
-  Scenario: Subheading before the first main heading
+  Scenario: Level 2 heading before the first main heading
+    Given a page with the body:
+      """
+      <h2>Heading 2a</h2>
+      <h3>Heading 3</h3>
+      <h1>Heading 1</h1>
+      <h2>Heading 2b</h2>
+      """
+    When I test the "Structure: Headings: Headings must be in ascending order" standard
+    Then it passes
+
+  @html @automated
+  Scenario: Level 3 heading before the first main heading
     Given a page with the body:
       """
       <h3>Ignore me</h3>
@@ -150,7 +162,7 @@ Feature: Headings
     When I test the "Structure: Headings: Headings must be in ascending order" standard
     Then it passes with the warning:
       """
-      First heading was not a main heading: /html/body/h3
+      First heading was not a level 1 or level 2 heading: /html/body/h3
       """
 
   @html @automated

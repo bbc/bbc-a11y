@@ -1,3 +1,7 @@
+# v2.3.0
+
+- Allow first heading to be level 2
+
 # v2.2.6
 
 - Disallows nested headings when no content between them, via [#277](https://github.com/bbc/bbc-a11y/pull/277)

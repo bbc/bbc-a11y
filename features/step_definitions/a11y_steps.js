@@ -185,7 +185,7 @@ Then('it should pass with:', function (expectedOutput) {
 })
 
 Then('it should contain with whitespace removed:', function (expectedOutput) {
-  var trimmedExpectedOutput = expectedOutput.replace(/\s/g, '');
+  var trimmedExpectedOutput = expectedOutput.replace(/\s/g, '')
   var trimmedActualOutput = (this.stdout + this.stderr).replace(/\s/g, '')
   if (trimmedActualOutput.indexOf(trimmedExpectedOutput) === -1) {
     throw new Error('Expected:\n' + trimmedExpectedOutput + '\nActual:\n' + trimmedActualOutput)

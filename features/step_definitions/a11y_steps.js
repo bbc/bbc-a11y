@@ -176,10 +176,19 @@ Then('it should fail with exactly:', function (expectedOutput) {
   assert.equal(sanitisedActualOutput, expectedOutput, 'Expected:\n' + expectedOutput.replace(/\n/g, '[\\n]\n') + '\nActual:\n' + sanitisedActualOutput.replace(/\n/g, '[\\n]\n'))
 })
 
-Then('it should pass with:', function (string) {
+Then('it should pass with:', function (expectedOutput) {
   var actualOutput = (this.stdout + this.stderr)
-  if (actualOutput.indexOf(string) === -1) {
-    throw new Error('Expected:\n' + string + '\nActual:\n' + actualOutput)
+  if (actualOutput.indexOf(expectedOutput) === -1) {
+    throw new Error('Expected:\n' + expectedOutput + '\nActual:\n' + actualOutput)
+  }
+  assert.equal(this.exitCode, 0)
+})
+
+Then('it should contain with whitespace removed:', function (expectedOutput) {
+  var trimmedExpectedOutput = expectedOutput.replace(/\s/g, '');
+  var trimmedActualOutput = (this.stdout + this.stderr).replace(/\s/g, '')
+  if (trimmedActualOutput.indexOf(trimmedExpectedOutput) === -1) {
+    throw new Error('Expected:\n' + trimmedExpectedOutput + '\nActual:\n' + trimmedActualOutput)
   }
   assert.equal(this.exitCode, 0)
 })

@@ -20,7 +20,7 @@ Feature: Display failing result
       """
       ✓ http://localhost:54321/subheading_first.html
         ⚠ Structure: Headings: Headings must be in ascending order
-          - First heading was not a main heading: /html/body/h3
+          - First heading was not a level 1 or level 2 heading: /html/body/h3
 
       For details on how to fix these errors, please see the following pages:
         - http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/structure/headings
@@ -33,11 +33,11 @@ Feature: Display failing result
       """
       ✗ http://localhost:54321/two_headings_failures_and_one_warning.html
         ⚠ Structure: Headings: Headings must be in ascending order
-          - First heading was not a main heading: /html/body/h2
+          - First heading was not a level 1 or level 2 heading: /html/body/h4
         * Structure: Headings: Exactly one main heading
           - Found 0 h1 elements.
         * Structure: Headings: Content must follow headings
-          - No content follows: /html/body/h2
+          - No content follows: /html/body/h4
 
       For details on how to fix these errors, please see the following pages:
         - http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/structure/headings

@@ -237,7 +237,7 @@ Feature: Summarise Tests
 
       Structure: Headings: Headings must be in ascending order
       Type: automated
-      Fails for each visible heading (<h2> to <h8>) that does follow the next highest-level heading. For example, a <h3> can only come after a <h2>
+      Fails for each visible heading (<h2> to <h6>) that does follow the next highest-level heading. For example, a <h3> can only come after a <h2>
 
       Structure: Headings: Exactly one main heading
       Type: automated
@@ -245,7 +245,7 @@ Feature: Summarise Tests
 
       Structure: Headings: Content must follow headings
       Type: automated
-      Fails for each heading element (<h1> up to <h8>) that has no text content after it. Text elements may appear as children or descendants of subsequent siblings
+      Fails for each heading element (<h1> up to <h6>) that has no text content after it. Text elements may appear as children or descendants of subsequent siblings
 
       Structure: Containers and landmarks: Containers should be used to describe page structure
       Type: manual

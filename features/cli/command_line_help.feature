@@ -2,7 +2,7 @@ Feature: Command Line Help
 
   Scenario: Asking the command line tool for help
     When I run `bbc-a11y --help`
-    Then it should contain with whitespace removed:
+    Then (ignoring whitespace) it should pass with:
     """
     Usage: bbc-a11y [options] <urls>
 

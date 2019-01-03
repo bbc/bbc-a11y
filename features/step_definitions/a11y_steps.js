@@ -184,7 +184,7 @@ Then('it should pass with:', function (expectedOutput) {
   assert.equal(this.exitCode, 0)
 })
 
-Then('it should contain with whitespace removed:', function (expectedOutput) {
+Then(/\(ignoring whitespace\) it should pass with:/, function (expectedOutput) {
   var trimmedExpectedOutput = expectedOutput.replace(/\s/g, '')
   var trimmedActualOutput = (this.stdout + this.stderr).replace(/\s/g, '')
   if (trimmedActualOutput.indexOf(trimmedExpectedOutput) === -1) {

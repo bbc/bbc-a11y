@@ -140,7 +140,7 @@ Feature: Headings
     Then it passes
 
   @html @automated
-  Scenario: Level 2 heading before the first main heading
+  Scenario: Subheading before the first main heading
     Given a page with the body:
       """
       <h2>Heading 2a</h2>

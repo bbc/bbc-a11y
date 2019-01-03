@@ -1,6 +1,6 @@
 # v2.3.0
 
-- Allow first heading to be level 2
+- Main heading (h1) no longer required to be the first heading.
 
 # v2.2.6
 

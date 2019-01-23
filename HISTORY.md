@@ -1,4 +1,4 @@
-# v2.2.6
+# v2.2.7
 
 - Upgraded Electron to v2.0.8
 

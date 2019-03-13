@@ -1,7 +1,3 @@
-# v2.2.7
-
-- Upgraded Electron to v2.0.8
-
 # v2.2.6
 
 - Disallows nested headings when no content between them, via [#277](https://github.com/bbc/bbc-a11y/pull/277)

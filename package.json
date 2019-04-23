@@ -48,7 +48,7 @@
     "mocha": "5.2.0",
     "rimraf": "2.6.2",
     "standard": "11.0.1",
-    "watchify": "3.11.0"
+    "watchify": "^3.11.1"
   },
   "standard": {
     "ignore": [

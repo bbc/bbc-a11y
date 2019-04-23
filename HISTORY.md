@@ -1,3 +1,8 @@
+# v3.0.0
+
+- Removes a moderate vulnerability caused by [jquery@3.3.*](https://github.com/bbc/bbc-a11y/issues/289), via [#xxx](https://github.com/bbc/bbc-a11y/pull/xxx)
+
+
 # v2.2.6
 
 - Disallows nested headings when no content between them, via [#277](https://github.com/bbc/bbc-a11y/pull/277)

@@ -1,3 +1,7 @@
+# v2.3.0
+
+- Removes a moderate vulnerability caused by [jquery@3.3.*](https://github.com/bbc/bbc-a11y/issues/289) by manually bumping the package and fix 2 low vulnerabilities caused by watchify@3.11.0 using `npm audit fix`, via [#290](https://github.com/bbc/bbc-a11y/pull/290)
+
 # v2.2.6
 
 - Disallows nested headings when no content between them, via [#277](https://github.com/bbc/bbc-a11y/pull/277)

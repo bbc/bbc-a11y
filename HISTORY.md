@@ -1,10 +1,14 @@
+# 2.3.2
+
+- Resolves security issue by [updating electron to 2.0.8](https://github.com/bbc/bbc-a11y/issues/274).
+
 # v2.3.1
 
 - Fixes the Dockerfile by updating it to use Node 8 base image.
 
 # v2.3.0
 
-- Removes a moderate vulnerability caused by [jquery@3.3.*](https://github.com/bbc/bbc-a11y/issues/289) by manually bumping the package and fix 2 low vulnerabilities caused by watchify@3.11.0 using `npm audit fix`, via [#290](https://github.com/bbc/bbc-a11y/pull/290)
+- Removes a moderate vulnerability caused by [jquery@3.3.\*](https://github.com/bbc/bbc-a11y/issues/289) by manually bumping the package and fix 2 low vulnerabilities caused by watchify@3.11.0 using `npm audit fix`, via [#290](https://github.com/bbc/bbc-a11y/pull/290)
 
 # v2.2.6
 

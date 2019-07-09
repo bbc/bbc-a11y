@@ -1,67 +1,67 @@
 # BBC A11y Test Coverage
 
 bbc-a11y tests URLs against the
-[BBC Mobile Accessibility Guidelines](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile). This is
+[BBC Mobile Accessibility Guidelines](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/). This is
 a summary of those guidelines and the level of test coverage currently provided.
 
 ## Guidelines
 | Guideline                                                                                                                                                                              | Manual | Semi-automated | Automated |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | -------------- | --------- |
-| [Principles](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/principles)                                                                                              | No     | No             | Yes       |
-| [Audio & Video: Alternatives for audio and visual content](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/audio-and-video/alternatives-for-audio-and-visual-content) | Yes    | No             | No        |
-| [Audio & Video: Autoplay](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/audio-and-video/autoplay)                                                                   | Yes    | No             | No        |
-| [Audio & Video: Metadata](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/audio-and-video/metadata)                                                                   | Yes    | No             | No        |
-| [Audio & Video: Volume control](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/audio-and-video/volume-control)                                                       | Yes    | No             | No        |
-| [Audio & Video: Audio conflict](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/audio-and-video/audio-conflict)                                                       | Yes    | No             | No        |
-| [Design: Colour contrast](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/colour-contrast)                                                                     | Yes    | No             | No        |
-| [Design: Colour and meaning](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/colour-and-meaning)                                                               | Yes    | No             | No        |
-| [Design: Styling and readability](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/styling-and-readability)                                                     | Yes    | No             | No        |
-| [Design: Touch target size](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/touch-target-size)                                                                 | Yes    | No             | No        |
-| [Design: Spacing](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/spacing)                                                                                     | Yes    | No             | No        |
-| [Design: Content resizing](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/content-resizing)                                                                   | Yes    | No             | Yes       |
-| [Design: Actionable elements](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/actionable-elements)                                                             | Yes    | No             | No        |
-| [Design: Visible focus](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/visible-focus)                                                                         | Yes    | No             | Yes       |
-| [Design: Consistency](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/consistency)                                                                             | Yes    | No             | No        |
-| [Design: Choice](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/choice)                                                                                       | Yes    | No             | No        |
-| [Design: Adjustability](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/adjustability)                                                                         | Yes    | No             | No        |
-| [Design: Flicker](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/flicker)                                                                                     | Yes    | No             | No        |
-| [Editorial: Consistent labelling](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/editorial/consistent-labelling)                                                     | Yes    | No             | No        |
-| [Editorial: Indicating language](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/editorial/indicating-language)                                                       | Yes    | No             | Yes       |
-| [Editorial: Instructions](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/editorial/instructions)                                                                     | Yes    | No             | No        |
-| [Focus: Focusable elements](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/focus/focusable-elements)                                                                 | Yes    | No             | Yes       |
-| [Focus: Keyboard trap](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/focus/keyboard-trap)                                                                           | Yes    | No             | No        |
-| [Focus: Content order](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/focus/content-order)                                                                           | Yes    | No             | No        |
-| [Focus: Focus order](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/focus/focus-order)                                                                               | Yes    | No             | No        |
-| [Focus: User interactions](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/focus/user-interactions)                                                                   | Yes    | No             | No        |
-| [Focus: Alternative input methods](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/focus/alternative-input-methods)                                                   | Yes    | No             | No        |
-| [Forms: Labelling form controls](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/forms/labelling-form-controls)                                                       | No     | No             | Yes       |
-| [Forms: Form inputs](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/forms/form-inputs)                                                                               | Yes    | No             | No        |
-| [Forms: Form layout](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/forms/form-layout)                                                                               | Yes    | No             | No        |
-| [Forms: Grouping form elements](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/forms/grouping-form-elements)                                                         | Yes    | No             | No        |
-| [Forms: Managing focus](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/forms/managing-focus)                                                                         | Yes    | No             | Yes       |
-| [Images: Images of text](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/images/images-of-text)                                                                       | Yes    | No             | No        |
-| [Images: Background images](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/images/background-images)                                                                 | Yes    | No             | No        |
-| [Links: Descriptive links](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/links/descriptive-links)                                                                   | Yes    | No             | No        |
-| [Links: Links to alternative formats](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/links/links-to-alternative-formats)                                             | Yes    | No             | No        |
-| [Links: Combining repeated links](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/links/combining-repeated-links)                                                     | Yes    | No             | No        |
-| [Notifications: Inclusive notifications](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/notifications/inclusive-notifications)                                       | Yes    | No             | No        |
-| [Notifications: Standard operating system notifications](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/notifications/standard-operating-system-notifications)       | Yes    | No             | No        |
-| [Notifications: Error messages and correction](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/notifications/error-messages-and-correction)                           | Yes    | No             | No        |
-| [Notifications: Feedback and assistance](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/notifications/feedback-and-assistance)                                       | Yes    | No             | No        |
-| [Scripts and dynamic content: Progressive functionality](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/scripts-and-dynamic-content/progressive-functionality)       | Yes    | No             | No        |
-| [Scripts and dynamic content: Controlling media](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/scripts-and-dynamic-content/controlling-media)                       | Yes    | No             | No        |
-| [Scripts and dynamic content: Page refreshes](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/scripts-and-dynamic-content/page-refreshes)                             | Yes    | No             | No        |
-| [Scripts and dynamic content: Timeouts](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/scripts-and-dynamic-content/timeouts)                                         | Yes    | No             | No        |
-| [Scripts and dynamic content: Input control](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/scripts-and-dynamic-content/input-control)                               | Yes    | No             | No        |
-| [Structure: Unique page/screen titles](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/structure/unique-pagescreen-titles)                                            | Yes    | Yes            | No        |
-| [Structure: Headings](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/structure/headings)                                                                             | No     | No             | Yes       |
-| [Structure: Containers and landmarks](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/structure/containers-and-landmarks)                                             | Yes    | No             | Yes       |
-| [Structure: Grouped elements](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/structure/grouped-elements)                                                             | Yes    | No             | No        |
-| [Text equivalents: Alternatives for non-text content](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/text-equivalents/alternatives-for-non-text-content)             | Yes    | No             | Yes       |
-| [Text equivalents: Decorative content](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/text-equivalents/decorative-content)                                           | Yes    | No             | No        |
-| [Text equivalents: Tooltips and supplementary information](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/text-equivalents/tooltips-and-supplementary-information)   | Yes    | No             | Yes       |
-| [Text equivalents: Roles, traits and properties](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/text-equivalents/roles-traits-and-properties)                        | Yes    | No             | No        |
-| [Text equivalents: Visual formatting](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/text-equivalents/visual-formatting)                                             | Yes    | No             | Yes       |
+| [Principles](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/principles)                                                                                                  | No     | No             | Yes       |
+| [Audio & Video: Alternatives for audio and visual content](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/alternatives-for-audio-and-visual-content)                    | Yes    | No             | No        |
+| [Audio & Video: Autoplay](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/autoplay)                                                                                      | Yes    | No             | No        |
+| [Audio & Video: Metadata](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/metadata)                                                                                      | Yes    | No             | No        |
+| [Audio & Video: Volume control](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/volume-control)                                                                          | Yes    | No             | No        |
+| [Audio & Video: Audio conflict](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/audio-conflict)                                                                          | Yes    | No             | No        |
+| [Design: Colour contrast](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/colour-contrast)                                                                                | Yes    | No             | No        |
+| [Design: Colour and meaning](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/colour-and-meaning)                                                                          | Yes    | No             | No        |
+| [Design: Styling and readability](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/styling-and-readability)                                                                | Yes    | No             | No        |
+| [Design: Touch target size](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/target-touch-size)                                                                            | Yes    | No             | No        |
+| [Design: Spacing](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/spacing)                                                                                                | Yes    | No             | No        |
+| [Design: Content resizing](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/content-resizing)                                                                              | Yes    | No             | Yes       |
+| [Design: Actionable elements](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/actionable-elements)                                                                        | Yes    | No             | No        |
+| [Design: Visible focus](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/visible-focus)                                                                                    | Yes    | No             | Yes       |
+| [Design: Consistency](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/consistency)                                                                                        | Yes    | No             | No        |
+| [Design: Choice](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/choice)                                                                                                  | Yes    | No             | No        |
+| [Design: Adjustability](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/adjustability)                                                                                    | Yes    | No             | No        |
+| [Design: Flicker](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/flicker)                                                                                                | Yes    | No             | No        |
+| [Editorial: Consistent labelling](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/consistent-labelling)                                                                  | Yes    | No             | No        |
+| [Editorial: Indicating language](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/indicating-language)                                                                    | Yes    | No             | Yes       |
+| [Editorial: Instructions](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/instructions)                                                                                  | Yes    | No             | No        |
+| [Focus: Focusable elements](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/focusable-elements)                                                                          | Yes    | No             | Yes       |
+| [Focus: Keyboard trap](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/keyboard-trap)                                                                                    | Yes    | No             | No        |
+| [Focus: Content order](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/content-order)                                                                                    | Yes    | No             | No        |
+| [Focus: Focus order](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/focus-order)                                                                                        | Yes    | No             | No        |
+| [Focus: Changing focus](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/changing-focus)                                                                                  | Yes    | No             | Yes       |
+| [Focus: Appropriate triggers](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/appropriate-triggers)                                                                      | Yes    | No             | No        |
+| [Focus: Alternative input methods](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/alternative-input-methods)                                                            | Yes    | No             | No        |
+| [Forms: Labelling form controls](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/labelling-form-controls)                                                                | No     | No             | Yes       |
+| [Forms: Input format](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/input-format)                                                                                      | Yes    | No             | No        |
+| [Forms: Form layout](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/form-layout)                                                                                        | Yes    | No             | No        |
+| [Forms: Grouping form elements](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/grouping-form-elements)                                                                  | Yes    | No             | No        |
+| [Images: Images of text](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/images-of-text)                                                                                  | Yes    | No             | No        |
+| [Images: Background images](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/background-images)                                                                            | Yes    | No             | No        |
+| [Links: Descriptive links](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/descriptive-links)                                                                            | Yes    | No             | No        |
+| [Links: Links to alternative formats](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/inks-to-alternative-formats)                                                        | Yes    | No             | No        |
+| [Links: Combining repeated links](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/combining-repeated-links)                                                              | Yes    | No             | No        |
+| [Notifications: Inclusive notifications](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/inclusive-notifications)                                                        | Yes    | No             | No        |
+| [Notifications: Standard operating system notifications](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/standard-operating-system-notifications)                  | Yes    | No             | No        |
+| [Notifications: Error messages and correction](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/error-messages-and-correction)                                      | Yes    | No             | No        |
+| [Notifications: Feedback and assistance](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/feedback-and-assistance)                                                        | Yes    | No             | No        |
+| [Scripts and dynamic content: Progressive functionality](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/progressive-functionality)                                   | Yes    | No             | No        |
+| [Scripts and dynamic content: Controlling media](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/controlling-media)                                                      | Yes    | No             | No        |
+| [Scripts and dynamic content: Page refreshes](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/page-refreshes)                                                            | Yes    | No             | No        |
+| [Scripts and dynamic content: Timeouts](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/timeouts)                                                                        | Yes    | No             | No        |
+| [Scripts and dynamic content: Input control](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/input-control)                                                              | Yes    | No             | No        |
+| [Structure: Unique page/screen titles](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/unique-pagescreen-titles)                                                          | Yes    | Yes            | No        |
+| [Structure: Headings](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/headings)                                                                                          | No     | No             | Yes       |
+| [Structure: Containers and landmarks](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/containers-and-landmarks)                                                          | Yes    | No             | Yes       |
+| [Structure: Grouped elements](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/grouped-elements)                                                                          | Yes    | No             | No        |
+| [Text equivalents: Alternatives for non-text content](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/alternatives-for-non-text-content)                                | Yes    | No             | Yes       |
+| [Text equivalents: Decorative content](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/decorative-content)                                                                | Yes    | No             | No        |
+| [Text equivalents: Tooltips and supplementary information](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/tooltips-and-supplementary-information)                       | Yes    | No             | Yes       |
+| [Text equivalents: Roles, traits and properties](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/roles-traits-and-properties)                                      | Yes    | No             | No        |
+| [Text equivalents: Visual formatting](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/visual-formatting)                                                                  | Yes    | No             | Yes       |
 
 ## Tests
 
@@ -249,7 +249,15 @@ a summary of those guidelines and the level of test coverage currently provided.
 | Actionable content must be navigable in a meaningful sequence | manual    |
 
 
-### Focus: User interactions
+### Focus: Changing focus
+
+| Test Name                                                        | Test Type |
+| ---------------------------------------------------------------- | --------- |
+| Focus or context must not automatically change during user input | manual    |
+| Forms must have submit buttons                                   | automated |
+
+
+### Focus: Appropriate triggers
 
 | Test Name                                  | Test Type |
 | ------------------------------------------ | --------- |
@@ -270,7 +278,7 @@ a summary of those guidelines and the level of test coverage currently provided.
 | Fields must have labels or titles | automated |
 
 
-### Forms: Form inputs
+### Forms: Input format
 
 | Test Name                                              | Test Type |
 | ------------------------------------------------------ | --------- |
@@ -289,14 +297,6 @@ a summary of those guidelines and the level of test coverage currently provided.
 | Test Name                                                          | Test Type |
 | ------------------------------------------------------------------ | --------- |
 | Controls, labels, and other form elements must be properly grouped | manual    |
-
-
-### Forms: Managing focus
-
-| Test Name                                                        | Test Type |
-| ---------------------------------------------------------------- | --------- |
-| Focus or context must not automatically change during user input | manual    |
-| Forms must have submit buttons                                   | automated |
 
 
 ### Images: Images of text

@@ -1,4 +1,4 @@
-Feature: User interactions
+Feature: Appropriate triggers
 
   Actions must be triggered when appropriate for the type of user interaction.
 
@@ -20,7 +20,7 @@ Feature: User interactions
   Which trigger is most appropriate may vary for some interactive content.
 
   Background:
-    Given I am performing a manual test of the "Focus: User interactions: Actions must be triggered when appropriate" standard
+    Given I am performing a manual test of the "Focus: Appropriate triggers: Actions must be triggered when appropriate" standard
     And I have been asked "Are actions triggered when appropriate for the type of user interaction?"
 
   @html @manual

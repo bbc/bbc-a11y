@@ -32,13 +32,13 @@ a summary of those guidelines and the level of test coverage currently provided.
 | [Focus: Keyboard trap](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/focus/keyboard-trap)                                                                           | Yes    | No             | No        |
 | [Focus: Content order](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/focus/content-order)                                                                           | Yes    | No             | No        |
 | [Focus: Focus order](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/focus/focus-order)                                                                               | Yes    | No             | No        |
+| [Focus: Changing focus](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/changing-focus)                                                                                   | Yes    | No             | Yes       |
 | [Focus: User interactions](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/focus/user-interactions)                                                                   | Yes    | No             | No        |
 | [Focus: Alternative input methods](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/focus/alternative-input-methods)                                                   | Yes    | No             | No        |
 | [Forms: Labelling form controls](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/forms/labelling-form-controls)                                                       | No     | No             | Yes       |
 | [Forms: Form inputs](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/forms/form-inputs)                                                                               | Yes    | No             | No        |
 | [Forms: Form layout](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/forms/form-layout)                                                                               | Yes    | No             | No        |
 | [Forms: Grouping form elements](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/forms/grouping-form-elements)                                                         | Yes    | No             | No        |
-| [Forms: Managing focus](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/forms/managing-focus)                                                                         | Yes    | No             | Yes       |
 | [Images: Images of text](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/images/images-of-text)                                                                       | Yes    | No             | No        |
 | [Images: Background images](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/images/background-images)                                                                 | Yes    | No             | No        |
 | [Links: Descriptive links](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/links/descriptive-links)                                                                   | Yes    | No             | No        |
@@ -249,6 +249,14 @@ a summary of those guidelines and the level of test coverage currently provided.
 | Actionable content must be navigable in a meaningful sequence | manual    |
 
 
+### Focus: Changing focus
+
+| Test Name                                                        | Test Type |
+| ---------------------------------------------------------------- | --------- |
+| Focus or context must not automatically change during user input | manual    |
+| Forms must have submit buttons                                   | automated |
+
+
 ### Focus: User interactions
 
 | Test Name                                  | Test Type |
@@ -289,14 +297,6 @@ a summary of those guidelines and the level of test coverage currently provided.
 | Test Name                                                          | Test Type |
 | ------------------------------------------------------------------ | --------- |
 | Controls, labels, and other form elements must be properly grouped | manual    |
-
-
-### Forms: Managing focus
-
-| Test Name                                                        | Test Type |
-| ---------------------------------------------------------------- | --------- |
-| Focus or context must not automatically change during user input | manual    |
-| Forms must have submit buttons                                   | automated |
 
 
 ### Images: Images of text

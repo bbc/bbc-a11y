@@ -2,7 +2,7 @@
 
 This tool runs a set of tests against a set of URLs to verify whether each one
 meets the [BBC accessibility
-guidelines](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/).
+guidelines](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/).
 
 This project is a work in progress, but it is stable and you can use it to
 test the accessibility of your website, or add use it in your web project

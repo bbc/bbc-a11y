@@ -1,4 +1,4 @@
-Feature: Form inputs
+Feature: Input format
 
   A default input format must be indicated and supported.
 
@@ -15,7 +15,7 @@ Feature: Form inputs
   accessible alternatives, for example mobile keyboards.
 
   Background:
-    Given I am performing a manual test of the "Forms: Form inputs: A default input format must be indicated and supported" standard
+    Given I am performing a manual test of the "Forms: Input format: A default input format must be indicated and supported" standard
     And I have been asked "Is a default input format indicated/implied and supported?"
 
   @html @manual

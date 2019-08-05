@@ -138,7 +138,15 @@ Feature: Summarise Tests
       Type: manual
       Fails for each page that is not navigable in a meaningful sequence
 
-      Focus: User interactions: Actions must be triggered when appropriate
+      Forms: Changing focus: Focus or context must not automatically change during user input
+      Type: manual
+      Fails for each page with focus or context that changes automatically during user input
+
+      Forms: Changing focus: Forms must have submit buttons
+      Type: automated
+      Fails for each visible <form> element that has no submit button (can be any of input[type=submit], button[type=submit], input[type=image])
+
+      Focus: Appropriate triggers: Actions must be triggered when appropriate
       Type: manual
       Fails for each page without actions triggered when appropriate for the type of user interaction
 
@@ -151,7 +159,7 @@ Feature: Summarise Tests
       Fails for each visible input element (<input>, <textarea> and <select>) with no title attribute or <label> element referring to it (in the label's for attribute)
       Fails for each <button> element with no text (or only whitespace as text)
 
-      Forms: Form inputs: A default input format must be indicated and supported
+      Forms: Input format: A default input format must be indicated and supported
       Type: manual
       Fails for each page where a default input format is not indicated or supported
 
@@ -162,14 +170,6 @@ Feature: Summarise Tests
       Forms: Grouping form elements: Controls, labels, and other form elements must be properly grouped
       Type: manual
       Fails for each page with controls, labels, or other form elements that are improperly grouped
-
-      Forms: Managing focus: Focus or context must not automatically change during user input
-      Type: manual
-      Fails for each page with focus or context that changes automatically during user input
-
-      Forms: Managing focus: Forms must have submit buttons
-      Type: automated
-      Fails for each visible <form> element that has no submit button (can be any of input[type=submit], button[type=submit], input[type=image])
 
       Images: Images of text: Images of text should be avoided
       Type: manual

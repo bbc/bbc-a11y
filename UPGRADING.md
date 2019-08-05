@@ -1,3 +1,15 @@
+# Upgrading your project for compatibility with bbc-a11y 2.4
+
+As of version 2.4.0, bbc-a11y follows the [BBC Mobile Accessibility Guidelines](https://www.bbc.co.uk/accessibility/forproducts/guides/mobile/) at the new website. URLs, titles and sections have been updated to align with minor changes at the new site. These changes mainly affect manual checks, and include one change that may affect configuration files with 'skip' or 'only' options.
+
+The following table summarises the old and new names:
+
+| bbc-a11y v2.0 name                                                                      | bbc-a11y v2.4 name                                                                                      |
+| ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Forms: Managing focus: Forms must have submit buttons                                 | Focus: Changing focus: Forms must have submit buttons                                                 |
+
+
+
 # Upgrading your project for compatibility with bbc-a11y 2.0
 
 As of version 2.0.0, bbc-a11y now follows the

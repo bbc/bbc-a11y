@@ -1,6 +1,6 @@
 {
   "name": "bbc-a11y",
-  "version": "2.2.7",
+  "version": "2.3.2",
   "description": "BBC Accessibility standards checker",
   "main": "./bin/bbc-a11y.js",
   "directories": {},
@@ -31,9 +31,9 @@
   "homepage": "https://github.com/bbc/bbc-a11y#readme",
   "dependencies": {
     "commander": "^2.17.1",
-    "electron": "^2.0.7",
+    "electron": "^2.0.8",
     "httpism": "^3.10.0",
-    "jquery": "3.3.1"
+    "jquery": "^3.4.0"
   },
   "devDependencies": {
     "browser-monkey": "2.7.2",
@@ -48,7 +48,7 @@
     "mocha": "5.2.0",
     "rimraf": "2.6.2",
     "standard": "11.0.1",
-    "watchify": "3.11.0"
+    "watchify": "^3.11.1"
   },
   "standard": {
     "ignore": [

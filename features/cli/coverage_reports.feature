@@ -138,11 +138,11 @@ Feature: Summarise Tests
       Type: manual
       Fails for each page that is not navigable in a meaningful sequence
 
-      Forms: Changing focus: Focus or context must not automatically change during user input
+      Focus: Changing focus: Focus or context must not automatically change during user input
       Type: manual
       Fails for each page with focus or context that changes automatically during user input
 
-      Forms: Changing focus: Forms must have submit buttons
+      Focus: Changing focus: Forms must have submit buttons
       Type: automated
       Fails for each visible <form> element that has no submit button (can be any of input[type=submit], button[type=submit], input[type=image])
 

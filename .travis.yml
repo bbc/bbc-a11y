@@ -1,12 +1,13 @@
 language: node_js
 
 node_js:
-  - "7"
+  - "8"
 
 addons:
   apt:
     packages:
       - xvfb
+      - libgconf2-4
 
 install:
   - npm install

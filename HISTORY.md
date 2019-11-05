@@ -1,3 +1,7 @@
+# 2.3.3
+
+- Resolves security issue by updating httpism to 3.24.0.
+
 # 2.3.2
 
 - Resolves security issue by [updating electron to 2.0.8](https://github.com/bbc/bbc-a11y/issues/274).

@@ -1,7 +1,7 @@
 Feature: Hiding errors
 
-  Websites often contain external parts that we don't control, which will clutter up our pages
-  with violations.
+  Websites often contain external parts that we don't control, which will 
+  clutter up our pages with violations.
 
   We need a way to ignore these kinds of problems, so we can focus on the
   problems that we can actually fix.

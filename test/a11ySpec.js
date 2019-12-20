@@ -40,6 +40,18 @@ describe('a11y', function () {
       })
   })
 
+  it('hides warnings', function () {
+    $('body').append('<h2>I am in the wrong place</h2><h1>Hello!</h1>')
+    return a11y.test({ hide: ['First heading was not a main heading'] })
+      .then(function (outcome) {
+        var resultsWithWarnings = outcome.results.filter(function (standardResult) {
+          return standardResult.hiddenWarnings.length > 0
+        })
+        expect(resultsWithWarnings[0].warnings).to.eql([])
+        expect(resultsWithWarnings[0].hiddenWarnings[0][0]).to.eql('First heading was not a main heading:')
+      })
+  })
+
   it('only runs specific standards', function () {
     return a11y.test({ only: ['Structure: Containers and landmarks: Exactly one main landmark'] })
       .then(function (outcome) {

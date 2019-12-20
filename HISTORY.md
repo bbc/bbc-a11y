@@ -1,3 +1,7 @@
+# 2.4.0
+
+- Allows warnings to be hidden
+
 # 2.3.3
 
 - Resolves security issue by updating httpism to 3.24.0.

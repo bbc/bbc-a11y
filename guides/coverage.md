@@ -466,4 +466,3 @@ a summary of those guidelines and the level of test coverage currently provided.
 | ---------------------------------------------------------- | --------- |
 | Visual formatting alone must not be used to convey meaning | manual    |
 | Use tables for data                                        | automated |
-

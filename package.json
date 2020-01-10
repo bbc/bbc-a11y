@@ -1,6 +1,6 @@
 {
   "name": "bbc-a11y",
-  "version": "2.3.2",
+  "version": "2.4.0",
   "description": "BBC Accessibility standards checker",
   "main": "./bin/bbc-a11y.js",
   "directories": {},
@@ -32,7 +32,7 @@
   "dependencies": {
     "commander": "^2.17.1",
     "electron": "^2.0.8",
-    "httpism": "^3.10.0",
+    "httpism": "^3.24.0",
     "jquery": "^3.4.0"
   },
   "devDependencies": {

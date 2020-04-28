@@ -9,7 +9,7 @@ describe('a11y testing in frames', function () {
     this.iframe1 = document.querySelector('iframe')
     var doc = this.iframe1.contentWindow.document
     doc.open()
-    doc.write('<html><body><p>Second level</p><iframe src="about:blank"></iframe><iframe src="about:blank"></iframe></body></html>')
+    doc.write('<html><body><p>Second level <a>second level anchor</a></p><iframe src="about:blank"></iframe><iframe src="about:blank"></iframe></body></html>')
     doc.close()
     this.iframe2 = doc.body.querySelectorAll('iframe')[0]
     var doc2 = this.iframe2.contentWindow.document
@@ -27,14 +27,10 @@ describe('a11y testing in frames', function () {
   })
 
   it('tests contents of iframes', async function () {
-    // this test will always pass because it is not set up correctly to use promises https://mochajs.org/#working-with-promises
-    // using async/await instead - https://mochajs.org/#using-async-await - however the test now hangs indefinitely. I suspect an unresolved promise somewhere in the code
-    const outcome = await a11y.test({ only: ['Structure: Headings: Exactly one main heading', 'Headings: Headings must be in ascending order'] })
+    const outcome = await a11y.test({ only: ['Principles: Anchors must have hrefs', 'Headings: Headings must be in ascending order'] })
 
     expect(outcome.results[0].errors).to.eql([
-      ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, ':', 'Found 0 h1 elements.'],
-      ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe2, xpath: '/html/body/iframe[1]' }, ':', 'Found 0 h1 elements.'],
-      ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe3, xpath: '/html/body/iframe[2]' }, ':', 'Found 0 h1 elements.']
+      ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, ':', 'Anchor has no href attribute:', { element: '', xpath: '/html/body/p/a'}]
     ])
     expect(outcome.results[1].warnings).to.eql([
       ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe2, xpath: '/html/body/iframe[1]' }, ':', 'First heading was not a main heading:', { element: this.heading1, xpath: '/html/body/h3[1]' }],

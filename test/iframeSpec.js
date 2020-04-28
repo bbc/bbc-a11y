@@ -24,13 +24,14 @@ describe('a11y testing in frames', function () {
 
     this.heading1 = doc2.getElementsByTagName('h3')[0]
     this.heading2 = doc3.getElementsByTagName('h3')[0]
+    this.anchor = doc.getElementsByTagName('a')[0]
   })
 
   it('tests contents of iframes', async function () {
-    const outcome = await a11y.test({ only: ['Principles: Anchors must have hrefs', 'Headings: Headings must be in ascending order'] })
+    const outcome = await a11y.test({ only: ['Principles: Anchors must have hrefs', 'Structure: Headings: Headings must be in ascending order'] })
 
     expect(outcome.results[0].errors).to.eql([
-      ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, ':', 'Anchor has no href attribute:', { element: '', xpath: '/html/body/p/a'}]
+      ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, ':', 'Anchor has no href attribute:', { element: this.anchor, xpath: '/html/body/p/a' }]
     ])
     expect(outcome.results[1].warnings).to.eql([
       ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe2, xpath: '/html/body/iframe[1]' }, ':', 'First heading was not a main heading:', { element: this.heading1, xpath: '/html/body/h3[1]' }],

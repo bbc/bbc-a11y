@@ -30,7 +30,7 @@ describe('Fields must have labels or titles', function () {
 
     const outcome = await a11y.test({ only: ['Forms: Labelling form controls: Fields must have labels or titles'] })
 
-    expect(outcome.results[0].errors).to.eql([''])
+    expect(outcome.results[0].errors).to.eql([])
   })
 
   it('should return an error when a button with no text has no aria-label', async function () {

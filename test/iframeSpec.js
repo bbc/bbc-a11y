@@ -5,7 +5,7 @@ var $ = require('jquery')
 
 describe('a11y testing in frames', function () {
   beforeEach(function () {
-    $('body').html('<html><body><h1>Top level</h1><iframe src="about:blank"></iframe></body></html>')
+    $('body').html('<html><body><div role="main"><h1>Top level</h1><iframe src="about:blank"></iframe></div></body></html>')
     this.iframe1 = document.querySelector('iframe')
     var doc = this.iframe1.contentWindow.document
     doc.open()
@@ -28,14 +28,16 @@ describe('a11y testing in frames', function () {
   })
 
   it('tests contents of iframes', async function () {
-    const outcome = await a11y.test({ only: ['Principles: Anchors must have hrefs', 'Structure: Headings: Headings must be in ascending order'] })
+    const outcome = await a11y.test({ only: ['Principles: Anchors must have hrefs', 'Structure: Headings: Headings must be in ascending order', 'Structure: Headings: Exactly one main heading', 'Structure: Containers and landmarks: Exactly one main landmark'] })
 
     expect(outcome.results[0].errors).to.eql([
-      ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, ':', 'Anchor has no href attribute:', { element: this.anchor, xpath: '/html/body/p/a' }]
+      ['In frame', { element: this.iframe1, xpath: '/html/body/div/iframe' }, ':', 'Anchor has no href attribute:', { element: this.anchor, xpath: '/html/body/p/a' }]
     ])
     expect(outcome.results[1].warnings).to.eql([
-      ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe2, xpath: '/html/body/iframe[1]' }, ':', 'First heading was not a main heading:', { element: this.heading1, xpath: '/html/body/h3[1]' }],
-      ['In frame', { element: this.iframe1, xpath: '/html/body/iframe' }, { element: this.iframe3, xpath: '/html/body/iframe[2]' }, ':', 'First heading was not a main heading:', { element: this.heading2, xpath: '/html/body/h3[1]' }]
+      ['In frame', { element: this.iframe1, xpath: '/html/body/div/iframe' }, { element: this.iframe2, xpath: '/html/body/iframe[1]' }, ':', 'First heading was not a main heading:', { element: this.heading1, xpath: '/html/body/h3[1]' }],
+      ['In frame', { element: this.iframe1, xpath: '/html/body/div/iframe' }, { element: this.iframe3, xpath: '/html/body/iframe[2]' }, ':', 'First heading was not a main heading:', { element: this.heading2, xpath: '/html/body/h3[1]' }]
     ])
+    expect(outcome.results[2].errors).to.eql([])
+    expect(outcome.results[3].errors).to.eql([])
   })
 })

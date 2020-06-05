@@ -1,3 +1,7 @@
+# 2.4.1
+
+- Fixes an issue where bbc-a11y fails when it comes across some CSS3 selectors.
+
 # 2.4.0
 
 - Allows warnings to be hidden

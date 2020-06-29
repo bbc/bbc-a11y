@@ -78,7 +78,7 @@ describe('Fields', function () {
       expect(outcome.results[0].errors).to.eql([]);
     });
 
-    it('should not return an error when a button with no text and background image CSS has an aria-labelledby', async function () {
+    it('should not return an error when a button with no text and background image CSS has an aria-label', async function () {
       $('body').html(
         '<html><body><div id="my_label">My label</div><button style="background-image: url(\'next-icon.svg\')" aria-label="Next"></button></body></html>'
       );
@@ -168,7 +168,7 @@ describe('Fields', function () {
       ]);
     });
 
-    it('should return an error when a button has no text or no inline image', async function () {
+    it('should return an error when a button has no text or no image', async function () {
       $('body').html(
         '<html><body><button class="arrows__chevron"></button></body></html>'
       );

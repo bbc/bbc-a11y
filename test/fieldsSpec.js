@@ -5,7 +5,7 @@ var $ = require('jquery');
 
 describe('Fields', function () {
   describe('Accessible fields', function () {
-    it('should not return an error when a visible input element has a title', async function () {
+    it('should not fail when a visible input element has a title', async function () {
       $('body').html('<html><body><input title="input"></body></html>');
       this.field = document.getElementsByTagName('input')[0];
 
@@ -18,7 +18,7 @@ describe('Fields', function () {
       expect(outcome.results[0].errors).to.eql([]);
     });
 
-    it('should not return an error when a visible input element is of type image and has a src and alt attribute', async function () {
+    it('should not fail when a visible input element is of type image and has a src and alt attribute', async function () {
       $('body').html(
         '<html><body><input type="image" src="next-icon.svg" alt="Next"></body></html>'
       );
@@ -33,7 +33,7 @@ describe('Fields', function () {
       expect(outcome.results[0].errors).to.eql([]);
     });
 
-    it('should not return an error when a visible input element has a <label> element referring to it', async function () {
+    it('should not fail when a visible input element has a <label> element referring to it', async function () {
       $('body').html(
         '<html><body><label for="input">Label</label><input id="input"></body></html>'
       );
@@ -48,7 +48,7 @@ describe('Fields', function () {
       expect(outcome.results[0].errors).to.eql([]);
     });
 
-    it('should not return an error when a button with no text and an inline image has an aria-label', async function () {
+    it('should not fail when a button with no text and an inline image has an aria-label', async function () {
       $('body').html(
         '<html><body><button class="arrows__chevron" aria-label="Scroll carousel right"><img src="some-icon.png" /></button></body></html>'
       );
@@ -63,7 +63,7 @@ describe('Fields', function () {
       expect(outcome.results[0].errors).to.eql([]);
     });
 
-    it('should not return an error when a button with no text and inline image has an aria-labelledby', async function () {
+    it('should not fail when a button with no text and inline image has an aria-labelledby', async function () {
       $('body').html(
         '<html><body><div id="my_label">My label</div><button aria-labelledby="my_label"><img src="some-icon.png" /></button></body></html>'
       );
@@ -78,7 +78,7 @@ describe('Fields', function () {
       expect(outcome.results[0].errors).to.eql([]);
     });
 
-    it('should not return an error when a button with no text and background image CSS has an aria-label', async function () {
+    it('should not fail when a button with no text and background image CSS has an aria-label', async function () {
       $('body').html(
         '<html><body><div id="my_label">My label</div><button style="background-image: url(\'next-icon.svg\')" aria-label="Next"></button></body></html>'
       );
@@ -93,7 +93,7 @@ describe('Fields', function () {
       expect(outcome.results[0].errors).to.eql([]);
     });
 
-    it('should not return an error when a button with no text and background image CSS has an aria-labelledby', async function () {
+    it('should not fail when a button with no text and background image CSS has an aria-labelledby', async function () {
       $('body').html(
         '<html><body><div id="my_label">My label</div><button style="background-image: url(\'next-icon.svg\')" aria-labelledby="Next"></button></body></html>'
       );
@@ -110,7 +110,7 @@ describe('Fields', function () {
   });
 
   describe('Not accessible fields', function () {
-    it('should return an error when a visible input element has no title', async function () {
+    it('should fail when a visible input element has no title', async function () {
       $('body').html('<html><body><input></body></html>');
       this.field = document.getElementsByTagName('input')[0];
 
@@ -128,7 +128,7 @@ describe('Fields', function () {
       ]);
     });
 
-    it('should return an error when a visible input element is of type image and has no src', async function () {
+    it('should fail when a visible input element is of type image and has no src', async function () {
       $('body').html(
         '<html><body><input type="image" alt="Next" /></body></html>'
       );
@@ -148,7 +148,7 @@ describe('Fields', function () {
       ]);
     });
 
-    it('should return an error when a visible input element is of type image and has no alt attribute', async function () {
+    it('should fail when a visible input element is of type image and has no alt attribute', async function () {
       $('body').html(
         '<html><body><input type="image" src="next-icon.svg" /></body></html>'
       );
@@ -168,7 +168,7 @@ describe('Fields', function () {
       ]);
     });
 
-    it('should return an error when a button has no text or no image', async function () {
+    it('should fail when a button has no text or no image', async function () {
       $('body').html(
         '<html><body><button class="arrows__chevron"></button></body></html>'
       );
@@ -188,7 +188,7 @@ describe('Fields', function () {
       ]);
     });
 
-    it('should return an error when a button with no text and an inline image has no aria-label or aria-labelledby', async function () {
+    it('should fail when a button with no text and an inline image has no aria-label or aria-labelledby', async function () {
       $('body').html(
         '<html><body><button class="arrows__chevron"><img src="some-icon.png" /></button></body></html>'
       );
@@ -208,7 +208,7 @@ describe('Fields', function () {
       ]);
     });
 
-    it('should return an error when a button with no text and a background image has no aria-label or aria-labelledby', async function () {
+    it('should fail when a button with no text and a background image has no aria-label or aria-labelledby', async function () {
       $('body').html(
         '<html><body><button style="background-image: url(\'next-icon.svg\')"></button></body></html>'
       );

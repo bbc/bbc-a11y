@@ -125,7 +125,7 @@ describe('Fields', function () {
   });
 
   describe('Not accessible fields', function () {
-    describe('Input element with no title', function () {
+    describe('Input with no title', function () {
       var testNode = '<input>';
 
       it('should fail', async function () {

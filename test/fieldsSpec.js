@@ -228,7 +228,7 @@ describe('Fields', function () {
       })
     })
 
-    describe('Button with no text and with an inline image with no aria-label or aria-labelledby', function () {
+    describe('Button with no text with no aria-label or aria-labelledby containing an inline image with no alt text, ', function () {
       var testNode = '<button><img src="some-icon.png" /></button>'
 
       it('should fail', async function () {
@@ -243,7 +243,7 @@ describe('Fields', function () {
 
         expect(outcome.results[0].errors).to.eql([
           [
-            'Button with inline icon image has no aria-label or aria-labelledby:',
+            'Button with no text with an inline image has no alt text:',
             { xpath: '/html/body/button', element: el }
           ]
         ])

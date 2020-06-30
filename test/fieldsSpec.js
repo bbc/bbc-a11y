@@ -8,7 +8,7 @@ describe('Fields', function () {
     describe('Input with a title', function () {
       var testNode = '<input title="input">'
 
-      it('should not fail', async function () {
+      it('should pass', async function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
 
         const outcome = await a11y.test({
@@ -24,7 +24,7 @@ describe('Fields', function () {
     describe('Image input with src and alt text', function () {
       var testNode = '<input type="image" src="next-icon.svg" alt="Next">'
 
-      it('should not fail', async function () {
+      it('should pass', async function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
 
         const outcome = await a11y.test({
@@ -40,7 +40,7 @@ describe('Fields', function () {
     describe('Input with a <label> element referring to it', function () {
       var testNode = '<label for="input">Label</label><input id="input">'
 
-      it('should not fail', async function () {
+      it('should pass', async function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
 
         const outcome = await a11y.test({
@@ -55,9 +55,9 @@ describe('Fields', function () {
 
     describe('Button with no text with an inline image with an aria-label', function () {
       var testNode =
-        '<button class="arrows__chevron" aria-label="Scroll carousel right"><img src="some-icon.png" /></button>'
+        '<button aria-label="Scroll carousel right"><img src="some-icon.png" /></button>'
 
-      it('should not fail', async function () {
+      it('should pass', async function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
 
         const outcome = await a11y.test({
@@ -74,7 +74,7 @@ describe('Fields', function () {
       var testNode =
         '<button aria-labelledby="my_label"><img src="some-icon.png" /></button>'
 
-      it('should not fail', async function () {
+      it('should pass', async function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
 
         const outcome = await a11y.test({
@@ -91,7 +91,7 @@ describe('Fields', function () {
       var testNode =
         '<button style="background-image: url(\'next-icon.svg\')" aria-label="Next"></button>'
 
-      it('should not fail', async function () {
+      it('should pass', async function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
 
         const outcome = await a11y.test({
@@ -108,7 +108,24 @@ describe('Fields', function () {
       var testNode =
         '<button style="background-image: url(\'next-icon.svg\')" aria-labelledby="Next"></button>'
 
-      it('should not fail', async function () {
+      it('should pass', async function () {
+        $('body').html('<html><body>' + testNode + '</body></html>')
+
+        const outcome = await a11y.test({
+          only: [
+            'Forms: Labelling form controls: Fields must have labels or titles'
+          ]
+        })
+
+        expect(outcome.results[0].errors).to.eql([])
+      })
+    })
+
+    describe('Button with no text with an inline image with alt text', function () {
+      var testNode =
+        '<button><img src="some-icon.png" alt="Some icon" /></button>'
+
+      it('should pass', async function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
 
         const outcome = await a11y.test({
@@ -145,7 +162,7 @@ describe('Fields', function () {
       })
     })
 
-    describe('Image input with no title', function () {
+    describe('Image input with alt text with no src attribute and no <label>', function () {
       var testNode = '<input type="image" alt="Next" />'
 
       it('should fail', async function () {
@@ -189,8 +206,8 @@ describe('Fields', function () {
       })
     })
 
-    describe('Button with no text and no image', function () {
-      var testNode = '<button class="arrows__chevron"></button>'
+    describe('Button with no text and no inline or background image', function () {
+      var testNode = '<button></button>'
 
       it('should fail', async function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
@@ -212,8 +229,7 @@ describe('Fields', function () {
     })
 
     describe('Button with no text and with an inline image with no aria-label or aria-labelledby', function () {
-      var testNode =
-        '<button class="arrows__chevron"><img src="some-icon.png" /></button>'
+      var testNode = '<button><img src="some-icon.png" /></button>'
 
       it('should fail', async function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
@@ -234,7 +250,7 @@ describe('Fields', function () {
       })
     })
 
-    describe('Button with no text and with a background image with no aria-label or aria-labelledby', function () {
+    describe('Button with no text and with an inline image with no alt text, no aria-label or aria-labelledby', function () {
       var testNode =
         '<button style="background-image: url(\'next-icon.svg\')"></button>'
 

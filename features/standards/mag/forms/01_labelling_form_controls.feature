@@ -125,7 +125,7 @@ Feature: Labelling form controls
   Scenario: Image inputs do not need labels or Title attributes
     Given a page with the body:
       """
-      <input type="image" />
+      <input type="image" src="next-icon.svg" alt="Next" />
       """
     When I test the "Forms: Labelling form controls: Fields must have labels or titles" standard
     Then it passes
@@ -148,5 +148,5 @@ Feature: Labelling form controls
     When I test the "Forms: Labelling form controls: Fields must have labels or titles" standard
     Then it fails with the message:
       """
-      Button has no text: /html/body/button
+      Button has no text or image: /html/body/button
       """

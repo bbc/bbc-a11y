@@ -65,7 +65,7 @@ describe('Fields', function () {
 
     it('should not fail when a button with no text and inline image has an aria-labelledby', async function () {
       var testNode =
-        '<div id="my_label">My label</div><button aria-labelledby="my_label"><img src="some-icon.png" /></button>';
+        '<button aria-labelledby="my_label"><img src="some-icon.png" /></button>';
 
       $('body').html('<html><body>' + testNode + '</body></html>');
       var el = document.getElementsByTagName('button')[0];
@@ -81,7 +81,7 @@ describe('Fields', function () {
 
     it('should not fail when a button with no text and background image CSS has an aria-label', async function () {
       var testNode =
-        '<div id="my_label">My label</div><button style="background-image: url(\'next-icon.svg\')" aria-label="Next"></button>';
+        '<button style="background-image: url(\'next-icon.svg\')" aria-label="Next"></button>';
 
       $('body').html('<html><body>' + testNode + '</body></html>');
       var el = document.getElementsByTagName('button')[0];
@@ -97,7 +97,7 @@ describe('Fields', function () {
 
     it('should not fail when a button with no text and background image CSS has an aria-labelledby', async function () {
       var testNode =
-        '<div id="my_label">My label</div><button style="background-image: url(\'next-icon.svg\')" aria-labelledby="Next"></button>';
+        '<button style="background-image: url(\'next-icon.svg\')" aria-labelledby="Next"></button>';
 
       $('body').html('<html><body>' + testNode + '</body></html>');
       var el = document.getElementsByTagName('button')[0];
@@ -196,6 +196,7 @@ describe('Fields', function () {
     it('should fail when a button with no text and an inline image has no aria-label or aria-labelledby', async function () {
       var testNode =
         '<button class="arrows__chevron"><img src="some-icon.png" /></button>';
+
       $('body').html('<html><body>' + testNode + '</body></html>');
       var el = document.getElementsByTagName('button')[0];
 
@@ -216,6 +217,7 @@ describe('Fields', function () {
     it('should fail when a button with no text and a background image has no aria-label or aria-labelledby', async function () {
       var testNode =
         '<button style="background-image: url(\'next-icon.svg\')"></button>';
+
       $('body').html('<html><body>' + testNode + '</body></html>');
       var el = document.getElementsByTagName('button')[0];
 

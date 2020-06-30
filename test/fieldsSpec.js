@@ -11,13 +11,15 @@ describe('Fields', function () {
       it('should pass', async function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
 
-        const outcome = await a11y.test({
+        var outcome = await a11y.test({
           only: [
             'Forms: Labelling form controls: Fields must have labels or titles'
           ]
         })
 
-        expect(outcome.results[0].errors).to.eql([])
+        var errors = outcome.results[0].errors
+
+        expect(errors).to.eql([])
       })
     })
 
@@ -27,13 +29,15 @@ describe('Fields', function () {
       it('should pass', async function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
 
-        const outcome = await a11y.test({
+        var outcome = await a11y.test({
           only: [
             'Forms: Labelling form controls: Fields must have labels or titles'
           ]
         })
 
-        expect(outcome.results[0].errors).to.eql([])
+        var errors = outcome.results[0].errors
+
+        expect(errors).to.eql([])
       })
     })
 
@@ -43,47 +47,53 @@ describe('Fields', function () {
       it('should pass', async function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
 
-        const outcome = await a11y.test({
+        var outcome = await a11y.test({
           only: [
             'Forms: Labelling form controls: Fields must have labels or titles'
           ]
         })
 
-        expect(outcome.results[0].errors).to.eql([])
+        var errors = outcome.results[0].errors
+
+        expect(errors).to.eql([])
       })
     })
 
     describe('Button with no text with an inline image with an aria-label', function () {
       var testNode =
-        '<button aria-label="Scroll carousel right"><img src="some-icon.png" /></button>'
+        '<button aria-label="Scroll carousel right"><img src="some-icon.png" alt="" /></button>'
 
       it('should pass', async function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
 
-        const outcome = await a11y.test({
+        var outcome = await a11y.test({
           only: [
             'Forms: Labelling form controls: Fields must have labels or titles'
           ]
         })
 
-        expect(outcome.results[0].errors).to.eql([])
+        var errors = outcome.results[0].errors
+
+        expect(errors).to.eql([])
       })
     })
 
     describe('Button with no text with an inline image with an aria-labelledby', function () {
       var testNode =
-        '<button aria-labelledby="my_label"><img src="some-icon.png" /></button>'
+        '<button aria-labelledby="my_label"><img src="some-icon.png" alt="" /></button>'
 
       it('should pass', async function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
 
-        const outcome = await a11y.test({
+        var outcome = await a11y.test({
           only: [
             'Forms: Labelling form controls: Fields must have labels or titles'
           ]
         })
 
-        expect(outcome.results[0].errors).to.eql([])
+        var errors = outcome.results[0].errors
+
+        expect(errors).to.eql([])
       })
     })
 
@@ -94,13 +104,15 @@ describe('Fields', function () {
       it('should pass', async function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
 
-        const outcome = await a11y.test({
+        var outcome = await a11y.test({
           only: [
             'Forms: Labelling form controls: Fields must have labels or titles'
           ]
         })
 
-        expect(outcome.results[0].errors).to.eql([])
+        var errors = outcome.results[0].errors
+
+        expect(errors).to.eql([])
       })
     })
 
@@ -111,13 +123,15 @@ describe('Fields', function () {
       it('should pass', async function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
 
-        const outcome = await a11y.test({
+        var outcome = await a11y.test({
           only: [
             'Forms: Labelling form controls: Fields must have labels or titles'
           ]
         })
 
-        expect(outcome.results[0].errors).to.eql([])
+        var errors = outcome.results[0].errors
+
+        expect(errors).to.eql([])
       })
     })
 
@@ -128,13 +142,15 @@ describe('Fields', function () {
       it('should pass', async function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
 
-        const outcome = await a11y.test({
+        var outcome = await a11y.test({
           only: [
             'Forms: Labelling form controls: Fields must have labels or titles'
           ]
         })
 
-        expect(outcome.results[0].errors).to.eql([])
+        var errors = outcome.results[0].errors
+
+        expect(errors).to.eql([])
       })
     })
   })
@@ -147,18 +163,18 @@ describe('Fields', function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
         var el = document.getElementsByTagName('input')[0]
 
-        const outcome = await a11y.test({
+        var outcome = await a11y.test({
           only: [
             'Forms: Labelling form controls: Fields must have labels or titles'
           ]
         })
 
-        expect(outcome.results[0].errors).to.eql([
-          [
-            'Field has no label or title attribute:',
-            { xpath: '/html/body/input', element: el }
-          ]
-        ])
+        var errors = outcome.results[0].errors[0]
+        var errorMessage = errors[0]
+        var pathToNode = errors[1]
+
+        expect(errorMessage).to.eql('Field has no label or title attribute:')
+        expect(pathToNode).to.eql({ xpath: '/html/body/input', element: el })
       })
     })
 
@@ -169,18 +185,18 @@ describe('Fields', function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
         var el = document.getElementsByTagName('input')[0]
 
-        const outcome = await a11y.test({
+        var outcome = await a11y.test({
           only: [
             'Forms: Labelling form controls: Fields must have labels or titles'
           ]
         })
 
-        expect(outcome.results[0].errors).to.eql([
-          [
-            'Field with type of image has no src:',
-            { xpath: '/html/body/input', element: el }
-          ]
-        ])
+        var errors = outcome.results[0].errors[0]
+        var errorMessage = errors[0]
+        var pathToNode = errors[1]
+
+        expect(errorMessage).to.eql('Field with type of image has no src:')
+        expect(pathToNode).to.eql({ xpath: '/html/body/input', element: el })
       })
     })
 
@@ -191,18 +207,44 @@ describe('Fields', function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
         var el = document.getElementsByTagName('input')[0]
 
-        const outcome = await a11y.test({
+        var outcome = await a11y.test({
           only: [
             'Forms: Labelling form controls: Fields must have labels or titles'
           ]
         })
 
-        expect(outcome.results[0].errors).to.eql([
-          [
-            'Field with type of image has no alt text:',
-            { xpath: '/html/body/input', element: el }
+        var errors = outcome.results[0].errors[0]
+        var errorMessage = errors[0]
+        var pathToNode = errors[1]
+
+        expect(errorMessage).to.eql(
+          'Field with type of image has no alt text:'
+        )
+        expect(pathToNode).to.eql({ xpath: '/html/body/input', element: el })
+      })
+    })
+
+    describe('Image input with empty alt text', function () {
+      var testNode = '<input type="image" src="next-icon.svg" alt="" />'
+
+      it('should fail', async function () {
+        $('body').html('<html><body>' + testNode + '</body></html>')
+        var el = document.getElementsByTagName('input')[0]
+
+        var outcome = await a11y.test({
+          only: [
+            'Forms: Labelling form controls: Fields must have labels or titles'
           ]
-        ])
+        })
+
+        var errors = outcome.results[0].errors[0]
+        var errorMessage = errors[0]
+        var pathToNode = errors[1]
+
+        expect(errorMessage).to.eql(
+          'Field with type of image has no alt text:'
+        )
+        expect(pathToNode).to.eql({ xpath: '/html/body/input', element: el })
       })
     })
 
@@ -213,44 +255,46 @@ describe('Fields', function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
         var el = document.getElementsByTagName('button')[0]
 
-        const outcome = await a11y.test({
+        var outcome = await a11y.test({
           only: [
             'Forms: Labelling form controls: Fields must have labels or titles'
           ]
         })
 
-        expect(outcome.results[0].errors).to.eql([
-          [
-            'Button has no text or image:',
-            { xpath: '/html/body/button', element: el }
-          ]
-        ])
+        var errors = outcome.results[0].errors[0]
+        var errorMessage = errors[0]
+        var pathToNode = errors[1]
+
+        expect(errorMessage).to.eql('Button has no text or image:')
+        expect(pathToNode).to.eql({ xpath: '/html/body/button', element: el })
       })
     })
 
-    describe('Button with no text with no aria-label or aria-labelledby containing an inline image with no alt text, ', function () {
+    describe('Button with no text with no aria-label or aria-labelledby containing an inline image with no alt text', function () {
       var testNode = '<button><img src="some-icon.png" /></button>'
 
       it('should fail', async function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
         var el = document.getElementsByTagName('button')[0]
 
-        const outcome = await a11y.test({
+        var outcome = await a11y.test({
           only: [
             'Forms: Labelling form controls: Fields must have labels or titles'
           ]
         })
 
-        expect(outcome.results[0].errors).to.eql([
-          [
-            'Button with no text with an inline image has no alt text:',
-            { xpath: '/html/body/button', element: el }
-          ]
-        ])
+        var errors = outcome.results[0].errors[0]
+        var errorMessage = errors[0]
+        var pathToNode = errors[1]
+
+        expect(errorMessage).to.eql(
+          'Button with no text with an inline image has no alt text:'
+        )
+        expect(pathToNode).to.eql({ xpath: '/html/body/button', element: el })
       })
     })
 
-    describe('Button with no text and with an inline image with no alt text, no aria-label or aria-labelledby', function () {
+    describe('Button with no text and with a background image with no aria-label or aria-labelledby', function () {
       var testNode =
         '<button style="background-image: url(\'next-icon.svg\')"></button>'
 
@@ -258,18 +302,45 @@ describe('Fields', function () {
         $('body').html('<html><body>' + testNode + '</body></html>')
         var el = document.getElementsByTagName('button')[0]
 
-        const outcome = await a11y.test({
+        var outcome = await a11y.test({
           only: [
             'Forms: Labelling form controls: Fields must have labels or titles'
           ]
         })
 
-        expect(outcome.results[0].errors).to.eql([
-          [
-            'Button with inline icon image has no aria-label or aria-labelledby:',
-            { xpath: '/html/body/button', element: el }
+        var errors = outcome.results[0].errors[0]
+        var errorMessage = errors[0]
+        var pathToNode = errors[1]
+
+        expect(errorMessage).to.eql(
+          'Button with inline image or background image has no aria-label or aria-labelledby:'
+        )
+        expect(pathToNode).to.eql({ xpath: '/html/body/button', element: el })
+      })
+    })
+
+    describe('Input with no <label> element referring to it', function () {
+      var testNode = '<label>Label</label><input id="input">'
+
+      it('should fail', async function () {
+        $('body').html('<html><body>' + testNode + '</body></html>')
+        var el = document.getElementsByTagName('input')[0]
+
+        var outcome = await a11y.test({
+          only: [
+            'Forms: Labelling form controls: Fields must have labels or titles'
           ]
-        ])
+        })
+
+        var errors = outcome.results[0].errors[0]
+        var errorMessage = errors[0]
+        var pathToNode = errors[1]
+
+        expect(errorMessage).to.eql('Field has no label or title attribute:')
+        expect(pathToNode).to.eql({
+          xpath: "//input[@id='input']",
+          element: el
+        })
       })
     })
   })

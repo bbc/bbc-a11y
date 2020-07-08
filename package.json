@@ -33,7 +33,7 @@
     "commander": "^2.17.1",
     "electron": "^7.2.4",
     "httpism": "^3.24.0",
-    "jquery": "^3.4.0"
+    "jquery": "^3.5.1"
   },
   "devDependencies": {
     "browser-monkey": "2.7.2",
@@ -42,12 +42,12 @@
     "cucumber": "4.2.1",
     "cucumber-electron": "2.5.0",
     "diff": "3.5.0",
-    "electron-mocha": "6.0.4",
+    "electron-mocha": "^9.0.1",
     "express": "4.16.3",
-    "mkdirp": "0.5.1",
-    "mocha": "5.2.0",
+    "mkdirp": "^1.0.4",
+    "mocha": "^8.0.1",
     "rimraf": "2.6.2",
-    "standard": "11.0.1",
+    "standard": "^14.3.4",
     "watchify": "^3.11.1"
   },
   "standard": {

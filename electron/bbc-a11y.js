@@ -1,6 +1,7 @@
 const electron = require('electron')
 const app = electron.app
 app.commandLine.appendSwitch('--disable-http-cache')
+app.commandLine.appendSwitch('disable-site-isolation-trials');
 
 const BrowserWindow = electron.BrowserWindow
 
@@ -15,7 +16,7 @@ function createWindow () {
     width: commandLineArgs.width || 1024,
     height: 800,
     show: false,
-    webPreferences: { webSecurity: false }
+    webPreferences: { webSecurity: false, nodeIntegration: true }
   })
 
   mainWindow.loadURL(url.format({
@@ -38,7 +39,7 @@ function createWindow () {
     })
   })
 
-  mainWindow.webContents.session.webRequest.onHeadersReceived({}, function (d, c) {
+  mainWindow.webContents.session.webRequest.onHeadersReceived(function (d, c) {
     for (var header in d.responseHeaders) {
       if (header.toLowerCase() === 'x-frame-options') {
         delete d.responseHeaders[header]

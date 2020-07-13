@@ -58,7 +58,7 @@ describe('configLoader.loadConfigFromPath(pathToConfigModule)', function () {
           throw new Error('Expected a rejection')
         })
         .catch(function (e) {
-          assert.equal('Unexpected token >', e.message)
+          assert.equal("Unexpected token '>'", e.message)
         })
     })
   })

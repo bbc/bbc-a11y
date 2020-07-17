@@ -1,6 +1,30 @@
+# 2.4.2
+
+- Removes requirement for iframes to have exactly one main heading and exactly one main landmark.
+
+# 2.4.1
+
+- Fixes an issue where bbc-a11y fails when it comes across some CSS3 selectors.
+
+# 2.4.0
+
+- Allows warnings to be hidden
+
+# 2.3.3
+
+- Resolves security issue by updating httpism to 3.24.0.
+
+# 2.3.2
+
+- Resolves security issue by [updating electron to 2.0.8](https://github.com/bbc/bbc-a11y/issues/274).
+
+# v2.3.1
+
+- Fixes the Dockerfile by updating it to use Node 8 base image.
+
 # v2.3.0
 
-- Main heading (h1) no longer required to be the first heading.
+- Removes a moderate vulnerability caused by [jquery@3.3.\*](https://github.com/bbc/bbc-a11y/issues/289) by manually bumping the package and fix 2 low vulnerabilities caused by watchify@3.11.0 using `npm audit fix`, via [#290](https://github.com/bbc/bbc-a11y/pull/290)
 
 # v2.2.6
 

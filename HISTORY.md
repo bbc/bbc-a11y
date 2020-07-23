@@ -1,3 +1,11 @@
+# 2.4.2
+
+- Removes requirement for iframes to have exactly one main heading and exactly one main landmark.
+
+# 2.4.1
+
+- Fixes an issue where bbc-a11y fails when it comes across some CSS3 selectors.
+
 # 2.4.0
 
 - Allows warnings to be hidden

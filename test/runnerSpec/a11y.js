@@ -1,3 +1,3 @@
 /* global page */
-page('http://what/evs')
-page('http://and/another')
+page('https://www.stage.bbc.com/');
+page('https://www.stage.bbc.co.uk/');

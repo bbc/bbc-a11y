@@ -16,7 +16,7 @@ Feature: Containers and landmarks
   HTML Applicability
   ==================
 
-  A page **must** have exactly one element with `role="main"`
+  A page **must** have exactly one element with a <main> tag or `role="main"`
 
   The WAI-ARIA `main` landmark role can be help keyboard users with assistive
   technologies such as screen readers (and in the future as native browser
@@ -24,10 +24,19 @@ Feature: Containers and landmarks
   navigation and other contents that might be before it.
 
   @html @automated
-  Scenario: Page has a single main element
+  Scenario: Page has a single main element with role="main"
     Given a page with the body:
       """
       <div role="main">Main element</div>
+      """
+    When I test the "Structure: Containers and landmarks: Exactly one main landmark" standard
+    Then it passes
+
+  @html @automated
+  Scenario: Page has a single main element with <main> tag
+    Given a page with the body:
+      """
+      <main>Main element</main>
       """
     When I test the "Structure: Containers and landmarks: Exactly one main landmark" standard
     Then it passes
@@ -42,7 +51,33 @@ Feature: Containers and landmarks
     When I test the "Structure: Containers and landmarks: Exactly one main landmark" standard
     Then it fails with the message:
       """
-      Found 2 elements with role="main": /html/body/div[1] /html/body/div[2]
+      Found 2 elements with <main> tag or role="main": /html/body/div[1] /html/body/div[2]
+      """
+
+  @html @automated
+  Scenario: Page has two main elements with <main> tags
+    Given a page with the body:
+      """
+      <main>Main one</main>
+      <main>Main two</main>
+      """
+    When I test the "Structure: Containers and landmarks: Exactly one main landmark" standard
+    Then it fails with the message:
+      """
+      Found 2 elements with <main> tag or role="main": /html/body/main[1] /html/body/main[2]
+      """
+
+  @html @automated
+  Scenario: Page has two main elements - 1 with <main> tag, 1 with role="main"
+    Given a page with the body:
+      """
+      <main>Main one</main>
+      <div role="main">Main two</div>
+      """
+    When I test the "Structure: Containers and landmarks: Exactly one main landmark" standard
+    Then it fails with the message:
+      """
+      Found 2 elements with <main> tag or role="main": /html/body/main /html/body/div
       """
 
   @html @automated
@@ -54,7 +89,19 @@ Feature: Containers and landmarks
     When I test the "Structure: Containers and landmarks: Exactly one main landmark" standard
     Then it fails with the message:
       """
-      Found 0 elements with role="main".
+      Found 0 elements with <main> tag or role="main".
+      """
+
+
+  Scenario: Page has zero main tags
+    Given a page with the body:
+      """
+      <div>Main one</div>
+      """
+    When I test the "Structure: Containers and landmarks: Exactly one main landmark" standard
+    Then it fails with the message:
+      """
+      Found 0 elements with <main> tag or role="main".
       """
 
   @html @manual

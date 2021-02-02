@@ -16,7 +16,7 @@ Feature: Containers and landmarks
   HTML Applicability
   ==================
 
-  A page **must** have exactly one element with a <main> tag or `role="main"`
+  A page **must** have exactly one <main> tag or an element with `role="main"`
 
   The WAI-ARIA `main` landmark role can be help keyboard users with assistive
   technologies such as screen readers (and in the future as native browser

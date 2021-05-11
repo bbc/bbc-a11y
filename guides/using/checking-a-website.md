@@ -9,6 +9,8 @@ Once you've downloaded node.js, you can open a terminal window and enter the
 following command:
 
     npm install bbc-a11y --global
+    
+Note: If using an Apple Silicon Mac (M1 etc), run the command ```npm install --arch=x64 electron@2.0.8``` for compatibility.
 
 ## Running bbc-a11y against your website
 

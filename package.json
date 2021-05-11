@@ -31,7 +31,7 @@
   "homepage": "https://github.com/bbc/bbc-a11y#readme",
   "dependencies": {
     "commander": "^2.17.1",
-    "electron": "^2.0.8",
+    "electron": "^9.4.0",
     "httpism": "^3.24.0",
     "jquery": "^3.4.0"
   },

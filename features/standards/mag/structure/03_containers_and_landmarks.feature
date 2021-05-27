@@ -24,10 +24,18 @@ Feature: Containers and landmarks
   navigation and other contents that might be before it.
 
   @html @automated
-  Scenario: Page has a single main element
+  Scenario: Page has a single element with role of main
     Given a page with the body:
       """
       <div role="main">Main element</div>
+      """
+    When I test the "Structure: Containers and landmarks: Exactly one main landmark" standard
+    Then it passes
+
+  Scenario: Page has a single main element
+    Given a page with the body:
+      """
+      <main>Main element</main>
       """
     When I test the "Structure: Containers and landmarks: Exactly one main landmark" standard
     Then it passes
@@ -42,7 +50,7 @@ Feature: Containers and landmarks
     When I test the "Structure: Containers and landmarks: Exactly one main landmark" standard
     Then it fails with the message:
       """
-      Found 2 elements with role="main": /html/body/div[1] /html/body/div[2]
+      Found 2 main elements (main or with role="main"): /html/body/div[1] /html/body/div[2]
       """
 
   @html @automated
@@ -54,7 +62,7 @@ Feature: Containers and landmarks
     When I test the "Structure: Containers and landmarks: Exactly one main landmark" standard
     Then it fails with the message:
       """
-      Found 0 elements with role="main".
+      Found 0 main elements (main or with role="main").
       """
 
   @html @manual

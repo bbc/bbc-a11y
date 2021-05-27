@@ -30,13 +30,13 @@ describe('a11y', function () {
   })
 
   it('hides errors', function () {
-    return a11y.test({ hide: ['Found 0 elements with role="main".'] })
+    return a11y.test({ hide: ['Found 0 main elements (main or with role="main").'] })
       .then(function (outcome) {
         var resultsWithErrors = outcome.results.filter(function (standardResult) {
           return standardResult.hiddenErrors.length > 0
         })
         expect(resultsWithErrors[0].errors).to.eql([])
-        expect(resultsWithErrors[0].hiddenErrors).to.eql([['Found 0 elements with role="main".']])
+        expect(resultsWithErrors[0].hiddenErrors).to.eql([['Found 0 main elements (main or with role="main").']])
       })
   })
 

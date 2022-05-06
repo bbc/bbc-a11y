@@ -1,16 +1,16 @@
-const win = require('electron').remote.getCurrentWindow()
+const win = require('@electron/remote').getCurrentWindow();
 
 module.exports = class ElectronWindowAdapter {
-  getContentSize () {
-    const [width, height] = win.getContentSize()
-    return { width, height }
+  getContentSize() {
+    const [width, height] = win.getContentSize();
+    return { width, height };
   }
 
-  setContentSize (width, height) {
-    win.setContentSize(width, height, false)
+  setContentSize(width, height) {
+    win.setContentSize(width, height, false);
   }
 
-  measureInnerWidth () {
-    return window.innerWidth
+  measureInnerWidth() {
+    return window.innerWidth;
   }
-}
+};

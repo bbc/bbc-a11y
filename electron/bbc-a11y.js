@@ -12,12 +12,16 @@ const commandLineArgs = require('../lib/cli/args').parse(process.argv);
 let mainWindow;
 
 function createWindow() {
+  require('@electron/remote/main').initialize();
+  
   mainWindow = new BrowserWindow({
     width: commandLineArgs.width || 1024,
     height: 800,
     show: false,
     webPreferences: { webSecurity: false, nodeIntegration: true },
   });
+
+  require('@electron/remote/main').enable(mainWindow);
 
   mainWindow.loadURL(
     url.format({

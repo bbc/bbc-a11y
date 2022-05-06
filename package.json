@@ -23,7 +23,7 @@
   "author": "BBC",
   "license": "Apache-2.0",
   "engines": {
-    "node": ">=8.x"
+    "node": ">=16.x"
   },
   "bugs": {
     "url": "https://github.com/bbc/bbc-a11y/issues"
@@ -32,7 +32,7 @@
   "dependencies": {
     "@electron/remote": "^2.0.8",
     "commander": "2.17.1",
-    "electron": "14.2.9",
+    "electron": "13.6.6",
     "httpism": "3.26.0",
     "jquery": "3.6.0"
   },

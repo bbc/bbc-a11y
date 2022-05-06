@@ -47,7 +47,7 @@ covered or work in progress, as [summarised here](./guides/coverage.md)
 ## License
 
 bbc-a11y is available to everyone under the terms of the Apache 2.0 open source
-licence. Take a look at the [LICENSE](./LICENSE) file in the code, and follow the links above to learn how to contribute.
+license. Take a look at the [LICENSE](./LICENSE) file in the code, and follow the links above to learn how to contribute.
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,

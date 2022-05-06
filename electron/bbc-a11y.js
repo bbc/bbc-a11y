@@ -1,56 +1,62 @@
 const electron = require('electron')
 const app = electron.app
 app.commandLine.appendSwitch('--disable-http-cache')
+app.commandLine.appendSwitch('disable-site-isolation-trials');
 
-const BrowserWindow = electron.BrowserWindow
+const BrowserWindow = electron.BrowserWindow;
 
-const path = require('path')
-const url = require('url')
-const commandLineArgs = require('../lib/cli/args').parse(process.argv)
+const path = require('path');
+const url = require('url');
+const commandLineArgs = require('../lib/cli/args').parse(process.argv);
 
-let mainWindow
+let mainWindow;
 
-function createWindow () {
+function createWindow() {
   mainWindow = new BrowserWindow({
     width: commandLineArgs.width || 1024,
     height: 800,
     show: false,
-    webPreferences: { webSecurity: false }
-  })
+    webPreferences: { webSecurity: false, nodeIntegration: true },
+  });
 
-  mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
-    protocol: 'file:',
-    slashes: true
-  }))
+  mainWindow.loadURL(
+    url.format({
+      pathname: path.join(__dirname, 'index.html'),
+      protocol: 'file:',
+      slashes: true,
+    })
+  );
 
   if (commandLineArgs.manual) {
-    mainWindow.show()
+    mainWindow.show();
   } else {
-    mainWindow.webContents.openDevTools({ mode: 'bottom' })
+    mainWindow.webContents.openDevTools({ mode: 'bottom' });
   }
 
   mainWindow.webContents.on('devtools-opened', () => {
     setImmediate(() => {
       if (commandLineArgs.interactive) {
-        mainWindow.show()
+        mainWindow.show();
       }
-    })
-  })
+    });
+  });
 
-  mainWindow.webContents.session.webRequest.onHeadersReceived({}, function (d, c) {
-    for (var header in d.responseHeaders) {
+  mainWindow.webContents.session.webRequest.onHeadersReceived(function (
+    details,
+    response
+  ) {
+    for (var header in details.responseHeaders) {
       if (header.toLowerCase() === 'x-frame-options') {
-        delete d.responseHeaders[header]
+        delete details.responseHeaders[header];
       }
     }
-    c({ cancel: false, responseHeaders: d.responseHeaders })
-  })
+    response({ cancel: false, responseHeaders: details.responseHeaders });
+  });
 
   mainWindow.on('closed', function () {
-    mainWindow.removeAllListeners()
-    mainWindow = null
-  })
+    mainWindow.removeAllListeners();
+    mainWindow = null;
+  });
 }
 
 app.on('ready', createWindow)

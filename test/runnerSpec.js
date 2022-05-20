@@ -79,27 +79,27 @@ describe('Runner', function () {
       return run([{ url: 'http://example.com/' }]).then(function (
         events
       ) {
-        var firstEventPayload = JSON.parse(events[0].args[0]);
-        assert.deepEqual(firstEventPayload.pagesChecked, 1);
+        var firstEventPayload = JSON.parse(events[0].args[0])
+        assert.deepEqual(firstEventPayload.pagesChecked, 1)
         assert.deepEqual(events[events.length - 1], {
           type: 'exit',
-          args: [1],
-        });
-      });
-    }).timeout(10000);
+          args: [1]
+        })
+      })
+    }).timeout(10000)
   })
 
   context('with no arguments', function () {
     it('loads the config file', function () {
-      const configPath = path.join(__dirname, 'runnerSpec', 'a11y.js');
+      const configPath = path.join(__dirname, 'runnerSpec', 'a11y.js')
       return run([], configPath).then(function (events) {
-        var firstEventPayload = JSON.parse(events[0].args[0]);
-        assert.deepEqual(firstEventPayload.pagesChecked, 2);
+        var firstEventPayload = JSON.parse(events[0].args[0])
+        assert.deepEqual(firstEventPayload.pagesChecked, 2)
         assert.deepEqual(events[events.length - 1], {
           type: 'exit',
-          args: [1],
-        });
-      });
-    }).timeout(10000);
+          args: [1]
+        })
+      })
+    }).timeout(10000)
   })
 })

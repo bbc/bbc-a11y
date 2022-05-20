@@ -1,3 +1,3 @@
 /* global page */
-page('https://www.stage.bbc.com/');
-page('https://www.stage.bbc.co.uk/');
+page('http://example.com/');
+page('http://example.com/');

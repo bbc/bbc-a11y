@@ -76,10 +76,11 @@ describe('Runner', function () {
 
   context('with a single a page as an argument', function () {
     it('checks the URL', function () {
-      return run([{ url: 'https://www.stage.bbc.com/' }]).then(function (
+      return run([{ url: 'http://example.com/' }]).then(function (
         events
       ) {
         var firstEventPayload = JSON.parse(events[0].args[0]);
+        console.log(firstEventPayload)
         assert.deepEqual(firstEventPayload.pagesChecked, 1);
         assert.deepEqual(events[events.length - 1], {
           type: 'exit',
@@ -94,6 +95,7 @@ describe('Runner', function () {
       const configPath = path.join(__dirname, 'runnerSpec', 'a11y.js');
       return run([], configPath).then(function (events) {
         var firstEventPayload = JSON.parse(events[0].args[0]);
+        console.log(firstEventPayload)
         assert.deepEqual(firstEventPayload.pagesChecked, 2);
         assert.deepEqual(events[events.length - 1], {
           type: 'exit',

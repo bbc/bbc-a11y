@@ -45,7 +45,7 @@
     "browserify": "17.0.0",
     "chai": "4.3.6",
     "diff": "5.0.0",
-    "electron-mocha": "11.0.2",
+    "electron-mocha": "9.3.2",
     "express": "4.18.1",
     "mkdirp": "1.0.4",
     "mocha": "10.0.0",

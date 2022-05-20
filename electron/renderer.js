@@ -1,21 +1,28 @@
 const path = require('path')
-const electron = require('electron')
+const electronRemoteMain = require('@electron/remote/main');
+electronRemoteMain.initialize();
 
-const Runner = require('../lib/runner')
-const Reporter = require('../lib/reporter')
-const ElectronWindowAdapter = require('./windowAdapter')
-const CommandLineArgs = require('../lib/cli/args')
+const Runner = require('../lib/runner');
+const Reporter = require('../lib/reporter');
+const ElectronWindowAdapter = require('./windowAdapter');
+const CommandLineArgs = require('../lib/cli/args');
 
-const remoteConsole = electron.remote.getGlobal('console')
+const electronRemote = require('@electron/remote');
 
-const argv = electron.remote.process.argv
-const args = CommandLineArgs.parse(argv)
+const remoteConsole = electronRemote.getGlobal('console');
 
-const reporter = Reporter.createReporter({ name: args.reporter, console, remoteConsole })
+const argv = electronRemote.process.argv;
+const args = CommandLineArgs.parse(argv);
 
-const { coverage } = args
+const reporter = Reporter.createReporter({
+  name: args.reporter,
+  console,
+  remoteConsole,
+});
 
-const exit = args.interactive ? () => {} : electron.remote.process.exit
+const { coverage } = args;
+
+const exit = args.interactive ? () => {} : electronRemote.process.exit;
 
 const configPath = path.resolve(args.configPath || path.join(process.cwd(), 'a11y.js'))
 

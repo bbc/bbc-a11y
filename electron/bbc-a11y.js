@@ -1,6 +1,9 @@
-const electron = require('electron')
-const app = electron.app
-app.commandLine.appendSwitch('--disable-http-cache')
+const electron = require('electron');
+const electronRemoteMain = require('@electron/remote/main');
+electronRemoteMain.initialize();
+
+const app = electron.app;
+app.commandLine.appendSwitch('--disable-http-cache');
 app.commandLine.appendSwitch('disable-site-isolation-trials');
 
 const BrowserWindow = electron.BrowserWindow;
@@ -22,7 +25,7 @@ function createWindow() {
     },
   });
 
-  require('@electron/remote/main').enable(mainWindow.webContents);
+  electronRemoteMain.enable(mainWindow.webContents);
 
   mainWindow.loadURL(
     url.format({
@@ -64,21 +67,21 @@ function createWindow() {
   });
 }
 
-app.on('ready', createWindow)
+app.on('ready', createWindow);
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
-    app.quit()
+    app.quit();
   }
-})
+});
 
 app.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {
-    createWindow()
+    createWindow();
   }
-})
+});

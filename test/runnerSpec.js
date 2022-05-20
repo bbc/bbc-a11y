@@ -80,7 +80,6 @@ describe('Runner', function () {
         events
       ) {
         var firstEventPayload = JSON.parse(events[0].args[0]);
-        console.log(firstEventPayload)
         assert.deepEqual(firstEventPayload.pagesChecked, 1);
         assert.deepEqual(events[events.length - 1], {
           type: 'exit',
@@ -95,7 +94,6 @@ describe('Runner', function () {
       const configPath = path.join(__dirname, 'runnerSpec', 'a11y.js');
       return run([], configPath).then(function (events) {
         var firstEventPayload = JSON.parse(events[0].args[0]);
-        console.log(firstEventPayload)
         assert.deepEqual(firstEventPayload.pagesChecked, 2);
         assert.deepEqual(events[events.length - 1], {
           type: 'exit',

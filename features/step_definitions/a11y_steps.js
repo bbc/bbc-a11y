@@ -1,11 +1,11 @@
 /* eslint no-eval: "off" */
-const { Given, When, Then } = require('cucumber')
+const { Given, When, Then } = require('@cucumber/cucumber')
 const assert = require('assert')
 const Standards = require('../../lib/standards')
 const jquery = require('jquery')
 const webServer = require('../support/web_server')
 
-Given('a website running at http://localhost:{int}', function (port) {
+Given('a website running on locclhost', function (port) {
   return webServer.ensureRunningOn(Number(port))
 })
 

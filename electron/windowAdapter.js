@@ -1,4 +1,4 @@
-const win = require('@electron/remote').getCurrentWindow();
+const win = require('electron').remote.getCurrentWindow();
 
 module.exports = class ElectronWindowAdapter {
   getContentSize() {

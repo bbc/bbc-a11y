@@ -1,13 +1,11 @@
 const path = require('path')
-const electronRemoteMain = require('@electron/remote/main');
-electronRemoteMain.initialize();
 
 const Runner = require('../lib/runner');
 const Reporter = require('../lib/reporter');
 const ElectronWindowAdapter = require('./windowAdapter');
 const CommandLineArgs = require('../lib/cli/args');
 
-const electronRemote = require('@electron/remote');
+const electronRemote = require('electron').remote;
 
 const remoteConsole = electronRemote.getGlobal('console');
 

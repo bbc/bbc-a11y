@@ -1,6 +1,4 @@
 const electron = require('electron');
-const electronRemoteMain = require('@electron/remote/main');
-electronRemoteMain.initialize();
 
 const app = electron.app;
 app.commandLine.appendSwitch('--disable-http-cache');
@@ -21,11 +19,11 @@ function createWindow() {
     show: false,
     webPreferences: {
       webSecurity: false,
+      enableRemoteModule: true, 
+      contextIsolation: false,
       nodeIntegration: true,
     },
   });
-
-  electronRemoteMain.enable(mainWindow.webContents);
 
   mainWindow.loadURL(
     url.format({

@@ -5,7 +5,7 @@ const Standards = require('../../lib/standards')
 const jquery = require('jquery')
 const webServer = require('../support/web_server')
 
-Given('a website running on locclhost', function (port) {
+Given('a website running on localhost', function (port) {
   return webServer.ensureRunningOn(Number(port))
 })
 

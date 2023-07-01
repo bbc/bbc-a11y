@@ -17,7 +17,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-      - name: Run headless test
-        uses: GabrielBB/xvfb-action@v1
-        with:
-          run: npm test
+      - run: export DISPLAY=:99.0
+      - run: xvfb-run --auto-servernum npm test

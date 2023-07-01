@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [8.x, 10.x, 12.x, 14.x]
 
     steps:
       - uses: actions/checkout@v3
@@ -17,5 +17,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-      - run: export DISPLAY=:99.0
-      - run: xvfb-run --auto-servernum npm test
+      - name: Set display
+        run: export DISPLAY=:99.0
+      - name: Run headless tests
+        run: xvfb-run --auto-servernum npm test

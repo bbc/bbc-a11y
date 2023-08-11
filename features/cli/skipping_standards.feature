@@ -1,7 +1,7 @@
 Feature: Skipping Standards
 
   Scenario: One standard is skipped
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     And a file named "a11y.js" with:
       """
       page("http://localhost:54321/missing_main_heading.html", {
@@ -15,7 +15,7 @@ Feature: Skipping Standards
       """
 
   Scenario: All standards except one is skipped
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     And a file named "a11y.js" with:
       """
       page("http://localhost:54321/two_headings_failures.html", {

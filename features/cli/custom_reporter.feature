@@ -1,6 +1,6 @@
 Feature: Custom Reporter
   Scenario: Overriding the default output format with a JavaScript module
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     And a file named "a11y.js" with:
       """
       page("http://localhost:54321/perfect.html")

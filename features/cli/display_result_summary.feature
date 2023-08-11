@@ -1,7 +1,7 @@
 Feature: Display result summary
 
   Scenario: Summarises pages checked and standard results
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     And a file named "a11y.js" with:
       """
       page("http://localhost:54321/perfect.html")
@@ -18,7 +18,7 @@ Feature: Display result summary
       """
 
   Scenario: Reminds users to consider usability beyond lint results
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     When I run `bbc-a11y http://localhost:54321/perfect.html`
     Then it should pass with:
       """

@@ -7,7 +7,7 @@ Feature: Hiding errors
   problems that we can actually fix.
 
   Scenario: Hide errors matching a pattern
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     And a file named "a11y.js" with:
       """
       page("http://localhost:54321/errors_in_orb_modules.html", {
@@ -23,7 +23,7 @@ Feature: Hiding errors
       """
 
   Scenario: Hide errors matching multiple patterns
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     And a file named "a11y.js" with:
       """
       page("http://localhost:54321/errors_in_orb_modules.html", {

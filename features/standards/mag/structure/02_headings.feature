@@ -404,7 +404,7 @@ Feature: Headings
 
   @html @automated
   Scenario: Heading followed by an iframe with content
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     And a page with the body:
       """
       <h1>Main heading</h1>
@@ -415,7 +415,7 @@ Feature: Headings
 
   @html @automated
   Scenario: Heading followed by a nested iframe with content
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     And a page with the body:
       """
       <h1>Main heading</h1>
@@ -428,7 +428,7 @@ Feature: Headings
 
   @html @automated
   Scenario: Heading followed by an iframe without content and then an iframe with content
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     And a page with the body:
       """
       <h1>Main heading</h1>
@@ -442,7 +442,7 @@ Feature: Headings
 
   @html @automated
   Scenario: Heading followed by an iframe without content
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     And a page with the body:
       """
       <h1>Main heading</h1>
@@ -458,7 +458,7 @@ Feature: Headings
 
   @html @automated
   Scenario: Heading followed by a hidden iframe with content
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     And a page with the body:
       """
       <h1>Main heading</h1>
@@ -472,7 +472,7 @@ Feature: Headings
 
   @html @automated
   Scenario: Heading followed by a hidden nested iframe with content
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     And a page with the body:
       """
       <h1>Main heading</h1>

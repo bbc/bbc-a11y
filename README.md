@@ -8,7 +8,8 @@ This project is a work in progress, but it is stable and you can use it to
 test the accessibility of your website, or add use it in your web project
 today.
 
-[![Build Status](https://travis-ci.org/bbc/bbc-a11y.svg?branch=master)](https://travis-ci.org/bbc/bbc-a11y)
+[![NPM downloads](https://img.shields.io/npm/dm/bbc-a11y.svg?style=flat)](https://npmjs.org/package/bbc-a11y)
+[![Build Status](https://github.com/bbc/bbc-a11y/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/bbc/bbc-a11y/actions/workflows/test.yml)
 
 ## Using BBC A11y to test web pages
 

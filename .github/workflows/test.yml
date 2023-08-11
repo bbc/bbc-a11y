@@ -1,0 +1,31 @@
+name: Node.js CI
+name: Run Tests
+on:
+  pull_request:
+    branches:
+      - 'main'
+  push:
+    branches:
+      - main
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - name: Set display
+        run: export DISPLAY=:99.0
+      - name: Run headless tests
+        run: xvfb-run --auto-servernum npm test

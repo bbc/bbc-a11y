@@ -1,5 +1,5 @@
-name: Node.js CI
 name: Run Tests
+
 on:
   pull_request:
     branches:
@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - main
+
 permissions:
   contents: read
 

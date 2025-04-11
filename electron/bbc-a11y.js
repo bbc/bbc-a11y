@@ -44,7 +44,9 @@ function createWindow () {
     })
   })
 
-  mainWindow.webContents.session.webRequest.onHeadersReceived({}, function (d, c) {
+  mainWindow.webContents.session.webRequest.onHeadersReceived({
+    urls: ['*://*/*']  // Match all URLs
+  }, function (d, c) {
     for (var header in d.responseHeaders) {
       if (header.toLowerCase() === 'x-frame-options') {
         delete d.responseHeaders[header]

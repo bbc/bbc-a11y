@@ -46,18 +46,20 @@ function createWindow () {
 
   mainWindow.webContents.session.webRequest.onHeadersReceived({
     urls: ['*://*/*']  // Match all URLs
-  }, function (d, c) {
-    for (var header in d.responseHeaders) {
-      if (header.toLowerCase() === 'x-frame-options') {
-        delete d.responseHeaders[header]
+  }, (d, c) => {
+    for (let header in d.responseHeaders) {
+      const headerLower = header.toLowerCase();
+      if (headerLower === 'x-frame-options' || 
+          headerLower === 'content-security-policy') {
+        delete d.responseHeaders[header];
       }
     }
-    c({ cancel: false, responseHeaders: d.responseHeaders })
+    c({ cancel: false, responseHeaders: d.responseHeaders });
   })
 
-  mainWindow.on('closed', function () {
-    mainWindow.removeAllListeners()
-    mainWindow = null
+  mainWindow.on('closed', () => {
+    mainWindow.removeAllListeners();
+    mainWindow = null;
   })
 }
 

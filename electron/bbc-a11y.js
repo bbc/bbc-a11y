@@ -1,12 +1,13 @@
 const electron = require('electron')
-const app = electron.app
-app.commandLine.appendSwitch('--disable-http-cache')
-
-const BrowserWindow = electron.BrowserWindow
-
 const path = require('path')
 const url = require('url')
 const commandLineArgs = require('../lib/cli/args').parse(process.argv)
+
+const app = electron.app
+app.commandLine.appendSwitch('--disable-http-cache')
+app.commandLine.appendSwitch('--disable-site-isolation-trials')
+
+const BrowserWindow = electron.BrowserWindow
 
 let mainWindow
 

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
-var xpath = require('../lib/results/xpath.js')
-var expect = require('chai').expect
-var $ = require('jquery')
+const xpath = require('../lib/results/xpath.js')
+const expect = require('chai').expect
+const $ = require('jquery')
 
 describe('xpath', function () {
   describe('.replaceElementsWithXPaths()', function () {
@@ -18,8 +18,8 @@ describe('xpath', function () {
     })
 
     it('replaces element values with xpaths', function () {
-      var values = [createElement('p'), createElement('b')]
-      var replaced = xpath.replaceElementsWithXPaths(values)
+      const values = [createElement('p'), createElement('b')]
+      const replaced = xpath.replaceElementsWithXPaths(values)
       expect(replaced).to.eql([
         { xpath: '/html/body/p', element: values[0] },
         { xpath: '/html/body/b', element: values[1] }
@@ -27,8 +27,8 @@ describe('xpath', function () {
     })
 
     it('replaces jquery values with xpaths', function () {
-      var values = [createJQueryElement('p'), createJQueryElement('b')]
-      var replaced = xpath.replaceElementsWithXPaths(values)
+      const values = [createJQueryElement('p'), createJQueryElement('b')]
+      const replaced = xpath.replaceElementsWithXPaths(values)
       expect(replaced).to.eql([
         { xpath: '/html/body/p', element: values[0][0] },
         { xpath: '/html/body/b', element: values[1][0] }
@@ -36,25 +36,25 @@ describe('xpath', function () {
     })
 
     it('uses element id values for shorter xpaths', function () {
-      var top = document.createElement('div')
+      const top = document.createElement('div')
       top.innerHTML = '<div id="a"><div id="b"><span class="x">ok <b>then</b></span></div></div>'
-      var b = top.querySelector('b')
+      const b = top.querySelector('b')
 
-      var replaced = xpath.replaceElementsWithXPaths([b])
+      const replaced = xpath.replaceElementsWithXPaths([b])
       expect(replaced).to.eql([{ element: b, xpath: "//div[@id='b']/span/b" }])
     })
 
     it('replaces non-element values with themselves', function () {
-      var values = [1, 'two']
-      var replaced = xpath.replaceElementsWithXPaths(values)
+      const values = [1, 'two']
+      const replaced = xpath.replaceElementsWithXPaths(values)
       expect(replaced).to.eql(values)
     })
 
     it('replaces elements in nested arrays', function () {
-      var p = createElement('p')
-      var b = createJQueryElement('b')
-      var values = [1, [p], [[b]]]
-      var replaced = xpath.replaceElementsWithXPaths(values)
+      const p = createElement('p')
+      const b = createJQueryElement('b')
+      const values = [1, [p], [[b]]]
+      const replaced = xpath.replaceElementsWithXPaths(values)
       expect(replaced).to.eql([
         1,
         { xpath: '/html/body/p', element: p },

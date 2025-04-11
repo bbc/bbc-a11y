@@ -1,13 +1,13 @@
 /* eslint-env mocha */
-var sections = require('../lib/standards/sections')
-var assert = require('assert')
-var http = require('httpism')
+const sections = require('../lib/standards/sections')
+const assert = require('assert')
+const http = require('httpism')
 
 describe('Standards.sections', function () {
   it('has a unique documentationUrl for each section', function () {
-    var urls = {}
-    for (var name in sections) {
-      var section = sections[name]
+    const urls = {}
+    for (const name in sections) {
+      const section = sections[name]
       assert.equal(typeof section.documentationUrl, 'string')
       if (urls[section.documentationUrl]) assert.fail('duplicate: ' + section.documentationUrl)
       urls[section.documentationUrl] = true

@@ -1,6 +1,6 @@
 /* eslint-env mocha */
-var commandLineArgs = require('../lib/cli/args')
-var assert = require('assert')
+const commandLineArgs = require('../lib/cli/args')
+const assert = require('assert')
 
 describe('commandLineArgs.parse(argv)', function () {
   it('parses --width integer as viewport width', function () {

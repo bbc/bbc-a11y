@@ -1,7 +1,7 @@
 /* eslint-env mocha */
-var standard = require('../lib/standards/tests/textMustBeStyledWithUnitsThatAreResizableInAllBrowsers')
-var $ = require('jquery')
-var expect = require('chai').expect
+const standard = require('../lib/standards/tests/textMustBeStyledWithUnitsThatAreResizableInAllBrowsers')
+const $ = require('jquery')
+const expect = require('chai').expect
 
 beforeEach(function () {
   $('body').html('')
@@ -11,8 +11,8 @@ beforeEach(function () {
 describe('Font size units standard', function () {
   it('ignores empty text nodes', function () {
     $('<div style="font-size: 12px"></div>').appendTo('body')
-    var failures = []
-    var fail = function (failure, element) {
+    const failures = []
+    const fail = function (failure, element) {
       failures.push(failure)
     }
     standard.test({ $, fail })
@@ -21,8 +21,8 @@ describe('Font size units standard', function () {
 
   it('ignores comment nodes', function () {
     $('<div style="font-size: 12px"><!-- this is a comment --></div>').appendTo('body')
-    var failures = []
-    var fail = function (failure) {
+    const failures = []
+    const fail = function (failure) {
       failures.push(failure)
     }
     standard.test({ $, fail })
@@ -31,8 +31,8 @@ describe('Font size units standard', function () {
 
   it('ignores hidden nodes', function () {
     $('<div style="font-size: 12px; display: none">Lorem Ipsum</div>').appendTo('body')
-    var failures = []
-    var fail = function (failure) {
+    const failures = []
+    const fail = function (failure) {
       failures.push(failure)
     }
     standard.test({ $, fail })
@@ -41,8 +41,8 @@ describe('Font size units standard', function () {
 
   it('allows nodes sized with em units', function () {
     $('<div style="font-size: 1em">Lorem Ipsum</div>').appendTo('body')
-    var failures = []
-    var fail = function (failure) {
+    const failures = []
+    const fail = function (failure) {
       failures.push(failure)
     }
     standard.test({ $, fail })
@@ -51,8 +51,8 @@ describe('Font size units standard', function () {
 
   it('fails on visible nodes sized with px units using inline styles', function () {
     $('<div class="text" style="font-size: 12px">Lorem Ipsum</div>').appendTo('body')
-    var failures = []
-    var fail = function (failure, element) {
+    const failures = []
+    const fail = function (failure, element) {
       failures.push([failure, element])
     }
     standard.test({ $, fail })
@@ -64,8 +64,8 @@ describe('Font size units standard', function () {
   it('fails on visible nodes sized with px units using stylesheets', function () {
     $('<style>.text { font-size: 14px; }</style>').appendTo('head')
     $('<div class="text">Lorem Ipsum</div>').appendTo('body')
-    var failures = []
-    var fail = function (failure, element) {
+    const failures = []
+    const fail = function (failure, element) {
       failures.push([failure, element])
     }
     standard.test({ $, fail })
@@ -77,8 +77,8 @@ describe('Font size units standard', function () {
   it('works with CSS3 selectors', function () {
     $('<style>.text:not(:disabled):not(.disabled):active:focus { font-size: 12px; }</style>').appendTo('head')
     $('<div class="text"><a>Lorem Ipsum</a></div>').appendTo('body')
-    var failures = []
-    var fail = function (failure, element) {
+    const failures = []
+    const fail = function (failure, element) {
       failures.push([failure, element])
     }
     standard.test({ $, fail })

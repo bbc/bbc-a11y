@@ -125,20 +125,20 @@ function A11yWorld () {
     return this.manualRun.then(() => {
       const results = this.reporter.results
       let manualTestErrors = 0
-      
+
       for (const resultUrl in results) {
         const pageResult = results[resultUrl]
         if (pageResult?.results) {
-          const manualTests = pageResult.results.filter(result => 
+          const manualTests = pageResult.results.filter(result =>
             result.standard && result.standard.type === 'manual'
           )
-          
+
           for (const test of manualTests) {
             manualTestErrors += test.errors.length
           }
         }
       }
-      
+
       return manualTestErrors
     })
   }

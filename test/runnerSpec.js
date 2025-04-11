@@ -1,11 +1,11 @@
 /* eslint-env mocha */
-var Runner = require('../lib/runner')
-var Reporter = require('../lib/reporters/json')
-var assert = require('assert')
+const Runner = require('../lib/runner')
+const Reporter = require('../lib/reporters/json')
+const assert = require('assert')
 const path = require('path')
 
 describe('Runner', function () {
-  var mainFrame, events
+  let mainFrame, events
 
   beforeEach(function () {
     events = []
@@ -16,7 +16,7 @@ describe('Runner', function () {
   })
 
   function run (pages, configPath) {
-    var devToolsConsole = {
+    const devToolsConsole = {
       log: function () {
         events.push({ type: 'devToolsConsole.log', args: [].slice.apply(arguments) })
       },
@@ -27,7 +27,7 @@ describe('Runner', function () {
         events.push({ type: 'devToolsConsole.warn', args: [].slice.apply(arguments) })
       }
     }
-    var commandLineConsole = {
+    const commandLineConsole = {
       log: function () {
         events.push({ type: 'commandLineConsole.log', args: [].slice.apply(arguments) })
       },
@@ -42,7 +42,7 @@ describe('Runner', function () {
       events.push({ type: 'exit', args: [].slice.apply(arguments) })
     }
 
-    var windowAdapter = {
+    const windowAdapter = {
       getContentSize () {
         return {
           width: Number(mainFrame.getAttribute('width') || 0),
@@ -78,7 +78,7 @@ describe('Runner', function () {
     it('checks the URL', function () {
       return run([{ url: 'https://example.com/' }])
         .then(function (events) {
-          var firstEventPayload = JSON.parse(events[0].args[0])
+          const firstEventPayload = JSON.parse(events[0].args[0])
           assert.deepEqual(firstEventPayload.pagesChecked, 1)
           assert.deepEqual(events[events.length - 1], { type: 'exit', args: [1] })
         })
@@ -90,7 +90,7 @@ describe('Runner', function () {
       const configPath = path.join(__dirname, 'runnerSpec', 'a11y.js')
       return run([], configPath)
         .then(function (events) {
-          var firstEventPayload = JSON.parse(events[0].args[0])
+          const firstEventPayload = JSON.parse(events[0].args[0])
           assert.deepEqual(firstEventPayload.pagesChecked, 2)
           assert.deepEqual(events[events.length - 1], { type: 'exit', args: [1] })
         })

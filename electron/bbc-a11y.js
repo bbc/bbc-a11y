@@ -16,7 +16,7 @@ function createWindow () {
     width: commandLineArgs.width || 1024,
     height: 800,
     show: false,
-    webPreferences: { 
+    webPreferences: {
       webSecurity: false,
       enableRemoteModule: true,
       contextIsolation: false,
@@ -45,21 +45,21 @@ function createWindow () {
   })
 
   mainWindow.webContents.session.webRequest.onHeadersReceived({
-    urls: ['*://*/*']  // Match all URLs
+    urls: ['*://*/*'] // Match all URLs
   }, (d, c) => {
-    for (let header in d.responseHeaders) {
-      const headerLower = header.toLowerCase();
-      if (headerLower === 'x-frame-options' || 
+    for (const header in d.responseHeaders) {
+      const headerLower = header.toLowerCase()
+      if (headerLower === 'x-frame-options' ||
           headerLower === 'content-security-policy') {
-        delete d.responseHeaders[header];
+        delete d.responseHeaders[header]
       }
     }
-    c({ cancel: false, responseHeaders: d.responseHeaders });
+    c({ cancel: false, responseHeaders: d.responseHeaders })
   })
 
   mainWindow.on('closed', () => {
-    mainWindow.removeAllListeners();
-    mainWindow = null;
+    mainWindow.removeAllListeners()
+    mainWindow = null
   })
 }
 

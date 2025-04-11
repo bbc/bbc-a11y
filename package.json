@@ -3,7 +3,7 @@
   "description": "BBC Accessibility standards checker",
   "author": "BBC",
   "license": "Apache-2.0",
-  "version": "3.0.0-canary.5",
+  "version": "3.0.0",
   "main": "./bin/bbc-a11y.js",
   "repository": {
     "type": "git",

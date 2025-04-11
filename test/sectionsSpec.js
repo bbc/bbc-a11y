@@ -20,6 +20,12 @@ describe('Standards.sections', function () {
     this.timeout(60000)
     return Promise.all(Object.values(sections).map(section => {
       return fetch(section.documentationUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Invalid documentationUrl: ${section.documentationUrl}`)
+          }
+          return response.text()
+        })
         .then(body => {
           if (body.indexOf('Not found') > -1) { throw new Error(`Invalid documentationUrl: ${section.documentationUrl}`) }
         })

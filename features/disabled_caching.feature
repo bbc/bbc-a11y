@@ -16,10 +16,10 @@ Feature: Disabled Caching
       technologies like VoiceOver, JAWS and NVDA to make sure you're providing a good
       user experience.
       """
-    When I run `bbc-a11y https://a11ytests.com/goodThenBad`
+    When I run `bbc-a11y https://a11ytests.com/goodThenBad?retest=true`
     Then it should fail with:
       """
-      ✗ https://a11ytests.com/goodThenBad
+      ✗ https://a11ytests.com/goodThenBad?retest=true
         * Structure: Headings: Exactly one main heading
           - Found 0 h1 elements.
       """

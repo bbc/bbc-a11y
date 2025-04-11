@@ -41,7 +41,6 @@
   "devDependencies": {
     "@cucumber/cucumber": "7.2.1",
     "@cucumber/electron": "4.1.3",
-    "browser-monkey": "2.11.0",
     "browserify": "17.0.1",
     "chai": "4.3.6",
     "electron-mocha": "11.0.2",

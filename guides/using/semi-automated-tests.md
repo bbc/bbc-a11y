@@ -17,18 +17,18 @@ This setting will be matched against should the inner text of the `<title>`
 element, for example each of these tests will pass:
 
 ```js
-// Given the HTML at http://www.bbc.co.uk/news/technology-39419728 includes:
+// Given the HTML at https://www.bbc.co.uk/news/technology-39419728 includes:
 // <title>Uber set to pull out of Denmark - BBC News</title>
 
-page('http://www.bbc.co.uk/news/technology-39419728', {
+page('https://www.bbc.co.uk/news/technology-39419728', {
   title: 'Uber set to pull out of Denmark - BBC News'
 })
 
-page('http://www.bbc.co.uk/news/technology-39419728', {
+page('https://www.bbc.co.uk/news/technology-39419728', {
   title: '{h1:first} - BBC News'
 })
 
-page('http://www.bbc.co.uk/news/technology-39419728', {
+page('https://www.bbc.co.uk/news/technology-39419728', {
   title: $ => $('h1:first').text() + ' - BBC News'
 })
 ```

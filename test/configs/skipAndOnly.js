@@ -1,13 +1,13 @@
 /* global page */
-page('http://www.bbc.co.uk', {
+page('https://www.bbc.co.uk', {
   skip: 'x'
 })
-page('http://www.bbc.co.uk/news', {
+page('https://www.bbc.co.uk/news', {
   skip: ['y', 'z']
 })
-page('http://www.bbc.co.uk/sport', {
+page('https://www.bbc.co.uk/sport', {
   only: 'a'
 })
-page('http://www.bbc.co.uk/weather', {
+page('https://www.bbc.co.uk/weather', {
   only: ['b', 'c']
 })

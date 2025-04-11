@@ -65,7 +65,7 @@ Feature: Visible focus
       </style>
 
       <div class="hidden">
-        <a href="http://www.bbc.co.uk/">BBC</a>
+        <a href="https://www.bbc.co.uk/">BBC</a>
       </div>
       """
     When I test the "Design: Visible focus: Elements must be visible on focus" standard
@@ -86,7 +86,7 @@ Feature: Visible focus
       </style>
 
       <div class="hidden">
-        <a href="http://www.bbc.co.uk/">BBC</a>
+        <a href="https://www.bbc.co.uk/">BBC</a>
       </div>
       """
     When I test the "Design: Visible focus: Elements must be visible on focus" standard
@@ -99,7 +99,7 @@ Feature: Visible focus
   Scenario: Element is visible
     Given a page with the body:
       """
-      <a href="http://www.bbc.co.uk/">BBC</a>
+      <a href="https://www.bbc.co.uk/">BBC</a>
       """
     When I test the "Design: Visible focus: Elements must be visible on focus" standard
     Then it passes

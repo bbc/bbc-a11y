@@ -13,7 +13,7 @@ The docker image is not always necessary to use bbc-a11y for continuous integrat
 Test a single page:
 
 ```
-docker run --rm --tty bbca11y/bbc-a11y-docker http://www.bbc.co.uk/news/0
+docker run --rm --tty bbca11y/bbc-a11y-docker https://www.bbc.co.uk/news/0
 ```
 
 Or run tests from a config file:

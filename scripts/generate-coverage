@@ -5,7 +5,7 @@ IFS=$'\n\t'
 echo '# BBC A11y Test Coverage' > ./guides/coverage.md
 echo '' >> ./guides/coverage.md
 echo 'bbc-a11y tests URLs against the' >> ./guides/coverage.md
-echo '[BBC Mobile Accessibility Guidelines](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile). This is' >> ./guides/coverage.md
+echo '[BBC Mobile Accessibility Guidelines](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile). This is' >> ./guides/coverage.md
 echo 'a summary of those guidelines and the level of test coverage currently provided.' >> ./guides/coverage.md
 echo '' >> ./guides/coverage.md
 

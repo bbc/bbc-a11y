@@ -1,8 +1,8 @@
 # Upgrading your project for compatibility with bbc-a11y 2.0
 
 As of version 2.0.0, bbc-a11y now follows the
-[BBC Mobile Accessibility Guidelines](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile)
-instead of the legacy [HTML Accessibility Standards](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/html/).
+[BBC Mobile Accessibility Guidelines](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile)
+instead of the legacy [HTML Accessibility Standards](https://www.bbc.co.uk/guidelines/futuremedia/accessibility/html/).
 
 Users with configuration files that refer to tests by name will need to update
 their configuration accordingly. This should only affect configuration of pages

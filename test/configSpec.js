@@ -14,8 +14,8 @@ describe('configLoader.loadConfigFromPath(pathToConfigModule)', function () {
         .then(function (config) {
           assert.deepEqual(config, {
             pages: [
-              { url: 'http://www.bbc.co.uk' },
-              { url: 'http://www.bbc.co.uk/news' }
+              { url: 'https://www.bbc.co.uk' },
+              { url: 'https://www.bbc.co.uk/news' }
             ]
           })
         })
@@ -28,10 +28,10 @@ describe('configLoader.loadConfigFromPath(pathToConfigModule)', function () {
         .then(function (config) {
           assert.deepEqual(config, {
             pages: [
-              { url: 'http://www.bbc.co.uk', skip: ['x'] },
-              { url: 'http://www.bbc.co.uk/news', skip: ['y', 'z'] },
-              { url: 'http://www.bbc.co.uk/sport', only: ['a'] },
-              { url: 'http://www.bbc.co.uk/weather', only: ['b', 'c'] }
+              { url: 'https://www.bbc.co.uk', skip: ['x'] },
+              { url: 'https://www.bbc.co.uk/news', skip: ['y', 'z'] },
+              { url: 'https://www.bbc.co.uk/sport', only: ['a'] },
+              { url: 'https://www.bbc.co.uk/weather', only: ['b', 'c'] }
             ]
           })
         })
@@ -44,7 +44,7 @@ describe('configLoader.loadConfigFromPath(pathToConfigModule)', function () {
         .then(function (config) {
           assert.deepEqual(config, {
             pages: [
-              { url: 'http://www.bbc.co.uk', width: 789 }
+              { url: 'https://www.bbc.co.uk', width: 789 }
             ]
           })
         })

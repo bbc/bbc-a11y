@@ -5,7 +5,9 @@
   "main": "./bin/bbc-a11y.js",
   "directories": {},
   "scripts": {
-    "test": "./node_modules/.bin/electron-mocha --window-config ./electron-mocha.config.json --renderer && ./node_modules/.bin/cucumber-electron && standard",
+    "test:unit": "./node_modules/.bin/electron-mocha --window-config ./electron-mocha.config.json --renderer",
+    "test:e2e": "./node_modules/.bin/cucumber-electron",
+    "test": "npm run test:unit && npm run test:e2e && standard",
     "standard": "standard",
     "standard-fix": "standard --fix",
     "browserify": "browserify ./lib/a11y.js -o ./dist/bundle.js",

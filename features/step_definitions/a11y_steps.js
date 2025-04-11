@@ -220,7 +220,7 @@ When('I answer all questions except one with a pass', function () {
 })
 
 Then('it should result in a pass for {url}', function (url) {
-  return this.countErrorsForUrl(url)
+  return this.countManualTestErrors(url)
     .then(count => assert.equal(count, 0))
 })
 

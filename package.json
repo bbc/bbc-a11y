@@ -34,7 +34,7 @@
     "commander": "5.1.0",
     "electron": "13.5.2",
     "httpism": "3.26.0",
-    "jquery": "3.6.0"
+    "jquery": "3.7.1"
   },
   "resolutions": {
     "electron": "13.5.2"
@@ -43,10 +43,10 @@
     "@cucumber/cucumber": "7.2.1",
     "@cucumber/electron": "4.1.3",
     "browser-monkey": "2.11.0",
-    "browserify": "17.0.0",
+    "browserify": "17.0.1",
     "chai": "4.3.6",
     "electron-mocha": "11.0.2",
-    "mkdirp": "0.5.1",
+    "mkdirp": "3.0.1",
     "mocha": "10.0.0",
     "standard": "17.1.2",
     "watchify": "4.0.0"

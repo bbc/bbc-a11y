@@ -1,3 +1,3 @@
 /* global page */
-page('http://what/evs')
-page('http://and/another')
+page('https://a11ytests.com/perfect')
+page('https://a11ytests.com/perfect')

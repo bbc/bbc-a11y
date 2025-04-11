@@ -1,15 +1,15 @@
 Feature: Display result summary
 
   Scenario: Summarises pages checked and standard results
-    Given a website running at http://localhost:54321
+    Given a website running on a11ytests.com
     And a file named "a11y.js" with:
       """
-      page("http://localhost:54321/perfect.html")
-      page("http://localhost:54321/missing_main_heading.html", {
+      page("https://a11ytests.com/perfect")
+      page("https://a11ytests.com/missing_main_heading", {
         skip: "Structure: Headings: Exactly one main heading"
       })
-      page("http://localhost:54321/missing_main_heading.html?again!")
-      page("http://localhost:54321/subheading_first.html")
+      page("https://a11ytests.com/missing_main_heading?again!")
+      page("https://a11ytests.com/subheading_first")
       """
     When I run `bbc-a11y`
     Then it should fail with:
@@ -18,8 +18,8 @@ Feature: Display result summary
       """
 
   Scenario: Reminds users to consider usability beyond lint results
-    Given a website running at http://localhost:54321
-    When I run `bbc-a11y http://localhost:54321/perfect.html`
+    Given a website running on a11ytests.com
+    When I run `bbc-a11y https://a11ytests.com/perfect`
     Then it should pass with:
       """
       No errors found. But please remember:

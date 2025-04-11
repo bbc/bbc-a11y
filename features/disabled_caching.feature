@@ -4,8 +4,8 @@ Feature: Disabled Caching
   must be disabled
 
   Scenario: Re-testing an updated page
-    Given a website running at http://localhost:54321
-    When I run `bbc-a11y http://localhost:54321/goodThenBad.html`
+    Given a website running on a11ytests.com
+    When I run `bbc-a11y https://a11ytests.com/goodThenBad`
     Then it should pass with:
       """
       No errors found. But please remember:
@@ -16,10 +16,10 @@ Feature: Disabled Caching
       technologies like VoiceOver, JAWS and NVDA to make sure you're providing a good
       user experience.
       """
-    When I run `bbc-a11y http://localhost:54321/goodThenBad.html`
+    When I run `bbc-a11y https://a11ytests.com/goodThenBad`
     Then it should fail with:
       """
-      ✗ http://localhost:54321/goodThenBad.html
+      ✗ https://a11ytests.com/goodThenBad
         * Structure: Headings: Exactly one main heading
           - Found 0 h1 elements.
       """

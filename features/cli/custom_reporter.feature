@@ -1,10 +1,10 @@
 Feature: Custom Reporter
   Scenario: Overriding the default output format with a JavaScript module
-    Given a website running at http://localhost:54321
+    Given a website running on a11ytests.com
     And a file named "a11y.js" with:
       """
-      page("http://localhost:54321/perfect.html")
-      page("http://localhost:54321/missing_main_heading.html")
+      page("https://a11ytests.com/perfect")
+      page("https://a11ytests.com/missing_main_heading")
       """
     And a file named "custom/reporter.js" with:
       """
@@ -42,8 +42,8 @@ Feature: Custom Reporter
     Then it should fail with exactly:
       """
       STARTED
-      CHECKED http://localhost:54321/perfect.html
-      CHECKED http://localhost:54321/missing_main_heading.html
+      CHECKED https://a11ytests.com/perfect
+      CHECKED https://a11ytests.com/missing_main_heading
       ENDED
 
       """

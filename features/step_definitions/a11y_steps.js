@@ -1,23 +1,20 @@
 /* eslint no-eval: "off" */
-const { Given, When, Then } = require('cucumber')
+const { Given, When, Then } = require('@cucumber/cucumber')
 const assert = require('assert')
+
 const Standards = require('../../lib/standards')
 const jquery = require('jquery')
-const webServer = require('../support/web_server')
 
-Given('a website running at http://localhost:{int}', function (port) {
-  return webServer.ensureRunningOn(Number(port))
-})
+Given('a website running on a11ytests.com', function () {
+  return;
+});
 
 Given('a file named {string} with:', function (filePath, contents) {
   return this.writeFile(filePath, contents)
 })
 
 Given('all the tests pass', function () {
-  return webServer.ensureRunningOn(54321)
-    .then(() => {
-      return this.runA11y('http://localhost:54321/perfect.html')
-    })
+  return this.runA11y('https://a11ytests.com/perfect')
 })
 
 When('I run `bbc-a11y`', function () {
@@ -60,10 +57,7 @@ When('I run `bbc-a11y {url} --manual`', function (url) {
 })
 
 When('I run a11y against a failing page', function () {
-  return webServer.ensureRunningOn(54321)
-    .then(() => {
-      return this.runA11y('http://localhost:54321/missing_main_heading.html')
-    })
+  return this.runA11y('https://a11ytests.com/missing_main_heading')
     .then(result => {
       this.stdout = result.stdout
       this.stderr = result.stderr

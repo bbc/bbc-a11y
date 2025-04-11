@@ -2,18 +2,17 @@ const { setWorldConstructor, Before, After } = require('@cucumber/cucumber')
 const mkdirp = require('mkdirp')
 const { exec, execFile, spawn } = require('child_process')
 const path = require('path')
-const browserMonkey = require('browser-monkey/create')
-
 const Runner = require('../../lib/runner')
 const NullReporter = require('./nullReporter')
 const NullWindowAdapter = require('./nullWindowAdapter')
+const { waitForElement, waitForElementWithText } = require('./helpers')
 
 function A11yWorld () {
   this.tempDir = path.resolve(__dirname, '..', '..', 'tmp')
   this.binaryPath = path.resolve(__dirname, '..', '..', 'bin', 'bbc-a11y.js')
 
   this.runA11y = args => {
-    const execArgs = (args && args.split(' ')) || []
+    const execArgs = (args?.split(' ')) || []
     return new Promise((resolve, reject) => {
       const result = {}
       const child = execFile(this.binaryPath, execArgs, { cwd: this.tempDir }, (error, stdout, stderr) => {
@@ -52,12 +51,10 @@ function A11yWorld () {
     this.mainFrame = document.createElement('iframe')
     this.mainFrame.id = 'mainFrame'
     document.body.appendChild(this.mainFrame)
-    this.mainFrameMonkey = browserMonkey(this.mainFrame)
 
     this.answerFrame = document.createElement('iframe')
     this.answerFrame.id = 'answerFrame'
     document.body.appendChild(this.answerFrame)
-    this.answerFrameMonkey = browserMonkey(this.answerFrame)
 
     this.reporter = new NullReporter()
     const windowAdapter = new NullWindowAdapter()
@@ -72,12 +69,28 @@ function A11yWorld () {
     }).run()
   }
 
-  this.assertCurrentQuestionIs = function (question) {
-    return this.answerFrameMonkey.find('h1', { text: question }).shouldExist()
+  this.assertCurrentQuestionIs = async function (question) {
+    try {
+      const heading = await waitForElement(this.answerFrame, 'h1', { textContent: question, timeout: 3000 }) // Increased timeout slightly
+      if (!heading) {
+        throw new Error(`Assertion failed: Question heading "${question}" not found.`)
+      }
+      return true
+    } catch (error) {
+      const currentContent = this.answerFrame.contentDocument?.body?.innerText || 'unavailable'
+      throw new Error(`Failed assertion for question "${question}". Error: ${error.message}. Frame content: ${currentContent}`)
+    }
   }
 
-  this.answerQuestion = function (answer) {
-    return this.answerFrameMonkey.click(answer)
+  this.answerQuestion = async function (answer) {
+    try {
+      // Wait for a button or link with the specified text
+      const answerElement = await waitForElementWithText(this.answerFrame, 'button, a', answer, { timeout: 3000 })
+      answerElement.click()
+    } catch (error) {
+      const currentContent = this.answerFrame.contentDocument?.body?.innerText || 'unavailable'
+      throw new Error(`Failed to find or click answer "${answer}". Error: ${error.message}. Frame content: ${currentContent}`)
+    }
   }
 
   this.countAllErrors = () => {
@@ -93,23 +106,48 @@ function A11yWorld () {
   }
 
   this.answerManualTestQuestions = questionsAndAnswers => {
-    const answerNextQuestion = () => {
+    const answerNextQuestion = async () => {
       if (questionsAndAnswers.length === 0) return Promise.resolve()
       const qa = questionsAndAnswers.shift()
-      return this.answerFrameMonkey.find('h1', { text: qa.question }).shouldExist()
-        .then(() => this.answerFrameMonkey.click(qa.answer))
-        .catch(e => { throw new Error('Failed to answer "' + qa.question + '" with "' + qa.answer + '"\nText in answer frame:\n' + this.answerFrame.contentDocument.body.innerText) })
-        .then(() => answerNextQuestion())
+      try {
+        await waitForElement(this.answerFrame, 'h1', { textContent: qa.question, timeout: 3000 })
+
+        const answerElement = await waitForElementWithText(this.answerFrame, 'button, a', qa.answer, { timeout: 3000 })
+        answerElement.click()
+      } catch (e) {
+        const currentContent = this.answerFrame.contentDocument?.body?.innerText || 'unavailable'
+        throw new Error(`Failed to answer "${qa.question}" with "${qa.answer}". Error: ${e.message}\\nText in answer frame:\\n${currentContent}`)
+      }
+      await new Promise(resolve => setTimeout(resolve, 100))
+      return answerNextQuestion()
     }
     return answerNextQuestion()
   }
 
-  this.answerAllManualTestQuestionsWithOneFail = () => {
-    const answerRestAsPass = () => this.answerFrameMonkey.find('.pass-button').click({ timeout: 50 })
-      .then(() => answerRestAsPass())
-      .catch(e => {})
-    return this.answerFrameMonkey.find('.fail-button').click()
-      .then(() => answerRestAsPass())
+  this.answerAllManualTestQuestionsWithOneFail = async () => {
+    const answerRestAsPass = async () => {
+      try {
+        const passButton = await waitForElement(this.answerFrame, '.pass-button', { timeout: 1000 })
+        passButton.click()
+        await new Promise(resolve => setTimeout(resolve, 50))
+        await answerRestAsPass()
+      } catch (e) {
+        if (!e.message.includes('not found within')) {
+          console.error('Unexpected error in answerRestAsPass:', e)
+        }
+      }
+    }
+
+    try {
+      const failButton = await waitForElement(this.answerFrame, '.fail-button', { timeout: 3000 })
+      failButton.click()
+    } catch (error) {
+      const currentContent = this.answerFrame.contentDocument?.body?.innerText || 'unavailable'
+      throw new Error(`Could not find the initial ".fail-button". Error: ${error.message}. Frame content: ${currentContent}`)
+    }
+
+    await new Promise(resolve => setTimeout(resolve, 100))
+    await answerRestAsPass()
   }
 
   this.countErrorsForUrl = url => {

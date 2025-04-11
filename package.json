@@ -29,11 +29,11 @@
   },
   "dependencies": {
     "commander": "5.1.0",
-    "electron": "13.5.2",
+    "electron": "22.3.25",
     "jquery": "3.7.1"
   },
   "resolutions": {
-    "electron": "13.5.2"
+    "electron": "22.3.25"
   },
   "devDependencies": {
     "@cucumber/cucumber": "7.2.1",

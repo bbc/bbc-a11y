@@ -1,13 +1,14 @@
 /* eslint no-eval: "off" */
-const { Given, When, Then } = require('cucumber')
-const assert = require('assert')
+const { Given, When, Then } = require('@cucumber/cucumber')
+const assert = require('node:assert')
+
 const Standards = require('../../lib/standards')
 const jquery = require('jquery')
 const webServer = require('../support/web_server')
 
-Given('a website running at http://localhost:{int}', function (port) {
-  return webServer.ensureRunningOn(Number(port))
-})
+Given('a website running on localhost', function () {
+  return webServer.ensureRunningOn(54321);
+});
 
 Given('a file named {string} with:', function (filePath, contents) {
   return this.writeFile(filePath, contents)

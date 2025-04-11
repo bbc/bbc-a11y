@@ -1,7 +1,7 @@
 Feature: Manual Testing
 
   Scenario: Running manual tests
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     When I run `bbc-a11y http://localhost:54321/perfect.html --manual`
     And I answer the following questions:
       | question                                                                                                                                                            | answer                  |
@@ -61,7 +61,7 @@ Feature: Manual Testing
     Then it should result in a pass for http://localhost:54321/perfect.html
 
   Scenario: Failing manual tests
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     When I run `bbc-a11y http://localhost:54321/perfect.html --manual`
     And I answer all questions except one with a pass
     Then it should result in a fail for http://localhost:54321/perfect.html

@@ -8,6 +8,6 @@ Feature: Exit status
     Then the exit status should be 0
 
   Scenario: Failing test
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     When I run `bbc-a11y http://localhost:54321/missing_main_heading.html`
     Then the exit status should be 1

@@ -1,7 +1,7 @@
 Feature: Specify path to config file
 
   Scenario: Config file in alternative location
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     And a file named "path/to/a11y.js" with:
       """
       page('http://localhost:54321/perfect.html')

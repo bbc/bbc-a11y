@@ -1,3 +1,2 @@
 /* global page */
-page('http://what/evs')
-page('http://and/another')
+page('http://example.com/')

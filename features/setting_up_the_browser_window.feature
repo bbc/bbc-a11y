@@ -4,7 +4,7 @@ Feature: Setting up the browser window
   over navigation. Validation begins after the promise is resolved.
 
   Scenario: Filling in a login box before running tests
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     And a file named "a11y.js" with:
       """
       page('Members area (after logging in)', {

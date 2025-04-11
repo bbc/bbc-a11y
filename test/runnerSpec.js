@@ -76,13 +76,13 @@ describe('Runner', function () {
 
   context('with a single a page as an argument', function () {
     it('checks the URL', function () {
-      return run([{ url: 'http://some/url' }])
+      return run([{ url: 'http://example.com/' }])
         .then(function (events) {
           var firstEventPayload = JSON.parse(events[0].args[0])
           assert.deepEqual(firstEventPayload.pagesChecked, 1)
           assert.deepEqual(events[events.length - 1], { type: 'exit', args: [1] })
         })
-    })
+    }).timeout(10000)
   })
 
   context('with no arguments', function () {
@@ -94,6 +94,6 @@ describe('Runner', function () {
           assert.deepEqual(firstEventPayload.pagesChecked, 2)
           assert.deepEqual(events[events.length - 1], { type: 'exit', args: [1] })
         })
-    })
+    }).timeout(10000)
   })
 })

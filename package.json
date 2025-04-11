@@ -5,7 +5,7 @@
   "main": "./bin/bbc-a11y.js",
   "directories": {},
   "scripts": {
-    "test": "./node_modules/.bin/electron-mocha --renderer && ./node_modules/.bin/cucumber-electron && standard",
+    "test": "./node_modules/.bin/electron-mocha --window-config ./electron-mocha.config.json --renderer && ./node_modules/.bin/cucumber-electron && standard",
     "standard": "standard",
     "standard-fix": "standard --fix",
     "browserify": "browserify ./lib/a11y.js -o ./dist/bundle.js",
@@ -23,32 +23,35 @@
   "author": "BBC",
   "license": "Apache-2.0",
   "engines": {
-    "node": ">=8.x"
+    "node": ">=20.x"
   },
   "bugs": {
     "url": "https://github.com/bbc/bbc-a11y/issues"
   },
   "homepage": "https://github.com/bbc/bbc-a11y#readme",
   "dependencies": {
-    "commander": "^2.17.1",
-    "electron": "^2.0.8",
-    "httpism": "^3.24.0",
-    "jquery": "^3.4.0"
+    "commander": "2.17.1",
+    "electron": "13.5.2",
+    "httpism": "3.26.0",
+    "jquery": "3.6.0"
+  },
+  "resolutions": {
+    "electron": "13.5.2"
   },
   "devDependencies": {
-    "browser-monkey": "2.7.2",
-    "browserify": "16.2.2",
-    "chai": "4.1.2",
-    "cucumber": "4.2.1",
-    "cucumber-electron": "2.5.0",
-    "diff": "3.5.0",
-    "electron-mocha": "6.0.4",
-    "express": "4.16.3",
+    "@cucumber/cucumber": "7.2.1",
+    "@cucumber/electron": "4.1.3",
+    "browser-monkey": "2.11.0",
+    "browserify": "17.0.0",
+    "chai": "4.3.6",
+    "diff": "5.0.0",
+    "electron-mocha": "11.0.2",
+    "express": "4.18.1",
     "mkdirp": "0.5.1",
-    "mocha": "5.2.0",
-    "rimraf": "2.6.2",
+    "mocha": "10.0.0",
+    "rimraf": "3.0.2",
     "standard": "11.0.1",
-    "watchify": "^3.11.1"
+    "watchify": "4.0.0"
   },
   "standard": {
     "ignore": [

@@ -4,7 +4,7 @@ Feature: Disabled Caching
   must be disabled
 
   Scenario: Re-testing an updated page
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     When I run `bbc-a11y http://localhost:54321/goodThenBad.html`
     Then it should pass with:
       """

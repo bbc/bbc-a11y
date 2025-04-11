@@ -1,7 +1,7 @@
 Feature: Display failing result
 
   Scenario: One standard fails
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     When I run `bbc-a11y http://localhost:54321/missing_main_heading.html`
     Then it should fail with:
       """
@@ -14,7 +14,7 @@ Feature: Display failing result
       """
 
   Scenario: One standard generates a warning
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     When I run `bbc-a11y http://localhost:54321/subheading_first.html`
     Then it should fail with:
       """
@@ -27,7 +27,7 @@ Feature: Display failing result
       """
 
   Scenario: Failures and warnings from the same standard
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     When I run `bbc-a11y http://localhost:54321/two_headings_failures_and_one_warning.html`
     Then it should fail with:
       """
@@ -44,7 +44,7 @@ Feature: Display failing result
       """
 
   Scenario: Two failing checks from different standards
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     When I run `bbc-a11y http://localhost:54321/heading_and_title_attribute_failures.html`
     Then it should fail with:
       """

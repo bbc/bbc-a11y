@@ -1,7 +1,7 @@
 Feature: Setting Cookies
 
   Scenario: Setting a cookie before visiting a page
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     And a file named "a11y.js" with:
       """
       page("http://localhost:54321/good_with_cookie.html", {

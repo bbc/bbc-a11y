@@ -1,4 +1,4 @@
-const { setWorldConstructor, Before, After } = require('cucumber')
+const { setWorldConstructor, Before, After } = require('@cucumber/cucumber')
 const mkdirp = require('mkdirp')
 const { exec, execFile, spawn } = require('child_process')
 const path = require('path')

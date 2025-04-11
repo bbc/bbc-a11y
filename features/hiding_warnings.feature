@@ -7,7 +7,7 @@ Feature: Hiding warnings
   problems that we can actually fix.
 
   Scenario: Hide warnings matching a selector
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     And a file named "a11y.js" with:
       """
       page("http://localhost:54321/one_warning.html", {
@@ -23,7 +23,7 @@ Feature: Hiding warnings
       """
 
   Scenario: Hide warnings matching a rule
-    Given a website running at http://localhost:54321
+    Given a website running on localhost
     And a file named "a11y.js" with:
       """
       page("http://localhost:54321/one_warning.html", {

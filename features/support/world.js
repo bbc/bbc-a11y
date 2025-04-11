@@ -71,7 +71,7 @@ function A11yWorld () {
 
   this.assertCurrentQuestionIs = async function (question) {
     try {
-      const heading = await waitForElement(this.answerFrame, 'h1', { textContent: question, timeout: 3000 }) // Increased timeout slightly
+      const heading = await waitForElement(this.answerFrame, 'h1', { textContent: question, timeout: 3000 })
       if (!heading) {
         throw new Error(`Assertion failed: Question heading "${question}" not found.`)
       }
@@ -84,7 +84,6 @@ function A11yWorld () {
 
   this.answerQuestion = async function (answer) {
     try {
-      // Wait for a button or link with the specified text
       const answerElement = await waitForElementWithText(this.answerFrame, 'button, a', answer, { timeout: 3000 })
       answerElement.click()
     } catch (error) {

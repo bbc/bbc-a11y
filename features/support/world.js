@@ -1,5 +1,5 @@
+const { promises: fsPromises } = require('fs')
 const { setWorldConstructor, Before, After } = require('@cucumber/cucumber')
-const mkdirp = require('mkdirp')
 const { exec, execFile, spawn } = require('child_process')
 const path = require('path')
 const Runner = require('../../lib/runner')
@@ -180,24 +180,28 @@ function A11yWorld () {
     })
   }
 
-  this.writeFile = (filePath, contents) => {
+  this.writeFile = async (filePath, contents) => {
     const fullPath = path.join(this.tempDir, filePath)
-    return new Promise(function (resolve, reject) {
-      mkdirp(path.dirname(fullPath), error => {
-        if (error) return reject(error)
-        require('fs').writeFileSync(fullPath, contents, 'utf-8')
-        resolve()
-      })
-    })
+    try {
+      await fsPromises.mkdir(path.dirname(fullPath), { recursive: true })
+      await fsPromises.writeFile(fullPath, contents, 'utf-8')
+    } catch (error) {
+      throw new Error(`Failed to write file ${filePath}: ${error.message}`)
+    }
   }
 }
 
 setWorldConstructor(A11yWorld)
 
 Before(function (scenario, callback) {
-  exec('rm -rf ' + this.tempDir, (err, out) => {
+  exec(`rm -rf ${this.tempDir}`, (err, out) => {
     if (err) return callback(err)
-    mkdirp(this.tempDir, callback)
+    try {
+      require('fs').mkdirSync(this.tempDir, { recursive: true })
+      callback()
+    } catch (mkdirErr) {
+      callback(mkdirErr)
+    }
   })
 })
 

@@ -1,6 +1,6 @@
 /* eslint no-eval: "off" */
 const { Given, When, Then } = require('@cucumber/cucumber')
-const assert = require('node:assert')
+const assert = require('assert')
 
 const Standards = require('../../lib/standards')
 const jquery = require('jquery')

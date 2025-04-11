@@ -76,7 +76,7 @@ describe('Runner', function () {
 
   context('with a single a page as an argument', function () {
     it('checks the URL', function () {
-      return run([{ url: 'http://example.com/' }])
+      return run([{ url: 'https://www.bbc.co.uk/opensource' }])
         .then(function (events) {
           var firstEventPayload = JSON.parse(events[0].args[0])
           assert.deepEqual(firstEventPayload.pagesChecked, 1)

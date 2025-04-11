@@ -1,2 +1,3 @@
 /* global page */
-page('http://example.com/')
+page('https://www.bbc.co.uk/opensource')
+page('https://www.bbc.co.uk/opensource/projects/project/bbc-a11y')

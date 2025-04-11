@@ -1,4 +1,4 @@
-const path = require('node:path')
+const path = require('path')
 
 const Runner = require('../lib/runner')
 const Reporter = require('../lib/reporter')

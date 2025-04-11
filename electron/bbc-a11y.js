@@ -4,8 +4,8 @@ app.commandLine.appendSwitch('--disable-http-cache')
 
 const BrowserWindow = electron.BrowserWindow
 
-const path = require('node:path')
-const url = require('node:url')
+const path = require('path')
+const url = require('url')
 const commandLineArgs = require('../lib/cli/args').parse(process.argv)
 
 let mainWindow

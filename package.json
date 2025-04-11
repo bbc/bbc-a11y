@@ -1,6 +1,6 @@
 {
-  "name": "bbc-a11y",
-  "version": "2.4.2",
+  "name": "@bbc/a11y",
+  "version": "3.0.0-canary.1",
   "description": "BBC Accessibility standards checker",
   "main": "./bin/bbc-a11y.js",
   "directories": {},

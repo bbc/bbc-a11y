@@ -17,7 +17,7 @@ tool that comes with node.js:
 Once you have a package.json file, add bbc-a11y to your development
 dependencies like this:
 
-    npm install bbc-a11y --save-dev
+    npm install @bbc/a11y --save-dev
 
 ## Configuring a11y for your project
 

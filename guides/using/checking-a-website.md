@@ -8,7 +8,7 @@ bbc-a11y uses a technology called node.js, so you'll need to
 Once you've downloaded node.js, you can open a terminal window and enter the
 following command:
 
-    npm install bbc-a11y --global
+    npm install @bbc/a11y --global
 
 ## Running bbc-a11y against your website
 

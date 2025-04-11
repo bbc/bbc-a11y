@@ -1,7 +1,6 @@
 /* eslint-env mocha */
-const sections = require('../lib/standards/sections')
 const assert = require('assert')
-const http = require('httpism')
+const sections = require('../lib/standards/sections')
 
 describe('Standards.sections', function () {
   it('has a unique documentationUrl for each section', function () {
@@ -20,7 +19,13 @@ describe('Standards.sections', function () {
     }
     this.timeout(60000)
     return Promise.all(Object.values(sections).map(section => {
-      return http.get(section.documentationUrl)
+      return fetch(section.documentationUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Invalid documentationUrl: ${section.documentationUrl}`)
+          }
+          return response.text()
+        })
         .then(body => {
           if (body.indexOf('Not found') > -1) { throw new Error(`Invalid documentationUrl: ${section.documentationUrl}`) }
         })

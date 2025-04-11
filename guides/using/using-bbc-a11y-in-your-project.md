@@ -62,7 +62,7 @@ To debug failures, running bbc-a11y in _interactive mode_ will show a browser
 window with development tools, allowing you to explore the failures and the
 elements that relate to each failure:
 
-    ./node_modules/.bin/bbc-a11y http://www.bbc.co.uk --interactive
+    ./node_modules/.bin/bbc-a11y https://www.bbc.co.uk --interactive
 
 ## Skipping standards checks
 
@@ -112,7 +112,7 @@ Because responsive web pages can vary depending on the width of the browser
 browser window, bbc-a11y allows the viewport width to be specified. Either
 you can pass a command line argument when checking a single URL, like this:
 
-    ./node_modules/.bin/bbc-a11y http://www.bbc.co.uk --width 800
+    ./node_modules/.bin/bbc-a11y https://www.bbc.co.uk --width 800
 
 ...or you can add an option to any page in your configuration file like this:
 

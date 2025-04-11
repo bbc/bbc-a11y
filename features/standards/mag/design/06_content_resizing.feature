@@ -48,7 +48,7 @@ Feature: Content resizing
   minimum text size. This guideline is based on the legacy HTML Accessibility
   Guidelines which you can find here:
 
-  http://www.bbc.co.uk/guidelines/futuremedia/accessibility/html/min-text-size.shtml
+  https://www.bbc.co.uk/guidelines/futuremedia/accessibility/html/min-text-size.shtml
 
   At default browser level all text **must** have a minimum calculated size of
   11px and all core content **must** have a minimum calculated size of 13px.

@@ -7,26 +7,26 @@ Feature: Hiding errors
   problems that we can actually fix.
 
   Scenario: Hide errors matching a pattern
-    Given a website running on localhost
+    Given a website running on a11ytests.com
     And a file named "a11y.js" with:
       """
-      page("http://localhost:54321/errors_in_orb_modules.html", {
+      page("https://a11ytests.com/errors_in_orb_modules", {
         hide: "@id='orb-modules'"
       })
       """
     When I run `bbc-a11y`
     Then it should pass with:
       """
-      ✓ http://localhost:54321/errors_in_orb_modules.html
+      ✓ https://a11ytests.com/errors_in_orb_modules
 
       1 page checked, 0 errors found, 2 errors hidden, 0 warnings, 0 standards skipped
       """
 
   Scenario: Hide errors matching multiple patterns
-    Given a website running on localhost
+    Given a website running on a11ytests.com
     And a file named "a11y.js" with:
       """
-      page("http://localhost:54321/errors_in_orb_modules.html", {
+      page("https://a11ytests.com/errors_in_orb_modules", {
         hide: [
           "No content follows:",
           "Image has no alt attribute:"
@@ -36,7 +36,7 @@ Feature: Hiding errors
     When I run `bbc-a11y`
     Then it should pass with:
       """
-      ✓ http://localhost:54321/errors_in_orb_modules.html
+      ✓ https://a11ytests.com/errors_in_orb_modules
 
       1 page checked, 0 errors found, 2 errors hidden, 0 warnings, 0 standards skipped
       """

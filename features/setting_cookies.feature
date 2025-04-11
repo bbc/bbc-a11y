@@ -1,21 +1,21 @@
 Feature: Setting Cookies
 
   Scenario: Setting a cookie before visiting a page
-    Given a website running on localhost
+    Given a website running on a11ytests.com
     And a file named "a11y.js" with:
       """
-      page("http://localhost:54321/good_with_cookie.html", {
+      page("https://a11ytests.com/good_with_cookie", {
         cookies: [
           { name: 'open', value: 'sesame' }
         ]
       })
-      page("http://localhost:54321/good_with_cookie.html", {
+      page("https://a11ytests.com/good_with_cookie", {
         cookies: [
           { name: 'open', value: 'wrong' }
         ]
       })
-      page("http://localhost:54321/good_with_cookie.html")
-      page("http://localhost:54321/good_with_cookie.html", {
+      page("https://a11ytests.com/good_with_cookie")
+      page("https://a11ytests.com/good_with_cookie", {
         cookies: [
           { name: 'open', value: 'sesame' }
         ]
@@ -24,15 +24,15 @@ Feature: Setting Cookies
     When I run `bbc-a11y`
     Then it should fail with:
       """
-      ✓ http://localhost:54321/good_with_cookie.html
+      ✓ https://a11ytests.com/good_with_cookie
 
-      ✗ http://localhost:54321/good_with_cookie.html
+      ✗ https://a11ytests.com/good_with_cookie
         * Structure: Containers and landmarks: Exactly one main landmark
           - Found 0 elements with role="main".
 
-      ✗ http://localhost:54321/good_with_cookie.html
+      ✗ https://a11ytests.com/good_with_cookie
         * Structure: Containers and landmarks: Exactly one main landmark
           - Found 0 elements with role="main".
 
-      ✓ http://localhost:54321/good_with_cookie.html
+      ✓ https://a11ytests.com/good_with_cookie
       """

@@ -4,12 +4,12 @@ Feature: Setting up the browser window
   over navigation. Validation begins after the promise is resolved.
 
   Scenario: Filling in a login box before running tests
-    Given a website running on localhost
+    Given a website running on a11ytests.com
     And a file named "a11y.js" with:
       """
       page('Members area (after logging in)', {
         visit: function (frame) {
-          frame.src = 'http://localhost:54321/perfect_after_login.html'
+          frame.src = 'https://a11ytests.com/perfect_after_login'
           return new Promise(function (test) {
             frame.onload = function () {
               var loginPage = frame.contentDocument

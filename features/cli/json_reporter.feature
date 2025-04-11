@@ -1,12 +1,12 @@
 Feature: JSON Reporter
   Scenario: Reporting results in generic JSON format
-    Given a website running on localhost
+    Given a website running on a11ytests.com
     And a file named "a11y.js" with:
       """
-      page("http://localhost:54321/perfect.html", {
+      page("https://a11ytests.com/perfect", {
         skip: ["Structure: Containers and landmarks: Exactly one main landmark"]
       })
-      page("http://localhost:54321/missing_main_heading.html")
+      page("https://a11ytests.com/missing_main_heading")
       """
     When I run `bbc-a11y --reporter json`
     Then it should fail with:
@@ -18,6 +18,6 @@ Feature: JSON Reporter
         "standardsSkipped": 1,
         "pages": [
           {
-            "url": "http://localhost:54321/perfect.html",
+            "url": "https://a11ytests.com/perfect",
             "result": {
       """

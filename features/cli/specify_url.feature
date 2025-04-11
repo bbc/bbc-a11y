@@ -1,9 +1,9 @@
 Feature: Specify URL
 
   Scenario: No config, just pass page URL on command-line
-    Given a website running on localhost
-    When I run `bbc-a11y http://localhost:54321/perfect.html`
+    Given a website running on a11ytests.com
+    When I run `bbc-a11y https://a11ytests.com/perfect`
     Then it should pass with:
       """
-      ✓ http://localhost:54321/perfect.html
+      ✓ https://a11ytests.com/perfect
       """

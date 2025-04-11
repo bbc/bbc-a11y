@@ -1,8 +1,8 @@
 Feature: Manual Testing
 
   Scenario: Running manual tests
-    Given a website running on localhost
-    When I run `bbc-a11y http://localhost:54321/perfect.html --manual`
+    Given a website running on a11ytests.com
+    When I run `bbc-a11y https://a11ytests.com/perfect --manual`
     And I answer the following questions:
       | question                                                                                                                                                            | answer                  |
       | Is alternative delivery (such as subtitles, sign language, audio description or transcripts) provided with all embedded media?                                      | Yes (or not applicable) |
@@ -58,10 +58,10 @@ Feature: Manual Testing
       | Do tooltips repeat link text or other alternatives?                                                                                                                 | No (or not applicable)  |
       | Do elements have accessibility properties set appropriately?                                                                                                        | Yes (or not applicable) |
       | Is visual formatting alone used to convey meaning?                                                                                                                  | No                      |
-    Then it should result in a pass for http://localhost:54321/perfect.html
+    Then it should result in a pass for https://a11ytests.com/perfect
 
   Scenario: Failing manual tests
-    Given a website running on localhost
-    When I run `bbc-a11y http://localhost:54321/perfect.html --manual`
+    Given a website running on a11ytests.com
+    When I run `bbc-a11y https://a11ytests.com/perfect --manual`
     And I answer all questions except one with a pass
-    Then it should result in a fail for http://localhost:54321/perfect.html
+    Then it should result in a fail for https://a11ytests.com/perfect

@@ -1,11 +1,11 @@
 Feature: Display failing result
 
   Scenario: One standard fails
-    Given a website running on localhost
-    When I run `bbc-a11y http://localhost:54321/missing_main_heading.html`
+    Given a website running on a11ytests.com
+    When I run `bbc-a11y https://a11ytests.com/missing_main_heading`
     Then it should fail with:
       """
-      ✗ http://localhost:54321/missing_main_heading.html
+      ✗ https://a11ytests.com/missing_main_heading
         * Structure: Headings: Exactly one main heading
           - Found 0 h1 elements.
 
@@ -14,11 +14,11 @@ Feature: Display failing result
       """
 
   Scenario: One standard generates a warning
-    Given a website running on localhost
-    When I run `bbc-a11y http://localhost:54321/subheading_first.html`
+    Given a website running on a11ytests.com
+    When I run `bbc-a11y https://a11ytests.com/subheading_first`
     Then it should fail with:
       """
-      ✓ http://localhost:54321/subheading_first.html
+      ✓ https://a11ytests.com/subheading_first
         ⚠ Structure: Headings: Headings must be in ascending order
           - First heading was not a main heading: /html/body/h3
 
@@ -27,11 +27,11 @@ Feature: Display failing result
       """
 
   Scenario: Failures and warnings from the same standard
-    Given a website running on localhost
-    When I run `bbc-a11y http://localhost:54321/two_headings_failures_and_one_warning.html`
+    Given a website running on a11ytests.com
+    When I run `bbc-a11y https://a11ytests.com/two_headings_failures_and_one_warning`
     Then it should fail with:
       """
-      ✗ http://localhost:54321/two_headings_failures_and_one_warning.html
+      ✗ https://a11ytests.com/two_headings_failures_and_one_warning
         ⚠ Structure: Headings: Headings must be in ascending order
           - First heading was not a main heading: /html/body/h2
         * Structure: Headings: Exactly one main heading
@@ -44,11 +44,11 @@ Feature: Display failing result
       """
 
   Scenario: Two failing checks from different standards
-    Given a website running on localhost
-    When I run `bbc-a11y http://localhost:54321/heading_and_title_attribute_failures.html`
+    Given a website running on a11ytests.com
+    When I run `bbc-a11y https://a11ytests.com/heading_and_title_attribute_failures`
     Then it should fail with:
       """
-      ✗ http://localhost:54321/heading_and_title_attribute_failures.html
+      ✗ https://a11ytests.com/heading_and_title_attribute_failures
         * Structure: Headings: Exactly one main heading
           - Found 0 h1 elements.
         * Text equivalents: Tooltips and supplementary information: Title attributes only on inputs

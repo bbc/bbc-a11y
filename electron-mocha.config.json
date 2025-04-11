@@ -1,0 +1,6 @@
+{
+  "webPreferences": {
+    "webSecurity": false,
+    "enableRemoteModule": true
+  }
+}

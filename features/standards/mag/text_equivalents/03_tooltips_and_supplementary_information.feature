@@ -73,7 +73,7 @@ Feature: Tooltips and supplementary information
   Scenario: Iframe tag with title attribute
     Given a page with the body:
       """
-      <iframe src="perfect.html" title="Rainbows and unicorns"></iframe>
+      <iframe src="https://a11ytests.com/perfect" title="Rainbows and unicorns"></iframe>
       """
     When I test the "Text equivalents: Tooltips and supplementary information: Title attributes only on inputs" standard
     Then it passes

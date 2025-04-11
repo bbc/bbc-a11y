@@ -1,24 +1,24 @@
 Feature: Skipping Standards
 
   Scenario: One standard is skipped
-    Given a website running at http://localhost:54321
+    Given a website running on a11ytests.com
     And a file named "a11y.js" with:
       """
-      page("http://localhost:54321/missing_main_heading.html", {
+      page("https://a11ytests.com/missing_main_heading", {
         skip: "Structure: Headings: Exactly one main heading"
       })
       """
     When I run `bbc-a11y`
     Then it should pass with:
       """
-      ✓ http://localhost:54321/missing_main_heading.html
+      ✓ https://a11ytests.com/missing_main_heading
       """
 
   Scenario: All standards except one is skipped
-    Given a website running at http://localhost:54321
+    Given a website running on a11ytests.com
     And a file named "a11y.js" with:
       """
-      page("http://localhost:54321/two_headings_failures.html", {
+      page("https://a11ytests.com/two_headings_failures", {
         only: "Structure: Headings: Exactly one main heading"
       })
       """

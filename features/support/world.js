@@ -1,4 +1,4 @@
-const { setWorldConstructor, Before, After } = require('cucumber')
+const { setWorldConstructor, Before, After } = require('@cucumber/cucumber')
 const mkdirp = require('mkdirp')
 const { exec, execFile, spawn } = require('child_process')
 const path = require('path')
@@ -117,6 +117,29 @@ function A11yWorld () {
     return this.manualRun.then(() => {
       const pageResult = this.reporter.results[url]
       return pageResult.flatten().errorsFound
+    })
+  }
+
+  this.countManualTestErrors = () => {
+    if (!this.manualRun) throw new Error('oops')
+    return this.manualRun.then(() => {
+      const results = this.reporter.results
+      let manualTestErrors = 0
+
+      for (const resultUrl in results) {
+        const pageResult = results[resultUrl]
+        if (pageResult?.results) {
+          const manualTests = pageResult.results.filter(result =>
+            result.standard && result.standard.type === 'manual'
+          )
+
+          for (const test of manualTests) {
+            manualTestErrors += test.errors.length
+          }
+        }
+      }
+
+      return manualTestErrors
     })
   }
 

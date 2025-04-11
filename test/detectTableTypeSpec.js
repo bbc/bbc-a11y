@@ -1,9 +1,9 @@
 /* eslint-env mocha */
-var detectTableType = require('../lib/standards/tests/support/detectTableType')
-var expect = require('chai').expect
+const detectTableType = require('../lib/standards/tests/support/detectTableType')
+const expect = require('chai').expect
 
 describe('detectTableType', function () {
-  var container, table
+  let container, table
 
   beforeEach(function () {
     container = document.createElement('div')
@@ -147,7 +147,7 @@ describe('detectTableType', function () {
 
   describe('a table with 3 rows and 5 columns', function () {
     it('is a data table', function () {
-      var rows = '<tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>' +
+      const rows = '<tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>' +
                  '<tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>' +
                  '<tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>'
       table.innerHTML = rows
@@ -159,8 +159,8 @@ describe('detectTableType', function () {
 
   describe('a table with 1 column and 20 rows', function () {
     it('is a data table', function () {
-      var rows = ''
-      for (var i = 0; i < 20; i++) { rows += '<tr><td>row</td></tr>' }
+      let rows = ''
+      for (let i = 0; i < 20; i++) { rows += '<tr><td>row</td></tr>' }
       table.innerHTML = rows
       expect(detectTableType(table)).to.equal('data')
       table.innerHTML = '<tbody>' + rows + '</tbody>'
@@ -177,7 +177,7 @@ describe('detectTableType', function () {
 
   describe('a wide table (> 95% document width)', function () {
     it('is a layout table', function () {
-      var iframe = document.createElement('iframe')
+      const iframe = document.createElement('iframe')
       document.body.appendChild(iframe)
       iframe.contentDocument.write('<table>' + rowsWithTwoColumns(10) + '</table>')
       iframe.contentDocument.body.style = 'padding: 0; margin: 0'
@@ -225,8 +225,8 @@ describe('detectTableType', function () {
   })
 
   function rowsWithTwoColumns (n) {
-    var rows = ''
-    for (var i = 0; i < n; i++) { rows += '<tr><td>1</td><td>2</td></tr>' }
+    let rows = ''
+    for (let i = 0; i < n; i++) { rows += '<tr><td>1</td><td>2</td></tr>' }
     return rows
   }
 })

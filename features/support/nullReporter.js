@@ -1,6 +1,6 @@
 module.exports = class NullReporter {
   runStarted () {
-    this.results = []
+    this.results = {}
   }
 
   unexpectedError (e) {

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
-var a11y = require('../lib/a11y.js')
-var expect = require('chai').expect
-var $ = require('jquery')
+const a11y = require('../lib/a11y.js')
+const expect = require('chai').expect
+const $ = require('jquery')
 
 describe('a11y', function () {
   beforeEach(function () {
@@ -12,7 +12,7 @@ describe('a11y', function () {
     $('html').attr('lang', 'en-gb')
     $('body').append('<div role="main"><h1>Hello!</h1><p>Some content</p></div>')
     return a11y.test().then(function (outcome) {
-      var flattened = outcome.flatten()
+      const flattened = outcome.flatten()
       expect(flattened.errorsFound).to.equal(0)
     })
   })
@@ -32,7 +32,7 @@ describe('a11y', function () {
   it('hides errors', function () {
     return a11y.test({ hide: ['Found 0 elements with role="main".'] })
       .then(function (outcome) {
-        var resultsWithErrors = outcome.results.filter(function (standardResult) {
+        const resultsWithErrors = outcome.results.filter(function (standardResult) {
           return standardResult.hiddenErrors.length > 0
         })
         expect(resultsWithErrors[0].errors).to.eql([])
@@ -44,7 +44,7 @@ describe('a11y', function () {
     $('body').append('<h2>I am in the wrong place</h2><h1>Hello!</h1>')
     return a11y.test({ hide: ['First heading was not a main heading'] })
       .then(function (outcome) {
-        var resultsWithWarnings = outcome.results.filter(function (standardResult) {
+        const resultsWithWarnings = outcome.results.filter(function (standardResult) {
           return standardResult.hiddenWarnings.length > 0
         })
         expect(resultsWithWarnings[0].warnings).to.eql([])

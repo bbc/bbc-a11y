@@ -1,7 +1,7 @@
 /* eslint-env mocha */
-var configLoader = require('../lib/config/loader')
-var assert = require('assert')
-var path = require('path')
+const configLoader = require('../lib/config/loader')
+const assert = require('assert')
+const path = require('path')
 
 describe('configLoader.loadConfigFromPath(pathToConfigModule)', function () {
   function pathToConfigModule (name) {
@@ -58,13 +58,13 @@ describe('configLoader.loadConfigFromPath(pathToConfigModule)', function () {
           throw new Error('Expected a rejection')
         })
         .catch(function (e) {
-          assert.equal('Unexpected token >', e.message)
+          assert.equal("Unexpected token '>'", e.message)
         })
     })
   })
 
   context('when there is a global page property', function () {
-    var oldPage, hadPage
+    let oldPage, hadPage
 
     beforeEach(function () {
       hadPage = 'page' in global
@@ -99,7 +99,7 @@ describe('configLoader.loadConfigFromPath(pathToConfigModule)', function () {
   })
 
   context('when there is no global page property', function () {
-    var oldPage, hadPage
+    let oldPage, hadPage
 
     beforeEach(function () {
       hadPage = 'page' in global

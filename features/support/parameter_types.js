@@ -1,4 +1,4 @@
-const { defineParameterType } = require('cucumber')
+const { defineParameterType } = require('@cucumber/cucumber')
 
 defineParameterType({
   name: 'url',

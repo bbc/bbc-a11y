@@ -1,13 +1,13 @@
 Feature: Specify URL via config
 
   Scenario: Specify a single page
-    Given a website running at http://localhost:54321
+    Given a website running on a11ytests.com
     And a file named "a11y.js" with:
       """
-      page('http://localhost:54321/perfect.html')
+      page('https://a11ytests.com/perfect')
       """
     When I run `bbc-a11y`
     Then it should pass with:
       """
-      ✓ http://localhost:54321/perfect.html
+      ✓ https://a11ytests.com/perfect
       """

@@ -1,3 +1,16 @@
+# Upgrading your project for compatibility with bbc-a11y 3.0
+
+As of version 3, bbc-a11y is built to support Node.js 20 and above only.
+
+If you are using an older version of Node.js, please upgrade to the latest
+version of Node.js.
+
+Alongside this, from this version, bbc-a11y is now published as an npm package
+as `@bbc/a11y` rather than `bbc-a11y`.
+
+If you are using bbc-a11y as a dependency in your project, you will need to update
+your dependency to use the new package name.
+
 # Upgrading your project for compatibility with bbc-a11y 2.0
 
 As of version 2.0.0, bbc-a11y now follows the

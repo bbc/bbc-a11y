@@ -1,12 +1,13 @@
 const electron = require('electron')
-const app = electron.app
-app.commandLine.appendSwitch('--disable-http-cache')
-
-const BrowserWindow = electron.BrowserWindow
-
 const path = require('path')
 const url = require('url')
 const commandLineArgs = require('../lib/cli/args').parse(process.argv)
+
+const app = electron.app
+app.commandLine.appendSwitch('--disable-http-cache')
+app.commandLine.appendSwitch('--disable-site-isolation-trials')
+
+const BrowserWindow = electron.BrowserWindow
 
 let mainWindow
 
@@ -15,7 +16,12 @@ function createWindow () {
     width: commandLineArgs.width || 1024,
     height: 800,
     show: false,
-    webPreferences: { webSecurity: false }
+    webPreferences: {
+      webSecurity: false,
+      enableRemoteModule: true,
+      contextIsolation: false,
+      nodeIntegration: true
+    }
   })
 
   mainWindow.loadURL(url.format({
@@ -38,16 +44,20 @@ function createWindow () {
     })
   })
 
-  mainWindow.webContents.session.webRequest.onHeadersReceived({}, function (d, c) {
-    for (var header in d.responseHeaders) {
-      if (header.toLowerCase() === 'x-frame-options') {
+  mainWindow.webContents.session.webRequest.onHeadersReceived({
+    urls: ['*://*/*'] // Match all URLs
+  }, (d, c) => {
+    for (const header in d.responseHeaders) {
+      const headerLower = header.toLowerCase()
+      if (headerLower === 'x-frame-options' ||
+          headerLower === 'content-security-policy') {
         delete d.responseHeaders[header]
       }
     }
     c({ cancel: false, responseHeaders: d.responseHeaders })
   })
 
-  mainWindow.on('closed', function () {
+  mainWindow.on('closed', () => {
     mainWindow.removeAllListeners()
     mainWindow = null
   })

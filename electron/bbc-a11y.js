@@ -1,6 +1,7 @@
 const electron = require('electron')
 const path = require('path')
 const url = require('url')
+
 const commandLineArgs = require('../lib/cli/args').parse(process.argv)
 
 const app = electron.app

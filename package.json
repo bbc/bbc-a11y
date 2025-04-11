@@ -3,7 +3,7 @@
   "description": "BBC Accessibility standards checker",
   "author": "BBC",
   "license": "Apache-2.0",
-  "version": "3.0.0-canary.3",
+  "version": "3.0.0-canary.5",
   "main": "./bin/bbc-a11y.js",
   "repository": {
     "type": "git",
@@ -16,7 +16,6 @@
   "engines": {
     "node": ">=20.x"
   },
-  "directories": {},
   "bin": {
     "bbc-a11y": "./bin/bbc-a11y.js"
   },
@@ -48,5 +47,13 @@
     "ignore": [
       "test/configs/syntaxError.js"
     ]
-  }
+  },
+  "files": [
+    "bin",
+    "electron",
+    "lib",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ]
 }
